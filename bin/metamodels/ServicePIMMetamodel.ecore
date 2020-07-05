@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ServicePIM" nsURI="src/metamodels/ServicePIMMetamodel.ecore"
+    nsPrefix="mde">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Resource">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="UniqueCRUDVerbs UniqueInputMediaTypes UniqueOutputMediaTypes UniqueNamingProperty AlgoResHaveNoProperties CRUDResHaveAtLeastOneProperty"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="UniqueCRUDVerbs" value="self.hasCRUDActivity->isUnique(CRUDVerb)"/>
+      <details key="UniqueInputMediaTypes" value="self.hasInputRepresentation->isUnique(MediaType)"/>
+      <details key="UniqueOutputMediaTypes" value="self.hasOutputRepresentation->isUnique(MediaType)"/>
+      <details key="UniqueNamingProperty" value="self.hasProperty->notEmpty() implies self.hasProperty->one(isNamingProperty = true)"/>
+      <details key="AlgoResHaveNoProperties" value="(self.isAlgorithmic = true) implies self.hasProperty->isEmpty()"/>
+      <details key="CRUDResHaveAtLeastOneProperty" value="(self.isAlgorithmic = false) implies self.hasProperty->notEmpty()"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAlgorithmic" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasInputRepresentation"
+        lowerBound="1" upperBound="-1" eType="#//InputRepresentation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasCRUDActivity" lowerBound="1"
+        upperBound="4" eType="#//CRUDActivity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasProperty" upperBound="-1"
+        eType="#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasOutputRepresentation"
+        lowerBound="1" upperBound="-1" eType="#//OutputRepresentation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasRelatedResource" upperBound="-1"
+        eType="#//RelatedResource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filters" upperBound="-1"
+        eType="ecore:EClass QueryPIMMetamodel.ecore#//Filter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sort" upperBound="-1" eType="ecore:EClass QueryPIMMetamodel.ecore#//Sort"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="select" upperBound="-1"
+        eType="ecore:EClass QueryPIMMetamodel.ecore#//Select" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pagination" eType="ecore:EClass QueryPIMMetamodel.ecore#//Pagination"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scopesearch" upperBound="-1"
+        eType="ecore:EClass QueryPIMMetamodel.ecore#//ScopeSearch" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CRUDActivity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="CRUDVerb" lowerBound="1"
+        eType="#//CRUDVerb"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Property">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isUnique" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNamingProperty" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRequired" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputRepresentation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputMediaType" lowerBound="1"
+        eType="#//MediaType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputRepresentation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputMediaType" lowerBound="1"
+        eType="#//MediaType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MediaType">
+    <eLiterals name="JSON"/>
+    <eLiterals name="XML" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CRUDVerb">
+    <eLiterals name="CREATE"/>
+    <eLiterals name="READ" value="1"/>
+    <eLiterals name="UPDATE" value="2"/>
+    <eLiterals name="DELETE" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RESTfulServicePIM">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="UniqueResourceNames"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputPath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasApplications" lowerBound="1"
+        upperBound="-1" eType="#//Application" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
+        eType="#//Type" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelatedResource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicity" lowerBound="1"
+        eType="#//Multiplicity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromResource" lowerBound="1"
+        eType="#//Resource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toResource" lowerBound="1"
+        eType="#//Resource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Multiplicity">
+    <eLiterals name="ONE_TO_MANY" literal="ONE_TO_MANY"/>
+    <eLiterals name="MANY_TO_ONE" value="1" literal="MANY_TO_ONE"/>
+    <eLiterals name="ONE_TO_ONE" value="2" literal="ONE_TO_ONE"/>
+    <eLiterals name="MANY_TO_MANY" value="3" literal="MANY_TO_MANY"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ApplicationType">
+    <eLiterals name="MICROSERVICE"/>
+    <eLiterals name="GATEWAY" value="1"/>
+    <eLiterals name="MONOLITH" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Application">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasConfig" lowerBound="1"
+        eType="#//Config" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" lowerBound="1"
+        upperBound="-1" eType="#//Resource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="globalsearches" eType="ecore:EClass QueryPIMMetamodel.ecore#//GlobalSearch"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roles" eType="ecore:EClass SecurityPIMMetamodel.ecore#//Role"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Config">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="applicationType" lowerBound="1"
+        eType="#//ApplicationType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="servicePort" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dbIP" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dbPort" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dbUsername" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dbPassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Enumeration" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literal" lowerBound="1"
+        upperBound="-1" eType="#//Literal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicType" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//Type.1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Type">
+    <eLiterals name="String"/>
+    <eLiterals name="Integer" value="1"/>
+    <eLiterals name="Float" value="2"/>
+    <eLiterals name="Boolean" value="3"/>
+    <eLiterals name="null" value="4"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:openapi2="http://som.uoc.edu/openapi/2.0.0" xsi:schemaLocation="http://som.uoc.edu/openapi/2.0.0 src/metamodels/openapi2.ecore">
+  <openapi2:API>
+    <info/>
+    <schemes>http</schemes>
+    <paths relativePath="/tag">
+      <Get summary="Read All tag">
+        <responses key="200" value="/4"/>
+      </Get>
+    </paths>
+    <paths relativePath="/bookmark">
+      <Get summary="Read All bookmark">
+        <responses key="200" value="/5"/>
+      </Get>
+    </paths>
+    <paths relativePath="/bookmark/tag">
+      <Get summary="Read All tag of bookmark">
+        <responses key="200" value="/6"/>
+      </Get>
+    </paths>
+    <paths relativePath="/account">
+      <Get summary="Read All account">
+        <responses key="200" value="/7"/>
+      </Get>
+    </paths>
+    <paths relativePath="/account/bookmark">
+      <Get summary="Read All bookmark of account">
+        <responses key="200" value="/8"/>
+      </Get>
+    </paths>
+    <paths relativePath="/tag/{id}" parameters="/9">
+      <Post summary="Create tag" parameters="/11">
+        <responses key="200" value="/10"/>
+      </Post>
+    </paths>
+    <paths relativePath="/bookmark/{id}" parameters="/12">
+      <Get summary="Read bookmark">
+        <responses key="200" value="/17"/>
+      </Get>
+      <Put summary="Update bookmark" parameters="/19 /20 /21">
+        <responses key="200" value="/18"/>
+      </Put>
+      <Post summary="Create bookmark" parameters="/14 /15 /16">
+        <responses key="200" value="/13"/>
+      </Post>
+      <Delete summary="Delete bookmark">
+        <responses key="200" value="/22"/>
+      </Delete>
+    </paths>
+    <paths relativePath="/bookmark/{id}/tag/{id}" parameters="/23">
+      <Post summary="Create tag of bookmark" parameters="/25">
+        <responses key="200" value="/24"/>
+      </Post>
+    </paths>
+    <paths relativePath="/account/{id}" parameters="/26">
+      <Get summary="Read account">
+        <responses key="200" value="/30"/>
+      </Get>
+      <Put summary="Update account" parameters="/28 /29">
+        <responses key="200" value="/27"/>
+      </Put>
+      <Post summary="Create account" parameters="/32 /33">
+        <responses key="200" value="/31"/>
+      </Post>
+      <Delete summary="Delete account">
+        <responses key="200" value="/34"/>
+      </Delete>
+    </paths>
+    <paths relativePath="/account/{id}/bookmark/{id}" parameters="/35">
+      <Get summary="Read bookmark of account">
+        <responses key="200" value="/40"/>
+      </Get>
+      <Put summary="Update bookmark of account" parameters="/42 /43 /44">
+        <responses key="200" value="/41"/>
+      </Put>
+      <Post summary="Create bookmark of account" parameters="/37 /38 /39">
+        <responses key="200" value="/36"/>
+      </Post>
+      <Delete summary="Delete bookmark of account">
+        <responses key="200" value="/45"/>
+      </Delete>
+    </paths>
+    <definitions key="tag" value="/1"/>
+    <definitions key="bookmark" value="/2"/>
+    <definitions key="account" value="/3"/>
+  </openapi2:API>
+  <openapi2:Schema ref="#/definitions/tag">
+    <properties name="tagText"/>
+  </openapi2:Schema>
+  <openapi2:Schema ref="#/definitions/bookmark">
+    <properties name="url"/>
+    <properties name="scope"/>
+    <properties name="keywords"/>
+  </openapi2:Schema>
+  <openapi2:Schema ref="#/definitions/account">
+    <properties name="password"/>
+    <properties name="username"/>
+  </openapi2:Schema>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter name="id" location="path" required="true"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter type="string" name="tagText" location="body"/>
+  <openapi2:Parameter name="id" location="path" required="true"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter type="string" name="url" location="formData"/>
+  <openapi2:Parameter type="string" name="scope" location="body"/>
+  <openapi2:Parameter type="string" name="keywords" location="body"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter type="string" name="url" location="formData"/>
+  <openapi2:Parameter type="string" name="scope" location="body"/>
+  <openapi2:Parameter type="string" name="keywords" location="body"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter name="id" location="path" required="true"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter type="string" name="tagText" location="body"/>
+  <openapi2:Parameter name="id" location="path" required="true"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter type="string" name="password" location="body"/>
+  <openapi2:Parameter type="string" name="username" location="formData"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter type="string" name="password" location="body"/>
+  <openapi2:Parameter type="string" name="username" location="formData"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter name="id" location="path" required="true"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter type="string" name="url" location="formData"/>
+  <openapi2:Parameter type="string" name="scope" location="body"/>
+  <openapi2:Parameter type="string" name="keywords" location="body"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Response description="Successful operation"/>
+  <openapi2:Parameter type="string" name="url" location="formData"/>
+  <openapi2:Parameter type="string" name="scope" location="body"/>
+  <openapi2:Parameter type="string" name="keywords" location="body"/>
+  <openapi2:Response description="Successful operation"/>
+</xmi:XMI>

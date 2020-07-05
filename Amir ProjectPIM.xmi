@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<mde:RESTfulServicePIM xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:mde="src/metamodels/PIMMetamodel.ecore" name="Amir Project" outputPath="" dbIP="" dbPort="" dbUsername="" dbPassword="">
+  <hasResources name="tag">
+    <hasInputRepresentation/>
+    <hasCRUDActivity CRUDVerb="UPDATE"/>
+    <hasCRUDActivity CRUDVerb="READ"/>
+    <hasCRUDActivity/>
+    <hasCRUDActivity CRUDVerb="DELETE"/>
+    <hasProperty isUnique="true" name="tagText" type="String"/>
+    <hasOutputRepresentation/>
+  </hasResources>
+  <hasResources name="bookmark">
+    <hasInputRepresentation/>
+    <hasCRUDActivity CRUDVerb="UPDATE"/>
+    <hasCRUDActivity CRUDVerb="READ"/>
+    <hasCRUDActivity/>
+    <hasCRUDActivity CRUDVerb="DELETE"/>
+    <hasProperty isUnique="true" name="bookmarkName" type="String"/>
+    <hasProperty isUnique="true" name="bookmarkUrl" type="String"/>
+    <hasOutputRepresentation/>
+  </hasResources>
+  <hasResources isAlgorithmic="true" name="bookmarkSearch">
+    <hasInputRepresentation/>
+    <hasCRUDActivity CRUDVerb="READ"/>
+    <hasOutputRepresentation/>
+  </hasResources>
+  <hasResources name="account">
+    <hasInputRepresentation/>
+    <hasCRUDActivity CRUDVerb="UPDATE"/>
+    <hasCRUDActivity CRUDVerb="READ"/>
+    <hasCRUDActivity/>
+    <hasProperty isUnique="true" name="password" type="String"/>
+    <hasProperty isUnique="true" isNamingProperty="true" name="username" type="String"/>
+    <hasOutputRepresentation/>
+  </hasResources>
+</mde:RESTfulServicePIM>

@@ -1,0 +1,67 @@
+pre {
+	"Running ETL Transformation: ".println();
+	"----------------------------".println();
+	"".println();
+	var pimModel = new PIMMetamodel!RESTfulServicePIM;
+	var jdl = new JDL!JDLPIM;
+}
+
+rule resource2entity transform c:PIMMetamodel!Resource
+  to a:JDL!entity{
+ 	"Running Resouce2Entity rule: ".println();
+	"----------------------------".println();
+	"".println();
+	a.key = c.name;
+	var schema = new !Schema;
+	for (property in c.hasProperty){
+		var prop = new JDL!Property;
+		prop.name = property.name;
+		schema.properties.add(prop);
+	}
+	schema.ref = "#/definitions/" + c.name;
+	a.value = schema;
+	JDL.definitions.add(a);
+	"Done resouce2Pdefinition rule".println();
+	"----------------------------".println();
+	"".println();
+}
+
+rule resource2path transform c:PIMMetamodel!Resource
+  to a:JDL!Path{
+ 	"Running Resouce2Path rule: ".println();
+	"----------------------------".println();
+	"".println();
+	a.readAllPath("/" + c.name, c.name);
+	
+	// relatedResource
+	for (resource in c.hasRelatedResource){
+		var relatedResourcePath = new JDL2!Path;
+		relatedResourcePath.readAllPath("/" + c.name + "/" + resource.name, resource.name + " of " + c.name);
+	}
+	
+	c.println();
+	a.println();
+	"Done resource2Path rule".println();
+	"----------------------------".println();
+	"".println();
+}
+
+rule resources2path transform c:PIMMetamodel!Resource
+  to a:JDL2!Path{
+ 	"Running Resouces2Path rule: ".println();
+	"----------------------------".println();
+	"".println();
+	a.operationsPath("/" + c.name + "/{id}", c.name, c);
+	
+	// relatedResource
+	for (resource in c.hasRelatedResource){
+		var relatedResourcePath = new JDL2!Path;
+		relatedResourcePath.operationsPath("/" + c.name + "/{id}/" + resource.name + "/{id}", resource.name + " of " + c.name, resource);
+	}
+	
+	c.println();
+	a.println();
+	"Done resources2Path rule".println();
+	"----------------------------".println();
+	"".println();
+}
