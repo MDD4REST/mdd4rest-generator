@@ -30,7 +30,7 @@ public interface InputRepresentation extends EObject {
 	 * @see ServicePIM.MediaType
 	 * @see #setInputMediaType(MediaType)
 	 * @see ServicePIM.ServicePIMPackage#getInputRepresentation_InputMediaType()
-	 * @model required="true"
+	 * @model unique="false" required="true"
 	 * @generated
 	 */
 	MediaType getInputMediaType();

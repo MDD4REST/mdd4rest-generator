@@ -15,10 +15,10 @@ public class YamlResource {
 	public boolean IsAlgorithmic;
 
 	/** A list of the available crud activities (note that this cannot be a set since sets are not serialized in YAML). */
-	public ArrayList<String> CRUDActivities;
+	public ArrayList<YamlActivity> Activities;
 
 	/** A list of the related resources. */
-	public ArrayList<YamlRelatedResource> RelatedResources;
+	public ArrayList<YamlRelationship> Relationships;
 
 	/** A list of this resource's properties. */
 	public ArrayList<YamlProperty> Properties;
@@ -45,8 +45,8 @@ public class YamlResource {
 	public YamlResource(String name) {
 		this.Name = name;
 		this.IsAlgorithmic = false;
-		CRUDActivities = new ArrayList<String>();
-		RelatedResources = new ArrayList<YamlRelatedResource>();
+		Activities = new ArrayList<YamlActivity>();
+		Relationships = new ArrayList<YamlRelationship>();
 		Properties = new ArrayList<YamlProperty>();
 	}
 
@@ -60,8 +60,8 @@ public class YamlResource {
 	public YamlResource(String name, boolean isAlgorithmic) {
 		this.Name = name;
 		this.IsAlgorithmic = isAlgorithmic;
-		CRUDActivities = new ArrayList<String>();
-		RelatedResources = new ArrayList<YamlRelatedResource>();
+		Activities = new ArrayList<YamlActivity>();
+		Relationships = new ArrayList<YamlRelationship>();
 		Properties = new ArrayList<YamlProperty>();
 	}
 
@@ -70,9 +70,9 @@ public class YamlResource {
 	 * 
 	 * @param CRUDActivity the activity to be added.
 	 */
-	public void addCRUDActivity(String CRUDActivity) {
-		if (!CRUDActivities.contains(CRUDActivity))
-			CRUDActivities.add(CRUDActivity);
+	public void addActivity(YamlActivity Activity) {
+		if (!Activities.contains(Activity))
+			Activities.add(Activity);
 	}
 
 	/**
@@ -80,10 +80,10 @@ public class YamlResource {
 	 * 
 	 * @param relatedResource the related resource to be added.
 	 */
-	public void addRelatedResource(YamlRelatedResource relatedResource) {
-		if (!RelatedResources.contains(relatedResource)) {
+	public void addRelatedResource(YamlRelationship relatedResource) {
+		if (!Relationships.contains(relatedResource)) {
 			if (!relatedResource.equals(Name))
-				RelatedResources.add(relatedResource);
+				Relationships.add(relatedResource);
 		}
 	}
 
@@ -106,9 +106,9 @@ public class YamlResource {
 	@Override
 	public String toString() {
 		String all = "Resource:\n" + "Name: " + Name + "\n" + "IsAlgorithmic: " + IsAlgorithmic + "\n"
-				+ "CRUDActivities: " + Arrays.asList(CRUDActivities) + "\n" + "InputRepresentation: "
+				+ "CRUDActivities: " + Arrays.asList(Activities) + "\n" + "InputRepresentation: "
 				+ InputRepresentation + "\n" + "OutputRepresentation: " + OutputRepresentation + "\n" + "Properties: "
-				+ Arrays.asList(Properties) + "\n" + "RelatedResources: " + Arrays.asList(RelatedResources);
+				+ Arrays.asList(Properties) + "\n" + "Relationships: " + Arrays.asList(Relationships);
 		return all;
 	}
 
@@ -122,7 +122,7 @@ public class YamlResource {
 		String all = "- !!cim.Resource";
 		all += "\n  Name: " + Name;
 		all += "\n  IsAlgorithmic: " + IsAlgorithmic;
-		all += "\n  CRUDActivities: " + Arrays.asList(CRUDActivities).toString().replaceAll("^\\[|\\]$", "");
+		all += "\n  CRUDActivities: " + Arrays.asList(Activities).toString().replaceAll("^\\[|\\]$", "");
 		all += "\n  InputRepresentation: " + InputRepresentation;
 		all += "\n  OutputRepresentation: " + OutputRepresentation;
 		if (Properties.size() > 0) {
@@ -132,7 +132,7 @@ public class YamlResource {
 			}
 		} else
 			all += "\n  Properties: []";
-		all += "\n  RelatedResources: " + Arrays.asList(RelatedResources).toString().replaceAll("^\\[|\\]$", "");
+		all += "\n  Relationships: " + Arrays.asList(Relationships).toString().replaceAll("^\\[|\\]$", "");
 		return all;
 	}
 
@@ -167,12 +167,12 @@ public class YamlResource {
 		return this.IsAlgorithmic;
 	}
 	
-	public ArrayList<String> getCRUDActivities(){
-		return this.CRUDActivities;
+	public ArrayList<YamlActivity> getActivities(){
+		return this.Activities;
 	}
 	
-	public ArrayList<YamlRelatedResource> getRelatedResources(){
-		return this.RelatedResources;
+	public ArrayList<YamlRelationship> getRelationships(){
+		return this.Relationships;
 	}
 	
 	public ArrayList<YamlProperty> getYamlProperties(){

@@ -506,7 +506,7 @@ public class LinkedOntologyAPI {
 	 * @param resourceName the name of the resource of which the related resources are returned.
 	 * @return an {@link ArrayList} containing the names of the related resources.
 	 */
-	public ArrayList<String> getRelatedResourcesOfResource(String resourceName) {
+	public ArrayList<String> getRelationshipsOfResource(String resourceName) {
 		return linkedOntology.getIndividualNamesGivenIndividualAndProperty(resourceName, "has_related_resource");
 	}
 

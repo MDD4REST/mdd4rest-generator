@@ -4,7 +4,7 @@
     <semanticResources>JDLMetamodel.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_FiB4sKwcEeqaqLjgT5GnwA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_GCVwcKwcEeqaqLjgT5GnwA" name="JDLMetamodel class diagram" repPath="#_GB_yMKwcEeqaqLjgT5GnwA" changeId="3e09f1af-ec1c-4c4e-a1fa-15ab0fb9b165">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_GCVwcKwcEeqaqLjgT5GnwA" name="JDLMetamodel class diagram" repPath="#_GB_yMKwcEeqaqLjgT5GnwA" changeId="7a9ca826-2c30-4e4a-b122-eb7ec7ef66ef">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="JDLMetamodel.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -733,9 +733,9 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_9s3GTKyqEeqij7FhILCPzQ" name="[0..*] properties" sourceNode="_nxZsEKwcEeqaqLjgT5GnwA" targetNode="_v64ZkKypEeqij7FhILCPzQ">
-      <target xmi:type="ecore:EReference" href="JDLMetamodel.ecore#//Entity/properties"/>
-      <semanticElements xmi:type="ecore:EReference" href="JDLMetamodel.ecore#//Entity/properties"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_9s3GTKyqEeqij7FhILCPzQ" name="[0..*] fields" sourceNode="_nxZsEKwcEeqaqLjgT5GnwA" targetNode="_v64ZkKypEeqij7FhILCPzQ">
+      <target xmi:type="ecore:EReference" href="JDLMetamodel.ecore#//Entity/fields"/>
+      <semanticElements xmi:type="ecore:EReference" href="JDLMetamodel.ecore#//Entity/fields"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_9s3tUKyqEeqij7FhILCPzQ" description="_RVpLEKyoEeqij7FhILCPzQ" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_9s3tUqyqEeqij7FhILCPzQ" showIcon="false">
           <customFeatures>labelSize</customFeatures>

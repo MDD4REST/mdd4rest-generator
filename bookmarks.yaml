@@ -1,7 +1,16 @@
-- !!mde.inputParser.YamlResource
-  Name: tag
+
+Resources:
+- Name: Tag
   IsAlgorithmic: false
-  CRUDActivities: [Update, Read, Create, Delete]
+  Activities:
+  - Type: Read
+    IsAuthenticatedRequired: false
+  - Type: Update
+    IsAuthenticatedRequired: true
+  - Type: Create
+    IsAuthenticatedRequired: true
+  - Type: Delete
+    IsAuthenticatedRequired: true
   InputRepresentation: JSON
   OutputRepresentation: JSON
   Properties:
@@ -10,10 +19,17 @@
     Unique: true
     NamingProperty: false
 
-- !!mde.inputParser.YamlResource
-  Name: bookmark
+- Name: Bookmark
   IsAlgorithmic: false
-  CRUDActivities: [Update, Read, Create, Delete]
+  Activities: 
+  - Type: Read
+    IsAuthenticatedRequired: false
+  - Type: Update
+    IsAuthenticatedRequired: true
+  - Type: Create
+    IsAuthenticatedRequired: true
+  - Type: Delete
+    IsAuthenticatedRequired: true
   InputRepresentation: JSON
   OutputRepresentation: JSON
   Properties:
@@ -27,23 +43,29 @@
     NamingProperty: false
   - Name: visibility
     Type: VisibilityType
-  RelatedResources: 
-  - Name: tag
+  Relationships: 
+  - Resource: Tag
     Multiplicity: one-many
 
-- !!mde.inputParser.YamlResource
-  Name: bookmarkSearch
+- Name: BookmarkSearch
   IsAlgorithmic: true
-  CRUDActivities: [Read]
+  Activities:  
+  - Type: Read
+    IsAuthenticatedRequired: false
   InputRepresentation: JSON
   OutputRepresentation: JSON
   Properties: []
-  RelatedResources: []
+  Relationships: []
 
-- !!mde.inputParser.YamlResource
-  Name: account
+- Name: Account
   IsAlgorithmic: false
-  CRUDActivities: [Update, Read, Create]
+  Activities:
+  - Type: Read
+    IsAuthenticatedRequired: false
+  - Type: Update
+    IsAuthenticatedRequired: true
+  - Type: Create
+    IsAuthenticatedRequired: false
   InputRepresentation: JSON
   OutputRepresentation: JSON
   Properties:
@@ -55,23 +77,58 @@
     Type: String
     Unique: true
     NamingProperty: true
-  RelatedResources:
-  - Name: bookmark 
+  Relationships:
+  - Resource: Bookmark 
     Multiplicity: one-many
     
-    
-- !!mde.inputParser.Application
-   Name: firstApp
-   Resources: [account, tag, bookmark, bookmarkSearch]
+Applications:
+- Name: secondApp
+  Resources: [Account, Bookmark]
+  Roles: [User, Admin]
+     
+- Name: firstApp
+  Resources: [Account, Tag, Bookmark, BookmarkSearch]
+  Roles: [User, Admin]
    
+Enumerations:
+- Name: VisibilityType
+  Literals: [Public, Private]
    
-- !!mde.inputParser.Application
-   Name: secondApp
-   Resources: [account, bookmark]
+Roles:
+- Name: Admin
+  PermissionMode: Allow_All_Except_Permissions
+  Permissions: []
    
-
-- !!mde.inputParser.Enumeration
-   Name: VisibilityType
-   Literals: [Public, Private]
-
-   
+- Name: User
+  PermissionMode: Allow_All_Except_Permissions
+  Permissions: 
+  - Resource: Tag
+    Activities: [Update, Delete]
+    Constraints:
+    - Operator: NEQ
+      RightOperand:
+        Resource: Account
+        Property: username
+      LeftOperand: 
+        Resource: CurrentUser
+        Property: username
+  - Resource: Bookmark
+    Activities: [Update, Delete]
+    Constraints:
+     - Operator: NEQ
+       RightOperand: 
+         Resource: Account
+         Property: username
+       LeftOperand:
+         Resource: CurrentUser
+         Property: username  
+  - Resource: Account
+    Activities: [Update, Delete]
+    Constraints:
+     - Operator: NEQ
+       RightOperand: 
+         Resource: Account
+         Property: username
+       LeftOperand: 
+         Resource: CurrentUser
+         Property: username      

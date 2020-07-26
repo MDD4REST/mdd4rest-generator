@@ -67,7 +67,7 @@ public class OntologyToYamlHandler {
 					linkedOntology.resourceIsExternalService(resourceName));
 
 			// Iterate over each related resource of this resource
-			for (String relatedResourceName : linkedOntology.getRelatedResourcesOfResource(resourceName)) {
+			for (String relatedResourceName : linkedOntology.getRelationshipsOfResource(resourceName)) {
 				resource.addRelatedResource(StringHelpers.underscoreToCamelCase(Stemmer
 						.stemNounConstruct(relatedResourceName)));
 			}

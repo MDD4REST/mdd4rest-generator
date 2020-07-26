@@ -1,0 +1,7 @@
+[% for (entity in Entity.all) { %]
+entity [%=entity.name%] {
+[% for (field in entity.fields) { %]
+    [%=field.name%] [%=field.type%],
+[% } %]
+}
+[% } %]

@@ -9,8 +9,12 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import ServicePIM.RESTfulServicePIM;
 import ServicePIM.ServicePIMPackage;
+import mde.inputParser.YamlApplication;
+import mde.inputParser.YamlEnumeration;
 import mde.inputParser.YamlInputParser;
+import mde.inputParser.YamlRESTfulService;
 import mde.inputParser.YamlResource;
+import mde.inputParser.YamlRole;
 import mde.pimGenerator.APIMProducer;
 import mde.pimGenerator.CorePIMProducer;
 import mde.pimGenerator.EcoreXMIExtractor;
@@ -36,18 +40,21 @@ public class MDEEngineStarter
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("PARSING YAML INPUT");
 		oYamlInputParser = new YamlInputParser(args[0]);
-		ArrayList<YamlResource> listOfYamlResources = oYamlInputParser.parseYamlInputFile();
-		System.out.println("Found " + listOfYamlResources.size() + " yaml resources");
+		YamlRESTfulService listOfYaml = oYamlInputParser.parseYamlRESTfulServiceInputFile();
+		ArrayList<YamlResource> listOfYamlResources = oYamlInputParser.getListOfYamlResources();
+		ArrayList<YamlApplication> listOfYamlApplications = oYamlInputParser.getListOfYamlApplications();
+		ArrayList<YamlRole> listOfYamlRoles = oYamlInputParser.getListOfYamlRoles();
+		ArrayList<YamlEnumeration> listOfYamlEnumerations = oYamlInputParser.getListOfYamlEnumerations();
 		System.out.println("PARSING YAML DONE");
 		
 		//initiate PIM generator
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("PIM DEFINITION START");
 		System.out.println("------------------------------------------------------------------------");
-		oAPIMProducer = new CorePIMProducer(listOfYamlResources);
+		oAPIMProducer = new CorePIMProducer(listOfYamlApplications, listOfYamlResources, listOfYamlRoles, listOfYamlEnumerations);
 		RESTfulServicePIM oRESTfulServicePIM = oAPIMProducer.producePIM();
-		System.out.println(oRESTfulServicePIM.getHasResources());
-		System.out.println("Created " + oRESTfulServicePIM.getHasResources().size() + " PIM resources");
+		System.out.println(oRESTfulServicePIM.getHasApplications());
+		System.out.println("Created " + oRESTfulServicePIM.getHasApplications().size() + " PIM resources");
 		EcoreXMIExtractor oEcoreXMIExtractor = new EcoreXMIExtractor("Amir Project");
 		ServicePIMPackage eINSTANCE = ServicePIM.impl.ServicePIMPackageImpl.init();
 //		System.out.println(eINSTANCE.getRESTfulServicePIM());

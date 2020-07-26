@@ -16,7 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ServicePIM.Property#isIsUnique <em>Is Unique</em>}</li>
  *   <li>{@link ServicePIM.Property#isIsNamingProperty <em>Is Naming Property</em>}</li>
  *   <li>{@link ServicePIM.Property#getName <em>Name</em>}</li>
+ *   <li>{@link ServicePIM.Property#isIsRequired <em>Is Required</em>}</li>
+ *   <li>{@link ServicePIM.Property#getMin <em>Min</em>}</li>
+ *   <li>{@link ServicePIM.Property#getMax <em>Max</em>}</li>
  *   <li>{@link ServicePIM.Property#getType <em>Type</em>}</li>
+ *   <li>{@link ServicePIM.Property#getBasictype <em>Basictype</em>}</li>
  * </ul>
  *
  * @see ServicePIM.ServicePIMPackage#getProperty()
@@ -91,25 +95,113 @@ public interface Property extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * Returns the value of the '<em><b>Is Required</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see #setType(String)
+	 * @return the value of the '<em>Is Required</em>' attribute.
+	 * @see #setIsRequired(boolean)
+	 * @see ServicePIM.ServicePIMPackage#getProperty_IsRequired()
+	 * @model required="true"
+	 * @generated
+	 */
+	boolean isIsRequired();
+
+	/**
+	 * Sets the value of the '{@link ServicePIM.Property#isIsRequired <em>Is Required</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Required</em>' attribute.
+	 * @see #isIsRequired()
+	 * @generated
+	 */
+	void setIsRequired(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Min</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Min</em>' attribute.
+	 * @see #setMin(int)
+	 * @see ServicePIM.ServicePIMPackage#getProperty_Min()
+	 * @model
+	 * @generated
+	 */
+	int getMin();
+
+	/**
+	 * Sets the value of the '{@link ServicePIM.Property#getMin <em>Min</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Min</em>' attribute.
+	 * @see #getMin()
+	 * @generated
+	 */
+	void setMin(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Max</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Max</em>' attribute.
+	 * @see #setMax(int)
+	 * @see ServicePIM.ServicePIMPackage#getProperty_Max()
+	 * @model
+	 * @generated
+	 */
+	int getMax();
+
+	/**
+	 * Sets the value of the '{@link ServicePIM.Property#getMax <em>Max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Max</em>' attribute.
+	 * @see #getMax()
+	 * @generated
+	 */
+	void setMax(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type</em>' reference.
+	 * @see #setType(TypeDefinition)
 	 * @see ServicePIM.ServicePIMPackage#getProperty_Type()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getType();
+	TypeDefinition getType();
 
 	/**
-	 * Sets the value of the '{@link ServicePIM.Property#getType <em>Type</em>}' attribute.
+	 * Sets the value of the '{@link ServicePIM.Property#getType <em>Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @param value the new value of the '<em>Type</em>' reference.
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(String value);
+	void setType(TypeDefinition value);
+
+	/**
+	 * Returns the value of the '<em><b>Basictype</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Basictype</em>' containment reference.
+	 * @see #setBasictype(BasicType)
+	 * @see ServicePIM.ServicePIMPackage#getProperty_Basictype()
+	 * @model containment="true"
+	 * @generated
+	 */
+	BasicType getBasictype();
+
+	/**
+	 * Sets the value of the '{@link ServicePIM.Property#getBasictype <em>Basictype</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Basictype</em>' containment reference.
+	 * @see #getBasictype()
+	 * @generated
+	 */
+	void setBasictype(BasicType value);
 
 } // Property

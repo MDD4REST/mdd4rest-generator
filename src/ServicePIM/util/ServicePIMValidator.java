@@ -98,14 +98,40 @@ public class ServicePIMValidator extends EObjectValidator {
 				return validateOutputRepresentation((OutputRepresentation)value, diagnostics, context);
 			case ServicePIMPackage.RES_TFUL_SERVICE_PIM:
 				return validateRESTfulServicePIM((RESTfulServicePIM)value, diagnostics, context);
-			case ServicePIMPackage.RELATED_RESOURCE:
-				return validateRelatedResource((RelatedResource)value, diagnostics, context);
+			case ServicePIMPackage.RELATIONSHIP:
+				return validateRelationship((Relationship)value, diagnostics, context);
+			case ServicePIMPackage.APPLICATION:
+				return validateApplication((Application)value, diagnostics, context);
+			case ServicePIMPackage.CONFIG:
+				return validateConfig((Config)value, diagnostics, context);
+			case ServicePIMPackage.TYPE_DEFINITION:
+				return validateTypeDefinition((TypeDefinition)value, diagnostics, context);
+			case ServicePIMPackage.ENUMERATION:
+				return validateEnumeration((Enumeration)value, diagnostics, context);
+			case ServicePIMPackage.BASIC_TYPE:
+				return validateBasicType((BasicType)value, diagnostics, context);
+			case ServicePIMPackage.LITERAL:
+				return validateLiteral((Literal)value, diagnostics, context);
+			case ServicePIMPackage.ACTIVITY:
+				return validateActivity((Activity)value, diagnostics, context);
+			case ServicePIMPackage.CREATE:
+				return validateCreate((Create)value, diagnostics, context);
+			case ServicePIMPackage.READ:
+				return validateRead((Read)value, diagnostics, context);
+			case ServicePIMPackage.UPDATE:
+				return validateUpdate((Update)value, diagnostics, context);
+			case ServicePIMPackage.DELETE:
+				return validateDelete((Delete)value, diagnostics, context);
+			case ServicePIMPackage.CUSTOM:
+				return validateCustom((Custom)value, diagnostics, context);
 			case ServicePIMPackage.MEDIA_TYPE:
 				return validateMediaType((MediaType)value, diagnostics, context);
-			case ServicePIMPackage.CRUD_VERB:
-				return validateCRUDVerb((CRUDVerb)value, diagnostics, context);
 			case ServicePIMPackage.MULTIPLICITY:
 				return validateMultiplicity((Multiplicity)value, diagnostics, context);
+			case ServicePIMPackage.APPLICATION_TYPE:
+				return validateApplicationType((ApplicationType)value, diagnostics, context);
+			case ServicePIMPackage.PROPERTY_TYPE:
+				return validatePropertyType((PropertyType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -136,32 +162,31 @@ public class ServicePIMValidator extends EObjectValidator {
 	}
 
 	/**
-	 * The cached validation expression for the UniqueCRUDVerbs constraint of '<em>Resource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static final String RESOURCE__UNIQUE_CRUD_VERBS__EEXPRESSION = "self.hasCRUDActivity->isUnique(CRUDVerb)";
-
-	/**
 	 * Validates the UniqueCRUDVerbs constraint of '<em>Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateResource_UniqueCRUDVerbs(Resource resource, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return
-			validate
-				(ServicePIMPackage.Literals.RESOURCE,
-				 resource,
-				 diagnostics,
-				 context,
-				 "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
-				 "UniqueCRUDVerbs",
-				 RESOURCE__UNIQUE_CRUD_VERBS__EEXPRESSION,
-				 Diagnostic.ERROR,
-				 DIAGNOSTIC_SOURCE,
-				 0);
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "UniqueCRUDVerbs", getObjectLabel(resource, context) },
+						 new Object[] { resource },
+						 context));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -397,8 +422,116 @@ public class ServicePIMValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRelatedResource(RelatedResource relatedResource, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(relatedResource, diagnostics, context);
+	public boolean validateRelationship(Relationship relationship, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(relationship, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateApplication(Application application, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(application, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateConfig(Config config, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(config, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTypeDefinition(TypeDefinition typeDefinition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(typeDefinition, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEnumeration(Enumeration enumeration, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(enumeration, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateBasicType(BasicType basicType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(basicType, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateLiteral(Literal literal, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(literal, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateActivity(Activity activity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(activity, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCreate(Create create, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(create, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRead(Read read, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(read, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateUpdate(Update update, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(update, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDelete(Delete delete, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(delete, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCustom(Custom custom, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(custom, diagnostics, context);
 	}
 
 	/**
@@ -415,7 +548,7 @@ public class ServicePIMValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCRUDVerb(CRUDVerb crudVerb, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMultiplicity(Multiplicity multiplicity, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -424,7 +557,16 @@ public class ServicePIMValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMultiplicity(Multiplicity multiplicity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateApplicationType(ApplicationType applicationType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePropertyType(PropertyType propertyType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

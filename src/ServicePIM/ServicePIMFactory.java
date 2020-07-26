@@ -76,13 +76,112 @@ public interface ServicePIMFactory extends EFactory {
 	RESTfulServicePIM createRESTfulServicePIM();
 
 	/**
-	 * Returns a new object of class '<em>Related Resource</em>'.
+	 * Returns a new object of class '<em>Relationship</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Related Resource</em>'.
+	 * @return a new object of class '<em>Relationship</em>'.
 	 * @generated
 	 */
-	RelatedResource createRelatedResource();
+	Relationship createRelationship();
+
+	/**
+	 * Returns a new object of class '<em>Application</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Application</em>'.
+	 * @generated
+	 */
+	Application createApplication();
+
+	/**
+	 * Returns a new object of class '<em>Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Config</em>'.
+	 * @generated
+	 */
+	Config createConfig();
+
+	/**
+	 * Returns a new object of class '<em>Enumeration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Enumeration</em>'.
+	 * @generated
+	 */
+	Enumeration createEnumeration();
+
+	/**
+	 * Returns a new object of class '<em>Basic Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Basic Type</em>'.
+	 * @generated
+	 */
+	BasicType createBasicType();
+
+	/**
+	 * Returns a new object of class '<em>Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal</em>'.
+	 * @generated
+	 */
+	Literal createLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Activity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Activity</em>'.
+	 * @generated
+	 */
+	Activity createActivity();
+
+	/**
+	 * Returns a new object of class '<em>Create</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Create</em>'.
+	 * @generated
+	 */
+	Create createCreate();
+
+	/**
+	 * Returns a new object of class '<em>Read</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Read</em>'.
+	 * @generated
+	 */
+	Read createRead();
+
+	/**
+	 * Returns a new object of class '<em>Update</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Update</em>'.
+	 * @generated
+	 */
+	Update createUpdate();
+
+	/**
+	 * Returns a new object of class '<em>Delete</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Delete</em>'.
+	 * @generated
+	 */
+	Delete createDelete();
+
+	/**
+	 * Returns a new object of class '<em>Custom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Custom</em>'.
+	 * @generated
+	 */
+	Custom createCustom();
 
 	/**
 	 * Returns the package supported by this factory.

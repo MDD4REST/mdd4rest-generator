@@ -2,6 +2,7 @@
  */
 package ServicePIM;
 
+import SecurityPIM.Role;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -16,12 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link ServicePIM.RESTfulServicePIM#getName <em>Name</em>}</li>
+ *   <li>{@link ServicePIM.RESTfulServicePIM#getBasePath <em>Base Path</em>}</li>
+ *   <li>{@link ServicePIM.RESTfulServicePIM#getHasApplications <em>Has Applications</em>}</li>
+ *   <li>{@link ServicePIM.RESTfulServicePIM#getEnumerations <em>Enumerations</em>}</li>
  *   <li>{@link ServicePIM.RESTfulServicePIM#getHasResources <em>Has Resources</em>}</li>
- *   <li>{@link ServicePIM.RESTfulServicePIM#getOutputPath <em>Output Path</em>}</li>
- *   <li>{@link ServicePIM.RESTfulServicePIM#getDbIP <em>Db IP</em>}</li>
- *   <li>{@link ServicePIM.RESTfulServicePIM#getDbPort <em>Db Port</em>}</li>
- *   <li>{@link ServicePIM.RESTfulServicePIM#getDbUsername <em>Db Username</em>}</li>
- *   <li>{@link ServicePIM.RESTfulServicePIM#getDbPassword <em>Db Password</em>}</li>
+ *   <li>{@link ServicePIM.RESTfulServicePIM#getHasRoles <em>Has Roles</em>}</li>
  * </ul>
  *
  * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM()
@@ -36,7 +36,7 @@ public interface RESTfulServicePIM extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_Name()
-	 * @model required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getName();
@@ -52,6 +52,52 @@ public interface RESTfulServicePIM extends EObject {
 	void setName(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Base Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Base Path</em>' attribute.
+	 * @see #setBasePath(String)
+	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_BasePath()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getBasePath();
+
+	/**
+	 * Sets the value of the '{@link ServicePIM.RESTfulServicePIM#getBasePath <em>Base Path</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Base Path</em>' attribute.
+	 * @see #getBasePath()
+	 * @generated
+	 */
+	void setBasePath(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Has Applications</b></em>' containment reference list.
+	 * The list contents are of type {@link ServicePIM.Application}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Has Applications</em>' containment reference list.
+	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_HasApplications()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	EList<Application> getHasApplications();
+
+	/**
+	 * Returns the value of the '<em><b>Enumerations</b></em>' containment reference list.
+	 * The list contents are of type {@link ServicePIM.Enumeration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Enumerations</em>' containment reference list.
+	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_Enumerations()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Enumeration> getEnumerations();
+
+	/**
 	 * Returns the value of the '<em><b>Has Resources</b></em>' containment reference list.
 	 * The list contents are of type {@link ServicePIM.Resource}.
 	 * <!-- begin-user-doc -->
@@ -64,113 +110,15 @@ public interface RESTfulServicePIM extends EObject {
 	EList<Resource> getHasResources();
 
 	/**
-	 * Returns the value of the '<em><b>Output Path</b></em>' attribute.
+	 * Returns the value of the '<em><b>Has Roles</b></em>' containment reference list.
+	 * The list contents are of type {@link SecurityPIM.Role}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Output Path</em>' attribute.
-	 * @see #setOutputPath(String)
-	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_OutputPath()
-	 * @model required="true"
+	 * @return the value of the '<em>Has Roles</em>' containment reference list.
+	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_HasRoles()
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getOutputPath();
-
-	/**
-	 * Sets the value of the '{@link ServicePIM.RESTfulServicePIM#getOutputPath <em>Output Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Output Path</em>' attribute.
-	 * @see #getOutputPath()
-	 * @generated
-	 */
-	void setOutputPath(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Db IP</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Db IP</em>' attribute.
-	 * @see #setDbIP(String)
-	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_DbIP()
-	 * @model
-	 * @generated
-	 */
-	String getDbIP();
-
-	/**
-	 * Sets the value of the '{@link ServicePIM.RESTfulServicePIM#getDbIP <em>Db IP</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Db IP</em>' attribute.
-	 * @see #getDbIP()
-	 * @generated
-	 */
-	void setDbIP(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Db Port</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Db Port</em>' attribute.
-	 * @see #setDbPort(String)
-	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_DbPort()
-	 * @model
-	 * @generated
-	 */
-	String getDbPort();
-
-	/**
-	 * Sets the value of the '{@link ServicePIM.RESTfulServicePIM#getDbPort <em>Db Port</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Db Port</em>' attribute.
-	 * @see #getDbPort()
-	 * @generated
-	 */
-	void setDbPort(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Db Username</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Db Username</em>' attribute.
-	 * @see #setDbUsername(String)
-	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_DbUsername()
-	 * @model
-	 * @generated
-	 */
-	String getDbUsername();
-
-	/**
-	 * Sets the value of the '{@link ServicePIM.RESTfulServicePIM#getDbUsername <em>Db Username</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Db Username</em>' attribute.
-	 * @see #getDbUsername()
-	 * @generated
-	 */
-	void setDbUsername(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Db Password</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Db Password</em>' attribute.
-	 * @see #setDbPassword(String)
-	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_DbPassword()
-	 * @model
-	 * @generated
-	 */
-	String getDbPassword();
-
-	/**
-	 * Sets the value of the '{@link ServicePIM.RESTfulServicePIM#getDbPassword <em>Db Password</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Db Password</em>' attribute.
-	 * @see #getDbPassword()
-	 * @generated
-	 */
-	void setDbPassword(String value);
+	EList<Role> getHasRoles();
 
 } // RESTfulServicePIM

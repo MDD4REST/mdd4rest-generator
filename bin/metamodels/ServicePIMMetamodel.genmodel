@@ -9,12 +9,6 @@
       <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//MediaType/JSON"/>
       <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//MediaType/XML"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ServicePIMMetamodel.ecore#//CRUDVerb">
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//CRUDVerb/CREATE"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//CRUDVerb/READ"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//CRUDVerb/UPDATE"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//CRUDVerb/DELETE"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ServicePIMMetamodel.ecore#//Multiplicity">
       <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//Multiplicity/ONE_TO_MANY"/>
       <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//Multiplicity/MANY_TO_ONE"/>
@@ -26,30 +20,29 @@
       <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//ApplicationType/GATEWAY"/>
       <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//ApplicationType/MONOLITH"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ServicePIMMetamodel.ecore#//Type.1">
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//Type.1/String"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//Type.1/Integer"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//Type.1/Float"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//Type.1/Boolean"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//Type.1/null"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ServicePIMMetamodel.ecore#//PropertyType">
+      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//PropertyType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//PropertyType/Integer"/>
+      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//PropertyType/Float"/>
+      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//PropertyType/Boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//PropertyType/null"/>
     </genEnums>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Resource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Resource/isAlgorithmic"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Resource/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasInputRepresentation"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasCRUDActivity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/Activity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasOutputRepresentation"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasRelatedResource"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasRelationship"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/filters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/sort"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/select"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/pagination"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/scopesearch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/caching"/>
     </genClasses>
-    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//CRUDActivity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//CRUDActivity/CRUDVerb"/>
-    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//CRUDActivity"/>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Property/isUnique"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Property/isNamingProperty"/>
@@ -58,6 +51,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Property/min"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Property/max"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Property/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Property/basictype"/>
     </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//InputRepresentation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//InputRepresentation/inputMediaType"/>
@@ -67,20 +61,22 @@
     </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//RESTfulServicePIM">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//RESTfulServicePIM/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//RESTfulServicePIM/outputPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//RESTfulServicePIM/basePath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/hasApplications"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/types"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/enumerations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/hasResources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/hasRoles"/>
     </genClasses>
-    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//RelatedResource">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//RelatedResource/multiplicity"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RelatedResource/fromResource"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RelatedResource/toResource"/>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Relationship">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Relationship/multiplicity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Relationship/fromResource"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Relationship/toResource"/>
     </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Application">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/hasConfig"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/resources"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/globalsearches"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/roles"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/roles"/>
     </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Config">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Config/baseName"/>
@@ -91,9 +87,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Config/dbUsername"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Config/dbPassword"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="ServicePIMMetamodel.ecore#//Type"/>
+    <genClasses image="false" ecoreClass="ServicePIMMetamodel.ecore#//TypeDefinition"/>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Enumeration">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Enumeration/literal"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Enumeration/literals"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Enumeration/name"/>
     </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//BasicType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//BasicType/type"/>
@@ -101,6 +98,16 @@
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Literal">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Literal/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Literal/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Activity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Activity/isAuthenticatedRequired"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Create"/>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Read"/>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Update"/>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Delete"/>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Custom">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Custom/name"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="QueryPIMMetamodel" ecorePackage="QueryPIMMetamodel.ecore#/">
@@ -153,6 +160,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute QueryPIMMetamodel.ecore#//Filter/filterType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QueryPIMMetamodel.ecore#//Filter/filterOperations"/>
     </genClasses>
+    <genClasses ecoreClass="QueryPIMMetamodel.ecore#//Caching">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute QueryPIMMetamodel.ecore#//Caching/cachingType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute QueryPIMMetamodel.ecore#//Caching/Expiration"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="SecurityPIMMetamodel" ecorePackage="SecurityPIMMetamodel.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="SecurityPIMMetamodel.ecore#//PermissionType">
@@ -181,13 +192,19 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="SecurityPIMMetamodel.ecore#//UnaryOperator">
       <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//UnaryOperator/IS_EMPTY"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SecurityPIMMetamodel.ecore#//LogicalOperator.1">
-      <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//LogicalOperator.1/AND"/>
-      <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//LogicalOperator.1/OR"/>
-      <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//LogicalOperator.1/XOR"/>
-      <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//LogicalOperator.1/INVERSE"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SecurityPIMMetamodel.ecore#//LogicalOperatorType">
+      <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//LogicalOperatorType/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//LogicalOperatorType/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//LogicalOperatorType/XOR"/>
+      <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//LogicalOperatorType/INVERSE"/>
     </genEnums>
-    <genClasses image="false" ecoreClass="SecurityPIMMetamodel.ecore#//Authentication"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SecurityPIMMetamodel.ecore#//PermissionMode">
+      <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//PermissionMode/ALLOW_ALL_EXCEPT_PERMISSIONS"/>
+      <genEnumLiterals ecoreEnumLiteral="SecurityPIMMetamodel.ecore#//PermissionMode/DENY_ALL_EXCEPT_PERMISSIONS"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="SecurityPIMMetamodel.ecore#//Authentication">
+      <genOperations ecoreOperation="SecurityPIMMetamodel.ecore#//Authentication/currentUser"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="SecurityPIMMetamodel.ecore#//Authorization"/>
     <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//DecentralAuth">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//DecentralAuth/authorization"/>
@@ -206,20 +223,24 @@
     <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//Role">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//Role/permission"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SecurityPIMMetamodel.ecore#//Role/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SecurityPIMMetamodel.ecore#//Role/permissionMode"/>
     </genClasses>
     <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//Permission">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//Permission/constraint"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SecurityPIMMetamodel.ecore#//Permission/permissionType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//Permission/crudactivity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//Permission/activity"/>
     </genClasses>
     <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//Constraint">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//Constraint/logicaloperator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//Constraint/constraintoperator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//Constraint/logicaloperators"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="SecurityPIMMetamodel.ecore#//ConstraintOperator"/>
+    <genClasses image="false" ecoreClass="SecurityPIMMetamodel.ecore#//ConstraintOperator">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//ConstraintOperator/rightOperand"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="SecurityPIMMetamodel.ecore#//OnePropertyOperator"/>
-    <genClasses image="false" ecoreClass="SecurityPIMMetamodel.ecore#//TwoPropertyOperator"/>
-    <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//LogicalOperator"/>
+    <genClasses image="false" ecoreClass="SecurityPIMMetamodel.ecore#//TwoPropertyOperator">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//TwoPropertyOperator/leftOperand"/>
+    </genClasses>
     <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//OneRelationalOperator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SecurityPIMMetamodel.ecore#//OneRelationalOperator/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SecurityPIMMetamodel.ecore#//OneRelationalOperator/operator"/>
@@ -245,5 +266,13 @@
     <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//TwoStringOperator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SecurityPIMMetamodel.ecore#//TwoStringOperator/StringOperator"/>
     </genClasses>
+    <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//LogicalOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SecurityPIMMetamodel.ecore#//LogicalOperator/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//User">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SecurityPIMMetamodel.ecore#//User/username"/>
+    </genClasses>
+    <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//CurrentUser"/>
+    <genClasses ecoreClass="SecurityPIMMetamodel.ecore#//Username"/>
   </genPackages>
 </genmodel:GenModel>

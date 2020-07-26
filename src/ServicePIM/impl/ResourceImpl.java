@@ -2,11 +2,17 @@
  */
 package ServicePIM.impl;
 
-import ServicePIM.CRUDActivity;
+import QueryPIM.Caching;
+import QueryPIM.Filter;
+import QueryPIM.Pagination;
+import QueryPIM.ScopeSearch;
+import QueryPIM.Select;
+import QueryPIM.Sort;
+import ServicePIM.Activity;
 import ServicePIM.InputRepresentation;
 import ServicePIM.OutputRepresentation;
 import ServicePIM.Property;
-import ServicePIM.RelatedResource;
+import ServicePIM.Relationship;
 import ServicePIM.Resource;
 import ServicePIM.ServicePIMPackage;
 
@@ -37,11 +43,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link ServicePIM.impl.ResourceImpl#isIsAlgorithmic <em>Is Algorithmic</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getName <em>Name</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getHasInputRepresentation <em>Has Input Representation</em>}</li>
- *   <li>{@link ServicePIM.impl.ResourceImpl#getHasCRUDActivity <em>Has CRUD Activity</em>}</li>
+ *   <li>{@link ServicePIM.impl.ResourceImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getHasProperty <em>Has Property</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getHasOutputRepresentation <em>Has Output Representation</em>}</li>
- *   <li>{@link ServicePIM.impl.ResourceImpl#getHasRelatedResource <em>Has Related Resource</em>}</li>
- *   <li>{@link ServicePIM.impl.ResourceImpl#getIsRelatedResource <em>Is Related Resource</em>}</li>
+ *   <li>{@link ServicePIM.impl.ResourceImpl#getHasRelationship <em>Has Relationship</em>}</li>
+ *   <li>{@link ServicePIM.impl.ResourceImpl#getFilters <em>Filters</em>}</li>
+ *   <li>{@link ServicePIM.impl.ResourceImpl#getSort <em>Sort</em>}</li>
+ *   <li>{@link ServicePIM.impl.ResourceImpl#getSelect <em>Select</em>}</li>
+ *   <li>{@link ServicePIM.impl.ResourceImpl#getPagination <em>Pagination</em>}</li>
+ *   <li>{@link ServicePIM.impl.ResourceImpl#getScopesearch <em>Scopesearch</em>}</li>
+ *   <li>{@link ServicePIM.impl.ResourceImpl#getCaching <em>Caching</em>}</li>
  * </ul>
  *
  * @generated
@@ -98,14 +109,14 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	protected EList<InputRepresentation> hasInputRepresentation;
 
 	/**
-	 * The cached value of the '{@link #getHasCRUDActivity() <em>Has CRUD Activity</em>}' containment reference list.
+	 * The cached value of the '{@link #getActivity() <em>Activity</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHasCRUDActivity()
+	 * @see #getActivity()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CRUDActivity> hasCRUDActivity;
+	protected EList<Activity> activity;
 
 	/**
 	 * The cached value of the '{@link #getHasProperty() <em>Has Property</em>}' containment reference list.
@@ -128,24 +139,74 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	protected EList<OutputRepresentation> hasOutputRepresentation;
 
 	/**
-	 * The cached value of the '{@link #getHasRelatedResource() <em>Has Related Resource</em>}' containment reference list.
+	 * The cached value of the '{@link #getHasRelationship() <em>Has Relationship</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getHasRelatedResource()
+	 * @see #getHasRelationship()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RelatedResource> hasRelatedResource;
+	protected EList<Relationship> hasRelationship;
 
 	/**
-	 * The cached value of the '{@link #getIsRelatedResource() <em>Is Related Resource</em>}' containment reference list.
+	 * The cached value of the '{@link #getFilters() <em>Filters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIsRelatedResource()
+	 * @see #getFilters()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RelatedResource> isRelatedResource;
+	protected EList<Filter> filters;
+
+	/**
+	 * The cached value of the '{@link #getSort() <em>Sort</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSort()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Sort> sort;
+
+	/**
+	 * The cached value of the '{@link #getSelect() <em>Select</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSelect()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Select> select;
+
+	/**
+	 * The cached value of the '{@link #getPagination() <em>Pagination</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPagination()
+	 * @generated
+	 * @ordered
+	 */
+	protected Pagination pagination;
+
+	/**
+	 * The cached value of the '{@link #getScopesearch() <em>Scopesearch</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScopesearch()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ScopeSearch> scopesearch;
+
+	/**
+	 * The cached value of the '{@link #getCaching() <em>Caching</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCaching()
+	 * @generated
+	 * @ordered
+	 */
+	protected Caching caching;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -231,11 +292,11 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	 * @generated
 	 */
 	@Override
-	public EList<CRUDActivity> getHasCRUDActivity() {
-		if (hasCRUDActivity == null) {
-			hasCRUDActivity = new EObjectContainmentEList<CRUDActivity>(CRUDActivity.class, this, ServicePIMPackage.RESOURCE__HAS_CRUD_ACTIVITY);
+	public EList<Activity> getActivity() {
+		if (activity == null) {
+			activity = new EObjectContainmentEList<Activity>(Activity.class, this, ServicePIMPackage.RESOURCE__ACTIVITY);
 		}
-		return hasCRUDActivity;
+		return activity;
 	}
 
 	/**
@@ -270,11 +331,11 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	 * @generated
 	 */
 	@Override
-	public EList<RelatedResource> getHasRelatedResource() {
-		if (hasRelatedResource == null) {
-			hasRelatedResource = new EObjectContainmentEList<RelatedResource>(RelatedResource.class, this, ServicePIMPackage.RESOURCE__HAS_RELATED_RESOURCE);
+	public EList<Relationship> getHasRelationship() {
+		if (hasRelationship == null) {
+			hasRelationship = new EObjectContainmentEList<Relationship>(Relationship.class, this, ServicePIMPackage.RESOURCE__HAS_RELATIONSHIP);
 		}
-		return hasRelatedResource;
+		return hasRelationship;
 	}
 
 	/**
@@ -283,11 +344,140 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	 * @generated
 	 */
 	@Override
-	public EList<RelatedResource> getIsRelatedResource() {
-		if (isRelatedResource == null) {
-			isRelatedResource = new EObjectContainmentEList<RelatedResource>(RelatedResource.class, this, ServicePIMPackage.RESOURCE__IS_RELATED_RESOURCE);
+	public EList<Filter> getFilters() {
+		if (filters == null) {
+			filters = new EObjectContainmentEList<Filter>(Filter.class, this, ServicePIMPackage.RESOURCE__FILTERS);
 		}
-		return isRelatedResource;
+		return filters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Sort> getSort() {
+		if (sort == null) {
+			sort = new EObjectContainmentEList<Sort>(Sort.class, this, ServicePIMPackage.RESOURCE__SORT);
+		}
+		return sort;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Select> getSelect() {
+		if (select == null) {
+			select = new EObjectContainmentEList<Select>(Select.class, this, ServicePIMPackage.RESOURCE__SELECT);
+		}
+		return select;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Pagination getPagination() {
+		return pagination;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPagination(Pagination newPagination, NotificationChain msgs) {
+		Pagination oldPagination = pagination;
+		pagination = newPagination;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicePIMPackage.RESOURCE__PAGINATION, oldPagination, newPagination);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setPagination(Pagination newPagination) {
+		if (newPagination != pagination) {
+			NotificationChain msgs = null;
+			if (pagination != null)
+				msgs = ((InternalEObject)pagination).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicePIMPackage.RESOURCE__PAGINATION, null, msgs);
+			if (newPagination != null)
+				msgs = ((InternalEObject)newPagination).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicePIMPackage.RESOURCE__PAGINATION, null, msgs);
+			msgs = basicSetPagination(newPagination, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePIMPackage.RESOURCE__PAGINATION, newPagination, newPagination));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<ScopeSearch> getScopesearch() {
+		if (scopesearch == null) {
+			scopesearch = new EObjectContainmentEList<ScopeSearch>(ScopeSearch.class, this, ServicePIMPackage.RESOURCE__SCOPESEARCH);
+		}
+		return scopesearch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Caching getCaching() {
+		return caching;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCaching(Caching newCaching, NotificationChain msgs) {
+		Caching oldCaching = caching;
+		caching = newCaching;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicePIMPackage.RESOURCE__CACHING, oldCaching, newCaching);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCaching(Caching newCaching) {
+		if (newCaching != caching) {
+			NotificationChain msgs = null;
+			if (caching != null)
+				msgs = ((InternalEObject)caching).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicePIMPackage.RESOURCE__CACHING, null, msgs);
+			if (newCaching != null)
+				msgs = ((InternalEObject)newCaching).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicePIMPackage.RESOURCE__CACHING, null, msgs);
+			msgs = basicSetCaching(newCaching, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePIMPackage.RESOURCE__CACHING, newCaching, newCaching));
 	}
 
 	/**
@@ -300,16 +490,26 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 		switch (featureID) {
 			case ServicePIMPackage.RESOURCE__HAS_INPUT_REPRESENTATION:
 				return ((InternalEList<?>)getHasInputRepresentation()).basicRemove(otherEnd, msgs);
-			case ServicePIMPackage.RESOURCE__HAS_CRUD_ACTIVITY:
-				return ((InternalEList<?>)getHasCRUDActivity()).basicRemove(otherEnd, msgs);
+			case ServicePIMPackage.RESOURCE__ACTIVITY:
+				return ((InternalEList<?>)getActivity()).basicRemove(otherEnd, msgs);
 			case ServicePIMPackage.RESOURCE__HAS_PROPERTY:
 				return ((InternalEList<?>)getHasProperty()).basicRemove(otherEnd, msgs);
 			case ServicePIMPackage.RESOURCE__HAS_OUTPUT_REPRESENTATION:
 				return ((InternalEList<?>)getHasOutputRepresentation()).basicRemove(otherEnd, msgs);
-			case ServicePIMPackage.RESOURCE__HAS_RELATED_RESOURCE:
-				return ((InternalEList<?>)getHasRelatedResource()).basicRemove(otherEnd, msgs);
-			case ServicePIMPackage.RESOURCE__IS_RELATED_RESOURCE:
-				return ((InternalEList<?>)getIsRelatedResource()).basicRemove(otherEnd, msgs);
+			case ServicePIMPackage.RESOURCE__HAS_RELATIONSHIP:
+				return ((InternalEList<?>)getHasRelationship()).basicRemove(otherEnd, msgs);
+			case ServicePIMPackage.RESOURCE__FILTERS:
+				return ((InternalEList<?>)getFilters()).basicRemove(otherEnd, msgs);
+			case ServicePIMPackage.RESOURCE__SORT:
+				return ((InternalEList<?>)getSort()).basicRemove(otherEnd, msgs);
+			case ServicePIMPackage.RESOURCE__SELECT:
+				return ((InternalEList<?>)getSelect()).basicRemove(otherEnd, msgs);
+			case ServicePIMPackage.RESOURCE__PAGINATION:
+				return basicSetPagination(null, msgs);
+			case ServicePIMPackage.RESOURCE__SCOPESEARCH:
+				return ((InternalEList<?>)getScopesearch()).basicRemove(otherEnd, msgs);
+			case ServicePIMPackage.RESOURCE__CACHING:
+				return basicSetCaching(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -328,16 +528,26 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 				return getName();
 			case ServicePIMPackage.RESOURCE__HAS_INPUT_REPRESENTATION:
 				return getHasInputRepresentation();
-			case ServicePIMPackage.RESOURCE__HAS_CRUD_ACTIVITY:
-				return getHasCRUDActivity();
+			case ServicePIMPackage.RESOURCE__ACTIVITY:
+				return getActivity();
 			case ServicePIMPackage.RESOURCE__HAS_PROPERTY:
 				return getHasProperty();
 			case ServicePIMPackage.RESOURCE__HAS_OUTPUT_REPRESENTATION:
 				return getHasOutputRepresentation();
-			case ServicePIMPackage.RESOURCE__HAS_RELATED_RESOURCE:
-				return getHasRelatedResource();
-			case ServicePIMPackage.RESOURCE__IS_RELATED_RESOURCE:
-				return getIsRelatedResource();
+			case ServicePIMPackage.RESOURCE__HAS_RELATIONSHIP:
+				return getHasRelationship();
+			case ServicePIMPackage.RESOURCE__FILTERS:
+				return getFilters();
+			case ServicePIMPackage.RESOURCE__SORT:
+				return getSort();
+			case ServicePIMPackage.RESOURCE__SELECT:
+				return getSelect();
+			case ServicePIMPackage.RESOURCE__PAGINATION:
+				return getPagination();
+			case ServicePIMPackage.RESOURCE__SCOPESEARCH:
+				return getScopesearch();
+			case ServicePIMPackage.RESOURCE__CACHING:
+				return getCaching();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -361,9 +571,9 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 				getHasInputRepresentation().clear();
 				getHasInputRepresentation().addAll((Collection<? extends InputRepresentation>)newValue);
 				return;
-			case ServicePIMPackage.RESOURCE__HAS_CRUD_ACTIVITY:
-				getHasCRUDActivity().clear();
-				getHasCRUDActivity().addAll((Collection<? extends CRUDActivity>)newValue);
+			case ServicePIMPackage.RESOURCE__ACTIVITY:
+				getActivity().clear();
+				getActivity().addAll((Collection<? extends Activity>)newValue);
 				return;
 			case ServicePIMPackage.RESOURCE__HAS_PROPERTY:
 				getHasProperty().clear();
@@ -373,13 +583,31 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 				getHasOutputRepresentation().clear();
 				getHasOutputRepresentation().addAll((Collection<? extends OutputRepresentation>)newValue);
 				return;
-			case ServicePIMPackage.RESOURCE__HAS_RELATED_RESOURCE:
-				getHasRelatedResource().clear();
-				getHasRelatedResource().addAll((Collection<? extends RelatedResource>)newValue);
+			case ServicePIMPackage.RESOURCE__HAS_RELATIONSHIP:
+				getHasRelationship().clear();
+				getHasRelationship().addAll((Collection<? extends Relationship>)newValue);
 				return;
-			case ServicePIMPackage.RESOURCE__IS_RELATED_RESOURCE:
-				getIsRelatedResource().clear();
-				getIsRelatedResource().addAll((Collection<? extends RelatedResource>)newValue);
+			case ServicePIMPackage.RESOURCE__FILTERS:
+				getFilters().clear();
+				getFilters().addAll((Collection<? extends Filter>)newValue);
+				return;
+			case ServicePIMPackage.RESOURCE__SORT:
+				getSort().clear();
+				getSort().addAll((Collection<? extends Sort>)newValue);
+				return;
+			case ServicePIMPackage.RESOURCE__SELECT:
+				getSelect().clear();
+				getSelect().addAll((Collection<? extends Select>)newValue);
+				return;
+			case ServicePIMPackage.RESOURCE__PAGINATION:
+				setPagination((Pagination)newValue);
+				return;
+			case ServicePIMPackage.RESOURCE__SCOPESEARCH:
+				getScopesearch().clear();
+				getScopesearch().addAll((Collection<? extends ScopeSearch>)newValue);
+				return;
+			case ServicePIMPackage.RESOURCE__CACHING:
+				setCaching((Caching)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -402,8 +630,8 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 			case ServicePIMPackage.RESOURCE__HAS_INPUT_REPRESENTATION:
 				getHasInputRepresentation().clear();
 				return;
-			case ServicePIMPackage.RESOURCE__HAS_CRUD_ACTIVITY:
-				getHasCRUDActivity().clear();
+			case ServicePIMPackage.RESOURCE__ACTIVITY:
+				getActivity().clear();
 				return;
 			case ServicePIMPackage.RESOURCE__HAS_PROPERTY:
 				getHasProperty().clear();
@@ -411,11 +639,26 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 			case ServicePIMPackage.RESOURCE__HAS_OUTPUT_REPRESENTATION:
 				getHasOutputRepresentation().clear();
 				return;
-			case ServicePIMPackage.RESOURCE__HAS_RELATED_RESOURCE:
-				getHasRelatedResource().clear();
+			case ServicePIMPackage.RESOURCE__HAS_RELATIONSHIP:
+				getHasRelationship().clear();
 				return;
-			case ServicePIMPackage.RESOURCE__IS_RELATED_RESOURCE:
-				getIsRelatedResource().clear();
+			case ServicePIMPackage.RESOURCE__FILTERS:
+				getFilters().clear();
+				return;
+			case ServicePIMPackage.RESOURCE__SORT:
+				getSort().clear();
+				return;
+			case ServicePIMPackage.RESOURCE__SELECT:
+				getSelect().clear();
+				return;
+			case ServicePIMPackage.RESOURCE__PAGINATION:
+				setPagination((Pagination)null);
+				return;
+			case ServicePIMPackage.RESOURCE__SCOPESEARCH:
+				getScopesearch().clear();
+				return;
+			case ServicePIMPackage.RESOURCE__CACHING:
+				setCaching((Caching)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -435,16 +678,26 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ServicePIMPackage.RESOURCE__HAS_INPUT_REPRESENTATION:
 				return hasInputRepresentation != null && !hasInputRepresentation.isEmpty();
-			case ServicePIMPackage.RESOURCE__HAS_CRUD_ACTIVITY:
-				return hasCRUDActivity != null && !hasCRUDActivity.isEmpty();
+			case ServicePIMPackage.RESOURCE__ACTIVITY:
+				return activity != null && !activity.isEmpty();
 			case ServicePIMPackage.RESOURCE__HAS_PROPERTY:
 				return hasProperty != null && !hasProperty.isEmpty();
 			case ServicePIMPackage.RESOURCE__HAS_OUTPUT_REPRESENTATION:
 				return hasOutputRepresentation != null && !hasOutputRepresentation.isEmpty();
-			case ServicePIMPackage.RESOURCE__HAS_RELATED_RESOURCE:
-				return hasRelatedResource != null && !hasRelatedResource.isEmpty();
-			case ServicePIMPackage.RESOURCE__IS_RELATED_RESOURCE:
-				return isRelatedResource != null && !isRelatedResource.isEmpty();
+			case ServicePIMPackage.RESOURCE__HAS_RELATIONSHIP:
+				return hasRelationship != null && !hasRelationship.isEmpty();
+			case ServicePIMPackage.RESOURCE__FILTERS:
+				return filters != null && !filters.isEmpty();
+			case ServicePIMPackage.RESOURCE__SORT:
+				return sort != null && !sort.isEmpty();
+			case ServicePIMPackage.RESOURCE__SELECT:
+				return select != null && !select.isEmpty();
+			case ServicePIMPackage.RESOURCE__PAGINATION:
+				return pagination != null;
+			case ServicePIMPackage.RESOURCE__SCOPESEARCH:
+				return scopesearch != null && !scopesearch.isEmpty();
+			case ServicePIMPackage.RESOURCE__CACHING:
+				return caching != null;
 		}
 		return super.eIsSet(featureID);
 	}

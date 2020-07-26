@@ -1,0 +1,138 @@
+- !!mde.inputParser.YamlResource
+  Name: tag
+  IsAlgorithmic: false
+  Activities:
+  - Type: Read
+    IsAuthenticatedRequired: false
+  - Type: Update
+    IsAuthenticatedRequired: true
+  - Type: Create
+    IsAuthenticatedRequired: true
+  - Type: Delete
+    IsAuthenticatedRequired: true
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: tagText
+    Type: String
+    Unique: true
+    NamingProperty: false
+
+- !!mde.inputParser.YamlResource
+  Name: bookmark
+  IsAlgorithmic: false
+  Activities: 
+  - Type: Read
+    IsAuthenticatedRequired: false
+  - Type: Update
+    IsAuthenticatedRequired: true
+  - Type: Create
+    IsAuthenticatedRequired: true
+  - Type: Delete
+    IsAuthenticatedRequired: true
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: bookmarkName
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: bookmarkUrl
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: visibility
+    Type: VisibilityType
+  Relationships: 
+  - Name: tag
+    Multiplicity: one-many
+
+- !!mde.inputParser.YamlResource
+  Name: bookmarkSearch
+  IsAlgorithmic: true
+  Activities:  
+  - Type: Read
+    IsAuthenticatedRequired: false
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  Relationships: []
+
+- !!mde.inputParser.YamlResource
+  Name: account
+  IsAlgorithmic: false
+  Activities:
+  - Type: Read
+    IsAuthenticatedRequired: false
+  - Type: Update
+    IsAuthenticatedRequired: true
+  - Type: Create
+    IsAuthenticatedRequired: false
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: password
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: username
+    Type: String
+    Unique: true
+    NamingProperty: true
+  Relationships:
+  - Name: bookmark 
+    Multiplicity: one-many
+     
+- !!mde.inputParser.YamlApplication
+   Name: firstApp
+   Resources: [account, tag, bookmark, bookmarkSearch]
+   Roles: [User, Admin]
+   
+- !!mde.inputParser.YamlApplication
+   Name: secondApp
+   Resources: [account, bookmark]
+   Roles: [User, Admin]
+   
+- !!mde.inputParser.YamlEnumeration
+   Name: VisibilityType
+   Literals: [Public, Private]
+   
+- !!mde.inputParser.YamlRole
+   Name: Admin
+   PermissionMode: Allow_All_Except_Permissions
+   Permissions: []
+   
+- !!mde.inputParser.YamlRole
+   Name: User
+   PermissionMode: Allow_All_Except_Permissions
+   Permissions: 
+   - Activities: [Update, Delete]
+     Resource: Tag
+     Constraints:
+     - Operator: NEQ
+       RightOperand: 
+       - Resource: account
+         Property: username
+       LeftOperand: 
+       - Resourece: currentUser
+         Property: username
+   - Activities: [Update, Delete]
+     Resource: Bookmark
+     Constraints:
+     - Operator: NEQ
+       RightOperand: 
+       - Resource: account
+         Property: username
+       LeftOperand:
+       - Resource: currentUser
+         Property: username  
+   - Activities: [Update, Delete]
+     Resource: Account
+     Constraints:
+     - Operator: NEQ
+       RightOperand: 
+       - Resource: account
+         Property: username
+       LeftOperand: 
+       - Resource: currentUser
+         Property: username        

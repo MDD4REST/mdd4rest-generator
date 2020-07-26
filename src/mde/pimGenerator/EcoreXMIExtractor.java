@@ -30,7 +30,6 @@ public class EcoreXMIExtractor{
 	private org.eclipse.emf.ecore.resource.Resource oEcoreResource;
 	private String strProjectName;
 	
-	//the code of this constructor is standard Ecore XMI writer initialization code
 	public EcoreXMIExtractor(String strProjectName){
 		
 		this.strProjectName = strProjectName;
@@ -52,7 +51,7 @@ public class EcoreXMIExtractor{
 	public void exportEcoreXMI(RESTfulServicePIM oRESTfulServicePIM){
 		EList<ServicePIM.Resource> resources = oRESTfulServicePIM.getHasResources();
 		System.out.println("resources " + resources);
-		System.out.println("related resources " + resources.get(1).getHasRelatedResource());
+		System.out.println("relationships " + resources.get(1).getHasRelationship());
 		this.oEcoreResource.getContents().add(oRESTfulServicePIM);
 //		System.out.println("All " + this.oEcoreResource.getContents());
 		//save to disk

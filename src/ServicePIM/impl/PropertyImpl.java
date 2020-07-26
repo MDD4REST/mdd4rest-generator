@@ -2,13 +2,16 @@
  */
 package ServicePIM.impl;
 
+import ServicePIM.BasicType;
 import ServicePIM.Property;
 import ServicePIM.ServicePIMPackage;
-
+import ServicePIM.TypeDefinition;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -23,7 +26,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link ServicePIM.impl.PropertyImpl#isIsUnique <em>Is Unique</em>}</li>
  *   <li>{@link ServicePIM.impl.PropertyImpl#isIsNamingProperty <em>Is Naming Property</em>}</li>
  *   <li>{@link ServicePIM.impl.PropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link ServicePIM.impl.PropertyImpl#isIsRequired <em>Is Required</em>}</li>
+ *   <li>{@link ServicePIM.impl.PropertyImpl#getMin <em>Min</em>}</li>
+ *   <li>{@link ServicePIM.impl.PropertyImpl#getMax <em>Max</em>}</li>
  *   <li>{@link ServicePIM.impl.PropertyImpl#getType <em>Type</em>}</li>
+ *   <li>{@link ServicePIM.impl.PropertyImpl#getBasictype <em>Basictype</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,24 +97,84 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The default value of the '{@link #isIsRequired() <em>Is Required</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #isIsRequired()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TYPE_EDEFAULT = null;
+	protected static final boolean IS_REQUIRED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * The cached value of the '{@link #isIsRequired() <em>Is Required</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsRequired()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isRequired = IS_REQUIRED_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMin() <em>Min</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMin()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MIN_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMin() <em>Min</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMin()
+	 * @generated
+	 * @ordered
+	 */
+	protected int min = MIN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMax() <em>Max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMax()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MAX_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMax() <em>Max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMax()
+	 * @generated
+	 * @ordered
+	 */
+	protected int max = MAX_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected String type = TYPE_EDEFAULT;
+	protected TypeDefinition type;
+
+	/**
+	 * The cached value of the '{@link #getBasictype() <em>Basictype</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBasictype()
+	 * @generated
+	 * @ordered
+	 */
+	protected BasicType basictype;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,7 +270,93 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 	 * @generated
 	 */
 	@Override
-	public String getType() {
+	public boolean isIsRequired() {
+		return isRequired;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIsRequired(boolean newIsRequired) {
+		boolean oldIsRequired = isRequired;
+		isRequired = newIsRequired;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePIMPackage.PROPERTY__IS_REQUIRED, oldIsRequired, isRequired));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getMin() {
+		return min;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMin(int newMin) {
+		int oldMin = min;
+		min = newMin;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePIMPackage.PROPERTY__MIN, oldMin, min));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getMax() {
+		return max;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMax(int newMax) {
+		int oldMax = max;
+		max = newMax;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePIMPackage.PROPERTY__MAX, oldMax, max));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TypeDefinition getType() {
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject)type;
+			type = (TypeDefinition)eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ServicePIMPackage.PROPERTY__TYPE, oldType, type));
+			}
+		}
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypeDefinition basicGetType() {
 		return type;
 	}
 
@@ -213,11 +366,70 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 	 * @generated
 	 */
 	@Override
-	public void setType(String newType) {
-		String oldType = type;
+	public void setType(TypeDefinition newType) {
+		TypeDefinition oldType = type;
 		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ServicePIMPackage.PROPERTY__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BasicType getBasictype() {
+		return basictype;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetBasictype(BasicType newBasictype, NotificationChain msgs) {
+		BasicType oldBasictype = basictype;
+		basictype = newBasictype;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicePIMPackage.PROPERTY__BASICTYPE, oldBasictype, newBasictype);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setBasictype(BasicType newBasictype) {
+		if (newBasictype != basictype) {
+			NotificationChain msgs = null;
+			if (basictype != null)
+				msgs = ((InternalEObject)basictype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicePIMPackage.PROPERTY__BASICTYPE, null, msgs);
+			if (newBasictype != null)
+				msgs = ((InternalEObject)newBasictype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicePIMPackage.PROPERTY__BASICTYPE, null, msgs);
+			msgs = basicSetBasictype(newBasictype, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePIMPackage.PROPERTY__BASICTYPE, newBasictype, newBasictype));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ServicePIMPackage.PROPERTY__BASICTYPE:
+				return basicSetBasictype(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -234,8 +446,17 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 				return isIsNamingProperty();
 			case ServicePIMPackage.PROPERTY__NAME:
 				return getName();
+			case ServicePIMPackage.PROPERTY__IS_REQUIRED:
+				return isIsRequired();
+			case ServicePIMPackage.PROPERTY__MIN:
+				return getMin();
+			case ServicePIMPackage.PROPERTY__MAX:
+				return getMax();
 			case ServicePIMPackage.PROPERTY__TYPE:
-				return getType();
+				if (resolve) return getType();
+				return basicGetType();
+			case ServicePIMPackage.PROPERTY__BASICTYPE:
+				return getBasictype();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -257,8 +478,20 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 			case ServicePIMPackage.PROPERTY__NAME:
 				setName((String)newValue);
 				return;
+			case ServicePIMPackage.PROPERTY__IS_REQUIRED:
+				setIsRequired((Boolean)newValue);
+				return;
+			case ServicePIMPackage.PROPERTY__MIN:
+				setMin((Integer)newValue);
+				return;
+			case ServicePIMPackage.PROPERTY__MAX:
+				setMax((Integer)newValue);
+				return;
 			case ServicePIMPackage.PROPERTY__TYPE:
-				setType((String)newValue);
+				setType((TypeDefinition)newValue);
+				return;
+			case ServicePIMPackage.PROPERTY__BASICTYPE:
+				setBasictype((BasicType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -281,8 +514,20 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 			case ServicePIMPackage.PROPERTY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case ServicePIMPackage.PROPERTY__IS_REQUIRED:
+				setIsRequired(IS_REQUIRED_EDEFAULT);
+				return;
+			case ServicePIMPackage.PROPERTY__MIN:
+				setMin(MIN_EDEFAULT);
+				return;
+			case ServicePIMPackage.PROPERTY__MAX:
+				setMax(MAX_EDEFAULT);
+				return;
 			case ServicePIMPackage.PROPERTY__TYPE:
-				setType(TYPE_EDEFAULT);
+				setType((TypeDefinition)null);
+				return;
+			case ServicePIMPackage.PROPERTY__BASICTYPE:
+				setBasictype((BasicType)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -302,8 +547,16 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 				return isNamingProperty != IS_NAMING_PROPERTY_EDEFAULT;
 			case ServicePIMPackage.PROPERTY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case ServicePIMPackage.PROPERTY__IS_REQUIRED:
+				return isRequired != IS_REQUIRED_EDEFAULT;
+			case ServicePIMPackage.PROPERTY__MIN:
+				return min != MIN_EDEFAULT;
+			case ServicePIMPackage.PROPERTY__MAX:
+				return max != MAX_EDEFAULT;
 			case ServicePIMPackage.PROPERTY__TYPE:
-				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+				return type != null;
+			case ServicePIMPackage.PROPERTY__BASICTYPE:
+				return basictype != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -324,8 +577,12 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 		result.append(isNamingProperty);
 		result.append(", name: ");
 		result.append(name);
-		result.append(", type: ");
-		result.append(type);
+		result.append(", isRequired: ");
+		result.append(isRequired);
+		result.append(", min: ");
+		result.append(min);
+		result.append(", max: ");
+		result.append(max);
 		result.append(')');
 		return result.toString();
 	}

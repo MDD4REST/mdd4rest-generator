@@ -30,7 +30,7 @@ public interface OutputRepresentation extends EObject {
 	 * @see ServicePIM.MediaType
 	 * @see #setOutputMediaType(MediaType)
 	 * @see ServicePIM.ServicePIMPackage#getOutputRepresentation_OutputMediaType()
-	 * @model required="true"
+	 * @model unique="false" required="true"
 	 * @generated
 	 */
 	MediaType getOutputMediaType();

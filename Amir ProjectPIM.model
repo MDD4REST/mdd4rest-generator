@@ -1,38 +1,83 @@
 <?xml version="1.0" encoding="ASCII"?>
-<mde:RESTfulServicePIM xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:mde="src/metamodels/PIMMetamodel.ecore" name="Amir Project" outputPath="" dbIP="" dbPort="" dbUsername="" dbPassword="">
-  <hasResources name="tag">
+<mde:RESTfulServicePIM xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="src/metamodels/ServicePIMMetamodel.ecore" xmlns:mde_1="src/metamodels/SecurityPIMMetamodel.ecore" name="Amir Project" basePath="">
+  <hasApplications resources="Account Bookmark" roles="//@hasRoles.1 //@hasRoles.0">
+    <hasConfig baseName="secondApp"/>
+  </hasApplications>
+  <hasApplications resources="Account Tag Bookmark BookmarkSearch" roles="//@hasRoles.1 //@hasRoles.0">
+    <hasConfig baseName="firstApp"/>
+  </hasApplications>
+  <enumerations name="VisibilityType">
+    <literals name="Public" value="1"/>
+    <literals name="Private" value="2"/>
+  </enumerations>
+  <hasResources name="Tag">
     <hasInputRepresentation/>
-    <hasCRUDActivity CRUDVerb="UPDATE"/>
-    <hasCRUDActivity CRUDVerb="READ"/>
-    <hasCRUDActivity/>
-    <hasCRUDActivity CRUDVerb="DELETE"/>
-    <hasProperty isUnique="true" name="tagText" type="String"/>
-    <hasOutputRepresentation/>
-    <isRelatedResource fromResource="//@hasResources.1" toResource="//@hasResources.0"/>
-  </hasResources>
-  <hasResources name="bookmark">
-    <hasInputRepresentation/>
-    <hasCRUDActivity CRUDVerb="UPDATE"/>
-    <hasCRUDActivity CRUDVerb="READ"/>
-    <hasCRUDActivity/>
-    <hasCRUDActivity CRUDVerb="DELETE"/>
-    <hasProperty isUnique="true" name="bookmarkName" type="String"/>
-    <hasProperty isUnique="true" name="bookmarkUrl" type="String"/>
-    <hasOutputRepresentation/>
-    <isRelatedResource fromResource="//@hasResources.3" toResource="//@hasResources.1"/>
-  </hasResources>
-  <hasResources isAlgorithmic="true" name="bookmarkSearch">
-    <hasInputRepresentation/>
-    <hasCRUDActivity CRUDVerb="READ"/>
+    <Activity xsi:type="mde:Read"/>
+    <Activity xsi:type="mde:Update"/>
+    <Activity xsi:type="mde:Create"/>
+    <Activity xsi:type="mde:Delete"/>
+    <hasProperty isUnique="true" name="tagText" type="//@hasResources.0/@hasProperty.0/@basictype">
+      <basictype/>
+    </hasProperty>
     <hasOutputRepresentation/>
   </hasResources>
-  <hasResources name="account">
+  <hasResources name="Bookmark">
     <hasInputRepresentation/>
-    <hasCRUDActivity CRUDVerb="UPDATE"/>
-    <hasCRUDActivity CRUDVerb="READ"/>
-    <hasCRUDActivity/>
-    <hasProperty isUnique="true" name="password" type="String"/>
-    <hasProperty isUnique="true" isNamingProperty="true" name="username" type="String"/>
+    <Activity xsi:type="mde:Read"/>
+    <Activity xsi:type="mde:Update"/>
+    <Activity xsi:type="mde:Create"/>
+    <Activity xsi:type="mde:Delete"/>
+    <hasProperty isUnique="true" name="bookmarkName" type="//@hasResources.1/@hasProperty.0/@basictype">
+      <basictype/>
+    </hasProperty>
+    <hasProperty isUnique="true" name="bookmarkUrl" type="//@hasResources.1/@hasProperty.1/@basictype">
+      <basictype/>
+    </hasProperty>
+    <hasProperty name="visibility" type="VisibilityType"/>
+    <hasOutputRepresentation/>
+    <hasRelationship fromResource="Bookmark" toResource="Tag"/>
+  </hasResources>
+  <hasResources isAlgorithmic="true" name="BookmarkSearch">
+    <hasInputRepresentation/>
+    <Activity xsi:type="mde:Read"/>
     <hasOutputRepresentation/>
   </hasResources>
+  <hasResources name="Account">
+    <hasInputRepresentation/>
+    <Activity xsi:type="mde:Read"/>
+    <Activity xsi:type="mde:Update"/>
+    <Activity xsi:type="mde:Create"/>
+    <hasProperty isUnique="true" name="password" type="//@hasResources.3/@hasProperty.0/@basictype">
+      <basictype/>
+    </hasProperty>
+    <hasProperty isUnique="true" isNamingProperty="true" name="username" type="//@hasResources.3/@hasProperty.1/@basictype">
+      <basictype/>
+    </hasProperty>
+    <hasOutputRepresentation/>
+    <hasRelationship fromResource="Account" toResource="Bookmark"/>
+  </hasResources>
+  <hasResources xsi:type="mde_1:User" name="User">
+    <hasProperty xsi:type="mde_1:Username" isUnique="true" isNamingProperty="true" name="username" isRequired="true"/>
+  </hasResources>
+  <hasResources xsi:type="mde_1:CurrentUser" name="CurrentUser">
+    <hasProperty xsi:type="mde_1:Username" isUnique="true" isNamingProperty="true" name="username" isRequired="true"/>
+  </hasResources>
+  <hasRoles name="Admin"/>
+  <hasRoles name="User">
+    <permission permissionType="DENY">
+      <constraint>
+        <constraintoperator xsi:type="mde_1:TwoRelationalOperator" rightOperand="//@hasResources.3/@hasProperty.1" leftOperand="//@hasResources.5/@hasProperty.0"/>
+      </constraint>
+    </permission>
+    <permission permissionType="DENY">
+      <constraint>
+        <constraintoperator xsi:type="mde_1:TwoRelationalOperator" rightOperand="//@hasResources.3/@hasProperty.1" leftOperand="//@hasResources.5/@hasProperty.0"/>
+      </constraint>
+    </permission>
+    <permission permissionType="DENY">
+      <constraint>
+        <constraintoperator xsi:type="mde_1:TwoRelationalOperator" rightOperand="//@hasResources.3/@hasProperty.1" leftOperand="//@hasResources.5/@hasProperty.0"/>
+      </constraint>
+    </permission>
+  </hasRoles>
 </mde:RESTfulServicePIM>

@@ -23,7 +23,7 @@ public class Resource {
 	public ArrayList<String> CRUDActivities;
 
 	/** A list of the related resources. */
-	public ArrayList<String> RelatedResources;
+	public ArrayList<String> Relationships;
 
 	/** A list of this resource's properties. */
 	public ArrayList<Property> Properties;
@@ -56,7 +56,7 @@ public class Resource {
 		this.Name = name;
 		this.IsAlgorithmic = false;
 		CRUDActivities = new ArrayList<String>();
-		RelatedResources = new ArrayList<String>();
+		Relationships = new ArrayList<String>();
 		Properties = new ArrayList<Property>();
 		InputRepresentation = "JSON";
 		OutputRepresentation = "JSON";
@@ -74,7 +74,7 @@ public class Resource {
 		this.Name = name;
 		this.IsAlgorithmic = isAlgorithmic;
 		CRUDActivities = new ArrayList<String>();
-		RelatedResources = new ArrayList<String>();
+		Relationships = new ArrayList<String>();
 		Properties = new ArrayList<Property>();
 		InputRepresentation = "JSON";
 		OutputRepresentation = "JSON";
@@ -92,7 +92,7 @@ public class Resource {
 		this.Name = name;
 		this.IsAlgorithmic = isAlgorithmic;
 		CRUDActivities = new ArrayList<String>();
-		RelatedResources = new ArrayList<String>();
+		Relationships = new ArrayList<String>();
 		Properties = new ArrayList<Property>();
 		InputRepresentation = "JSON";
 		OutputRepresentation = "JSON";
@@ -119,9 +119,9 @@ public class Resource {
 	 * @param relatedResource the related resource to be added.
 	 */
 	public void addRelatedResource(String relatedResource) {
-		if (!RelatedResources.contains(relatedResource)) {
+		if (!Relationships.contains(relatedResource)) {
 			if (!relatedResource.equals(Name))
-				RelatedResources.add(relatedResource);
+				Relationships.add(relatedResource);
 		}
 	}
 
@@ -166,7 +166,7 @@ public class Resource {
 			}
 		} else
 			all += "\n  Properties: []";
-		all += "\n  RelatedResources: " + Arrays.asList(RelatedResources).toString().replaceAll("^\\[|\\]$", "");
+		all += "\n  Relationships: " + Arrays.asList(Relationships).toString().replaceAll("^\\[|\\]$", "");
 		if (IsExternalService && ROperation != null)
 			all += ROperation.toYAMLString();
 		return all;

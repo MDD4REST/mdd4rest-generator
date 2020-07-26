@@ -1,79 +1,83 @@
-/*
- * ARISTOSTLE UNIVERSITY OF THESSALONIKI
- * Copyright (C) 2014
- * Aristotle University of Thessaloniki
- * Department of Electrical & Computer Engineering
- * Division of Electronics & Computer Engineering
- * Intelligent Systems & Software Engineering Lab
- *
- * Project             : S-CASE
- * WorkFile            : 
- * Compiler            : 
- * File Description    :
- * Document Description:
-* Related Documents	   :
-* Note				   :
-* Programmer		   : Christoforos Zolotas
-* Contact			   : christopherzolotas@issel.ee.auth.gr
-*/
-
 package mde.pimGenerator;
 
 import java.util.ArrayList;
 
+import QueryPIM.QueryPIMMetamodelFactory;
+import mde.inputParser.YamlApplication;
+import mde.inputParser.YamlEnumeration;
 import mde.inputParser.YamlResource;
+import mde.inputParser.YamlRole;
 import ServicePIM.ServicePIMFactory;
+import SecurityPIM.SecurityPIMMetamodelFactory;
 import ServicePIM.RESTfulServicePIM;
 
-public abstract class APIMProducer
-{
+public abstract class APIMProducer {
 	protected RESTfulServicePIM oRESTfulServicePIM;
+	protected ArrayList<YamlApplication> listOfYamlApplications;
 	protected ArrayList<YamlResource> listOfYamlResources;
-	protected ServicePIMFactory oRestServicePIMFactory;
+	protected ArrayList<YamlRole> listOfYamlRoles;
+	protected ArrayList<YamlEnumeration> listOfYamlEnumerations;
+	protected ServicePIMFactory oServicePIMFactory;
+	protected SecurityPIMMetamodelFactory oSecurityPIMFactory;
+	protected QueryPIMMetamodelFactory oQueryPIMFactory;
 	protected String strProjectName;
-	protected String strProjectOutputPath;
-	protected String strServiceDatabaseIp;
-	protected String strServiceDatabasePort;
-	protected String strServiceDatabaseUsername;
-	protected String strServiceDatabasePassword;
-	
-	public APIMProducer(ArrayList<YamlResource> listOfYamlResources){
-		this.listOfYamlResources = listOfYamlResources;
-		this.oRestServicePIMFactory = ServicePIMFactory.eINSTANCE;
+	protected String strProjectBasePath;
+
+	public APIMProducer(
+			ArrayList<YamlApplication> listOfYamlApplications,
+			ArrayList<YamlResource> listofYamlResources,
+			ArrayList<YamlRole> listOfRoles,
+			ArrayList<YamlEnumeration> listOfEnumerations
+		) {
+		this.listOfYamlApplications = listOfYamlApplications;
+		this.listOfYamlResources = listofYamlResources;
+		this.listOfYamlRoles = listOfRoles;
+		this.listOfYamlEnumerations = listOfEnumerations;
+		this.oServicePIMFactory = ServicePIMFactory.eINSTANCE;
+		this.oSecurityPIMFactory = SecurityPIMMetamodelFactory.eINSTANCE;
+		this.oQueryPIMFactory = QueryPIMMetamodelFactory.eINSTANCE;
 		this.strProjectName = "Amir Project";
-		this.oRESTfulServicePIM = this.oRestServicePIMFactory.createRESTfulServicePIM();
+		this.oRESTfulServicePIM = this.oServicePIMFactory.createRESTfulServicePIM();
 		this.oRESTfulServicePIM.setName(strProjectName);
-		this.oRESTfulServicePIM.setOutputPath("");
-		this.oRESTfulServicePIM.setDbIP("");
-		this.oRESTfulServicePIM.setDbPort("");
-		this.oRESTfulServicePIM.setDbUsername("");
-		this.oRESTfulServicePIM.setDbPassword("");
+		this.oRESTfulServicePIM.setBasePath("");
+
 	}
-	
-	public APIMProducer(ArrayList<YamlResource> listOfYamlResources, String strProjectName, String strProjectOutputPath, String strServiceDatabaseIp, String strServiceDatabasePort, String strServiceDatabaseUsername, String strServiceDatabasePassword){
-		this.listOfYamlResources = listOfYamlResources;
-		this.oRestServicePIMFactory = ServicePIMFactory.eINSTANCE;
+
+	public APIMProducer(ArrayList<YamlApplication> listOfYamlApplications, ArrayList<YamlResource> listofYamlResources,
+			ArrayList<YamlRole> listOfRoles, ArrayList<YamlEnumeration> listOfEnumerations, String strProjectName,
+			String strProjectOutputPath) {
+		this.listOfYamlApplications = listOfYamlApplications;
+		this.listOfYamlResources = listofYamlResources;
+		this.listOfYamlRoles = listOfRoles;
+		this.listOfYamlEnumerations = listOfEnumerations;
+		this.oServicePIMFactory = ServicePIMFactory.eINSTANCE;
+		this.oSecurityPIMFactory = SecurityPIMMetamodelFactory.eINSTANCE;
+		this.oQueryPIMFactory = QueryPIMMetamodelFactory.eINSTANCE;
 		this.strProjectName = strProjectName;
-		this.oRESTfulServicePIM = this.oRestServicePIMFactory.createRESTfulServicePIM();
+		this.oRESTfulServicePIM = this.oServicePIMFactory.createRESTfulServicePIM();
 		this.oRESTfulServicePIM.setName(strProjectName);
-		this.oRESTfulServicePIM.setOutputPath(strProjectOutputPath);
-		this.oRESTfulServicePIM.setDbIP(strServiceDatabaseIp);
-		this.oRESTfulServicePIM.setDbPort(strServiceDatabasePort);
-		this.oRESTfulServicePIM.setDbUsername(strServiceDatabaseUsername);
-		this.oRESTfulServicePIM.setDbPassword(strServiceDatabasePassword);
+		this.oRESTfulServicePIM.setBasePath(strProjectOutputPath);
 	}
-	
-	public RESTfulServicePIM getRESTfulServicePIM(){
+
+	public RESTfulServicePIM getRESTfulServicePIM() {
 		return this.oRESTfulServicePIM;
 	}
-	
-	public ServicePIMFactory getRESTServicePIMFactory(){
-		return this.oRestServicePIMFactory;
+
+	public ServicePIMFactory getServicePIMFactory() {
+		return this.oServicePIMFactory;
 	}
-	
-	public String getProjectName(){
+
+	public SecurityPIMMetamodelFactory getSecurityPIMFactory() {
+		return oSecurityPIMFactory;
+	}
+
+	public QueryPIMMetamodelFactory getQueryPIMFactory() {
+		return oQueryPIMFactory;
+	}
+
+	public String getProjectName() {
 		return this.strProjectName;
 	}
-	
+
 	public abstract RESTfulServicePIM producePIM();
 }

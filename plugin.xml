@@ -14,6 +14,22 @@
             genModel="src/metamodels/PIMMetamodel.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ServicePIMMetamodel -->
+      <package
+            uri="src/metamodels/QueryPIMMetamodel.ecore"
+            class="QueryPIM.QueryPIMMetamodelPackage"
+            genModel="src/metamodels/ServicePIMMetamodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ServicePIMMetamodel -->
+      <package
+            uri="src/metamodels/SecurityPIMMetamodel.ecore"
+            class="SecurityPIM.SecurityPIMMetamodelPackage"
+            genModel="src/metamodels/ServicePIMMetamodel.genmodel"/>
+   </extension>
+
 null
 
 <extension  point="org.eclipse.emf.ecp.view.model.provider.xmi.file">

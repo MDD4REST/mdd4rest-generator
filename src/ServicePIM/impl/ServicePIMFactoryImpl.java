@@ -63,7 +63,18 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 			case ServicePIMPackage.INPUT_REPRESENTATION: return createInputRepresentation();
 			case ServicePIMPackage.OUTPUT_REPRESENTATION: return createOutputRepresentation();
 			case ServicePIMPackage.RES_TFUL_SERVICE_PIM: return createRESTfulServicePIM();
-			case ServicePIMPackage.RELATED_RESOURCE: return createRelatedResource();
+			case ServicePIMPackage.RELATIONSHIP: return createRelationship();
+			case ServicePIMPackage.APPLICATION: return createApplication();
+			case ServicePIMPackage.CONFIG: return createConfig();
+			case ServicePIMPackage.ENUMERATION: return createEnumeration();
+			case ServicePIMPackage.BASIC_TYPE: return createBasicType();
+			case ServicePIMPackage.LITERAL: return createLiteral();
+			case ServicePIMPackage.ACTIVITY: return createActivity();
+			case ServicePIMPackage.CREATE: return createCreate();
+			case ServicePIMPackage.READ: return createRead();
+			case ServicePIMPackage.UPDATE: return createUpdate();
+			case ServicePIMPackage.DELETE: return createDelete();
+			case ServicePIMPackage.CUSTOM: return createCustom();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -79,10 +90,12 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 		switch (eDataType.getClassifierID()) {
 			case ServicePIMPackage.MEDIA_TYPE:
 				return createMediaTypeFromString(eDataType, initialValue);
-			case ServicePIMPackage.CRUD_VERB:
-				return createCRUDVerbFromString(eDataType, initialValue);
 			case ServicePIMPackage.MULTIPLICITY:
 				return createMultiplicityFromString(eDataType, initialValue);
+			case ServicePIMPackage.APPLICATION_TYPE:
+				return createApplicationTypeFromString(eDataType, initialValue);
+			case ServicePIMPackage.PROPERTY_TYPE:
+				return createPropertyTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -98,10 +111,12 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 		switch (eDataType.getClassifierID()) {
 			case ServicePIMPackage.MEDIA_TYPE:
 				return convertMediaTypeToString(eDataType, instanceValue);
-			case ServicePIMPackage.CRUD_VERB:
-				return convertCRUDVerbToString(eDataType, instanceValue);
 			case ServicePIMPackage.MULTIPLICITY:
 				return convertMultiplicityToString(eDataType, instanceValue);
+			case ServicePIMPackage.APPLICATION_TYPE:
+				return convertApplicationTypeToString(eDataType, instanceValue);
+			case ServicePIMPackage.PROPERTY_TYPE:
+				return convertPropertyTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -179,9 +194,130 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 	 * @generated
 	 */
 	@Override
-	public RelatedResource createRelatedResource() {
-		RelatedResourceImpl relatedResource = new RelatedResourceImpl();
-		return relatedResource;
+	public Relationship createRelationship() {
+		RelationshipImpl relationship = new RelationshipImpl();
+		return relationship;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Application createApplication() {
+		ApplicationImpl application = new ApplicationImpl();
+		return application;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Config createConfig() {
+		ConfigImpl config = new ConfigImpl();
+		return config;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Enumeration createEnumeration() {
+		EnumerationImpl enumeration = new EnumerationImpl();
+		return enumeration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BasicType createBasicType() {
+		BasicTypeImpl basicType = new BasicTypeImpl();
+		return basicType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Literal createLiteral() {
+		LiteralImpl literal = new LiteralImpl();
+		return literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Activity createActivity() {
+		ActivityImpl activity = new ActivityImpl();
+		return activity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Create createCreate() {
+		CreateImpl create = new CreateImpl();
+		return create;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Read createRead() {
+		ReadImpl read = new ReadImpl();
+		return read;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Update createUpdate() {
+		UpdateImpl update = new UpdateImpl();
+		return update;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Delete createDelete() {
+		DeleteImpl delete = new DeleteImpl();
+		return delete;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Custom createCustom() {
+		CustomImpl custom = new CustomImpl();
+		return custom;
 	}
 
 	/**
@@ -209,26 +345,6 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CRUDVerb createCRUDVerbFromString(EDataType eDataType, String initialValue) {
-		CRUDVerb result = CRUDVerb.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertCRUDVerbToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Multiplicity createMultiplicityFromString(EDataType eDataType, String initialValue) {
 		Multiplicity result = Multiplicity.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -241,6 +357,46 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 	 * @generated
 	 */
 	public String convertMultiplicityToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ApplicationType createApplicationTypeFromString(EDataType eDataType, String initialValue) {
+		ApplicationType result = ApplicationType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertApplicationTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PropertyType createPropertyTypeFromString(EDataType eDataType, String initialValue) {
+		PropertyType result = PropertyType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPropertyTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
