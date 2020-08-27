@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ServicePIM.Property#getMin <em>Min</em>}</li>
  *   <li>{@link ServicePIM.Property#getMax <em>Max</em>}</li>
  *   <li>{@link ServicePIM.Property#getType <em>Type</em>}</li>
- *   <li>{@link ServicePIM.Property#getBasictype <em>Basictype</em>}</li>
+ *   <li>{@link ServicePIM.Property#getTypeName <em>Type Name</em>}</li>
  * </ul>
  *
  * @see ServicePIM.ServicePIMPackage#getProperty()
@@ -183,25 +183,25 @@ public interface Property extends EObject {
 	void setType(TypeDefinition value);
 
 	/**
-	 * Returns the value of the '<em><b>Basictype</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Type Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Basictype</em>' containment reference.
-	 * @see #setBasictype(BasicType)
-	 * @see ServicePIM.ServicePIMPackage#getProperty_Basictype()
-	 * @model containment="true"
+	 * @return the value of the '<em>Type Name</em>' attribute.
+	 * @see #setTypeName(String)
+	 * @see ServicePIM.ServicePIMPackage#getProperty_TypeName()
+	 * @model required="true"
 	 * @generated
 	 */
-	BasicType getBasictype();
+	String getTypeName();
 
 	/**
-	 * Sets the value of the '{@link ServicePIM.Property#getBasictype <em>Basictype</em>}' containment reference.
+	 * Sets the value of the '{@link ServicePIM.Property#getTypeName <em>Type Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Basictype</em>' containment reference.
-	 * @see #getBasictype()
+	 * @param value the new value of the '<em>Type Name</em>' attribute.
+	 * @see #getTypeName()
 	 * @generated
 	 */
-	void setBasictype(BasicType value);
+	void setTypeName(String value);
 
 } // Property

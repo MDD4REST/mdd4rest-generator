@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ServicePIM.Resource#isIsAlgorithmic <em>Is Algorithmic</em>}</li>
  *   <li>{@link ServicePIM.Resource#getName <em>Name</em>}</li>
  *   <li>{@link ServicePIM.Resource#getHasInputRepresentation <em>Has Input Representation</em>}</li>
- *   <li>{@link ServicePIM.Resource#getActivity <em>Activity</em>}</li>
+ *   <li>{@link ServicePIM.Resource#getHasActivities <em>Has Activities</em>}</li>
  *   <li>{@link ServicePIM.Resource#getHasProperty <em>Has Property</em>}</li>
  *   <li>{@link ServicePIM.Resource#getHasOutputRepresentation <em>Has Output Representation</em>}</li>
  *   <li>{@link ServicePIM.Resource#getHasRelationship <em>Has Relationship</em>}</li>
@@ -99,16 +99,16 @@ public interface Resource extends EObject {
 	EList<InputRepresentation> getHasInputRepresentation();
 
 	/**
-	 * Returns the value of the '<em><b>Activity</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Has Activities</b></em>' containment reference list.
 	 * The list contents are of type {@link ServicePIM.Activity}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activity</em>' containment reference list.
-	 * @see ServicePIM.ServicePIMPackage#getResource_Activity()
+	 * @return the value of the '<em>Has Activities</em>' containment reference list.
+	 * @see ServicePIM.ServicePIMPackage#getResource_HasActivities()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Activity> getActivity();
+	EList<Activity> getHasActivities();
 
 	/**
 	 * Returns the value of the '<em><b>Has Property</b></em>' containment reference list.

@@ -39,7 +39,7 @@ public interface QueryPIMMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "src/metamodels/QueryPIMMetamodel.ecore";
+	String eNS_URI = "src/metamodels/PIM/QueryPIMMetamodel.ecore";
 
 	/**
 	 * The package namespace name.

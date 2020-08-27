@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ASCII"?>
+<mde:RESTfulServicePIM xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="src/metamodels/PIM/ServicePIMMetamodel.ecore" xmlns:mde_1="src/metamodels/PIM/SecurityPIMMetamodel.ecore" name="Amir Project" basePath="">
+  <hasApplications resources="Account Bookmark" roles="//@hasRoles.1 //@hasRoles.0">
+    <hasConfig baseName="secondApp"/>
+  </hasApplications>
+  <hasApplications resources="Account Tag Bookmark BookmarkSearch" roles="//@hasRoles.1 //@hasRoles.0">
+    <hasConfig baseName="firstApp"/>
+  </hasApplications>
+  <enumerations typeName="VisibilityType" name="VisibilityType">
+    <literals name="Public"/>
+    <literals name="Private" value="1"/>
+  </enumerations>
+  <hasResources name="Tag">
+    <hasInputRepresentation/>
+    <hasActivities xsi:type="mde:Read"/>
+    <hasActivities xsi:type="mde:Update" isAuthenticatedRequired="true"/>
+    <hasActivities xsi:type="mde:Create" isAuthenticatedRequired="true"/>
+    <hasActivities xsi:type="mde:Delete" isAuthenticatedRequired="true"/>
+    <hasProperty isUnique="true" name="tagText" type="String" typeName="String"/>
+    <hasOutputRepresentation/>
+  </hasResources>
+  <hasResources name="Bookmark">
+    <hasInputRepresentation/>
+    <hasActivities xsi:type="mde:Read"/>
+    <hasActivities xsi:type="mde:Update" isAuthenticatedRequired="true"/>
+    <hasActivities xsi:type="mde:Create" isAuthenticatedRequired="true"/>
+    <hasActivities xsi:type="mde:Delete" isAuthenticatedRequired="true"/>
+    <hasProperty isUnique="true" name="bookmarkName" type="String" typeName="String"/>
+    <hasProperty isUnique="true" name="bookmarkUrl" type="String" typeName="String"/>
+    <hasProperty name="visibility" type="VisibilityType" typeName="VisibilityType"/>
+    <hasOutputRepresentation/>
+    <hasRelationship fromResource="Bookmark" toResource="Tag"/>
+  </hasResources>
+  <hasResources isAlgorithmic="true" name="BookmarkSearch">
+    <hasInputRepresentation/>
+    <hasActivities xsi:type="mde:Read"/>
+    <hasOutputRepresentation/>
+  </hasResources>
+  <hasResources name="Account">
+    <hasInputRepresentation/>
+    <hasActivities xsi:type="mde:Read"/>
+    <hasActivities xsi:type="mde:Update" isAuthenticatedRequired="true"/>
+    <hasActivities xsi:type="mde:Create"/>
+    <hasProperty isUnique="true" name="password" type="String" typeName="String"/>
+    <hasProperty isUnique="true" isNamingProperty="true" name="username" type="String" typeName="String"/>
+    <hasOutputRepresentation/>
+    <hasRelationship fromResource="Account" toResource="Bookmark"/>
+  </hasResources>
+  <hasResources xsi:type="mde_1:User" name="User">
+    <hasProperty xsi:type="mde_1:Username" isUnique="true" isNamingProperty="true" name="username" isRequired="true"/>
+  </hasResources>
+  <hasResources xsi:type="mde_1:CurrentUser" name="CurrentUser">
+    <hasProperty xsi:type="mde_1:Username" isUnique="true" isNamingProperty="true" name="username" isRequired="true"/>
+  </hasResources>
+  <hasRoles name="Admin"/>
+  <hasRoles name="User">
+    <permission permissionType="DENY">
+      <constraint>
+        <constraintoperator xsi:type="mde_1:TwoRelationalOperator" rightOperand="//@hasResources.3/@hasProperty.1" leftOperand="//@hasResources.5/@hasProperty.0"/>
+      </constraint>
+    </permission>
+    <permission permissionType="DENY">
+      <constraint>
+        <constraintoperator xsi:type="mde_1:TwoRelationalOperator" rightOperand="//@hasResources.3/@hasProperty.1" leftOperand="//@hasResources.5/@hasProperty.0"/>
+      </constraint>
+    </permission>
+    <permission permissionType="DENY">
+      <constraint>
+        <constraintoperator xsi:type="mde_1:TwoRelationalOperator" rightOperand="//@hasResources.3/@hasProperty.1" leftOperand="//@hasResources.5/@hasProperty.0"/>
+      </constraint>
+    </permission>
+  </hasRoles>
+  <basictypes typeName="String"/>
+  <basictypes typeName="Integer" type="Integer"/>
+  <basictypes typeName="Float" type="Float"/>
+  <basictypes typeName="Boolean" type="Boolean"/>
+  <basictypes typeName="Null" type="null"/>
+</mde:RESTfulServicePIM>

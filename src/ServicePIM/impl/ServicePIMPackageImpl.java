@@ -14,7 +14,10 @@ import ServicePIM.CRUDActivity;
 import ServicePIM.Config;
 import ServicePIM.Create;
 import ServicePIM.Custom;
+import ServicePIM.DatabaseType;
 import ServicePIM.Delete;
+import ServicePIM.Deployment;
+import ServicePIM.DeploymentType;
 import ServicePIM.Enumeration;
 import ServicePIM.InputRepresentation;
 import ServicePIM.Literal;
@@ -187,6 +190,13 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass deploymentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum mediaTypeEEnum = null;
 
 	/**
@@ -209,6 +219,20 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 	 * @generated
 	 */
 	private EEnum propertyTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum deploymentTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum databaseTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -337,7 +361,7 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 	 * @generated
 	 */
 	@Override
-	public EReference getResource_Activity() {
+	public EReference getResource_HasActivities() {
 		return (EReference)resourceEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -527,8 +551,8 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 	 * @generated
 	 */
 	@Override
-	public EReference getProperty_Basictype() {
-		return (EReference)propertyEClass.getEStructuralFeatures().get(7);
+	public EAttribute getProperty_TypeName() {
+		return (EAttribute)propertyEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -647,6 +671,16 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 	 * @generated
 	 */
 	@Override
+	public EReference getRESTfulServicePIM_Basictypes() {
+		return (EReference)resTfulServicePIMEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getRelationship() {
 		return relationshipEClass;
 	}
@@ -737,6 +771,16 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 	 * @generated
 	 */
 	@Override
+	public EReference getApplication_Deployment() {
+		return (EReference)applicationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getConfig() {
 		return configEClass;
 	}
@@ -777,48 +821,18 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getConfig_DbIP() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getConfig_DbPort() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getConfig_DbUsername() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getConfig_DbPassword() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getTypeDefinition() {
 		return typeDefinitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTypeDefinition_TypeName() {
+		return (EAttribute)typeDefinitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -987,6 +1001,96 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 	 * @generated
 	 */
 	@Override
+	public EClass getDeployment() {
+		return deploymentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDeployment_DbType() {
+		return (EAttribute)deploymentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDeployment_DbUsername() {
+		return (EAttribute)deploymentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDeployment_DbIP() {
+		return (EAttribute)deploymentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDeployment_DbPassword() {
+		return (EAttribute)deploymentEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDeployment_DbPort() {
+		return (EAttribute)deploymentEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDeployment_DeploymentType() {
+		return (EAttribute)deploymentEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDeployment_DirectoryPath() {
+		return (EAttribute)deploymentEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDeployment_Name() {
+		return (EAttribute)deploymentEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getMediaType() {
 		return mediaTypeEEnum;
 	}
@@ -1027,6 +1131,26 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 	 * @generated
 	 */
 	@Override
+	public EEnum getDeploymentType() {
+		return deploymentTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getDatabaseType() {
+		return databaseTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ServicePIMFactory getServicePIMFactory() {
 		return (ServicePIMFactory)getEFactoryInstance();
 	}
@@ -1054,7 +1178,7 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		createEAttribute(resourceEClass, RESOURCE__IS_ALGORITHMIC);
 		createEAttribute(resourceEClass, RESOURCE__NAME);
 		createEReference(resourceEClass, RESOURCE__HAS_INPUT_REPRESENTATION);
-		createEReference(resourceEClass, RESOURCE__ACTIVITY);
+		createEReference(resourceEClass, RESOURCE__HAS_ACTIVITIES);
 		createEReference(resourceEClass, RESOURCE__HAS_PROPERTY);
 		createEReference(resourceEClass, RESOURCE__HAS_OUTPUT_REPRESENTATION);
 		createEReference(resourceEClass, RESOURCE__HAS_RELATIONSHIP);
@@ -1075,7 +1199,7 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		createEAttribute(propertyEClass, PROPERTY__MIN);
 		createEAttribute(propertyEClass, PROPERTY__MAX);
 		createEReference(propertyEClass, PROPERTY__TYPE);
-		createEReference(propertyEClass, PROPERTY__BASICTYPE);
+		createEAttribute(propertyEClass, PROPERTY__TYPE_NAME);
 
 		inputRepresentationEClass = createEClass(INPUT_REPRESENTATION);
 		createEAttribute(inputRepresentationEClass, INPUT_REPRESENTATION__INPUT_MEDIA_TYPE);
@@ -1090,6 +1214,7 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		createEReference(resTfulServicePIMEClass, RES_TFUL_SERVICE_PIM__ENUMERATIONS);
 		createEReference(resTfulServicePIMEClass, RES_TFUL_SERVICE_PIM__HAS_RESOURCES);
 		createEReference(resTfulServicePIMEClass, RES_TFUL_SERVICE_PIM__HAS_ROLES);
+		createEReference(resTfulServicePIMEClass, RES_TFUL_SERVICE_PIM__BASICTYPES);
 
 		relationshipEClass = createEClass(RELATIONSHIP);
 		createEAttribute(relationshipEClass, RELATIONSHIP__MULTIPLICITY);
@@ -1101,17 +1226,15 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		createEReference(applicationEClass, APPLICATION__RESOURCES);
 		createEReference(applicationEClass, APPLICATION__GLOBALSEARCHES);
 		createEReference(applicationEClass, APPLICATION__ROLES);
+		createEReference(applicationEClass, APPLICATION__DEPLOYMENT);
 
 		configEClass = createEClass(CONFIG);
 		createEAttribute(configEClass, CONFIG__BASE_NAME);
 		createEAttribute(configEClass, CONFIG__APPLICATION_TYPE);
 		createEAttribute(configEClass, CONFIG__SERVICE_PORT);
-		createEAttribute(configEClass, CONFIG__DB_IP);
-		createEAttribute(configEClass, CONFIG__DB_PORT);
-		createEAttribute(configEClass, CONFIG__DB_USERNAME);
-		createEAttribute(configEClass, CONFIG__DB_PASSWORD);
 
 		typeDefinitionEClass = createEClass(TYPE_DEFINITION);
+		createEAttribute(typeDefinitionEClass, TYPE_DEFINITION__TYPE_NAME);
 
 		enumerationEClass = createEClass(ENUMERATION);
 		createEReference(enumerationEClass, ENUMERATION__LITERALS);
@@ -1138,11 +1261,23 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		customEClass = createEClass(CUSTOM);
 		createEAttribute(customEClass, CUSTOM__NAME);
 
+		deploymentEClass = createEClass(DEPLOYMENT);
+		createEAttribute(deploymentEClass, DEPLOYMENT__DB_TYPE);
+		createEAttribute(deploymentEClass, DEPLOYMENT__DB_USERNAME);
+		createEAttribute(deploymentEClass, DEPLOYMENT__DB_IP);
+		createEAttribute(deploymentEClass, DEPLOYMENT__DB_PASSWORD);
+		createEAttribute(deploymentEClass, DEPLOYMENT__DB_PORT);
+		createEAttribute(deploymentEClass, DEPLOYMENT__DEPLOYMENT_TYPE);
+		createEAttribute(deploymentEClass, DEPLOYMENT__DIRECTORY_PATH);
+		createEAttribute(deploymentEClass, DEPLOYMENT__NAME);
+
 		// Create enums
 		mediaTypeEEnum = createEEnum(MEDIA_TYPE);
 		multiplicityEEnum = createEEnum(MULTIPLICITY);
 		applicationTypeEEnum = createEEnum(APPLICATION_TYPE);
 		propertyTypeEEnum = createEEnum(PROPERTY_TYPE);
+		deploymentTypeEEnum = createEEnum(DEPLOYMENT_TYPE);
+		databaseTypeEEnum = createEEnum(DATABASE_TYPE);
 	}
 
 	/**
@@ -1191,7 +1326,7 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		initEAttribute(getResource_IsAlgorithmic(), ecorePackage.getEBoolean(), "isAlgorithmic", null, 1, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResource_Name(), ecorePackage.getEString(), "name", null, 1, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_HasInputRepresentation(), this.getInputRepresentation(), null, "hasInputRepresentation", null, 1, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResource_Activity(), this.getActivity(), null, "Activity", null, 1, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResource_HasActivities(), this.getActivity(), null, "hasActivities", null, 1, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_HasProperty(), this.getProperty(), null, "hasProperty", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_HasOutputRepresentation(), this.getOutputRepresentation(), null, "hasOutputRepresentation", null, 1, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_HasRelationship(), this.getRelationship(), null, "hasRelationship", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1212,7 +1347,7 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		initEAttribute(getProperty_Min(), ecorePackage.getEInt(), "min", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProperty_Max(), ecorePackage.getEInt(), "max", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProperty_Type(), this.getTypeDefinition(), null, "type", null, 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProperty_Basictype(), this.getBasicType(), null, "basictype", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProperty_TypeName(), ecorePackage.getEString(), "typeName", null, 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inputRepresentationEClass, InputRepresentation.class, "InputRepresentation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInputRepresentation_InputMediaType(), this.getMediaType(), "inputMediaType", null, 1, 1, InputRepresentation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1227,6 +1362,7 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		initEReference(getRESTfulServicePIM_Enumerations(), this.getEnumeration(), null, "enumerations", null, 0, -1, RESTfulServicePIM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRESTfulServicePIM_HasResources(), this.getResource(), null, "hasResources", null, 1, -1, RESTfulServicePIM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRESTfulServicePIM_HasRoles(), theSecurityPIMMetamodelPackage.getRole(), null, "hasRoles", null, 0, -1, RESTfulServicePIM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRESTfulServicePIM_Basictypes(), this.getBasicType(), null, "basictypes", null, 0, -1, RESTfulServicePIM.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(relationshipEClass, Relationship.class, "Relationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRelationship_Multiplicity(), this.getMultiplicity(), "multiplicity", null, 1, 1, Relationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1238,24 +1374,22 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		initEReference(getApplication_Resources(), this.getResource(), null, "resources", null, 1, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Globalsearches(), theQueryPIMMetamodelPackage.getGlobalSearch(), null, "globalsearches", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Roles(), theSecurityPIMMetamodelPackage.getRole(), null, "roles", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplication_Deployment(), this.getDeployment(), null, "deployment", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(configEClass, Config.class, "Config", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConfig_BaseName(), ecorePackage.getEString(), "baseName", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConfig_ApplicationType(), this.getApplicationType(), "applicationType", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConfig_ServicePort(), ecorePackage.getEString(), "servicePort", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfig_DbIP(), ecorePackage.getEString(), "dbIP", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfig_DbPort(), ecorePackage.getEString(), "dbPort", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfig_DbUsername(), ecorePackage.getEString(), "dbUsername", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfig_DbPassword(), ecorePackage.getEString(), "dbPassword", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeDefinitionEClass, TypeDefinition.class, "TypeDefinition", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTypeDefinition_TypeName(), ecorePackage.getEString(), "typeName", null, 1, 1, TypeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(enumerationEClass, Enumeration.class, "Enumeration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEnumeration_Literals(), this.getLiteral(), null, "literals", null, 1, -1, Enumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnumeration_Name(), ecorePackage.getEString(), "name", null, 0, 1, Enumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEnumeration_Name(), ecorePackage.getEString(), "name", null, 0, 1, Enumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(basicTypeEClass, BasicType.class, "BasicType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBasicType_Type(), this.getPropertyType(), "type", null, 0, 1, BasicType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBasicType_Type(), this.getPropertyType(), "type", null, 0, 1, BasicType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLiteral_Name(), ecorePackage.getEString(), "name", null, 1, 1, Literal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1274,6 +1408,16 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 
 		initEClass(customEClass, Custom.class, "Custom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCustom_Name(), ecorePackage.getEString(), "name", null, 0, 1, Custom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(deploymentEClass, Deployment.class, "Deployment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDeployment_DbType(), this.getDatabaseType(), "dbType", null, 0, 1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeployment_DbUsername(), ecorePackage.getEString(), "dbUsername", null, 0, 1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeployment_DbIP(), ecorePackage.getEString(), "dbIP", null, 0, 1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeployment_DbPassword(), ecorePackage.getEString(), "dbPassword", null, 0, 1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeployment_DbPort(), ecorePackage.getEString(), "dbPort", null, 0, 1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeployment_DeploymentType(), this.getDeploymentType(), "deploymentType", null, 0, 1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeployment_DirectoryPath(), ecorePackage.getEString(), "directoryPath", null, 0, 1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeployment_Name(), ecorePackage.getEString(), "name", null, 1, 1, Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(mediaTypeEEnum, MediaType.class, "MediaType");
@@ -1297,6 +1441,18 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		addEEnumLiteral(propertyTypeEEnum, PropertyType.FLOAT);
 		addEEnumLiteral(propertyTypeEEnum, PropertyType.BOOLEAN);
 		addEEnumLiteral(propertyTypeEEnum, PropertyType.NULL);
+
+		initEEnum(deploymentTypeEEnum, DeploymentType.class, "DeploymentType");
+		addEEnumLiteral(deploymentTypeEEnum, DeploymentType.DOCKER);
+		addEEnumLiteral(deploymentTypeEEnum, DeploymentType.KUBERNETES);
+		addEEnumLiteral(deploymentTypeEEnum, DeploymentType.OPENSHIFT);
+
+		initEEnum(databaseTypeEEnum, DatabaseType.class, "DatabaseType");
+		addEEnumLiteral(databaseTypeEEnum, DatabaseType.SQL);
+		addEEnumLiteral(databaseTypeEEnum, DatabaseType.MONGODB);
+		addEEnumLiteral(databaseTypeEEnum, DatabaseType.CASSANDRA);
+		addEEnumLiteral(databaseTypeEEnum, DatabaseType.COUCHBASE);
+		addEEnumLiteral(databaseTypeEEnum, DatabaseType.NO);
 
 		// Create resource
 		createResource(eNS_URI);

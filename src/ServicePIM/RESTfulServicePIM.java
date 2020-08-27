@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ServicePIM.RESTfulServicePIM#getEnumerations <em>Enumerations</em>}</li>
  *   <li>{@link ServicePIM.RESTfulServicePIM#getHasResources <em>Has Resources</em>}</li>
  *   <li>{@link ServicePIM.RESTfulServicePIM#getHasRoles <em>Has Roles</em>}</li>
+ *   <li>{@link ServicePIM.RESTfulServicePIM#getBasictypes <em>Basictypes</em>}</li>
  * </ul>
  *
  * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM()
@@ -120,5 +121,17 @@ public interface RESTfulServicePIM extends EObject {
 	 * @generated
 	 */
 	EList<Role> getHasRoles();
+
+	/**
+	 * Returns the value of the '<em><b>Basictypes</b></em>' containment reference list.
+	 * The list contents are of type {@link ServicePIM.BasicType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Basictypes</em>' containment reference list.
+	 * @see ServicePIM.ServicePIMPackage#getRESTfulServicePIM_Basictypes()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<BasicType> getBasictypes();
 
 } // RESTfulServicePIM

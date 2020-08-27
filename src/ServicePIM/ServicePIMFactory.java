@@ -184,6 +184,15 @@ public interface ServicePIMFactory extends EFactory {
 	Custom createCustom();
 
 	/**
+	 * Returns a new object of class '<em>Deployment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Deployment</em>'.
+	 * @generated
+	 */
+	Deployment createDeployment();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

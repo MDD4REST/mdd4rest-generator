@@ -41,7 +41,7 @@ public interface SecurityPIMMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "src/metamodels/SecurityPIMMetamodel.ecore";
+	String eNS_URI = "src/metamodels/PIM/SecurityPIMMetamodel.ecore";
 
 	/**
 	 * The package namespace name.
@@ -1091,13 +1091,13 @@ public interface SecurityPIMMetamodelPackage extends EPackage {
 	int USER__HAS_INPUT_REPRESENTATION = ServicePIMPackage.RESOURCE__HAS_INPUT_REPRESENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Activity</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Has Activities</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER__ACTIVITY = ServicePIMPackage.RESOURCE__ACTIVITY;
+	int USER__HAS_ACTIVITIES = ServicePIMPackage.RESOURCE__HAS_ACTIVITIES;
 
 	/**
 	 * The feature id for the '<em><b>Has Property</b></em>' containment reference list.
@@ -1245,13 +1245,13 @@ public interface SecurityPIMMetamodelPackage extends EPackage {
 	int CURRENT_USER__HAS_INPUT_REPRESENTATION = USER__HAS_INPUT_REPRESENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Activity</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Has Activities</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CURRENT_USER__ACTIVITY = USER__ACTIVITY;
+	int CURRENT_USER__HAS_ACTIVITIES = USER__HAS_ACTIVITIES;
 
 	/**
 	 * The feature id for the '<em><b>Has Property</b></em>' containment reference list.
@@ -1435,13 +1435,13 @@ public interface SecurityPIMMetamodelPackage extends EPackage {
 	int USERNAME__TYPE = ServicePIMPackage.PROPERTY__TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Basictype</b></em>' containment reference.
+	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USERNAME__BASICTYPE = ServicePIMPackage.PROPERTY__BASICTYPE;
+	int USERNAME__TYPE_NAME = ServicePIMPackage.PROPERTY__TYPE_NAME;
 
 	/**
 	 * The number of structural features of the '<em>Username</em>' class.

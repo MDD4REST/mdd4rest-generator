@@ -1,7 +1,30 @@
+[% for (application in Application.all) { %]
+application {
+    config {
+        baseName [%=application.config.baseName%]
+    }
+    entities [% for (entity in application.entities) { %][%=entity.name%], [% } %]
+    
+}
+[% } %]
+
 [% for (entity in Entity.all) { %]
 entity [%=entity.name%] {
 [% for (field in entity.fields) { %]
-    [%=field.name%] [%=field.type%],
+    [%=field.name%] [%=field.type%][% if (field.isRequired) {%] required[% } %][% if (field.isUnique) {%] unique[% } %], 	
 [% } %]
 }
 [% } %]
+
+[% for (enum in Enum.all) { %]
+enum [%=enum.name%] {
+    [% for (literal in enum.literals) { %][%=literal.name%], [% } %]
+    
+}
+[% } %]
+
+relationship OneToMany {
+[% for (relationship in Relationship.all) { %]
+    [%=relationship.fromName%]{[%=relationship.fromColumn.name%]} to [%=relationship.toName%],
+[% } %]
+}

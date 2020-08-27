@@ -55,7 +55,7 @@ public class MDEEngineStarter
 		RESTfulServicePIM oRESTfulServicePIM = oAPIMProducer.producePIM();
 		System.out.println(oRESTfulServicePIM.getHasApplications());
 		System.out.println("Created " + oRESTfulServicePIM.getHasApplications().size() + " PIM resources");
-		EcoreXMIExtractor oEcoreXMIExtractor = new EcoreXMIExtractor("Amir Project");
+		EcoreXMIExtractor oEcoreXMIExtractor = new EcoreXMIExtractor("bookmarks");
 		ServicePIMPackage eINSTANCE = ServicePIM.impl.ServicePIMPackageImpl.init();
 //		System.out.println(eINSTANCE.getRESTfulServicePIM());
 //		System.out.println(oRESTfulServicePIM.getSe);

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ServicePIM.Application#getResources <em>Resources</em>}</li>
  *   <li>{@link ServicePIM.Application#getGlobalsearches <em>Globalsearches</em>}</li>
  *   <li>{@link ServicePIM.Application#getRoles <em>Roles</em>}</li>
+ *   <li>{@link ServicePIM.Application#getDeployment <em>Deployment</em>}</li>
  * </ul>
  *
  * @see ServicePIM.ServicePIMPackage#getApplication()
@@ -95,5 +96,17 @@ public interface Application extends EObject {
 	 * @generated
 	 */
 	EList<Role> getRoles();
+
+	/**
+	 * Returns the value of the '<em><b>Deployment</b></em>' containment reference list.
+	 * The list contents are of type {@link ServicePIM.Deployment}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Deployment</em>' containment reference list.
+	 * @see ServicePIM.ServicePIMPackage#getApplication_Deployment()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Deployment> getDeployment();
 
 } // Application

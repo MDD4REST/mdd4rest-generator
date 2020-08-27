@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modelink threeWay="true" forceExeedL="false" forceExeedM="false" forceExeedR="false">
+  <model path="\MyCore\src\metamodels\ServicePIMMetamodel.ecore" position="LEFT" />
+  <model path="\MyCore\src\metamodels\ServicePSMMetamodel.ecore" position="MIDDLE" />
+  <model path="\MyCore\src\metamodels\openapi2.ecore" position="RIGHT" />
+</modelink>
+

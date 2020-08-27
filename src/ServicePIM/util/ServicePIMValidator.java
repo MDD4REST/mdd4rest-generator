@@ -124,6 +124,8 @@ public class ServicePIMValidator extends EObjectValidator {
 				return validateDelete((Delete)value, diagnostics, context);
 			case ServicePIMPackage.CUSTOM:
 				return validateCustom((Custom)value, diagnostics, context);
+			case ServicePIMPackage.DEPLOYMENT:
+				return validateDeployment((Deployment)value, diagnostics, context);
 			case ServicePIMPackage.MEDIA_TYPE:
 				return validateMediaType((MediaType)value, diagnostics, context);
 			case ServicePIMPackage.MULTIPLICITY:
@@ -132,6 +134,10 @@ public class ServicePIMValidator extends EObjectValidator {
 				return validateApplicationType((ApplicationType)value, diagnostics, context);
 			case ServicePIMPackage.PROPERTY_TYPE:
 				return validatePropertyType((PropertyType)value, diagnostics, context);
+			case ServicePIMPackage.DEPLOYMENT_TYPE:
+				return validateDeploymentType((DeploymentType)value, diagnostics, context);
+			case ServicePIMPackage.DATABASE_TYPE:
+				return validateDatabaseType((DatabaseType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -539,6 +545,15 @@ public class ServicePIMValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateDeployment(Deployment deployment, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(deployment, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateMediaType(MediaType mediaType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
@@ -567,6 +582,24 @@ public class ServicePIMValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePropertyType(PropertyType propertyType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDeploymentType(DeploymentType deploymentType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDatabaseType(DatabaseType databaseType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

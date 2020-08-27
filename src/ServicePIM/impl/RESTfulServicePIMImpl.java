@@ -4,6 +4,7 @@ package ServicePIM.impl;
 
 import SecurityPIM.Role;
 import ServicePIM.Application;
+import ServicePIM.BasicType;
 import ServicePIM.Enumeration;
 import ServicePIM.RESTfulServicePIM;
 import ServicePIM.Resource;
@@ -38,6 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link ServicePIM.impl.RESTfulServicePIMImpl#getEnumerations <em>Enumerations</em>}</li>
  *   <li>{@link ServicePIM.impl.RESTfulServicePIMImpl#getHasResources <em>Has Resources</em>}</li>
  *   <li>{@link ServicePIM.impl.RESTfulServicePIMImpl#getHasRoles <em>Has Roles</em>}</li>
+ *   <li>{@link ServicePIM.impl.RESTfulServicePIMImpl#getBasictypes <em>Basictypes</em>}</li>
  * </ul>
  *
  * @generated
@@ -122,6 +124,16 @@ public class RESTfulServicePIMImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected EList<Role> hasRoles;
+
+	/**
+	 * The cached value of the '{@link #getBasictypes() <em>Basictypes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBasictypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<BasicType> basictypes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -246,6 +258,19 @@ public class RESTfulServicePIMImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
+	public EList<BasicType> getBasictypes() {
+		if (basictypes == null) {
+			basictypes = new EObjectContainmentEList<BasicType>(BasicType.class, this, ServicePIMPackage.RES_TFUL_SERVICE_PIM__BASICTYPES);
+		}
+		return basictypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ServicePIMPackage.RES_TFUL_SERVICE_PIM__HAS_APPLICATIONS:
@@ -256,6 +281,8 @@ public class RESTfulServicePIMImpl extends MinimalEObjectImpl.Container implemen
 				return ((InternalEList<?>)getHasResources()).basicRemove(otherEnd, msgs);
 			case ServicePIMPackage.RES_TFUL_SERVICE_PIM__HAS_ROLES:
 				return ((InternalEList<?>)getHasRoles()).basicRemove(otherEnd, msgs);
+			case ServicePIMPackage.RES_TFUL_SERVICE_PIM__BASICTYPES:
+				return ((InternalEList<?>)getBasictypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -280,6 +307,8 @@ public class RESTfulServicePIMImpl extends MinimalEObjectImpl.Container implemen
 				return getHasResources();
 			case ServicePIMPackage.RES_TFUL_SERVICE_PIM__HAS_ROLES:
 				return getHasRoles();
+			case ServicePIMPackage.RES_TFUL_SERVICE_PIM__BASICTYPES:
+				return getBasictypes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -315,6 +344,10 @@ public class RESTfulServicePIMImpl extends MinimalEObjectImpl.Container implemen
 				getHasRoles().clear();
 				getHasRoles().addAll((Collection<? extends Role>)newValue);
 				return;
+			case ServicePIMPackage.RES_TFUL_SERVICE_PIM__BASICTYPES:
+				getBasictypes().clear();
+				getBasictypes().addAll((Collection<? extends BasicType>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -345,6 +378,9 @@ public class RESTfulServicePIMImpl extends MinimalEObjectImpl.Container implemen
 			case ServicePIMPackage.RES_TFUL_SERVICE_PIM__HAS_ROLES:
 				getHasRoles().clear();
 				return;
+			case ServicePIMPackage.RES_TFUL_SERVICE_PIM__BASICTYPES:
+				getBasictypes().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -369,6 +405,8 @@ public class RESTfulServicePIMImpl extends MinimalEObjectImpl.Container implemen
 				return hasResources != null && !hasResources.isEmpty();
 			case ServicePIMPackage.RES_TFUL_SERVICE_PIM__HAS_ROLES:
 				return hasRoles != null && !hasRoles.isEmpty();
+			case ServicePIMPackage.RES_TFUL_SERVICE_PIM__BASICTYPES:
+				return basictypes != null && !basictypes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

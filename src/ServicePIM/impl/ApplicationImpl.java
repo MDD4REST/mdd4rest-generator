@@ -6,6 +6,7 @@ import QueryPIM.GlobalSearch;
 import SecurityPIM.Role;
 import ServicePIM.Application;
 import ServicePIM.Config;
+import ServicePIM.Deployment;
 import ServicePIM.Resource;
 import ServicePIM.ServicePIMPackage;
 
@@ -21,7 +22,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,6 +38,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link ServicePIM.impl.ApplicationImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link ServicePIM.impl.ApplicationImpl#getGlobalsearches <em>Globalsearches</em>}</li>
  *   <li>{@link ServicePIM.impl.ApplicationImpl#getRoles <em>Roles</em>}</li>
+ *   <li>{@link ServicePIM.impl.ApplicationImpl#getDeployment <em>Deployment</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +83,16 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * @ordered
 	 */
 	protected EList<Role> roles;
+
+	/**
+	 * The cached value of the '{@link #getDeployment() <em>Deployment</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployment()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Deployment> deployment;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -221,12 +235,27 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * @generated
 	 */
 	@Override
+	public EList<Deployment> getDeployment() {
+		if (deployment == null) {
+			deployment = new EObjectContainmentEList<Deployment>(Deployment.class, this, ServicePIMPackage.APPLICATION__DEPLOYMENT);
+		}
+		return deployment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ServicePIMPackage.APPLICATION__HAS_CONFIG:
 				return basicSetHasConfig(null, msgs);
 			case ServicePIMPackage.APPLICATION__GLOBALSEARCHES:
 				return basicSetGlobalsearches(null, msgs);
+			case ServicePIMPackage.APPLICATION__DEPLOYMENT:
+				return ((InternalEList<?>)getDeployment()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -247,6 +276,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				return getGlobalsearches();
 			case ServicePIMPackage.APPLICATION__ROLES:
 				return getRoles();
+			case ServicePIMPackage.APPLICATION__DEPLOYMENT:
+				return getDeployment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -274,6 +305,10 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				getRoles().clear();
 				getRoles().addAll((Collection<? extends Role>)newValue);
 				return;
+			case ServicePIMPackage.APPLICATION__DEPLOYMENT:
+				getDeployment().clear();
+				getDeployment().addAll((Collection<? extends Deployment>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -298,6 +333,9 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 			case ServicePIMPackage.APPLICATION__ROLES:
 				getRoles().clear();
 				return;
+			case ServicePIMPackage.APPLICATION__DEPLOYMENT:
+				getDeployment().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -318,6 +356,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				return globalsearches != null;
 			case ServicePIMPackage.APPLICATION__ROLES:
 				return roles != null && !roles.isEmpty();
+			case ServicePIMPackage.APPLICATION__DEPLOYMENT:
+				return deployment != null && !deployment.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

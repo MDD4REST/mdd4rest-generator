@@ -1,8 +1,11 @@
 package mde.pimGenerator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -14,6 +17,7 @@ import SecurityPIM.PermissionType;
 import SecurityPIM.Role;
 import SecurityPIM.TwoPropertyOperator;
 import SecurityPIM.TwoRelationalOperator;
+import mde.inputParser.YamlActivity;
 import mde.inputParser.YamlApplication;
 import mde.inputParser.YamlConstraint;
 import mde.inputParser.YamlEnumeration;
@@ -61,6 +65,7 @@ public class CorePIMProducer extends APIMProducer {
 	@Override
 	public RESTfulServicePIM producePIM() {
 		
+		addBasicTypes();
 		createAllPIMEnumerations();
 		createAllPIMResources();
 		createAllPIMRoles();
@@ -95,11 +100,13 @@ public class CorePIMProducer extends APIMProducer {
 			System.out.println("Current" + oCurrentYamlEnumeration);
 			Enumeration oNewPIMEnumeration = this.getServicePIMFactory().createEnumeration();
 			oNewPIMEnumeration.setName(oCurrentYamlEnumeration.getName());
+			oNewPIMEnumeration.setTypeName(oCurrentYamlEnumeration.getName());
+			
 			for (int i = 0; i< oCurrentYamlEnumeration.getLiterals().size(); i++) {
 				String yamlLiteral = oCurrentYamlEnumeration.getLiterals().get(i);
 				Literal literal = this.getServicePIMFactory().createLiteral();
 				literal.setName(yamlLiteral);
-				literal.setValue(i+1);
+				literal.setValue(i);
 				oNewPIMEnumeration.getLiterals().add(literal);
 			}
 			this.getRESTfulServicePIM().getEnumerations().add(oNewPIMEnumeration);
@@ -177,12 +184,15 @@ public class CorePIMProducer extends APIMProducer {
 			YamlProperty oCurrentYamlProperty = oCurrentYamlResource.getYamlProperties().get(n);
 			Property oNewResourceProperty = this.getServicePIMFactory().createProperty();
 			oNewResourceProperty.setName(oCurrentYamlProperty.getName());
+			
 			TypeDefinition type = getTypeDefinition(oCurrentYamlProperty.getType());
 			System.out.println("Type:: " + type.getClass().getSimpleName());
-			if(type.getClass().getSimpleName().equals("BasicTypeImpl")) {
-				oNewResourceProperty.setBasictype((BasicType) type); 
-			}
+//			if(type.getClass().getSimpleName().equals("BasicTypeImpl")) {
+//				oNewResourceProperty.setBasictype((BasicType) type); 
+//			}
 			oNewResourceProperty.setType(type);
+			oNewResourceProperty.setTypeName(type.getTypeName());
+			
 			oNewResourceProperty.setIsUnique(oCurrentYamlProperty.getUniqueness());
 			oNewResourceProperty.setIsNamingProperty(oCurrentYamlProperty.getNamingAbility());
 			oNewPIMResource.getHasProperty().add(oNewResourceProperty);
@@ -262,19 +272,21 @@ public class CorePIMProducer extends APIMProducer {
 		for (int n = 0; n < oCurrentYamlResource.getActivities().size(); n++) {
 
 			CRUDActivity oCRUDActivity = this.getServicePIMFactory().createCRUDActivity();
-			if (oCurrentYamlResource.getActivities().get(n).getType().equalsIgnoreCase("create")) {
+			YamlActivity oCurrentActivity =  oCurrentYamlResource.getActivities().get(n);
+			if (oCurrentActivity.getType().equalsIgnoreCase("create")) {
 				oCRUDActivity = this.getServicePIMFactory().createCreate();
-			} else if (oCurrentYamlResource.getActivities().get(n).getType().equalsIgnoreCase("read")) {
+			} else if (oCurrentActivity.getType().equalsIgnoreCase("read")) {
 				oCRUDActivity = this.getServicePIMFactory().createRead();
-			} else if (oCurrentYamlResource.getActivities().get(n).getType().equalsIgnoreCase("update")) {
+			} else if (oCurrentActivity.getType().equalsIgnoreCase("update")) {
 				oCRUDActivity = this.getServicePIMFactory().createUpdate();
-			} else if (oCurrentYamlResource.getActivities().get(n).getType().equalsIgnoreCase("delete")) {
+			} else if (oCurrentActivity.getType().equalsIgnoreCase("delete")) {
 				oCRUDActivity = this.getServicePIMFactory().createDelete();
 			} else {
 				System.out.println("Corrupted input! Unkown CRUD verb: " + oCurrentYamlResource.getActivities().get(n));
 				Runtime.getRuntime().exit(-1);
 			}
-			oNewPIMResource.getActivity().add(oCRUDActivity);
+			oCRUDActivity.setIsAuthenticatedRequired(oCurrentActivity.getIsAuthenticationRequired());
+			oNewPIMResource.getHasActivities().add(oCRUDActivity);
 		}
 		return oNewPIMResource;
 	}
@@ -341,45 +353,46 @@ public class CorePIMProducer extends APIMProducer {
 		}
 	}
 
+	private void addBasicTypes() {
+		BasicType stringType = this.getServicePIMFactory().createBasicType();
+		BasicType integerType = this.getServicePIMFactory().createBasicType();
+		BasicType floatType = this.getServicePIMFactory().createBasicType();
+		BasicType booleanType = this.getServicePIMFactory().createBasicType();
+		BasicType nullType = this.getServicePIMFactory().createBasicType();
+		
+		stringType.setType(PropertyType.STRING);
+		integerType.setType(PropertyType.INTEGER);
+		floatType.setType(PropertyType.FLOAT);
+		booleanType.setType(PropertyType.BOOLEAN);
+		nullType.setType(PropertyType.NULL);
+		
+		List<BasicType> basicTypes = Arrays.asList(stringType, integerType, floatType, booleanType, nullType);
+		
+		for (BasicType basicType : basicTypes) {
+			String typeName = basicType.getType().getName();
+			typeName = StringUtils.capitalize(typeName);
+			basicType.setTypeName(typeName);
+		}
+		
+		this.getRESTfulServicePIM().getBasictypes().addAll(basicTypes);
+	}
+	
 	private TypeDefinition getTypeDefinition(String type) {
-		BasicType basicType = this.getServicePIMFactory().createBasicType();
+		
 		RESTfulServiceUtils restUtils = new RESTfulServiceUtils(this.oRESTfulServicePIM);
-		Enumeration enumeration = null;
-		Boolean isEnumeration = false;
-		Boolean isBasicType = false;
-		switch (type) {
-		case ("String"):
-			basicType.setType(PropertyType.STRING);
-			isBasicType = true;
-			break;
-		case ("Integer"):
-			basicType.setType(PropertyType.INTEGER);
-			isBasicType = true;
-			break;
-		case ("Float"):
-			basicType.setType(PropertyType.FLOAT);
-			isBasicType = true;
-			break;
-		case ("Boolean"):
-			basicType.setType(PropertyType.BOOLEAN);
-			isBasicType = true;
-			break;
-		case ("Null"):
-			basicType.setType(PropertyType.NULL);
-			isBasicType = true;
-			break;
-		default:
+		
+		if (type.equals("String") || type.equals("Integer") || type.equals("Float") || type.equals("Boolean") || type.equals("Null")) {
+			BasicType basicType = restUtils.findBasicType(type);
+			return basicType;
+		} else {
+			Enumeration enumeration = null;
 			enumeration = restUtils.findEnumeration(type);
 			System.out.println("ENUM:: OoO " + enumeration);
 			if (enumeration != null) {
-				isEnumeration = true;
+				return enumeration;
+			} else {
+				return null;
 			}
 		}
-		if (isBasicType) {
-			return basicType;
-		} else if (isEnumeration) {
-			return enumeration;
-		} else
-			return null;
 	}
 }

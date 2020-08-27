@@ -17,17 +17,17 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ServicePIMMetamodel -->
       <package
-            uri="src/metamodels/QueryPIMMetamodel.ecore"
+            uri="src/metamodels/PIM/QueryPIMMetamodel.ecore"
             class="QueryPIM.QueryPIMMetamodelPackage"
-            genModel="src/metamodels/ServicePIMMetamodel.genmodel"/>
+            genModel="src/metamodels/PIM/ServicePIMMetamodel.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ServicePIMMetamodel -->
       <package
-            uri="src/metamodels/SecurityPIMMetamodel.ecore"
+            uri="src/metamodels/PIM/SecurityPIMMetamodel.ecore"
             class="SecurityPIM.SecurityPIMMetamodelPackage"
-            genModel="src/metamodels/ServicePIMMetamodel.genmodel"/>
+            genModel="src/metamodels/PIM/ServicePIMMetamodel.genmodel"/>
    </extension>
 
 null

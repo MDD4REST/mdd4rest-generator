@@ -29,7 +29,7 @@ public interface BasicType extends TypeDefinition {
 	 * @see ServicePIM.PropertyType
 	 * @see #setType(PropertyType)
 	 * @see ServicePIM.ServicePIMPackage#getBasicType_Type()
-	 * @model id="true"
+	 * @model
 	 * @generated
 	 */
 	PropertyType getType();

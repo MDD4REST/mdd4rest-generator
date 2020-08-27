@@ -137,10 +137,18 @@ public class RESTfulServiceUtils {
 	}
 	
 	public Enumeration findEnumeration(String name) {
-		System.out.println("ALL ENums:" + oRESTfulServicePIM.getEnumerations() );
 		for(Enumeration enumeration :oRESTfulServicePIM.getEnumerations()) {
 			if(enumeration.getName().equals(name)) {
 				return enumeration;
+			}
+		}
+		return null;
+	}
+	
+	public BasicType findBasicType(String name) {
+		for(BasicType basicType :oRESTfulServicePIM.getBasictypes()) {
+			if(basicType.getType().getName().equalsIgnoreCase(name)) {
+				return basicType;
 			}
 		}
 		return null;

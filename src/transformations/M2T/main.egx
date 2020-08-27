@@ -1,0 +1,40 @@
+rule EntityDomain
+	transform entity: EntityDomain{
+	
+	template : "Entity.egl"
+	
+	target : "../../../website/src/main/java/com/mycompany/myapp/domain/" + entity.name + ".java"
+}
+
+rule DTO
+	transform dto: DTO{
+	
+	template : "dto.egl"
+	
+	target : "../../../website/src/main/java/com/mycompany/myapp/service/dto/" + dto.name + "DTO.java"
+}
+
+rule Mapper
+	transform mapper: Mapper{
+	
+	template : "mapper.egl"
+	
+	target : "../../../website/src/main/java/com/mycompany/myapp/service/mapper/" + mapper.name + "Mapper.java"
+}
+
+
+rule Repository
+	transform repository: Repository{
+	
+	template : "repository.egl"
+	
+	target : "../../../website/src/main/java/com/mycompany/myapp/repository/" + repository.name + "Repository.java"
+}
+
+rule Service
+	transform service: Service{
+	
+	template : "service.egl"
+	
+	target : "../../../website/src/main/java/com/mycompany/myapp/service/" + service.name + "Service.java"
+}

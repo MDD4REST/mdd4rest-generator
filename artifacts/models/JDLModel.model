@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<mde:JDLPIM xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="src/metamodels/PIM/JDLMetamodel.ecore" xsi:schemaLocation="src/metamodels/PIM/JDLMetamodel.ecore src/metamodels/PIM/JDLMetamodel.ecore">
+  <applications entities="//@entities.2 //@entities.1">
+    <config baseName="secondApp"/>
+  </applications>
+  <applications entities="//@entities.2 //@entities.0 //@entities.1">
+    <config baseName="firstApp"/>
+  </applications>
+  <entities name="Tag">
+    <fields name="tagText" type="String" isUnique="true"/>
+  </entities>
+  <entities name="Bookmark">
+    <fields name="bookmarkName" type="String" isUnique="true"/>
+    <fields name="bookmarkUrl" type="String" isUnique="true"/>
+    <fields name="visibility" type="VisibilityType"/>
+    <relationships xsi:type="mde:UnidirectionalRelationship" fromName="Bookmark" toName="Tag" toEntity="//@entities.0">
+      <fromColumn name="tag" entity="//@entities.1"/>
+    </relationships>
+  </entities>
+  <entities name="Account">
+    <fields name="password" type="String" isUnique="true"/>
+    <fields name="username" type="String" isUnique="true"/>
+    <relationships xsi:type="mde:UnidirectionalRelationship" fromName="Account" toName="Bookmark" toEntity="//@entities.1">
+      <fromColumn name="bookmark" entity="//@entities.2"/>
+    </relationships>
+  </entities>
+  <enums name="VisibilityType">
+    <literals name="Public"/>
+    <literals name="Private"/>
+  </enums>
+</mde:JDLPIM>

@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link ServicePIM.impl.ResourceImpl#isIsAlgorithmic <em>Is Algorithmic</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getName <em>Name</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getHasInputRepresentation <em>Has Input Representation</em>}</li>
- *   <li>{@link ServicePIM.impl.ResourceImpl#getActivity <em>Activity</em>}</li>
+ *   <li>{@link ServicePIM.impl.ResourceImpl#getHasActivities <em>Has Activities</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getHasProperty <em>Has Property</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getHasOutputRepresentation <em>Has Output Representation</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getHasRelationship <em>Has Relationship</em>}</li>
@@ -109,14 +109,14 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	protected EList<InputRepresentation> hasInputRepresentation;
 
 	/**
-	 * The cached value of the '{@link #getActivity() <em>Activity</em>}' containment reference list.
+	 * The cached value of the '{@link #getHasActivities() <em>Has Activities</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getActivity()
+	 * @see #getHasActivities()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Activity> activity;
+	protected EList<Activity> hasActivities;
 
 	/**
 	 * The cached value of the '{@link #getHasProperty() <em>Has Property</em>}' containment reference list.
@@ -292,11 +292,11 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	 * @generated
 	 */
 	@Override
-	public EList<Activity> getActivity() {
-		if (activity == null) {
-			activity = new EObjectContainmentEList<Activity>(Activity.class, this, ServicePIMPackage.RESOURCE__ACTIVITY);
+	public EList<Activity> getHasActivities() {
+		if (hasActivities == null) {
+			hasActivities = new EObjectContainmentEList<Activity>(Activity.class, this, ServicePIMPackage.RESOURCE__HAS_ACTIVITIES);
 		}
-		return activity;
+		return hasActivities;
 	}
 
 	/**
@@ -490,8 +490,8 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 		switch (featureID) {
 			case ServicePIMPackage.RESOURCE__HAS_INPUT_REPRESENTATION:
 				return ((InternalEList<?>)getHasInputRepresentation()).basicRemove(otherEnd, msgs);
-			case ServicePIMPackage.RESOURCE__ACTIVITY:
-				return ((InternalEList<?>)getActivity()).basicRemove(otherEnd, msgs);
+			case ServicePIMPackage.RESOURCE__HAS_ACTIVITIES:
+				return ((InternalEList<?>)getHasActivities()).basicRemove(otherEnd, msgs);
 			case ServicePIMPackage.RESOURCE__HAS_PROPERTY:
 				return ((InternalEList<?>)getHasProperty()).basicRemove(otherEnd, msgs);
 			case ServicePIMPackage.RESOURCE__HAS_OUTPUT_REPRESENTATION:
@@ -528,8 +528,8 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 				return getName();
 			case ServicePIMPackage.RESOURCE__HAS_INPUT_REPRESENTATION:
 				return getHasInputRepresentation();
-			case ServicePIMPackage.RESOURCE__ACTIVITY:
-				return getActivity();
+			case ServicePIMPackage.RESOURCE__HAS_ACTIVITIES:
+				return getHasActivities();
 			case ServicePIMPackage.RESOURCE__HAS_PROPERTY:
 				return getHasProperty();
 			case ServicePIMPackage.RESOURCE__HAS_OUTPUT_REPRESENTATION:
@@ -571,9 +571,9 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 				getHasInputRepresentation().clear();
 				getHasInputRepresentation().addAll((Collection<? extends InputRepresentation>)newValue);
 				return;
-			case ServicePIMPackage.RESOURCE__ACTIVITY:
-				getActivity().clear();
-				getActivity().addAll((Collection<? extends Activity>)newValue);
+			case ServicePIMPackage.RESOURCE__HAS_ACTIVITIES:
+				getHasActivities().clear();
+				getHasActivities().addAll((Collection<? extends Activity>)newValue);
 				return;
 			case ServicePIMPackage.RESOURCE__HAS_PROPERTY:
 				getHasProperty().clear();
@@ -630,8 +630,8 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 			case ServicePIMPackage.RESOURCE__HAS_INPUT_REPRESENTATION:
 				getHasInputRepresentation().clear();
 				return;
-			case ServicePIMPackage.RESOURCE__ACTIVITY:
-				getActivity().clear();
+			case ServicePIMPackage.RESOURCE__HAS_ACTIVITIES:
+				getHasActivities().clear();
 				return;
 			case ServicePIMPackage.RESOURCE__HAS_PROPERTY:
 				getHasProperty().clear();
@@ -678,8 +678,8 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ServicePIMPackage.RESOURCE__HAS_INPUT_REPRESENTATION:
 				return hasInputRepresentation != null && !hasInputRepresentation.isEmpty();
-			case ServicePIMPackage.RESOURCE__ACTIVITY:
-				return activity != null && !activity.isEmpty();
+			case ServicePIMPackage.RESOURCE__HAS_ACTIVITIES:
+				return hasActivities != null && !hasActivities.isEmpty();
 			case ServicePIMPackage.RESOURCE__HAS_PROPERTY:
 				return hasProperty != null && !hasProperty.isEmpty();
 			case ServicePIMPackage.RESOURCE__HAS_OUTPUT_REPRESENTATION:

@@ -1,0 +1,198 @@
+pre {
+	"Running ETL Transformation: ".println();
+	"----------------------------".println();
+	"".println();
+	var pimModel = new PIMMetamodel!RESTfulServicePIM;
+	var openAPI = new OpenAPI2!API;
+	"Running Service2API rule: ".println();
+	"----------------------------".println();
+	"".println();
+	openAPI.info = new OpenAPI2!Info;
+	openAPI.info.title = pimModel.name;
+	openAPI.basePath = pimModel.serviceOutputPath;
+	openAPI.schemes.add(OpenAPI2!SchemeType#http);
+	"Done Service2API rule".println();
+	"----------------------------".println();
+	"".println();
+}
+
+rule resource2definition transform c:PIMMetamodel!Resource
+  to a:OpenAPI2!SchemaEntry{
+ 	"Running Resouce2Pdefinition rule: ".println();
+	"----------------------------".println();
+	"".println();
+	a.key = c.name;
+	var schema = new OpenAPI2!Schema;
+	for (property in c.hasProperty){
+		var prop = new OpenAPI2!Property;
+		prop.name = property.name;
+		schema.properties.add(prop);
+	}
+	schema.ref = "#/definitions/" + c.name;
+	a.value = schema;
+	openAPI.definitions.add(a);
+	"Done resouce2Pdefinition rule".println();
+	"----------------------------".println();
+	"".println();
+}
+
+rule resource2path transform c:PIMMetamodel!Resource
+  to a:OpenAPI2!Path{
+ 	"Running Resouce2Path rule: ".println();
+	"----------------------------".println();
+	"".println();
+	a.readAllPath("/" + c.name, c.name);
+	
+	// relatedResource
+	for (resource in c.hasRelatedResource){
+		var relatedResourcePath = new OpenAPI2!Path;
+		relatedResourcePath.readAllPath("/" + c.name + "/" + resource.name, resource.name + " of " + c.name);
+	}
+	
+	c.println();
+	a.println();
+	"Done resource2Path rule".println();
+	"----------------------------".println();
+	"".println();
+}
+
+rule resources2path transform c:PIMMetamodel!Resource
+  to a:OpenAPI2!Path{
+ 	"Running Resouces2Path rule: ".println();
+	"----------------------------".println();
+	"".println();
+	a.operationsPath("/" + c.name + "/{id}", c.name, c);
+	
+	// relatedResource
+	for (resource in c.hasRelatedResource){
+		var relatedResourcePath = new OpenAPI2!Path;
+		relatedResourcePath.operationsPath("/" + c.name + "/{id}/" + resource.name + "/{id}", resource.name + " of " + c.name, resource);
+	}
+	
+	c.println();
+	a.println();
+	"Done resources2Path rule".println();
+	"----------------------------".println();
+	"".println();
+}
+
+operation OpenAPI2!Path readAllPath(path:String, summary:String){
+	self.relativePath = path;
+	self.Get = new OpenAPI2!Operation;
+	self.Get.summary = "Read All " + summary;
+	var response = successfulResponse();
+	self.Get.responses.add(response);
+	openAPI.paths.add(self);
+}
+
+operation OpenAPI2!Path operationsPath(path:String, summary:String, resource){
+
+	self.relativePath = path;
+	self.addIDParam();
+	
+	for (activity in resource.hasCRUDActivity){
+		activity.CRUDVerb.println();
+		if(activity.CRUDVerb.name == "UPDATE"){
+			self.Put = new OpenAPI2!Operation;
+			self.Put.summary = "Update " + summary;
+			var response = successfulResponse();
+			self.Put.responses.add(response);
+			for (property in resource.hasProperty){
+				if(property.isNamingProperty){
+					self.addFormParam(property, "Put");
+				}else{
+					self.addBodyParam(property, "Put");
+				}
+			}
+		} else if (activity.CRUDVerb.name == "CREATE"){
+			self.Post = new OpenAPI2!Operation;
+			self.Post.summary = "Create " + summary;
+			var response = successfulResponse();
+			self.Post.responses.add(response);
+			for (property in resource.hasProperty){
+				if(property.isNamingProperty){
+					self.addFormParam(property, "Post");
+				}else{
+					self.addBodyParam(property, "Post");
+				}
+			}
+		} else if (activity.CRUDVerb.name == "READ"){
+			self.Get = new OpenAPI2!Operation;
+			self.Get.summary = "Read " + summary;
+			var response = successfulResponse();
+			self.Get.responses.add(response);
+		} else if (activity.CRUDVerb.name == "DELETE"){
+			self.Delete = new OpenAPI2!Operation;
+			self.Delete.summary = "Delete " + summary;
+			var response = successfulResponse();
+			self.Delete.responses.add(response);
+		}
+	}
+	openAPI.paths.add(self);
+}
+
+operation OpenAPI2!Path addIDParam(){
+	var paramID = new OpenAPI2!Parameter;
+	paramID.name = "id";
+	paramID.location = OpenAPI2!ParameterLocation#path;
+	paramID.required = true;
+	self.parameters.add(paramID);
+}
+
+operation OpenAPI2!Path addFormParam(name: String, operator:String){
+	var param = new OpenAPI2!Parameter;
+	param.name = name;
+	param.location = OpenAPI2!ParameterLocation#formData;
+	param.type = OpenAPI2!JSONDataType#string;
+	if (operator=="Put"){
+		self.Put.parameters.add(param);
+	} else if (operator=="Post"){
+		self.Post.parameters.add(param);
+	}
+}
+
+operation OpenAPI2!Path addFormParam(property, operator:String){
+	var param = new OpenAPI2!Parameter;
+	param.name = property.name;
+	param.location = OpenAPI2!ParameterLocation#formData;
+	param.type = mapServiceType2JSONDataType(property.type);
+	if (operator=="Put"){
+		self.Put.parameters.add(param);
+	} else if (operator=="Post"){
+		self.Post.parameters.add(param);
+	}
+}
+
+operation OpenAPI2!Path addBodyParam(property, operator:String){
+	var param = new OpenAPI2!Parameter;
+	param.name = property.name;
+	param.location = OpenAPI2!ParameterLocation#body;
+	param.type = mapServiceType2JSONDataType(property.type);
+	if (operator=="Put"){
+		self.Put.parameters.add(param);
+	} else if (operator=="Post"){
+		self.Post.parameters.add(param);
+	}
+}
+
+operation successfulResponse(){
+	var response = new OpenAPI2!ResponseEntry;
+	response.key = "200";
+	response.value = new OpenAPI2!Response;
+	response.value.description = "Successful operation";
+	return response;
+}
+
+operation mapServiceType2JSONDataType(serviceType){
+	if (serviceType == "String"){
+		return OpenAPI2!JSONDataType#string;
+	}else if (serviceType == "Integer"){
+		return OpenAPI2!JSONDataType#integer;
+	}else if (serviceType == "Float"){
+		return OpenAPI2!JSONDataType#number;
+	}else if (serviceType == "Boolean"){
+		return OpenAPI2!JSONDataType#boolean;
+	}else{
+		return OpenAPI2!JSONDataType#null;
+	}
+}

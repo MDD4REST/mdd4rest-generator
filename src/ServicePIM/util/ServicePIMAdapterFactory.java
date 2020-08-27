@@ -144,6 +144,10 @@ public class ServicePIMAdapterFactory extends AdapterFactoryImpl {
 				return createCustomAdapter();
 			}
 			@Override
+			public Adapter caseDeployment(Deployment object) {
+				return createDeploymentAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -426,6 +430,20 @@ public class ServicePIMAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCustomAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ServicePIM.Deployment <em>Deployment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ServicePIM.Deployment
+	 * @generated
+	 */
+	public Adapter createDeploymentAdapter() {
 		return null;
 	}
 

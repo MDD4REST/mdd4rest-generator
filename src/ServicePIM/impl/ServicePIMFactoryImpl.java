@@ -75,6 +75,7 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 			case ServicePIMPackage.UPDATE: return createUpdate();
 			case ServicePIMPackage.DELETE: return createDelete();
 			case ServicePIMPackage.CUSTOM: return createCustom();
+			case ServicePIMPackage.DEPLOYMENT: return createDeployment();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -96,6 +97,10 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 				return createApplicationTypeFromString(eDataType, initialValue);
 			case ServicePIMPackage.PROPERTY_TYPE:
 				return createPropertyTypeFromString(eDataType, initialValue);
+			case ServicePIMPackage.DEPLOYMENT_TYPE:
+				return createDeploymentTypeFromString(eDataType, initialValue);
+			case ServicePIMPackage.DATABASE_TYPE:
+				return createDatabaseTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -117,6 +122,10 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 				return convertApplicationTypeToString(eDataType, instanceValue);
 			case ServicePIMPackage.PROPERTY_TYPE:
 				return convertPropertyTypeToString(eDataType, instanceValue);
+			case ServicePIMPackage.DEPLOYMENT_TYPE:
+				return convertDeploymentTypeToString(eDataType, instanceValue);
+			case ServicePIMPackage.DATABASE_TYPE:
+				return convertDatabaseTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -325,6 +334,17 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Deployment createDeployment() {
+		DeploymentImpl deployment = new DeploymentImpl();
+		return deployment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public MediaType createMediaTypeFromString(EDataType eDataType, String initialValue) {
 		MediaType result = MediaType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -397,6 +417,46 @@ public class ServicePIMFactoryImpl extends EFactoryImpl implements ServicePIMFac
 	 * @generated
 	 */
 	public String convertPropertyTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeploymentType createDeploymentTypeFromString(EDataType eDataType, String initialValue) {
+		DeploymentType result = DeploymentType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDeploymentTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DatabaseType createDatabaseTypeFromString(EDataType eDataType, String initialValue) {
+		DatabaseType result = DatabaseType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDatabaseTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

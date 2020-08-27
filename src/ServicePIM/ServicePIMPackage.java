@@ -40,7 +40,7 @@ public interface ServicePIMPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "src/metamodels/ServicePIMMetamodel.ecore";
+	String eNS_URI = "src/metamodels/PIM/ServicePIMMetamodel.ecore";
 
 	/**
 	 * The package namespace name.
@@ -96,13 +96,13 @@ public interface ServicePIMPackage extends EPackage {
 	int RESOURCE__HAS_INPUT_REPRESENTATION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Activity</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Has Activities</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__ACTIVITY = 3;
+	int RESOURCE__HAS_ACTIVITIES = 3;
 
 	/**
 	 * The feature id for the '<em><b>Has Property</b></em>' containment reference list.
@@ -351,13 +351,13 @@ public interface ServicePIMPackage extends EPackage {
 	int PROPERTY__TYPE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Basictype</b></em>' containment reference.
+	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__BASICTYPE = 7;
+	int PROPERTY__TYPE_NAME = 7;
 
 	/**
 	 * The number of structural features of the '<em>Property</em>' class.
@@ -516,13 +516,22 @@ public interface ServicePIMPackage extends EPackage {
 	int RES_TFUL_SERVICE_PIM__HAS_ROLES = 5;
 
 	/**
+	 * The feature id for the '<em><b>Basictypes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RES_TFUL_SERVICE_PIM__BASICTYPES = 6;
+
+	/**
 	 * The number of structural features of the '<em>RES Tful Service PIM</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RES_TFUL_SERVICE_PIM_FEATURE_COUNT = 6;
+	int RES_TFUL_SERVICE_PIM_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>RES Tful Service PIM</em>' class.
@@ -635,13 +644,22 @@ public interface ServicePIMPackage extends EPackage {
 	int APPLICATION__ROLES = 3;
 
 	/**
+	 * The feature id for the '<em><b>Deployment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__DEPLOYMENT = 4;
+
+	/**
 	 * The number of structural features of the '<em>Application</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = 4;
+	int APPLICATION_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Application</em>' class.
@@ -690,49 +708,13 @@ public interface ServicePIMPackage extends EPackage {
 	int CONFIG__SERVICE_PORT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Db IP</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIG__DB_IP = 3;
-
-	/**
-	 * The feature id for the '<em><b>Db Port</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIG__DB_PORT = 4;
-
-	/**
-	 * The feature id for the '<em><b>Db Username</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIG__DB_USERNAME = 5;
-
-	/**
-	 * The feature id for the '<em><b>Db Password</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONFIG__DB_PASSWORD = 6;
-
-	/**
 	 * The number of structural features of the '<em>Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIG_FEATURE_COUNT = 7;
+	int CONFIG_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Config</em>' class.
@@ -754,13 +736,22 @@ public interface ServicePIMPackage extends EPackage {
 	int TYPE_DEFINITION = 9;
 
 	/**
+	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFINITION__TYPE_NAME = 0;
+
+	/**
 	 * The number of structural features of the '<em>Type Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFINITION_FEATURE_COUNT = 0;
+	int TYPE_DEFINITION_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Type Definition</em>' class.
@@ -780,6 +771,15 @@ public interface ServicePIMPackage extends EPackage {
 	 * @generated
 	 */
 	int ENUMERATION = 10;
+
+	/**
+	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__TYPE_NAME = TYPE_DEFINITION__TYPE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Literals</b></em>' containment reference list.
@@ -826,6 +826,15 @@ public interface ServicePIMPackage extends EPackage {
 	 * @generated
 	 */
 	int BASIC_TYPE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_TYPE__TYPE_NAME = TYPE_DEFINITION__TYPE_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1095,6 +1104,106 @@ public interface ServicePIMPackage extends EPackage {
 	int CUSTOM_OPERATION_COUNT = ACTIVITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link ServicePIM.impl.DeploymentImpl <em>Deployment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ServicePIM.impl.DeploymentImpl
+	 * @see ServicePIM.impl.ServicePIMPackageImpl#getDeployment()
+	 * @generated
+	 */
+	int DEPLOYMENT = 19;
+
+	/**
+	 * The feature id for the '<em><b>Db Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__DB_TYPE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Db Username</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__DB_USERNAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Db IP</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__DB_IP = 2;
+
+	/**
+	 * The feature id for the '<em><b>Db Password</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__DB_PASSWORD = 3;
+
+	/**
+	 * The feature id for the '<em><b>Db Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__DB_PORT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Deployment Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__DEPLOYMENT_TYPE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Directory Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__DIRECTORY_PATH = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT__NAME = 7;
+
+	/**
+	 * The number of structural features of the '<em>Deployment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_FEATURE_COUNT = 8;
+
+	/**
+	 * The number of operations of the '<em>Deployment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link ServicePIM.MediaType <em>Media Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1102,7 +1211,7 @@ public interface ServicePIMPackage extends EPackage {
 	 * @see ServicePIM.impl.ServicePIMPackageImpl#getMediaType()
 	 * @generated
 	 */
-	int MEDIA_TYPE = 19;
+	int MEDIA_TYPE = 20;
 
 	/**
 	 * The meta object id for the '{@link ServicePIM.Multiplicity <em>Multiplicity</em>}' enum.
@@ -1112,7 +1221,7 @@ public interface ServicePIMPackage extends EPackage {
 	 * @see ServicePIM.impl.ServicePIMPackageImpl#getMultiplicity()
 	 * @generated
 	 */
-	int MULTIPLICITY = 20;
+	int MULTIPLICITY = 21;
 
 
 	/**
@@ -1123,7 +1232,7 @@ public interface ServicePIMPackage extends EPackage {
 	 * @see ServicePIM.impl.ServicePIMPackageImpl#getApplicationType()
 	 * @generated
 	 */
-	int APPLICATION_TYPE = 21;
+	int APPLICATION_TYPE = 22;
 
 	/**
 	 * The meta object id for the '{@link ServicePIM.PropertyType <em>Property Type</em>}' enum.
@@ -1133,7 +1242,27 @@ public interface ServicePIMPackage extends EPackage {
 	 * @see ServicePIM.impl.ServicePIMPackageImpl#getPropertyType()
 	 * @generated
 	 */
-	int PROPERTY_TYPE = 22;
+	int PROPERTY_TYPE = 23;
+
+	/**
+	 * The meta object id for the '{@link ServicePIM.DeploymentType <em>Deployment Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ServicePIM.DeploymentType
+	 * @see ServicePIM.impl.ServicePIMPackageImpl#getDeploymentType()
+	 * @generated
+	 */
+	int DEPLOYMENT_TYPE = 24;
+
+	/**
+	 * The meta object id for the '{@link ServicePIM.DatabaseType <em>Database Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ServicePIM.DatabaseType
+	 * @see ServicePIM.impl.ServicePIMPackageImpl#getDatabaseType()
+	 * @generated
+	 */
+	int DATABASE_TYPE = 25;
 
 	/**
 	 * Returns the meta object for class '{@link ServicePIM.Resource <em>Resource</em>}'.
@@ -1179,15 +1308,15 @@ public interface ServicePIMPackage extends EPackage {
 	EReference getResource_HasInputRepresentation();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ServicePIM.Resource#getActivity <em>Activity</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ServicePIM.Resource#getHasActivities <em>Has Activities</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Activity</em>'.
-	 * @see ServicePIM.Resource#getActivity()
+	 * @return the meta object for the containment reference list '<em>Has Activities</em>'.
+	 * @see ServicePIM.Resource#getHasActivities()
 	 * @see #getResource()
 	 * @generated
 	 */
-	EReference getResource_Activity();
+	EReference getResource_HasActivities();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link ServicePIM.Resource#getHasProperty <em>Has Property</em>}'.
@@ -1386,15 +1515,15 @@ public interface ServicePIMPackage extends EPackage {
 	EReference getProperty_Type();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link ServicePIM.Property#getBasictype <em>Basictype</em>}'.
+	 * Returns the meta object for the attribute '{@link ServicePIM.Property#getTypeName <em>Type Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Basictype</em>'.
-	 * @see ServicePIM.Property#getBasictype()
+	 * @return the meta object for the attribute '<em>Type Name</em>'.
+	 * @see ServicePIM.Property#getTypeName()
 	 * @see #getProperty()
 	 * @generated
 	 */
-	EReference getProperty_Basictype();
+	EAttribute getProperty_TypeName();
 
 	/**
 	 * Returns the meta object for class '{@link ServicePIM.InputRepresentation <em>Input Representation</em>}'.
@@ -1515,6 +1644,17 @@ public interface ServicePIMPackage extends EPackage {
 	EReference getRESTfulServicePIM_HasRoles();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link ServicePIM.RESTfulServicePIM#getBasictypes <em>Basictypes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Basictypes</em>'.
+	 * @see ServicePIM.RESTfulServicePIM#getBasictypes()
+	 * @see #getRESTfulServicePIM()
+	 * @generated
+	 */
+	EReference getRESTfulServicePIM_Basictypes();
+
+	/**
 	 * Returns the meta object for class '{@link ServicePIM.Relationship <em>Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1612,6 +1752,17 @@ public interface ServicePIMPackage extends EPackage {
 	EReference getApplication_Roles();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link ServicePIM.Application#getDeployment <em>Deployment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Deployment</em>'.
+	 * @see ServicePIM.Application#getDeployment()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EReference getApplication_Deployment();
+
+	/**
 	 * Returns the meta object for class '{@link ServicePIM.Config <em>Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1655,50 +1806,6 @@ public interface ServicePIMPackage extends EPackage {
 	EAttribute getConfig_ServicePort();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ServicePIM.Config#getDbIP <em>Db IP</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Db IP</em>'.
-	 * @see ServicePIM.Config#getDbIP()
-	 * @see #getConfig()
-	 * @generated
-	 */
-	EAttribute getConfig_DbIP();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ServicePIM.Config#getDbPort <em>Db Port</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Db Port</em>'.
-	 * @see ServicePIM.Config#getDbPort()
-	 * @see #getConfig()
-	 * @generated
-	 */
-	EAttribute getConfig_DbPort();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ServicePIM.Config#getDbUsername <em>Db Username</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Db Username</em>'.
-	 * @see ServicePIM.Config#getDbUsername()
-	 * @see #getConfig()
-	 * @generated
-	 */
-	EAttribute getConfig_DbUsername();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ServicePIM.Config#getDbPassword <em>Db Password</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Db Password</em>'.
-	 * @see ServicePIM.Config#getDbPassword()
-	 * @see #getConfig()
-	 * @generated
-	 */
-	EAttribute getConfig_DbPassword();
-
-	/**
 	 * Returns the meta object for class '{@link ServicePIM.TypeDefinition <em>Type Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1707,6 +1814,17 @@ public interface ServicePIMPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTypeDefinition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ServicePIM.TypeDefinition#getTypeName <em>Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type Name</em>'.
+	 * @see ServicePIM.TypeDefinition#getTypeName()
+	 * @see #getTypeDefinition()
+	 * @generated
+	 */
+	EAttribute getTypeDefinition_TypeName();
 
 	/**
 	 * Returns the meta object for class '{@link ServicePIM.Enumeration <em>Enumeration</em>}'.
@@ -1876,6 +1994,104 @@ public interface ServicePIMPackage extends EPackage {
 	EAttribute getCustom_Name();
 
 	/**
+	 * Returns the meta object for class '{@link ServicePIM.Deployment <em>Deployment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Deployment</em>'.
+	 * @see ServicePIM.Deployment
+	 * @generated
+	 */
+	EClass getDeployment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ServicePIM.Deployment#getDbType <em>Db Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Db Type</em>'.
+	 * @see ServicePIM.Deployment#getDbType()
+	 * @see #getDeployment()
+	 * @generated
+	 */
+	EAttribute getDeployment_DbType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ServicePIM.Deployment#getDbUsername <em>Db Username</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Db Username</em>'.
+	 * @see ServicePIM.Deployment#getDbUsername()
+	 * @see #getDeployment()
+	 * @generated
+	 */
+	EAttribute getDeployment_DbUsername();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ServicePIM.Deployment#getDbIP <em>Db IP</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Db IP</em>'.
+	 * @see ServicePIM.Deployment#getDbIP()
+	 * @see #getDeployment()
+	 * @generated
+	 */
+	EAttribute getDeployment_DbIP();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ServicePIM.Deployment#getDbPassword <em>Db Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Db Password</em>'.
+	 * @see ServicePIM.Deployment#getDbPassword()
+	 * @see #getDeployment()
+	 * @generated
+	 */
+	EAttribute getDeployment_DbPassword();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ServicePIM.Deployment#getDbPort <em>Db Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Db Port</em>'.
+	 * @see ServicePIM.Deployment#getDbPort()
+	 * @see #getDeployment()
+	 * @generated
+	 */
+	EAttribute getDeployment_DbPort();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ServicePIM.Deployment#getDeploymentType <em>Deployment Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Deployment Type</em>'.
+	 * @see ServicePIM.Deployment#getDeploymentType()
+	 * @see #getDeployment()
+	 * @generated
+	 */
+	EAttribute getDeployment_DeploymentType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ServicePIM.Deployment#getDirectoryPath <em>Directory Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Directory Path</em>'.
+	 * @see ServicePIM.Deployment#getDirectoryPath()
+	 * @see #getDeployment()
+	 * @generated
+	 */
+	EAttribute getDeployment_DirectoryPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ServicePIM.Deployment#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ServicePIM.Deployment#getName()
+	 * @see #getDeployment()
+	 * @generated
+	 */
+	EAttribute getDeployment_Name();
+
+	/**
 	 * Returns the meta object for enum '{@link ServicePIM.MediaType <em>Media Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1914,6 +2130,26 @@ public interface ServicePIMPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getPropertyType();
+
+	/**
+	 * Returns the meta object for enum '{@link ServicePIM.DeploymentType <em>Deployment Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Deployment Type</em>'.
+	 * @see ServicePIM.DeploymentType
+	 * @generated
+	 */
+	EEnum getDeploymentType();
+
+	/**
+	 * Returns the meta object for enum '{@link ServicePIM.DatabaseType <em>Database Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Database Type</em>'.
+	 * @see ServicePIM.DatabaseType
+	 * @generated
+	 */
+	EEnum getDatabaseType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1973,12 +2209,12 @@ public interface ServicePIMPackage extends EPackage {
 		EReference RESOURCE__HAS_INPUT_REPRESENTATION = eINSTANCE.getResource_HasInputRepresentation();
 
 		/**
-		 * The meta object literal for the '<em><b>Activity</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Has Activities</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESOURCE__ACTIVITY = eINSTANCE.getResource_Activity();
+		EReference RESOURCE__HAS_ACTIVITIES = eINSTANCE.getResource_HasActivities();
 
 		/**
 		 * The meta object literal for the '<em><b>Has Property</b></em>' containment reference list feature.
@@ -2129,12 +2365,12 @@ public interface ServicePIMPackage extends EPackage {
 		EReference PROPERTY__TYPE = eINSTANCE.getProperty_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Basictype</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Type Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROPERTY__BASICTYPE = eINSTANCE.getProperty_Basictype();
+		EAttribute PROPERTY__TYPE_NAME = eINSTANCE.getProperty_TypeName();
 
 		/**
 		 * The meta object literal for the '{@link ServicePIM.impl.InputRepresentationImpl <em>Input Representation</em>}' class.
@@ -2231,6 +2467,14 @@ public interface ServicePIMPackage extends EPackage {
 		EReference RES_TFUL_SERVICE_PIM__HAS_ROLES = eINSTANCE.getRESTfulServicePIM_HasRoles();
 
 		/**
+		 * The meta object literal for the '<em><b>Basictypes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RES_TFUL_SERVICE_PIM__BASICTYPES = eINSTANCE.getRESTfulServicePIM_Basictypes();
+
+		/**
 		 * The meta object literal for the '{@link ServicePIM.impl.RelationshipImpl <em>Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2307,6 +2551,14 @@ public interface ServicePIMPackage extends EPackage {
 		EReference APPLICATION__ROLES = eINSTANCE.getApplication_Roles();
 
 		/**
+		 * The meta object literal for the '<em><b>Deployment</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION__DEPLOYMENT = eINSTANCE.getApplication_Deployment();
+
+		/**
 		 * The meta object literal for the '{@link ServicePIM.impl.ConfigImpl <em>Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2341,38 +2593,6 @@ public interface ServicePIMPackage extends EPackage {
 		EAttribute CONFIG__SERVICE_PORT = eINSTANCE.getConfig_ServicePort();
 
 		/**
-		 * The meta object literal for the '<em><b>Db IP</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONFIG__DB_IP = eINSTANCE.getConfig_DbIP();
-
-		/**
-		 * The meta object literal for the '<em><b>Db Port</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONFIG__DB_PORT = eINSTANCE.getConfig_DbPort();
-
-		/**
-		 * The meta object literal for the '<em><b>Db Username</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONFIG__DB_USERNAME = eINSTANCE.getConfig_DbUsername();
-
-		/**
-		 * The meta object literal for the '<em><b>Db Password</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONFIG__DB_PASSWORD = eINSTANCE.getConfig_DbPassword();
-
-		/**
 		 * The meta object literal for the '{@link ServicePIM.impl.TypeDefinitionImpl <em>Type Definition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2381,6 +2601,14 @@ public interface ServicePIMPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TYPE_DEFINITION = eINSTANCE.getTypeDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_DEFINITION__TYPE_NAME = eINSTANCE.getTypeDefinition_TypeName();
 
 		/**
 		 * The meta object literal for the '{@link ServicePIM.impl.EnumerationImpl <em>Enumeration</em>}' class.
@@ -2529,6 +2757,80 @@ public interface ServicePIMPackage extends EPackage {
 		EAttribute CUSTOM__NAME = eINSTANCE.getCustom_Name();
 
 		/**
+		 * The meta object literal for the '{@link ServicePIM.impl.DeploymentImpl <em>Deployment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ServicePIM.impl.DeploymentImpl
+		 * @see ServicePIM.impl.ServicePIMPackageImpl#getDeployment()
+		 * @generated
+		 */
+		EClass DEPLOYMENT = eINSTANCE.getDeployment();
+
+		/**
+		 * The meta object literal for the '<em><b>Db Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOYMENT__DB_TYPE = eINSTANCE.getDeployment_DbType();
+
+		/**
+		 * The meta object literal for the '<em><b>Db Username</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOYMENT__DB_USERNAME = eINSTANCE.getDeployment_DbUsername();
+
+		/**
+		 * The meta object literal for the '<em><b>Db IP</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOYMENT__DB_IP = eINSTANCE.getDeployment_DbIP();
+
+		/**
+		 * The meta object literal for the '<em><b>Db Password</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOYMENT__DB_PASSWORD = eINSTANCE.getDeployment_DbPassword();
+
+		/**
+		 * The meta object literal for the '<em><b>Db Port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOYMENT__DB_PORT = eINSTANCE.getDeployment_DbPort();
+
+		/**
+		 * The meta object literal for the '<em><b>Deployment Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOYMENT__DEPLOYMENT_TYPE = eINSTANCE.getDeployment_DeploymentType();
+
+		/**
+		 * The meta object literal for the '<em><b>Directory Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOYMENT__DIRECTORY_PATH = eINSTANCE.getDeployment_DirectoryPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEPLOYMENT__NAME = eINSTANCE.getDeployment_Name();
+
+		/**
 		 * The meta object literal for the '{@link ServicePIM.MediaType <em>Media Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2567,6 +2869,26 @@ public interface ServicePIMPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum PROPERTY_TYPE = eINSTANCE.getPropertyType();
+
+		/**
+		 * The meta object literal for the '{@link ServicePIM.DeploymentType <em>Deployment Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ServicePIM.DeploymentType
+		 * @see ServicePIM.impl.ServicePIMPackageImpl#getDeploymentType()
+		 * @generated
+		 */
+		EEnum DEPLOYMENT_TYPE = eINSTANCE.getDeploymentType();
+
+		/**
+		 * The meta object literal for the '{@link ServicePIM.DatabaseType <em>Database Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ServicePIM.DatabaseType
+		 * @see ServicePIM.impl.ServicePIMPackageImpl#getDatabaseType()
+		 * @generated
+		 */
+		EEnum DATABASE_TYPE = eINSTANCE.getDatabaseType();
 
 	}
 

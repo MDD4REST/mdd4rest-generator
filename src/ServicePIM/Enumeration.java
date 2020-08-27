@@ -41,7 +41,7 @@ public interface Enumeration extends TypeDefinition {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see ServicePIM.ServicePIMPackage#getEnumeration_Name()
-	 * @model id="true"
+	 * @model
 	 * @generated
 	 */
 	String getName();
