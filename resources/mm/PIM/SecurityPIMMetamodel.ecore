@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SecurityPIM" nsURI="resources/mm/PIM/SecurityPIMMetamodel.ecore"
+    nsPrefix="mde">
+  <eClassifiers xsi:type="ecore:EClass" name="Authentication" abstract="true">
+    <eOperations name="currentUser" eType="#//User"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Authorization" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DecentralAuth" eSuperTypes="#//Authentication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authorization" upperBound="-1"
+        eType="#//Authorization" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CenteralAuth" eSuperTypes="#//Authentication">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uaa" lowerBound="1" eType="#//UAA"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UAA"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OAuth2" eSuperTypes="#//Authorization">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="token" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Basic" eSuperTypes="#//Authorization">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Role">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="permission" upperBound="-1"
+        eType="#//Permission" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="permissionMode" eType="#//PermissionMode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Permission">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" upperBound="-1"
+        eType="#//Constraint" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="permissionType" eType="#//PermissionType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ServicePIMMetamodel.ecore#//Activity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraintoperator" upperBound="-1"
+        eType="#//ConstraintOperator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="logicaloperators" upperBound="-1"
+        eType="#//LogicalOperator" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConstraintOperator" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightOperand" eType="ecore:EClass ServicePIMMetamodel.ecore#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OnePropertyOperator" abstract="true"
+      eSuperTypes="#//ConstraintOperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TwoPropertyOperator" abstract="true"
+      eSuperTypes="#//ConstraintOperator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" eType="ecore:EClass ServicePIMMetamodel.ecore#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneRelationalOperator" eSuperTypes="#//OnePropertyOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
+        eType="#//RelationalOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneListOperator" eSuperTypes="#//OnePropertyOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ListOperator" lowerBound="1"
+        eType="#//ListOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneStringOperator" eSuperTypes="#//OnePropertyOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="StringOperator" lowerBound="1"
+        eType="#//StringOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneUnaryOperator" eSuperTypes="#//OnePropertyOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
+        eType="#//UnaryOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneBooleanOperator" eSuperTypes="#//OnePropertyOperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TwoListOperator" eSuperTypes="#//TwoPropertyOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ListOperator" lowerBound="1"
+        eType="#//ListOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TwoRelationalOperator" eSuperTypes="#//TwoPropertyOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
+        eType="#//RelationalOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TwoStringOperator" eSuperTypes="#//TwoPropertyOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="StringOperator" lowerBound="1"
+        eType="#//StringOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PermissionType">
+    <eLiterals name="ALLOW"/>
+    <eLiterals name="DENY" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ListOperator">
+    <eLiterals name="CONTAINS"/>
+    <eLiterals name="CONTAINS_ALL" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StringOperator">
+    <eLiterals name="CONTAINS"/>
+    <eLiterals name="MATHCES" value="1"/>
+    <eLiterals name="EQIC" value="2"/>
+    <eLiterals name="STARTS_WITH" value="3"/>
+    <eLiterals name="ENDS_WITH" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RelationalOperator">
+    <eLiterals name="EQ"/>
+    <eLiterals name="NEQ" value="1"/>
+    <eLiterals name="GT" value="2"/>
+    <eLiterals name="LT" value="3"/>
+    <eLiterals name="GTE" value="4"/>
+    <eLiterals name="LTE" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="UnaryOperator">
+    <eLiterals name="IS_EMPTY"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LogicalOperatorType">
+    <eLiterals name="AND"/>
+    <eLiterals name="OR" value="1"/>
+    <eLiterals name="XOR" value="2"/>
+    <eLiterals name="INVERSE" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PermissionMode">
+    <eLiterals name="ALLOW_ALL_EXCEPT_PERMISSIONS"/>
+    <eLiterals name="DENY_ALL_EXCEPT_PERMISSIONS" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicalOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//LogicalOperatorType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="ServicePIMMetamodel.ecore#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="username" lowerBound="1"
+        eType="#//Username" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CurrentUser" eSuperTypes="#//User"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Username" eSuperTypes="ServicePIMMetamodel.ecore#//Property"/>
+</ecore:EPackage>

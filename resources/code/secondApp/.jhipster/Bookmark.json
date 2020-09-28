@@ -1,0 +1,38 @@
+{
+    "name": "Bookmark",
+    "fields": [
+        {
+            "fieldName": "bookmarkName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bookmarkUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "visibility",
+            "fieldType": "VisibilityType",
+            "fieldValues": "PUBLIC,PRIVATE"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tag",
+            "otherEntityRelationshipName": "bookmark",
+            "relationshipName": "tag",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200724213956",
+    "entityTableName": "bookmark",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "secondApp"
+    ]
+}

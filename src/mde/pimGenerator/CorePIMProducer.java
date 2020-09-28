@@ -167,6 +167,7 @@ public class CorePIMProducer extends APIMProducer {
 				System.out.println(resourceName);
 				System.out.println(resource);
 				oNewPIMApplication.getResources().add(resource);
+				resource.getApplications().add(oNewPIMApplication);
 			}
 			for (String role : oCurrentYamlApplication.getRoles()) {
 				oNewPIMApplication.getRoles().add(restUtils.findRole(role));

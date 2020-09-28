@@ -41,7 +41,7 @@ public class EcoreXMIExtractor{
 		oResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(org.eclipse.emf.ecore.resource.Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 		
 		// Get the URI of the model file.
-		oURI = URI.createFileURI(new File(this.strProjectName + "PIM.model").getAbsolutePath());
+		oURI = URI.createFileURI(new File("resources/m/PIM-ServiceModel.model").getAbsolutePath());
 		System.out.println(oURI.devicePath());
 
 		// Create a resource for this file.

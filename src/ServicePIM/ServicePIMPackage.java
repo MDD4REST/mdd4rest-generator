@@ -40,7 +40,7 @@ public interface ServicePIMPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "src/metamodels/PIM/ServicePIMMetamodel.ecore";
+	String eNS_URI = "resources/mm/PIM/ServicePIMMetamodel.ecore";
 
 	/**
 	 * The package namespace name.
@@ -186,13 +186,22 @@ public interface ServicePIMPackage extends EPackage {
 	int RESOURCE__CACHING = 12;
 
 	/**
+	 * The feature id for the '<em><b>Applications</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__APPLICATIONS = 13;
+
+	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = 13;
+	int RESOURCE_FEATURE_COUNT = 14;
 
 	/**
 	 * The number of operations of the '<em>Resource</em>' class.
@@ -1418,6 +1427,17 @@ public interface ServicePIMPackage extends EPackage {
 	EReference getResource_Caching();
 
 	/**
+	 * Returns the meta object for the reference list '{@link ServicePIM.Resource#getApplications <em>Applications</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Applications</em>'.
+	 * @see ServicePIM.Resource#getApplications()
+	 * @see #getResource()
+	 * @generated
+	 */
+	EReference getResource_Applications();
+
+	/**
 	 * Returns the meta object for class '{@link ServicePIM.CRUDActivity <em>CRUD Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2287,6 +2307,14 @@ public interface ServicePIMPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESOURCE__CACHING = eINSTANCE.getResource_Caching();
+
+		/**
+		 * The meta object literal for the '<em><b>Applications</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE__APPLICATIONS = eINSTANCE.getResource_Applications();
 
 		/**
 		 * The meta object literal for the '{@link ServicePIM.impl.CRUDActivityImpl <em>CRUD Activity</em>}' class.

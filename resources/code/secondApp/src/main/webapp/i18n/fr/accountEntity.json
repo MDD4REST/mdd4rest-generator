@@ -1,0 +1,24 @@
+{
+  "secondApp": {
+    "accountEntity": {
+      "home": {
+        "title": "AccountEntities",
+        "createLabel": "Créer un nouveau Account Entity",
+        "createOrEditLabel": "Créer ou éditer un Account Entity",
+        "notFound": "Aucun Account Entity trouvé"
+      },
+      "created": "Un nouveau Account Entity a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Account Entity avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Account Entity avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Account Entity {{ id }} ?"
+      },
+      "detail": {
+        "title": "Account Entity"
+      },
+      "username": "Username",
+      "password": "Password",
+      "bookmark": "Bookmark"
+    }
+  }
+}

@@ -9,6 +9,7 @@ import QueryPIM.ScopeSearch;
 import QueryPIM.Select;
 import QueryPIM.Sort;
 import ServicePIM.Activity;
+import ServicePIM.Application;
 import ServicePIM.InputRepresentation;
 import ServicePIM.OutputRepresentation;
 import ServicePIM.Property;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -53,6 +55,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link ServicePIM.impl.ResourceImpl#getPagination <em>Pagination</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getScopesearch <em>Scopesearch</em>}</li>
  *   <li>{@link ServicePIM.impl.ResourceImpl#getCaching <em>Caching</em>}</li>
+ *   <li>{@link ServicePIM.impl.ResourceImpl#getApplications <em>Applications</em>}</li>
  * </ul>
  *
  * @generated
@@ -207,6 +210,16 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	 * @ordered
 	 */
 	protected Caching caching;
+
+	/**
+	 * The cached value of the '{@link #getApplications() <em>Applications</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApplications()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Application> applications;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -486,6 +499,34 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 	 * @generated
 	 */
 	@Override
+	public EList<Application> getApplications() {
+		if (applications == null) {
+			applications = new EObjectWithInverseResolvingEList.ManyInverse<Application>(Application.class, this, ServicePIMPackage.RESOURCE__APPLICATIONS, ServicePIMPackage.APPLICATION__RESOURCES);
+		}
+		return applications;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ServicePIMPackage.RESOURCE__APPLICATIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getApplications()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ServicePIMPackage.RESOURCE__HAS_INPUT_REPRESENTATION:
@@ -510,6 +551,8 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 				return ((InternalEList<?>)getScopesearch()).basicRemove(otherEnd, msgs);
 			case ServicePIMPackage.RESOURCE__CACHING:
 				return basicSetCaching(null, msgs);
+			case ServicePIMPackage.RESOURCE__APPLICATIONS:
+				return ((InternalEList<?>)getApplications()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -548,6 +591,8 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 				return getScopesearch();
 			case ServicePIMPackage.RESOURCE__CACHING:
 				return getCaching();
+			case ServicePIMPackage.RESOURCE__APPLICATIONS:
+				return getApplications();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -609,6 +654,10 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 			case ServicePIMPackage.RESOURCE__CACHING:
 				setCaching((Caching)newValue);
 				return;
+			case ServicePIMPackage.RESOURCE__APPLICATIONS:
+				getApplications().clear();
+				getApplications().addAll((Collection<? extends Application>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -660,6 +709,9 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 			case ServicePIMPackage.RESOURCE__CACHING:
 				setCaching((Caching)null);
 				return;
+			case ServicePIMPackage.RESOURCE__APPLICATIONS:
+				getApplications().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -698,6 +750,8 @@ public class ResourceImpl extends MinimalEObjectImpl.Container implements Resour
 				return scopesearch != null && !scopesearch.isEmpty();
 			case ServicePIMPackage.RESOURCE__CACHING:
 				return caching != null;
+			case ServicePIMPackage.RESOURCE__APPLICATIONS:
+				return applications != null && !applications.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

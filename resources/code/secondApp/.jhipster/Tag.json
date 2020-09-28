@@ -1,0 +1,22 @@
+{
+    "name": "Tag",
+    "fields": [
+        {
+            "fieldName": "tagText",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200724213955",
+    "entityTableName": "tag",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "firstApp",
+        "secondApp"
+    ]
+}

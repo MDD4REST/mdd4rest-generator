@@ -41,7 +41,7 @@ public interface SecurityPIMMetamodelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "src/metamodels/PIM/SecurityPIMMetamodel.ecore";
+	String eNS_URI = "resources/mm/PIM/SecurityPIMMetamodel.ecore";
 
 	/**
 	 * The package namespace name.
@@ -1181,6 +1181,15 @@ public interface SecurityPIMMetamodelPackage extends EPackage {
 	int USER__CACHING = ServicePIMPackage.RESOURCE__CACHING;
 
 	/**
+	 * The feature id for the '<em><b>Applications</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER__APPLICATIONS = ServicePIMPackage.RESOURCE__APPLICATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Username</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1333,6 +1342,15 @@ public interface SecurityPIMMetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int CURRENT_USER__CACHING = USER__CACHING;
+
+	/**
+	 * The feature id for the '<em><b>Applications</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CURRENT_USER__APPLICATIONS = USER__APPLICATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Username</b></em>' containment reference.

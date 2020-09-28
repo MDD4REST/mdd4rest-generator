@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ServicePIM.Resource#getPagination <em>Pagination</em>}</li>
  *   <li>{@link ServicePIM.Resource#getScopesearch <em>Scopesearch</em>}</li>
  *   <li>{@link ServicePIM.Resource#getCaching <em>Caching</em>}</li>
+ *   <li>{@link ServicePIM.Resource#getApplications <em>Applications</em>}</li>
  * </ul>
  *
  * @see ServicePIM.ServicePIMPackage#getResource()
@@ -237,5 +238,19 @@ public interface Resource extends EObject {
 	 * @generated
 	 */
 	void setCaching(Caching value);
+
+	/**
+	 * Returns the value of the '<em><b>Applications</b></em>' reference list.
+	 * The list contents are of type {@link ServicePIM.Application}.
+	 * It is bidirectional and its opposite is '{@link ServicePIM.Application#getResources <em>Resources</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Applications</em>' reference list.
+	 * @see ServicePIM.ServicePIMPackage#getResource_Applications()
+	 * @see ServicePIM.Application#getResources
+	 * @model opposite="resources"
+	 * @generated
+	 */
+	EList<Application> getApplications();
 
 } // Resource

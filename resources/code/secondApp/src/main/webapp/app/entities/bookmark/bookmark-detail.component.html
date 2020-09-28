@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bookmark">
+            <h2><span jhiTranslate="secondApp.bookmark.detail.title">Bookmark</span> {{bookmark.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="secondApp.bookmark.bookmarkName">Bookmark Name</span></dt>
+                <dd>
+                    <span>{{bookmark.bookmarkName}}</span>
+                </dd>
+                <dt><span jhiTranslate="secondApp.bookmark.bookmarkUrl">Bookmark Url</span></dt>
+                <dd>
+                    <span>{{bookmark.bookmarkUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="secondApp.bookmark.visibility">Visibility</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'secondApp.VisibilityType.' + bookmark.visibility}}">{{bookmark.visibility}}</span>
+                </dd>
+                <dt><span jhiTranslate="secondApp.bookmark.tag">Tag</span></dt>
+                <dd>
+                    <div *ngIf="bookmark.tag">
+                        <a [routerLink]="['/tag', bookmark.tag?.id, 'view']">{{bookmark.tag?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/bookmark', bookmark.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

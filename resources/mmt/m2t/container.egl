@@ -1,0 +1,4 @@
+[%
+  var t : Template = TemplateFactory.load("JDL2JSON.egl");
+  t.generate("JDLDomainModel.json");
+%]

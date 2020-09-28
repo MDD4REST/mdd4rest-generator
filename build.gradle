@@ -4,28 +4,53 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds
  */
- 
+
 buildscript {
     ext {
         osgi_platform = 'win32.win32.x86_64'
         swt_version = '3.114.100'
     }
+
+    repositories {
+    	flatDir {
+	   		dirs 'amir/.m2/repository/p2/osgi/bundle'
+		}
+		//mavenLocal()
+	    //jcenter()
+    }
+
+	//dependencies{
+		//classpath fileTree(dir: 'amir/.m2/repository/p2/osgi/bundle', include: ['**/**/*.jar'], exclude: [''])
+	//}
 }
 
 plugins {
-  // ...
     id 'java'
     id 'java-library'
     id 'eclipse'
     id 'war'
+    //id "org.epsilonlabs.core" version "1.5.1"
+	//id "org.epsilonlabs.emf" version "1.5.1"
 }
 
-apply plugin: "eclipse"
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
-// apply plugin: "java"
+version = '1.1'
+
+apply plugin: "eclipse"
+apply plugin: "java"
+//apply plugin: "org.epsilonlabs.core"
+//apply plugin: "org.epsilonlabs.emf"
+
 
 repositories {
     mavenCentral()
+    //maven {
+	//	url "https://plugins.gradle.org/m2/"
+	//}
 }
 
 configurations.all {
@@ -37,7 +62,6 @@ configurations.all {
 }
 
 dependencies {
-	// providedCompile group: 'org.osgi', name: 'org.osgi.core', version: '6.0.0'
 	compile group: 'org.eclipse.core', name: 'org.eclipse.core.runtime', version: '3.7.0'
 	compile group: 'org.eclipse.core', name: 'org.eclipse.core.resources', version: '3.7.100'
 	compile group: 'org.eclipse.core', name: 'commands', version: '3.3.0-I20070605-0010'
@@ -48,6 +72,8 @@ dependencies {
 	compile group: 'org.apache.jena', name: 'jena-core', version: '3.16.0'
 	compile group: 'org.apache.jena', name: 'jena-arq', version: '3.16.0'
 	compile group: 'org.yaml', name: 'snakeyaml', version: '1.26'
+	compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
+	
 }
 
 sourceSets { 
@@ -59,3 +85,55 @@ jar {
 	from configurations.compile.collect { zipTree it} 
 	manifest.attributes "Main-Class": "mde.MDEEngineStarter"
 }
+
+task executePIM(type:JavaExec) {
+   main = "mde.MDEEngineStarter"
+   classpath = sourceSets.main.runtimeClasspath
+   args 'resources/m/CIM-LinkedModel.yaml'
+}
+
+//epsilon {
+//	models {
+//		servicePIM(EMF){
+//			modelFile = file('resources/m/PIM-ServiceModel.model')
+//			metamodelFile =  file('src/metamodels/PIM/ServicePIMMetamodel.ecore')
+//		}
+//		jdl(EMF){
+//			modelFile = file('resources/m/PIM-JDLModel.model')
+//			metamodelFile =  file('src/metamodels/PIM/JDLMetamodel.ecore')
+//		}
+//		servicePSM(EMF){
+//			modelFile = file('resources/m/PSM-ServiceModel.model')
+//			metamodelFile =  file('src/metamodels/PSM/ServicePSMMetamodel.ecore')
+//		}
+//	}
+//}
+
+
+
+//task servicePIM2jdl(type: ETL){
+//	src = file('resources/mmt/m2m/ServicePIM2JDL.etl')
+//	input = 'servicePIM'
+//	output = 'jdl'
+//}
+//
+//task servicePIM2servicePSM(type: ETL){
+//	src = file('resources/mmt/m2m/ServicePIM2ServicePSM.etl')
+//	input = 'servicePIM'
+//	output = 'servicePSM'
+//}
+//task m2t(type: EGX) {
+//	src = file('resources/mmt/m2t/main.egx')
+	// outputRoot = file('src-gen')
+	//input = 'servicePSM'
+//}
+//task workflow {
+//	group = "mde"
+//	dependsOn servicePIM2jdl,servicePIM2servicePSM,m2t
+//}
+
+// task executePIM2JDL(type:JavaExec) {
+//    main = "mde.MDEEngineStarter"
+//    classpath = sourceSets.main.runtimeClasspath
+//    args 'resources/models/bookmarks.yaml'
+// }

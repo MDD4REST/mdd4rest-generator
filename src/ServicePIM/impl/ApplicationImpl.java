@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -166,7 +167,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	@Override
 	public EList<Resource> getResources() {
 		if (resources == null) {
-			resources = new EObjectResolvingEList<Resource>(Resource.class, this, ServicePIMPackage.APPLICATION__RESOURCES);
+			resources = new EObjectWithInverseResolvingEList.ManyInverse<Resource>(Resource.class, this, ServicePIMPackage.APPLICATION__RESOURCES, ServicePIMPackage.RESOURCE__APPLICATIONS);
 		}
 		return resources;
 	}
@@ -247,11 +248,28 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ServicePIMPackage.APPLICATION__RESOURCES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getResources()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ServicePIMPackage.APPLICATION__HAS_CONFIG:
 				return basicSetHasConfig(null, msgs);
+			case ServicePIMPackage.APPLICATION__RESOURCES:
+				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
 			case ServicePIMPackage.APPLICATION__GLOBALSEARCHES:
 				return basicSetGlobalsearches(null, msgs);
 			case ServicePIMPackage.APPLICATION__DEPLOYMENT:

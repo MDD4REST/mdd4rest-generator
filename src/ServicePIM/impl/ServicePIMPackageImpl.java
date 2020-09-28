@@ -461,6 +461,16 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 	 * @generated
 	 */
 	@Override
+	public EReference getResource_Applications() {
+		return (EReference)resourceEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCRUDActivity() {
 		return crudActivityEClass;
 	}
@@ -1188,6 +1198,7 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		createEReference(resourceEClass, RESOURCE__PAGINATION);
 		createEReference(resourceEClass, RESOURCE__SCOPESEARCH);
 		createEReference(resourceEClass, RESOURCE__CACHING);
+		createEReference(resourceEClass, RESOURCE__APPLICATIONS);
 
 		crudActivityEClass = createEClass(CRUD_ACTIVITY);
 
@@ -1336,6 +1347,7 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 		initEReference(getResource_Pagination(), theQueryPIMMetamodelPackage.getPagination(), null, "pagination", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_Scopesearch(), theQueryPIMMetamodelPackage.getScopeSearch(), null, "scopesearch", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResource_Caching(), theQueryPIMMetamodelPackage.getCaching(), null, "caching", null, 0, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResource_Applications(), this.getApplication(), this.getApplication_Resources(), "applications", null, 0, -1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(crudActivityEClass, CRUDActivity.class, "CRUDActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1371,7 +1383,7 @@ public class ServicePIMPackageImpl extends EPackageImpl implements ServicePIMPac
 
 		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getApplication_HasConfig(), this.getConfig(), null, "hasConfig", null, 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getApplication_Resources(), this.getResource(), null, "resources", null, 1, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplication_Resources(), this.getResource(), this.getResource_Applications(), "resources", null, 1, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Globalsearches(), theQueryPIMMetamodelPackage.getGlobalSearch(), null, "globalsearches", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Roles(), theSecurityPIMMetamodelPackage.getRole(), null, "roles", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Deployment(), this.getDeployment(), null, "deployment", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

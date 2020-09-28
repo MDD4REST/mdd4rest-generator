@@ -1,0 +1,25 @@
+{
+  "secondApp": {
+    "bookmark": {
+      "home": {
+        "title": "Bookmarks",
+        "createLabel": "Créer un nouveau Bookmark",
+        "createOrEditLabel": "Créer ou éditer un Bookmark",
+        "notFound": "Aucun Bookmark trouvé"
+      },
+      "created": "Un nouveau Bookmark a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Bookmark avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Bookmark avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Bookmark {{ id }} ?"
+      },
+      "detail": {
+        "title": "Bookmark"
+      },
+      "bookmarkName": "Bookmark Name",
+      "bookmarkUrl": "Bookmark Url",
+      "visibility": "Visibility",
+      "tag": "Tag"
+    }
+  }
+}

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_3HfUgLIrEeq_ZqB0dZqVlQ" selectedViews="_3JCMoLIrEeq_ZqB0dZqVlQ _3JzosLIrEeq_ZqB0dZqVlQ _3J1d4LIrEeq_ZqB0dZqVlQ _3J6WYLIrEeq_ZqB0dZqVlQ" version="14.3.0.201909031200">
-    <semanticResources>ServicePSMMetamodel.ecore</semanticResources>
-    <semanticResources>openapi2.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_3JCMoLIrEeq_ZqB0dZqVlQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_G-kh8LIsEeq_ZqB0dZqVlQ" name="ServicePSM class diagram" repPath="#_G-fpcLIsEeq_ZqB0dZqVlQ" changeId="cd55588a-e4a8-43b0-94a2-9bd18375f973">

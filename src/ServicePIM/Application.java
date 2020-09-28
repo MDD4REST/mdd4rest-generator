@@ -54,11 +54,13 @@ public interface Application extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Resources</b></em>' reference list.
 	 * The list contents are of type {@link ServicePIM.Resource}.
+	 * It is bidirectional and its opposite is '{@link ServicePIM.Resource#getApplications <em>Applications</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resources</em>' reference list.
 	 * @see ServicePIM.ServicePIMPackage#getApplication_Resources()
-	 * @model required="true"
+	 * @see ServicePIM.Resource#getApplications
+	 * @model opposite="applications" required="true"
 	 * @generated
 	 */
 	EList<Resource> getResources();
