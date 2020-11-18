@@ -17,7 +17,7 @@ public class StaticOntologyAPITest {
 	public static void main(String[] args) {
 
 		// Create a new file for the static ontology and instantiate it
-		StaticOntologyAPI ontology = new StaticOntologyAPI("Restmarks");
+		StaticOntologyAPI ontology = new StaticOntologyAPI("bookmarks");
 
 		// Add a new requirement
 		ontology.addRequirement("FR1");

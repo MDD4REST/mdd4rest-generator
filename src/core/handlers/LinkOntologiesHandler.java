@@ -1,8 +1,6 @@
 package core.handlers;
 
-import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.resources.IProject;
 
 import core.ontology.DynamicOntologyAPI;
 import core.ontology.LinkedOntologyAPI;
@@ -13,10 +11,9 @@ import core.ontology.StaticOntologyAPI;
  * 
  * @author themis
  */
-public class LinkOntologiesHandler extends ProjectAwareHandler {
+public class LinkOntologiesHandler {
 
-	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException {
+	public Object execute() throws ExecutionException {
 
 		// Load the two ontologies
 		StaticOntologyAPI staticOntology = new StaticOntologyAPI();
@@ -35,17 +32,6 @@ public class LinkOntologiesHandler extends ProjectAwareHandler {
 
 	}
 
-	/**
-	 * Instantiates the linked ontology given a static ontology instantiation and a
-	 * dynamic ontology instantiation. All three ontology objects have to be created
-	 * before calling this method. After calling this method, the linked ontology
-	 * has to be saved using the
-	 * {@link eu.scasefp7.eclipse.core.ontology.LinkedOntologyAPI#close()} method.
-	 * 
-	 * @param staticOntology  an instantiation of the static ontology.
-	 * @param dynamicOntology an instantiation of the static ontology.
-	 * @param linkedOntology  the linked ontology that is instantiated.
-	 */
 	public void linkOntologies(StaticOntologyAPI staticOntology, DynamicOntologyAPI dynamicOntology,
 			LinkedOntologyAPI linkedOntology) {
 
@@ -56,7 +42,7 @@ public class LinkOntologiesHandler extends ProjectAwareHandler {
 			linkedOntology.addResource(object);
 
 			// Iterate over all related objects of the object and add them to the linked
-			// ontology
+			// ontology			
 			for (String relatedObject : staticOntology.getRelatedObjectsOfObject(object)) {
 				linkedOntology.addResource(relatedObject);
 				linkedOntology.addRelatedResourceToResource(object, relatedObject);

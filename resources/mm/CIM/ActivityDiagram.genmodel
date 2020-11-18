@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/MyCore/src" modelPluginID="MyCore"
+    modelName="ActivityDiagramMetamodel" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>ActivityDiagram.emf</foreignModel>
+  <genPackages prefix="ActivityDiagramMetamodel" disposableProviderFactory="true"
+      ecorePackage="ActivityDiagram.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ActivityDiagram.ecore#//ObjectNodeOrderingKind">
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//ObjectNodeOrderingKind/unordered"/>
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//ObjectNodeOrderingKind/ordered"/>
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//ObjectNodeOrderingKind/FIFO"/>
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//ObjectNodeOrderingKind/LIFO"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ActivityDiagram.ecore#//ObjectActionKind">
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//ObjectActionKind/createObjectAction"/>
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//ObjectActionKind/destroyObjectAction"/>
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//ObjectActionKind/testIdentityAction"/>
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//ObjectActionKind/readSelfAction"/>
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//ObjectActionKind/valueSpecificationAction"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ActivityDiagram.ecore#//VariableActionKind">
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//VariableActionKind/clearVariableAction"/>
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//VariableActionKind/writeVariableAction"/>
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//VariableActionKind/readVariableAction"/>
+      <genEnumLiterals ecoreEnumLiteral="ActivityDiagram.ecore#//VariableActionKind/mathematicalVariableAction"/>
+    </genEnums>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ActivityDiagram">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ActivityDiagram/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ActivityDiagram/precondition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ActivityDiagram/postcondition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ActivityDiagram/isReadOnly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ActivityDiagram/isSingleExecution"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityDiagram/activityedge"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityDiagram/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityDiagram/activitypartition"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ActivityNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityNode/incomming"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityNode/outcomming"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityNode/activitypartition"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ActivityEdge">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ActivityEdge/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ActivityEdge/guard"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityEdge/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityEdge/source"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityEdge/weight"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityEdge/activitypartition"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ObjectFlow"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ControlFlow"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ControlNode"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ExecutableNode"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//InitialNode"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ForkNode"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//JoinNode"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//DecisionNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//DecisionNode/objectnode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//DecisionNode/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//MergeNode"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//FinalNode"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//InputPin"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//OutputPin"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//Pin"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ObjectNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ObjectNode/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ObjectNode/upperBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ObjectNode/isControlType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ObjectNode/order"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ActivityParameterNode"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//Variable/upperBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//Variable/lowerBound"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ValueSpecification"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//Action">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//Action/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//Action/inputpin"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//Action/outputpin"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//CallAction"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//VariableAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//VariableAction/kind"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//StartObjectBehaviorAction"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ObjectAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ObjectAction/kind"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//CallBehaviorAction"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//CallOperationAction"/>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//CallActivityAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//CallActivityAction/activitydiagram"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//ActivityPartition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ActivityDiagram.ecore#//ActivityPartition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityPartition/subpartition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityPartition/activityedge"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//EventAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//EventAction/aggregate"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//CommandAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//CommandAction/aggregate"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//Aggregate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//Aggregate/events"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//Aggregate/command"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//Aggregate/query"/>
+    </genClasses>
+    <genClasses ecoreClass="ActivityDiagram.ecore#//QueryAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ActivityDiagram.ecore#//QueryAction/aggregate"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

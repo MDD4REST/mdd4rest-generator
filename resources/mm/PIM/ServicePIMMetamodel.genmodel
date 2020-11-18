@@ -20,12 +20,12 @@
       <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//ApplicationType/GATEWAY"/>
       <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//ApplicationType/MONOLITH"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ServicePIMMetamodel.ecore#//PropertyType">
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//PropertyType/String"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//PropertyType/Integer"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//PropertyType/Float"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//PropertyType/Boolean"/>
-      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//PropertyType/null"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ServicePIMMetamodel.ecore#//DefaultType">
+      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//DefaultType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//DefaultType/Integer"/>
+      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//DefaultType/Float"/>
+      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//DefaultType/Boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//DefaultType/null"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ServicePIMMetamodel.ecore#//DeploymentType">
       <genEnumLiterals ecoreEnumLiteral="ServicePIMMetamodel.ecore#//DeploymentType/DOCKER"/>
@@ -44,18 +44,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Resource/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasInputRepresentation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasActivities"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasProperty"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasOutputRepresentation"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasRelationship"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/filters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/sort"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/select"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/pagination"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/scopesearch"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/caching"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/applications"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/model"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/hasRelatedResource"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Resource/isRelatedResource"/>
     </genClasses>
-    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//CRUDActivity"/>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Property/isUnique"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Property/isNamingProperty"/>
@@ -76,22 +73,29 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//RESTfulServicePIM/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//RESTfulServicePIM/basePath"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/hasApplications"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/enumerations"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/hasResources"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/hasRoles"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/basictypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RESTfulServicePIM/primitiveTypes"/>
     </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Relationship">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Relationship/multiplicity"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Relationship/fromResource"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Relationship/toResource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Relationship/cascade"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Relationship/orderBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Relationship/visibility"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Relationship/required"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Relationship/nullable"/>
     </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Application">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/hasConfig"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/resources"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/resources"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/globalsearches"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/roles"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/deployment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/aggregates"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/services"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/enumerations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Application/datamapper"/>
     </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Config">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Config/baseName"/>
@@ -103,25 +107,21 @@
     </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Enumeration">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Enumeration/literals"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Enumeration/name"/>
     </genClasses>
-    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//BasicType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//BasicType/type"/>
-    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//BasicType"/>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Literal">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Literal/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Literal/value"/>
     </genClasses>
-    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Activity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Activity/isAuthenticatedRequired"/>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//CRUDActivity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//CRUDActivity/isAuthenticatedRequired"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//CRUDActivity/isCustom"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//CRUDActivity/delegate"/>
     </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Create"/>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Read"/>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Update"/>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Delete"/>
-    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Custom">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Custom/name"/>
-    </genClasses>
     <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Deployment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Deployment/dbType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Deployment/dbUsername"/>
@@ -131,6 +131,94 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Deployment/deploymentType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Deployment/directoryPath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Deployment/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Entity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Entity/scaffold"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//DataMapper">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//DataMapper/entity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//DataMapper/dto"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//DataMapper/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//DTO"/>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//DomainObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//DomainObject/hasProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//DomainObject/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//DomainObject/abstract"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//DomainObject/repository"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//DomainObject/aggregateRoot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//DomainObject/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//DomainObject/hasRelationship"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//ValueObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//ValueObject/immutable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//ValueObject/persistent"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Aggregate">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Aggregate/domainobjects"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Operation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Operation/parameters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Operation/returnType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Operation/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Operation/publish"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Parameter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Parameter/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Parameter/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//CollectionResource">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//CollectionResource/pagination"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//CollectionResource/sort"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//SingletonResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//SingletonResource/lookupField"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ServicePIMMetamodel.ecore#//Event"/>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Publish">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Publish/eventBus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Publish/topic"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Publish/eventType"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//CommandEvent"/>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//DomainEvent"/>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//ServiceOperation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//ServiceOperation/serviceDelegate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//ServiceOperation/delegate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//ServiceOperation/service"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//DomainObjectOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//DomainObjectOperation/abstract"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//DomainObjectOperation/domainObject"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//RepositoryOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//RepositoryOperation/delegateToAccessObject"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//RepositoryOperation/accessObjectName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//RepositoryOperation/repository"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Repository">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Repository/repositoryDependencies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Repository/otherDependencies"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Repository/aggregateRoot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Repository/operations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Repository/subscribe"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Service">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Service/repositoryDependencies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Service/otherDependencies"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Service/serviceDependencies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Service/webService"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Service/remoteInterface"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Service/localInterface"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Service/subscribe"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ServicePIMMetamodel.ecore#//Service/operations"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//Subscribe">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Subscribe/eventBus"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//Subscribe/topic"/>
+    </genClasses>
+    <genClasses ecoreClass="ServicePIMMetamodel.ecore#//PrimitiveType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ServicePIMMetamodel.ecore#//PrimitiveType/type"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="QueryPIMMetamodel" ecorePackage="QueryPIMMetamodel.ecore#/">

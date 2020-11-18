@@ -22,8 +22,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.QualifiedName;
 
-import core.Activator;
-import core.builder.ProjectUtils;
 import core.ontology.LinkedOntologyAPI;
 import core.ontologytoyamltools.Operation;
 import core.ontologytoyamltools.Property;
@@ -180,7 +178,7 @@ public class OntologyToYamlHandler {
 			file = new FileOutputStream("E:\\Software Development\\Programming\\service.yml");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			Activator.log("can't create a file", e);
+			System.out.println("can't create a file"+ e);
 		}		
 
 		// Write the resources to file
@@ -193,7 +191,7 @@ public class OntologyToYamlHandler {
 		try {
 			IOUtils.copy(ymlStream,file);
 		} catch (IOException e) {
-			Activator.log("Unable to create YAML file (service.yml).", e);
+			System.out.println("Unable to create YAML file (service.yml)."+ e);
 		}
 	}
 

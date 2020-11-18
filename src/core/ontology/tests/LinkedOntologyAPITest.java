@@ -21,11 +21,11 @@ public class LinkedOntologyAPITest {
 		String projectName = "Restmarks";
 
 		// Load the two ontologies
-		StaticOntologyAPI staticOntology = new StaticOntologyAPI(projectName, false);
-		DynamicOntologyAPI dynamicOntology = new DynamicOntologyAPI(projectName, false);
+		StaticOntologyAPI staticOntology = new StaticOntologyAPI(projectName, "resources/examples/bookmarks", false);
+		DynamicOntologyAPI dynamicOntology = new DynamicOntologyAPI(projectName, "resources/examples/bookmarks", false);
 
 		// Create a new file for the linked ontology and instantiate it
-		LinkedOntologyAPI linkedOntology = new LinkedOntologyAPI(projectName);
+		LinkedOntologyAPI linkedOntology = new LinkedOntologyAPI(projectName, "resources/examples/bookmarks");
 
 		// Link the ontologies
 		new LinkOntologiesHandler().linkOntologies(staticOntology, dynamicOntology, linkedOntology);

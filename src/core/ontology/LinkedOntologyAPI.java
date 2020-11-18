@@ -3,8 +3,6 @@ package core.ontology;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.resources.IProject;
-
 import core.ontology.OntologySource.OntologyType;
 import core.ontology.OntologyJenaAPI;
 
@@ -29,9 +27,9 @@ public class LinkedOntologyAPI {
 	 * @param forceDelete boolean denoting whether any existing ontology file should be deleted.
 	 */
 	public LinkedOntologyAPI(boolean forceDelete) {
-		linkedOntology = new OntologyJenaAPI(OntologyType.LINKED,
-				"http://www.owl-ontologies.com/Ontology1273059028.owl", forceDelete);
-		this.projectName = "Amir Project";
+		this.projectName = "MyCore Project";
+		linkedOntology = new OntologyJenaAPI(null, OntologyType.LINKED,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, forceDelete);
 		linkedOntology.addIndividual("Project", projectName);
 	}
 
@@ -42,9 +40,9 @@ public class LinkedOntologyAPI {
 	 * @param project the project to connect to in the linked ontology.
 	 */
 	public LinkedOntologyAPI() {
-		linkedOntology = new OntologyJenaAPI(OntologyType.LINKED,
+		linkedOntology = new OntologyJenaAPI(null, OntologyType.LINKED,
 				"http://www.owl-ontologies.com/Ontology1273059028.owl");
-		this.projectName = "Amir Project";
+		this.projectName = "MyCore Project";
 		linkedOntology.addIndividual("Project", projectName);
 	}
 
@@ -54,8 +52,15 @@ public class LinkedOntologyAPI {
 	 * @param projectName the name of the project.
 	 */
 	public LinkedOntologyAPI(String projectName) {
-		linkedOntology = new OntologyJenaAPI(OntologyType.LINKED,
-				"http://www.owl-ontologies.com/Ontology1273059028.owl", true);
+		linkedOntology = new OntologyJenaAPI(null, OntologyType.LINKED,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, true);
+		this.projectName = projectName;
+		linkedOntology.addIndividual("Project", projectName);
+	}
+	
+	public LinkedOntologyAPI(String projectName, String projectPath) {
+		linkedOntology = new OntologyJenaAPI(projectPath, OntologyType.LINKED,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, true);
 		this.projectName = projectName;
 		linkedOntology.addIndividual("Project", projectName);
 	}
@@ -67,11 +72,19 @@ public class LinkedOntologyAPI {
 	 * @param forceDelete delete any existing ontology file.
 	 */
 	public LinkedOntologyAPI(String projectName, boolean forceDelete) {
-		linkedOntology = new OntologyJenaAPI(OntologyType.LINKED,
-				"http://www.owl-ontologies.com/Ontology1273059028.owl", forceDelete);
+		linkedOntology = new OntologyJenaAPI(null, OntologyType.LINKED,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, forceDelete);
 		this.projectName = projectName;
 		linkedOntology.addIndividual("Project", projectName);
 	}
+	
+	public LinkedOntologyAPI(String projectName, String projectPath, boolean forceDelete) {
+		linkedOntology = new OntologyJenaAPI(projectPath, OntologyType.LINKED,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, forceDelete);
+		this.projectName = projectName;
+		linkedOntology.addIndividual("Project", projectName);
+	}
+
 
 	/**
 	 * Connects the project to an element of the ontology.

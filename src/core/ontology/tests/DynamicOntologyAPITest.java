@@ -17,7 +17,7 @@ public class DynamicOntologyAPITest {
 	public static void main(String[] args) {
 
 		// Create a new file for the dynamic ontology and instantiate it
-		DynamicOntologyAPI ontology = new DynamicOntologyAPI("Restmarks");
+		DynamicOntologyAPI ontology = new DynamicOntologyAPI("bookmarks");
 
 		// Add a new diagram
 		ontology.addActivityDiagram("Add_Bookmark");

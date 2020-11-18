@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace:TraceModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:trace="http://www.eclipse.org/gmf/2006/Trace">
+  <nodeTraces
+      visualID="2001"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'VariableAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5032"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2002"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'StartObjectBehaviorAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5033"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2003"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ObjectAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5034"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2004"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CallBehaviorAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5035"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2005"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CallOperationAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5036"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2006"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CallActivityAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5037"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2007"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'InputPin') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5052"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2008"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'OutputPin') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5053"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2009"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CallAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5038"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2010"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'EventAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5039"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2011"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CommandAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5040"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2012"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'InitialNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')"/>
+  <nodeTraces
+      visualID="2013"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ForkNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')"/>
+  <nodeTraces
+      visualID="2014"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'JoinNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')"/>
+  <nodeTraces
+      visualID="2015"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'DecisionNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5010"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2016"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'MergeNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')"/>
+  <nodeTraces
+      visualID="2017"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'FinalNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')"/>
+  <nodeTraces
+      visualID="2018"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'Pin') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5054"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2019"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityParameterNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5055"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2020"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'Action') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5041"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2021"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ControlNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')"/>
+  <nodeTraces
+      visualID="2022"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ExecutableNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')"/>
+  <nodeTraces
+      visualID="2023"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ObjectNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5057"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2024"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')"/>
+  <nodeTraces
+      visualID="2025"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitypartition')">
+    <nodeLabelTraces
+        visualID="5013"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7001"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7003"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2026"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'Aggregate') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5056"
+        queryText="true"/>
+  </nodeTraces>
+  <nodeTraces
+      visualID="2027"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'QueryAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityDiagram') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5065"
+        queryText="true"/>
+  </nodeTraces>
+  <childNodeTraces
+      visualID="3002"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'VariableAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5042"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3003"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'StartObjectBehaviorAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5043"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3004"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ObjectAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5044"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3005"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CallBehaviorAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5045"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3006"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CallOperationAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5046"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3007"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CallActivityAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5047"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3008"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'InputPin') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5058"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3009"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'OutputPin') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5059"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3010"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CallAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5048"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3011"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'EventAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5049"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3012"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CommandAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5050"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3013"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'InitialNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')"/>
+  <childNodeTraces
+      visualID="3014"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ForkNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')"/>
+  <childNodeTraces
+      visualID="3015"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'JoinNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')"/>
+  <childNodeTraces
+      visualID="3016"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'DecisionNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5031"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3017"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'MergeNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')"/>
+  <childNodeTraces
+      visualID="3018"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'FinalNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')"/>
+  <childNodeTraces
+      visualID="3019"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'Pin') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5060"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3020"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityParameterNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5061"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3021"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'Action') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5051"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3022"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'Aggregate') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5062"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3023"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ControlNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')"/>
+  <childNodeTraces
+      visualID="3024"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ExecutableNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')"/>
+  <childNodeTraces
+      visualID="3025"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ObjectNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5063"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3026"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityNode') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')"/>
+  <childNodeTraces
+      visualID="3027"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'subpartition')">
+    <nodeLabelTraces
+        visualID="5064"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7004"
+        queryText="true"/>
+    <compartmentTraces
+        visualID="7005"
+        queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces
+      visualID="3028"
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'QueryAction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityPartition') and _containmentMF_.name = 'activitynode')">
+    <nodeLabelTraces
+        visualID="5066"
+        queryText="true"/>
+  </childNodeTraces>
+  <linkTraces
+      visualID="4001"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ObjectFlow')"/>
+  <linkTraces
+      visualID="4002"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ControlFlow')"/>
+  <linkTraces
+      visualID="4003"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityEdge')"/>
+  <linkTraces
+      visualID="4004"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'CommandAction') and _feature_.name = 'aggregate')">
+    <linkLabelTraces
+        visualID="6001"
+        queryText="true"/>
+  </linkTraces>
+  <linkTraces
+      visualID="4005"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ObjectFlow')"/>
+  <linkTraces
+      visualID="4006"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ControlFlow')"/>
+  <linkTraces
+      visualID="4007"
+      queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'ActivityEdge')"/>
+  <linkTraces
+      visualID="4009"
+      queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'resources/mm/CIM/ActivityDiagram.ecore' and _eClass_.name = 'Aggregate') and _feature_.name = 'events')">
+    <linkLabelTraces
+        visualID="6003"
+        queryText="true"/>
+  </linkTraces>
+</trace:TraceModel>

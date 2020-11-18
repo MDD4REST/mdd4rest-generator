@@ -1,0 +1,191 @@
+@gmf
+@namespace(uri="resources/mm/CIM/ActivityDiagram.ecore", prefix="mde")
+package ActivityDiagramMetamodel;
+
+@gmf.diagram
+class ActivityDiagram {
+	attr String name;
+	attr String precondition;
+	attr String postcondition;
+	attr boolean isReadOnly;
+	attr boolean isSingleExecution;
+	val ActivityEdge[*] activityedge;
+	val ActivityNode[*] activitynode;
+	val Variable[*] variable;
+	val ActivityPartition[*] activitypartition;
+}
+
+@gmf.node(label.placement="none")
+class ActivityNode {
+	ref ActivityEdge[*]#target incomming;
+	ref ActivityEdge[*]#source outcomming;
+	ref ActivityPartition#activitynode activitypartition;
+}
+
+@gmf.link(source="source", target="target", target.decoration="arrow", width="2")
+class ActivityEdge {
+	attr String name;
+	attr String guard;
+	ref ActivityNode[1]#incomming target;
+	ref ActivityNode[1]#outcomming source;
+	val ValueSpecification[*] weight;
+	ref ActivityPartition#activityedge activitypartition;
+}
+
+class ObjectFlow extends ActivityEdge {
+}
+
+class ControlFlow extends ActivityEdge {
+}
+
+@gmf.node(label.placement="none")
+class ControlNode extends ActivityNode {
+}
+
+class ExecutableNode extends ActivityNode {
+}
+
+@gmf.node(tool.name="Initial Node", figure="svg", svg.uri="platform:/plugin/MyCore/svg/full-moon.svg", label.icon="false", label.placement="none", size="30,30", resizable="false", margin="2")
+class InitialNode extends ControlNode {
+}
+
+@gmf.node(tool.name="Fork Node", figure="svg", svg.uri="platform:/plugin/MyCore/svg/vertical-line.svg", label.icon="false", label.placement="none", size="10,80", resizable="false", margin="2")
+class ForkNode extends ControlNode {
+}
+
+@gmf.node(tool.name="Join Node", figure="svg", svg.uri="platform:/plugin/MyCore/svg/vertical-line.svg", label.icon="false", label.placement="none", size="10,80", resizable="false", margin="2")
+class JoinNode extends ControlNode {
+}
+
+@gmf.node(label="name", label.placement="external", tool.name="Decision (Policy)", figure="svg", svg.uri="platform:/plugin/MyCore/svg/diamond-3.svg", label.icon="false", size="40,40", resizable="false", margin="2")
+class DecisionNode extends ControlNode {
+	ref ObjectNode[*] objectnode;
+	attr String name;
+}
+
+class MergeNode extends ControlNode {
+}
+
+@gmf.node(tool.name="Final Node", figure="svg", svg.uri="platform:/plugin/MyCore/svg/rec.svg", label.icon="false", label.placement="none", size="30,60", resizable="false", margin="2")
+class FinalNode extends ControlNode {
+}
+
+class InputPin extends Pin {
+}
+
+class OutputPin extends Pin {
+}
+
+class Pin extends ObjectNode {
+}
+
+@gmf.node(label="name", label.placement="internal")
+class ObjectNode extends ActivityNode {
+	attr String name;
+	val ValueSpecification upperBound;
+	attr boolean isControlType;
+	attr ObjectNodeOrderingKind order = "FIFO";
+}
+
+class ActivityParameterNode extends ObjectNode {
+}
+
+class Variable {
+	attr int upperBound;
+	attr int lowerBound;
+}
+
+class ValueSpecification {
+}
+
+enum ObjectNodeOrderingKind {
+	unordered = 0;
+	~ordered = 1;
+	FIFO = 2;
+	LIFO = 3;
+}
+
+@gmf.node(label="name", label.placement="internal")
+class Action extends ExecutableNode {
+	attr String name;
+	val InputPin[*] inputpin;
+	val OutputPin[*] outputpin;
+}
+
+class CallAction extends Action {
+}
+
+class VariableAction extends CallAction {
+	attr VariableActionKind kind;
+}
+
+class StartObjectBehaviorAction extends CallAction {
+}
+
+class ObjectAction extends CallAction {
+	attr ObjectActionKind kind;
+}
+
+class CallBehaviorAction extends CallAction {
+}
+
+class CallOperationAction extends CallAction {
+}
+
+class CallActivityAction extends CallAction {
+	val ActivityDiagram[1] activitydiagram;
+}
+
+enum ObjectActionKind {
+	createObjectAction = 0;
+	destroyObjectAction = 1;
+	testIdentityAction = 2;
+	readSelfAction = 3;
+	valueSpecificationAction = 4;
+}
+
+enum VariableActionKind {
+	clearVariableAction = 0;
+	writeVariableAction = 1;
+	readVariableAction = 2;
+	mathematicalVariableAction = 3;
+}
+
+@gmf.node(label="name")
+class ActivityPartition {
+	attr String name;
+
+	@gmf.compartment
+	val ActivityPartition[*] subpartition;
+	val ActivityEdge[*]#activitypartition activityedge;
+
+	@gmf.compartment
+	val ActivityNode[*]#activitypartition activitynode;
+}
+
+@gmf.node(label="name", color="243,156,18")
+class EventAction extends Action {
+	ref Aggregate#events aggregate;
+}
+
+@gmf.node(label="name", color="173,216,230")
+class CommandAction extends Action {
+
+	@gmf.link(style="dash", target.decoration="arrow", width="2")
+	ref Aggregate#command aggregate;
+}
+
+@gmf.node(label="name", color="241,196,15")
+class Aggregate extends ObjectNode {
+
+	@gmf.link(style="dash", target.decoration="arrow", width="2")
+	ref EventAction[*]#aggregate events;
+	ref CommandAction#aggregate command;
+	ref QueryAction#aggregate query;
+}
+
+@gmf.node(label="name", color="243,156,18")
+class QueryAction extends Action {
+	ref Aggregate#query aggregate;
+}
+

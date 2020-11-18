@@ -1,0 +1,587 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.owl-ontologies.com/Ontology1273059028.owl#"
+     xml:base="http://www.owl-ontologies.com/Ontology1273059028.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#">
+    <owl:Ontology rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_action -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_action">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_action_of_activity"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_aggregate -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_aggregate">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_condition -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_condition">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of_activity"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#GuardCondition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_object -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_object">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of_activity"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_property -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_property">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of_activity"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#activity_satisfies_condition -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activity_satisfies_condition">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#condition_is_satisfied_by_activity"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#GuardCondition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#condition_is_satisfied_by_activity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#condition_is_satisfied_by_activity">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#GuardCondition"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#diagram_has -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#diagram_has">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_of_diagram"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Actor"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#AnyActivity"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Property"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#diagram_has_condition -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#diagram_has_condition">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of_diagram"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PostCondition"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PreCondition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_actor -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_actor">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_actor_of"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_condition -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_condition">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#GuardCondition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_source -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_source">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InitialActivity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_target -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_target">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FinalActivity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_action_of_activity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_action_of_activity">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_actor_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_actor_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Actor"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_aggregate_of_activity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_aggregate_of_activity"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#GuardCondition"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of_activity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of_activity">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#GuardCondition"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FinalActivity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of_diagram -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of_diagram">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PostCondition"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PreCondition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_diagram_of_project -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_diagram_of_project">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#project_has_diagram"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of_activity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of_activity">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_of_diagram -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_of_diagram">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Actor"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#AnyActivity"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Property"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_opposite_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_opposite_of">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_opposite_of"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#GuardCondition"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#GuardCondition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of_activity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of_activity">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Property"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InitialActivity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FinalActivity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#project_has_diagram -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#project_has_diagram">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#activitytype -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activitytype">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Action -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Action">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Activity -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#AnyActivity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Actor -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Actor">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#AnyActivity -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#AnyActivity">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Command -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Command">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Concept -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Condition -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#DomainObject -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#DomainObject">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Entity -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Entity">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#DomainObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#DomainObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Event -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Event">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FinalActivity -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FinalActivity">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#AnyActivity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#GuardCondition -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#GuardCondition">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#InitialActivity -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InitialActivity">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#AnyActivity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Object -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Object">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#ObjectAction -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ObjectAction">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#PostCondition -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PostCondition">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#PreCondition -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PreCondition">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Project -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Project">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Property -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Property">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Transition -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Transition">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#DomainObject"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+

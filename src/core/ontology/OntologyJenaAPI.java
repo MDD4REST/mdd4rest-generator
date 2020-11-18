@@ -8,21 +8,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.QualifiedName;
-
+import org.apache.jena.ext.com.google.common.io.ByteStreams;
 import org.apache.jena.ontology.*;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Model;
@@ -34,20 +26,18 @@ import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.util.*;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
-import core.Activator;
-import core.builder.ProjectUtils;
 import core.ontology.OntologySource.OntologyType;
 
 /**
  * Provides an API for an ontology in OWL format. Allows adding/deleting
  * instances and properties.
  * 
- * @author themis
+ * @author amirdeljouyi
  */
 public class OntologyJenaAPI {
 
 	/** The file where the ontology resides. */
-	private IFile file;
+	private File file;
 
 	/** Test file used for ontology tests. */
 	private File testfile;
@@ -61,6 +51,9 @@ public class OntologyJenaAPI {
 	/** The type of the ontology. */
 	private OntologyType ontologyType;
 
+	/** The output path of cim */
+	public final String OutputPath = "resources/examples/";
+
 	/**
 	 * Initializes the connection of this API with the ontology. Upon calling this
 	 * function, the ontology is loaded in memory. <u><b>NOTE</b></u> that you have
@@ -72,33 +65,40 @@ public class OntologyJenaAPI {
 	 * @param forceDelete  boolean denoting whether any existing ontology file
 	 *                     should be deleted.
 	 */
-	public OntologyJenaAPI(OntologyType ontologyType, String source, boolean forceDelete) {
+	public OntologyJenaAPI(String projectPath, OntologyType ontologyType, String source, String projectName,
+			boolean forceDelete) {
 		this.ontologyType = ontologyType;
-		testfile = new File(getFilenameForOntologyType(ontologyType));
-		System.out.println("path: " + testfile.getAbsolutePath());
+
+		if (projectPath == null) {
+			testfile = new File(OutputPath + projectName + "/" + getFilenameForOntologyType(ontologyType));
+			System.out.println("path: " + testfile.getAbsolutePath());
+		}
+		else {
+			file = getPathOfOntologyFile(projectPath, ontologyType);
+			System.out.println("path: " + file.getAbsolutePath());
+		}
+
 		System.out.println("ontology type: " + getFilenameForOntologyType(ontologyType));
 		NS = source + "#";
 
 		if (forceDelete) {
 			if (file != null && file.exists()) {
 				try {
-					file.delete(IResource.FORCE, null);
-					String ontologyContents = OntologySource.getOntology(ontologyType);
-					InputStream ontologyStream = new ByteArrayInputStream(
-							ontologyContents.getBytes(StandardCharsets.UTF_8));
-					file.create(ontologyStream, IResource.FORCE, null);
-				} catch (CoreException e) {
-					Activator.log("Unable to force delete and recreate " + ontologyType.name().toLowerCase()
-							+ " ontology file", e);
+					file.delete();
+					InputStream ontologyStream = OntologySource.getOntology(ontologyType);
+					OutputStream output = new FileOutputStream(file);
+					ByteStreams.copy(ontologyStream, output);
+				} catch (IOException e) {
+					System.out.println("Unable to force delete and recreate " + ontologyType.name().toLowerCase()
+							+ " ontology file" + e);
 				}
 			} else if (testfile != null && testfile.exists()) {
 				try {
 					testfile.delete();
-					String ontologyContents = OntologySource.getOntology(ontologyType);
-					PrintWriter writer = new PrintWriter(testfile, StandardCharsets.UTF_8.name());
-					writer.println(ontologyContents);
-					writer.close();
-				} catch (FileNotFoundException | UnsupportedEncodingException e) {
+					InputStream ontologyStream = OntologySource.getOntology(ontologyType);
+					OutputStream output = new FileOutputStream(testfile);
+					ByteStreams.copy(ontologyStream, output);
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
@@ -115,8 +115,17 @@ public class OntologyJenaAPI {
 	 * @param ontologyType the type of the ontology.
 	 * @param source       the source URI of the ontology.
 	 */
-	public OntologyJenaAPI(OntologyType ontologyType, String source) {
-		this(ontologyType, source, false);
+	public OntologyJenaAPI(String projectPath, OntologyType ontologyType, String source) {
+		this(projectPath, ontologyType, source, "MyCore", false);
+	}
+
+	/**
+	 * 
+	 * @param ontologyType
+	 * @param source
+	 */
+	public OntologyJenaAPI(String projectPath, OntologyType ontologyType, String source, String projectName) {
+		this(projectPath, ontologyType, source, projectName, false);
 	}
 
 	/**
@@ -127,12 +136,20 @@ public class OntologyJenaAPI {
 	 * @param ontologyType the type of the ontology.
 	 * @return the ontology file.
 	 */
-	private IFile getPathOfOntologyFile(OntologyType ontologyType) {
-		IFile file = null;
+	private File getPathOfOntologyFile(String projectPath, OntologyType ontologyType) {
+		File file = null;
 		String filename = getFilenameForOntologyType(ontologyType);
-		if (filename != null) {
-			filename = ResourcesPlugin.getWorkspace().getRoot().getLocation().toString() + "/" + filename;
-			file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(filename));
+		if (projectPath != null) {
+			if (filename != null) {
+				System.out.println("Path");
+				filename = projectPath + "/CIM/ontology/" + filename;
+				file = new File(filename);
+			}
+		} else {
+			if (filename != null) {
+				filename = "resources/examples/example" + filename;
+				file = new File(filename);
+			}
 		}
 		return file;
 	}
@@ -171,52 +188,38 @@ public class OntologyJenaAPI {
 		base = ModelFactory.createOntologyModel();
 		if (file != null) {
 			if (!file.exists()) {
-				String ontologyContents = OntologySource.getOntology(ontologyType);
-				InputStream ontologyStream = new ByteArrayInputStream(
-						ontologyContents.getBytes(StandardCharsets.UTF_8));
+				InputStream ontologyStream = OntologySource.getOntology(ontologyType);
 				try {
-					file.create(ontologyStream, IResource.FORCE, null);
-				} catch (CoreException e) {
-					Activator.log("Unable to create new " + ontologyType.name().toLowerCase() + " ontology file", e);
+					OutputStream output = new FileOutputStream(file);
+					ByteStreams.copy(ontologyStream, output);
+				} catch (IOException e) {
+					System.out.println(
+							"Unable to create new " + ontologyType.name().toLowerCase() + " ontology file" + e);
 				}
 			}
 			try {
-				InputStream in = file.getContents();
+				InputStream in = new FileInputStream(file);
 				base.read(in, null);
-			} catch (CoreException e) {
-				Activator.log("Unable to read created " + ontologyType.name().toLowerCase() + " ontology file", e);
+			} catch (IOException e) {
+				System.out
+						.println("Unable to read created " + ontologyType.name().toLowerCase() + " ontology file" + e);
 			}
 		}
 
 		if (testfile != null) {
 			if (!testfile.exists()) {
-				String ontologyContents = OntologySource.getOntology(ontologyType);
-				System.out.println("ontology contents" + ontologyContents);
+				InputStream ontologyStream = OntologySource.getOntology(ontologyType);
 				try {
-					PrintWriter writer = new PrintWriter(testfile);
-					writer.println(ontologyContents);
-					writer.close();
-				} catch (FileNotFoundException e) {
+					OutputStream output = new FileOutputStream(testfile);
+					ByteStreams.copy(ontologyStream, output);
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 			try {
 				InputStream in = new FileInputStream(testfile);
-				int i;
-				char c;
-				while ((i = in.read()) != -1) {
-
-					// converts integer to character
-					c = (char) i;
-
-					// prints character
-					System.out.print(c);
-				}
 				base.read(in, null);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -576,8 +579,8 @@ public class OntologyJenaAPI {
 	 * not saved.
 	 */
 	public void close() {
+		FileOutputStream out = null;
 		if (testfile != null) {
-			FileOutputStream out = null;
 			try {
 				out = new FileOutputStream(testfile);
 			} catch (FileNotFoundException e) {
@@ -590,9 +593,10 @@ public class OntologyJenaAPI {
 			byte[] byteArray = originalOutputStream.toByteArray();
 			InputStream originalInputStream = new ByteArrayInputStream(byteArray);
 			try {
-				file.setContents(originalInputStream, IResource.FORCE, null);
-			} catch (CoreException e) {
-				Activator.log("Unable to save the " + ontologyType.name().toLowerCase() + " ontology file", e);
+				out = new FileOutputStream(file);
+				ByteStreams.copy(originalInputStream, out);
+			} catch (IOException e) {
+				System.out.println("Unable to save the " + ontologyType.name().toLowerCase() + " ontology file" + e);
 			}
 		}
 

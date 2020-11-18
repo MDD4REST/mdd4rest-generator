@@ -1,0 +1,13 @@
+Each Customer Must be able to booking a new cargo as sender role by providing an origin location and a destination location and arrival deadline route specification.
+Each Customer Must be able to claim a cargo as receiever role.
+System Should assign the tracking id to cargo upon creation and is never changed.
+System Should assign the itinerary to cargo upon creation.
+Each Customer Must be able to tracking/retrieve a detailed information of cargo by Tracking ID, detailed information was itinerary, legs.
+Customer must be able re-route a cargo during transport, in which case the destination is changed and a new route is requested.
+The shipping clerk Must be able create a Handling Event by providing type which can be load, unload, receive, claim, customs; completion time, registration time, voyage by voyage number, locatoin, and cargo.
+The booking clerk requests a list of possible routes, matching a route specification, and assigns the cargo to one route.
+The voyage clerk create a new voyage by voyage number and schedule
+The voyage clerk create a schedule by list of carrier movements whcih has departure and arrival time, departure and arrival location.
+The voyage clerk create a location by providing name, port code, unlocode
+An itinerary listing the legs of the route attached to the cargo.
+the old itinerary is discarded and a new one is attached.

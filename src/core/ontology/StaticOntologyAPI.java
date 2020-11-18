@@ -2,15 +2,13 @@ package core.ontology;
 
 import java.util.ArrayList;
 
-import org.eclipse.core.resources.IProject;
-
 import core.ontology.OntologySource.OntologyType;
 import core.ontology.OntologyJenaAPI;
 
 /**
  * Provides an API for the static ontology in OWL format. Allows adding/deleting instances and properties.
  * 
- * @author themis
+ * @author amirdeljouyi
  */
 public class StaticOntologyAPI {
 
@@ -28,9 +26,9 @@ public class StaticOntologyAPI {
 	 * @param forceDelete boolean denoting whether any existing ontology file should be deleted.
 	 */
 	public StaticOntologyAPI(boolean forceDelete) {
-		staticOntology = new OntologyJenaAPI(OntologyType.STATIC,
-				"http://www.owl-ontologies.com/Ontology1273059028.owl", forceDelete);
-		this.projectName = "AMIr Project";
+		this.projectName = "MyCore Project";
+		staticOntology = new OntologyJenaAPI(null, OntologyType.STATIC,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, forceDelete);
 		staticOntology.addIndividual("Project", projectName);
 	}
 
@@ -41,9 +39,9 @@ public class StaticOntologyAPI {
 	 * @param project the project to connect to in the static ontology.
 	 */
 	public StaticOntologyAPI() {
-		staticOntology = new OntologyJenaAPI(OntologyType.STATIC,
+		staticOntology = new OntologyJenaAPI(null, OntologyType.STATIC,
 				"http://www.owl-ontologies.com/Ontology1273059028.owl");
-		this.projectName = "Amiir Project";
+		this.projectName = "MyCore Project";
 		staticOntology.addIndividual("Project", projectName);
 	}
 
@@ -53,9 +51,16 @@ public class StaticOntologyAPI {
 	 * @param projectName the name of the project.
 	 */
 	public StaticOntologyAPI(String projectName) {
-		staticOntology = new OntologyJenaAPI(OntologyType.STATIC,
-				"http://www.owl-ontologies.com/Ontology1273059028.owl", true);
 		this.projectName = projectName;
+		staticOntology = new OntologyJenaAPI(null, OntologyType.STATIC,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, true);
+		staticOntology.addIndividual("Project", projectName);
+	}
+	
+	public StaticOntologyAPI(String projectName, String projectPath) {
+		this.projectName = projectName;
+		staticOntology = new OntologyJenaAPI(projectPath, OntologyType.STATIC,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, true);
 		staticOntology.addIndividual("Project", projectName);
 	}
 
@@ -66,9 +71,16 @@ public class StaticOntologyAPI {
 	 * @param forceDelete delete any existing ontology file.
 	 */
 	public StaticOntologyAPI(String projectName, boolean forceDelete) {
-		staticOntology = new OntologyJenaAPI(OntologyType.STATIC,
-				"http://www.owl-ontologies.com/Ontology1273059028.owl", forceDelete);
 		this.projectName = projectName;
+		staticOntology = new OntologyJenaAPI(null, OntologyType.STATIC,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, forceDelete);
+		staticOntology.addIndividual("Project", projectName);
+	}
+	
+	public StaticOntologyAPI(String projectName, String projectPath, boolean forceDelete) {
+		this.projectName = projectName;
+		staticOntology = new OntologyJenaAPI(projectPath, OntologyType.STATIC,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, forceDelete);
 		staticOntology.addIndividual("Project", projectName);
 	}
 
@@ -200,6 +212,7 @@ public class StaticOntologyAPI {
 		staticOntology.addIndividual("actor", actor);
 	}
 
+
 	/**
 	 * Adds an object to the ontology.
 	 * 
@@ -265,5 +278,79 @@ public class StaticOntologyAPI {
 	 */
 	public void connectElementToProperty(String element, String property) {
 		staticOntology.addPropertyAndReverseBetweenIndividuals(element, "has_property", property);
+	}
+	
+	// newly added
+	
+	/**
+	 * Add Aggregate
+	 * @param aggregate
+	 */
+	
+	public void addAggregate(String aggregate) {
+		staticOntology.addIndividual("aggregate", aggregate);
+	}
+	
+	/**
+	 * 
+	 * @param reference
+	 */
+	
+	public void addReference(String reference) {
+		staticOntology.addIndividual("reference", reference);
+	}
+	
+	/**
+	 * 
+	 * @param enumeration
+	 */
+	
+	public void addEnumeration(String enumeration) {
+		staticOntology.addIndividual("enumeration", enumeration);
+	}
+	
+	/**
+	 * 
+	 * @param literal
+	 */
+	
+	public void addLiteral(String literal) {
+		staticOntology.addIndividual("literal", literal);
+	}
+	
+	/**
+	 * 
+	 * @param reference
+	 * @param object
+	 */
+	public void connectSourceToReference(String reference, String object) {
+		staticOntology.addPropertyAndReverseBetweenIndividuals(reference, "has_source", object);
+	}
+	
+	/**
+	 * 
+	 * @param reference
+	 * @param object
+	 */
+	public void connectTargetToReference(String reference, String object) {
+		staticOntology.addPropertyAndReverseBetweenIndividuals(reference, "has_target", object);
+	}
+	
+	/**
+	 * 
+	 * @param enumeration
+	 * @param object
+	 */
+	public void connectEnumerationToObject(String enumeration, String object) {
+		staticOntology.addPropertyAndReverseBetweenIndividuals(object, "has_property", enumeration);
+	}
+	
+	/**
+	 * 
+	 * @param enumeration
+	 * @param literal
+	 */
+	public void connectLiteralToEnumeration(String enumeration, String literal) {
+		staticOntology.addPropertyAndReverseBetweenIndividuals(enumeration, "has_literal", literal);
 	}
 }

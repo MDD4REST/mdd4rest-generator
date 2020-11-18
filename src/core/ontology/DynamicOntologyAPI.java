@@ -2,13 +2,12 @@ package core.ontology;
 
 import java.util.ArrayList;
 
-import org.eclipse.core.resources.IProject;
-
 import core.ontology.OntologySource.OntologyType;
 import core.ontology.OntologyJenaAPI;
 
 /**
- * Provides an API for the linked ontology in OWL format. Allows adding/deleting instances and properties.
+ * Provides an API for the linked ontology in OWL format. Allows adding/deleting
+ * instances and properties.
  * 
  * @author themis
  */
@@ -21,28 +20,31 @@ public class DynamicOntologyAPI {
 	private String projectName;
 
 	/**
-	 * Initializes the connection of this API with the ontology. Upon calling this function, the ontology is loaded in
-	 * memory. <u><b>NOTE</b></u> that you have to call {@link #close()} in order to save your changes to disk.
+	 * Initializes the connection of this API with the ontology. Upon calling this
+	 * function, the ontology is loaded in memory. <u><b>NOTE</b></u> that you have
+	 * to call {@link #close()} in order to save your changes to disk.
 	 * 
-	 * @param project the project to connect to in the dynamic ontology.
-	 * @param forceDelete boolean denoting whether any existing ontology file should be deleted.
+	 * @param project     the project to connect to in the dynamic ontology.
+	 * @param forceDelete boolean denoting whether any existing ontology file should
+	 *                    be deleted.
 	 */
 	public DynamicOntologyAPI(boolean forceDelete) {
-		//requirements ontology
-		dynamicOntology = new OntologyJenaAPI(OntologyType.DYNAMIC,
-				"http://www.owl-ontologies.com/Ontology1273059028.owl", forceDelete);
-		this.projectName = "amir prjct";
+		// requirements ontology
+		this.projectName = "MyCore Project";
+		dynamicOntology = new OntologyJenaAPI(null, OntologyType.DYNAMIC,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, forceDelete);
 		dynamicOntology.addIndividual("Project", projectName);
 	}
 
 	/**
-	 * Initializes the connection of this API with the ontology. Upon calling this function, the ontology is loaded in
-	 * memory. <u><b>NOTE</b></u> that you have to call {@link #close()} in order to save your changes to disk.
+	 * Initializes the connection of this API with the ontology. Upon calling this
+	 * function, the ontology is loaded in memory. <u><b>NOTE</b></u> that you have
+	 * to call {@link #close()} in order to save your changes to disk.
 	 * 
 	 * @param project the project to connect to in the dynamic ontology.
 	 */
 	public DynamicOntologyAPI() {
-		dynamicOntology = new OntologyJenaAPI(OntologyType.DYNAMIC,
+		dynamicOntology = new OntologyJenaAPI(null, OntologyType.DYNAMIC,
 				"http://www.owl-ontologies.com/Ontology1273059028.owl");
 		this.projectName = "aMiir Prjct";
 		dynamicOntology.addIndividual("Project", projectName);
@@ -54,9 +56,16 @@ public class DynamicOntologyAPI {
 	 * @param projectName the name of the project.
 	 */
 	public DynamicOntologyAPI(String projectName) {
-		dynamicOntology = new OntologyJenaAPI(OntologyType.DYNAMIC,
-				"http://www.owl-ontologies.com/Ontology1273059028.owl", true);
 		this.projectName = projectName;
+		dynamicOntology = new OntologyJenaAPI(null, OntologyType.DYNAMIC,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, true);
+		dynamicOntology.addIndividual("Project", projectName);
+	}
+	
+	public DynamicOntologyAPI(String projectName, String projectPath) {
+		this.projectName = projectName;
+		dynamicOntology = new OntologyJenaAPI(projectPath, OntologyType.DYNAMIC,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, true);
 		dynamicOntology.addIndividual("Project", projectName);
 	}
 
@@ -64,12 +73,20 @@ public class DynamicOntologyAPI {
 	 * Similar to the other constructors, used only for testing reasons.
 	 * 
 	 * @param projectName the name of the project.
-	 * @param forceDelete boolean denoting whether any existing ontology file should be deleted.
+	 * @param forceDelete boolean denoting whether any existing ontology file should
+	 *                    be deleted.
 	 */
 	public DynamicOntologyAPI(String projectName, boolean forceDelete) {
-		dynamicOntology = new OntologyJenaAPI(OntologyType.DYNAMIC,
-				"http://www.owl-ontologies.com/Ontology1273059028.owl", forceDelete);
 		this.projectName = projectName;
+		dynamicOntology = new OntologyJenaAPI(null, OntologyType.DYNAMIC,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, forceDelete);
+		dynamicOntology.addIndividual("Project", projectName);
+	}
+	
+	public DynamicOntologyAPI(String projectName, String projectPath, boolean forceDelete) {
+		this.projectName = projectName;
+		dynamicOntology = new OntologyJenaAPI(projectPath, OntologyType.DYNAMIC,
+				"http://www.owl-ontologies.com/Ontology1273059028.owl", projectName, forceDelete);
 		dynamicOntology.addIndividual("Project", projectName);
 	}
 
@@ -80,38 +97,46 @@ public class DynamicOntologyAPI {
 	 */
 	public void addActivityDiagram(String activityDiagramName) {
 		dynamicOntology.addIndividual("ActivityDiagram", activityDiagramName);
-		dynamicOntology
-				.addPropertyAndReverseBetweenIndividuals(projectName, "project_has_diagram", activityDiagramName);
+		dynamicOntology.addPropertyAndReverseBetweenIndividuals(projectName, "project_has_diagram",
+				activityDiagramName);
 	}
 
 	/**
-	 * Adds an activity diagram in the ontology, including its text, and connects it to the project.
+	 * Adds an activity diagram in the ontology, including its text, and connects it
+	 * to the project.
 	 * 
 	 * @param activityDiagramName the diagram to be added.
 	 * @param activityDiagramText the text of the diagram to be added.
 	 */
 	public void addActivityDiagram(String activityDiagramName, String activityDiagramText) {
 		dynamicOntology.addIndividual("ActivityDiagram", activityDiagramName, activityDiagramText);
-		dynamicOntology
-				.addPropertyAndReverseBetweenIndividuals(projectName, "project_has_diagram", activityDiagramName);
+		dynamicOntology.addPropertyAndReverseBetweenIndividuals(projectName, "project_has_diagram",
+				activityDiagramName);
 	}
 
 	/**
 	 * Connects an activity diagram to an element of the ontology.
 	 * 
 	 * @param activityDiagramName the activity diagram to be connected.
-	 * @param elementName the element to be connected to the activity diagram.
+	 * @param elementName         the element to be connected to the activity
+	 *                            diagram.
 	 */
 	public void connectActivityDiagramToElement(String activityDiagramName, String elementName) {
 		dynamicOntology.addPropertyAndReverseBetweenIndividuals(activityDiagramName, "diagram_has", elementName);
+	}
+	
+	public void connectActorToActivity(String actor, String activityName) {
+		dynamicOntology.addPropertyAndReverseBetweenIndividuals(activityName, "has_actor", actor);
 	}
 
 	/**
 	 * Connects an activity diagram to a transition of the ontology.
 	 * 
 	 * @param activityDiagramName the activity diagram to be connected.
-	 * @param sourceActivity the source activity of the transition to be connected to the activity diagram.
-	 * @param targetActivity the target activity of the transition to be connected to the activity diagram.
+	 * @param sourceActivity      the source activity of the transition to be
+	 *                            connected to the activity diagram.
+	 * @param targetActivity      the target activity of the transition to be
+	 *                            connected to the activity diagram.
 	 */
 	public void connectActivityDiagramToTransition(String activityDiagramName, String sourceActivity,
 			String targetActivity) {
@@ -123,18 +148,39 @@ public class DynamicOntologyAPI {
 	 * Adds an action to a specific activity of the ontology.
 	 * 
 	 * @param activityName the name of the activity to connect the action to.
-	 * @param actionName the name of the action to be added.
+	 * @param actionName   the name of the action to be added.
 	 */
 	public void addActionToActivity(String activityName, String actionName) {
 		dynamicOntology.addIndividual("Action", actionName);
 		dynamicOntology.addPropertyAndReverseBetweenIndividuals(activityName, "activity_has_action", actionName);
+	}
+	
+	
+	public void addCommandToActivity(String activityName, String actionName) {
+		dynamicOntology.addIndividual("Command", actionName);
+		dynamicOntology.addPropertyAndReverseBetweenIndividuals(activityName, "activity_has_action", actionName);
+	}
+
+	public void addQueryToActivity(String activityName, String actionName) {
+		dynamicOntology.addIndividual("Query", actionName);
+		dynamicOntology.addPropertyAndReverseBetweenIndividuals(activityName, "activity_has_action", actionName);
+	}
+	
+	public void addEventToActivity(String activityName, String actionName) {
+		dynamicOntology.addIndividual("Event", actionName);
+		dynamicOntology.addPropertyAndReverseBetweenIndividuals(activityName, "activity_has_action", actionName);
+	}
+	
+	public void addAggregateToActivity(String activityName, String aggregateName) {
+		dynamicOntology.addIndividual("Aggregate", aggregateName);
+		dynamicOntology.addPropertyAndReverseBetweenIndividuals(activityName, "activity_has_aggregate", aggregateName);
 	}
 
 	/**
 	 * Adds an object to a specific activity of the ontology.
 	 * 
 	 * @param activityName the name of the activity to connect the object to.
-	 * @param objectName the name of the object to be added.
+	 * @param objectName   the name of the object to be added.
 	 */
 	public void addObjectToActivity(String activityName, String objectName) {
 		dynamicOntology.addIndividual("Object", objectName);
@@ -163,8 +209,9 @@ public class DynamicOntologyAPI {
 	}
 
 	/**
-	 * Closes the connection of the ontology and saves it to disk. <u><b>NOTE</b></u> that if this function is not
-	 * called, then the ontology is not saved.
+	 * Closes the connection of the ontology and saves it to disk.
+	 * <u><b>NOTE</b></u> that if this function is not called, then the ontology is
+	 * not saved.
 	 */
 	public void close() {
 		dynamicOntology.close();
@@ -213,7 +260,8 @@ public class DynamicOntologyAPI {
 	/**
 	 * Returns the properties of a specific activity.
 	 * 
-	 * @param activity the name of the activity of which the properties are returned.
+	 * @param activity the name of the activity of which the properties are
+	 *                 returned.
 	 * @return an {@link ArrayList} containing the name of the properties.
 	 */
 	public ArrayList<String> getPropertiesOfActivity(String activity) {
@@ -223,7 +271,8 @@ public class DynamicOntologyAPI {
 	/**
 	 * Returns the activity diagrams of a specific concept.
 	 * 
-	 * @param concept the name of the concept of which the activity diagrams are returned.
+	 * @param concept the name of the concept of which the activity diagrams are
+	 *                returned.
 	 * @return an {@link ArrayList} containing the names of the activity diagrams.
 	 */
 	public ArrayList<String> getDiagramsOfConcept(String concept) {
@@ -252,7 +301,8 @@ public class DynamicOntologyAPI {
 	/**
 	 * Returns the condition of a specific transition.
 	 * 
-	 * @param transition the name of the transition of which the condition is returned.
+	 * @param transition the name of the transition of which the condition is
+	 *                   returned.
 	 * @return a {@link String} containing the name of the condition.
 	 */
 	public String getConditionOfTransition(String transition) {
@@ -262,7 +312,8 @@ public class DynamicOntologyAPI {
 	/**
 	 * Returns the source activity of a specific transition.
 	 * 
-	 * @param transition the name of the transition of which the source activity is returned.
+	 * @param transition the name of the transition of which the source activity is
+	 *                   returned.
 	 * @return a {@link String} containing the name of the source activity.
 	 */
 	public String getSourceActivityOfTransition(String transition) {
@@ -272,7 +323,8 @@ public class DynamicOntologyAPI {
 	/**
 	 * Returns the target activity of a specific transition.
 	 * 
-	 * @param transition the name of the transition of which the target activity is returned.
+	 * @param transition the name of the transition of which the target activity is
+	 *                   returned.
 	 * @return a {@link String} containing the name of the target activity.
 	 */
 	public String getTargetActivityOfTransition(String transition) {
@@ -296,17 +348,33 @@ public class DynamicOntologyAPI {
 	public void addFinalActivity(String finalActivity) {
 		dynamicOntology.addIndividual("FinalActivity", finalActivity);
 	}
+	
+	
+	public void addActor(String actor) {
+		dynamicOntology.addIndividual("Actor", actor);
+	}
 
+	
+	public ArrayList<String> getActors() {
+		return dynamicOntology.getIndividualsOfClass("Actor");
+	}
+	
 	/**
 	 * Adds a precondition to a specific diagram of the ontology.
 	 * 
-	 * @param diagramName the name of the diagram to connect the precondition to.
+	 * @param diagramName  the name of the diagram to connect the precondition to.
 	 * @param precondition the precondition to be added.
 	 */
 	public void addPreconditionToDiagram(String diagramName, String precondition) {
 		dynamicOntology.addIndividual("PreCondition", precondition);
 		dynamicOntology.addPropertyAndReverseBetweenIndividuals(diagramName, "diagram_has_condition", precondition);
 	}
+	
+	public void addPostconditionToDiagram(String diagramName, String postcondition) {
+		dynamicOntology.addIndividual("PostCondition", postcondition);
+		dynamicOntology.addPropertyAndReverseBetweenIndividuals(diagramName, "diagram_has_condition", postcondition);
+	}
+
 
 	/**
 	 * Adds an activity to the ontology.
@@ -320,8 +388,10 @@ public class DynamicOntologyAPI {
 	/**
 	 * Adds a transition to the ontology.
 	 * 
-	 * @param sourceActivity the source activity of the transition to be added to the ontology.
-	 * @param targetActivity the target activity of the transition to be added to the ontology.
+	 * @param sourceActivity the source activity of the transition to be added to
+	 *                       the ontology.
+	 * @param targetActivity the target activity of the transition to be added to
+	 *                       the ontology.
 	 */
 	public void addTransition(String sourceActivity, String targetActivity) {
 		String transitionName = "FROM__" + sourceActivity + "__TO__" + targetActivity;
@@ -333,9 +403,11 @@ public class DynamicOntologyAPI {
 	/**
 	 * Adds a condition to a specific transition of the ontology.
 	 * 
-	 * @param condition the condition to be connected to the transition.
-	 * @param sourceActivity the source activity of the transition to be connected to the condition.
-	 * @param targetActivity the target activity of the transition to be connected to the condition.
+	 * @param condition      the condition to be connected to the transition.
+	 * @param sourceActivity the source activity of the transition to be connected
+	 *                       to the condition.
+	 * @param targetActivity the target activity of the transition to be connected
+	 *                       to the condition.
 	 */
 	public void addConditionToTransition(String condition, String sourceActivity, String targetActivity) {
 		String transitionName = "FROM__" + sourceActivity + "__TO__" + targetActivity;

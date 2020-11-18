@@ -32,7 +32,11 @@
 
 null
 
-<extension  point="org.eclipse.emf.ecp.view.model.provider.xmi.file">
-<file filePath="src/metamodels/Application.view"/>
-</extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ActivityDiagram -->
+      <package
+            uri="resources/mm/CIM/ActivityDiagram.ecore"
+            class="ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage"/>
+   </extension>
+
 </plugin>

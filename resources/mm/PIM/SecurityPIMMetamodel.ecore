@@ -34,7 +34,7 @@
         eType="#//Constraint" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="permissionType" eType="#//PermissionType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
-        upperBound="-1" eType="ecore:EClass ServicePIMMetamodel.ecore#//Activity"/>
+        upperBound="-1" eType="ecore:EClass ServicePIMMetamodel.ecore#//CRUDActivity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraintoperator" upperBound="-1"
@@ -122,7 +122,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="LogicalOperator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//LogicalOperatorType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="ServicePIMMetamodel.ecore#//Resource">
+  <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="ServicePIMMetamodel.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="username" lowerBound="1"
         eType="#//Username" containment="true"/>
   </eClassifiers>
