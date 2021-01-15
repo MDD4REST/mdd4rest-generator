@@ -20,9 +20,6 @@
         eType="#//ActivityPartition" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActivityNode">
-    <eAnnotations source="gmf.node">
-      <details key="label.placement" value="none"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomming" upperBound="-1"
         eType="#//ActivityEdge" eOpposite="#//ActivityEdge/target"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outcomming" upperBound="-1"
@@ -125,21 +122,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="OutputPin" eSuperTypes="#//Pin"/>
   <eClassifiers xsi:type="ecore:EClass" name="Pin" eSuperTypes="#//ObjectNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectNode" eSuperTypes="#//ActivityNode">
-    <eAnnotations source="gmf.node">
-      <details key="label" value="name"/>
-      <details key="label.placement" value="internal"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="upperBound" eType="#//ValueSpecification"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isControlType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" eType="#//ObjectNodeOrderingKind"
         defaultValueLiteral="FIFO"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//Variable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActivityParameterNode" eSuperTypes="#//ObjectNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="Variable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowerBound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ValueSpecification"/>
   <eClassifiers xsi:type="ecore:EEnum" name="ObjectNodeOrderingKind">
@@ -149,20 +145,24 @@
     <eLiterals name="LIFO" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//ExecutableNode">
-    <eAnnotations source="gmf.node">
-      <details key="label" value="name"/>
-      <details key="label.placement" value="internal"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputpin" upperBound="-1"
         eType="#//InputPin" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputpin" upperBound="-1"
         eType="#//OutputPin" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supplier" eType="#//Supplier"
+        eOpposite="#//Supplier/action">
+      <eAnnotations source="gmf.link">
+        <details key="tool.name" value="Action to Supplier"/>
+        <details key="style" value="dash"/>
+        <details key="target.decoration" value="arrow"/>
+        <details key="width" value="2"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="callactions" upperBound="-1"
+        eType="#//CallAction" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CallAction" eSuperTypes="#//Action"/>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableAction" eSuperTypes="#//CallAction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//VariableActionKind"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StartObjectBehaviorAction" eSuperTypes="#//CallAction"/>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectAction" eSuperTypes="#//CallAction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//ObjectActionKind"/>
@@ -180,21 +180,13 @@
     <eLiterals name="readSelfAction" value="3"/>
     <eLiterals name="valueSpecificationAction" value="4"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="VariableActionKind">
-    <eLiterals name="clearVariableAction"/>
-    <eLiterals name="writeVariableAction" value="1"/>
-    <eLiterals name="readVariableAction" value="2"/>
-    <eLiterals name="mathematicalVariableAction" value="3"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActivityPartition">
     <eAnnotations source="gmf.node">
       <details key="label" value="name"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subpartition" upperBound="-1"
-        eType="#//ActivityPartition" containment="true">
-      <eAnnotations source="gmf.compartment"/>
-    </eStructuralFeatures>
+        eType="#//ActivityPartition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activityedge" upperBound="-1"
         eType="#//ActivityEdge" containment="true" eOpposite="#//ActivityEdge/activitypartition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activitynode" upperBound="-1"
@@ -202,52 +194,134 @@
       <eAnnotations source="gmf.compartment"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EventAction" eSuperTypes="#//Action">
-    <eAnnotations source="gmf.node">
-      <details key="label" value="name"/>
-      <details key="color" value="243,156,18"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregate" eType="#//Aggregate"
-        eOpposite="#//Aggregate/events"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommandAction" eSuperTypes="#//Action">
     <eAnnotations source="gmf.node">
       <details key="label" value="name"/>
       <details key="color" value="173,216,230"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregate" eType="#//Aggregate"
-        eOpposite="#//Aggregate/command">
-      <eAnnotations source="gmf.link">
-        <details key="style" value="dash"/>
-        <details key="target.decoration" value="arrow"/>
-        <details key="width" value="2"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Aggregate" eSuperTypes="#//ObjectNode">
+  <eClassifiers xsi:type="ecore:EClass" name="Aggregate" eSuperTypes="#//Supplier">
     <eAnnotations source="gmf.node">
       <details key="label" value="name"/>
-      <details key="color" value="241,196,15"/>
+      <details key="color" value="243,208,43"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
-        eType="#//EventAction" eOpposite="#//EventAction/aggregate">
-      <eAnnotations source="gmf.link">
-        <details key="style" value="dash"/>
-        <details key="target.decoration" value="arrow"/>
-        <details key="width" value="2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domainobject" upperBound="-1"
+        eType="#//DomainObject" containment="true">
+      <eAnnotations source="gmf.compartment">
+        <details key="layout" value="list"/>
+        <details key="collapsible" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="command" eType="#//CommandAction"
-        eOpposite="#//CommandAction/aggregate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//QueryAction"
-        eOpposite="#//QueryAction/aggregate"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QueryAction" eSuperTypes="#//Action">
     <eAnnotations source="gmf.node">
       <details key="label" value="name"/>
+      <details key="color" value="108,198,192"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainObject" eSuperTypes="#//ObjectNode">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="name"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValueObject" eSuperTypes="#//DomainObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//DomainObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Actor" eSuperTypes="#//ActivityPartition">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="name"/>
+      <details key="label.placement" value="internal"/>
+      <details key="color" value="255,249,178"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//ActivityPartition">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="name"/>
+      <details key="label.placement" value="internal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalSystem" eSuperTypes="#//Supplier">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="name"/>
+      <details key="color" value="231,147,186"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReadModel" eSuperTypes="#//ObjectNode">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="name"/>
+      <details key="color" value="209,227,109"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supplier" eType="#//Supplier"
+        eOpposite="#//Supplier/readmodels"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" eType="#//DomainEvent"
+        eOpposite="#//DomainEvent/readmodel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Supplier" abstract="true" eSuperTypes="#//ObjectNode">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="name"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"
+        eOpposite="#//Action/supplier"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
+        eType="#//DomainEvent" eOpposite="#//DomainEvent/supplier">
+      <eAnnotations source="gmf.link">
+        <details key="tool.name" value="Supplier to Event"/>
+        <details key="style" value="dash"/>
+        <details key="target.decoration" value="arrow"/>
+        <details key="width" value="2"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="readmodels" upperBound="-1"
+        eType="#//ReadModel" eOpposite="#//ReadModel/supplier">
+      <eAnnotations source="gmf.link">
+        <details key="tool.name" value="Supplier to ReadModel"/>
+        <details key="style" value="dash"/>
+        <details key="target.decoration" value="arrow"/>
+        <details key="width" value="2"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+        eType="#//ConstraintPin" containment="true" eOpposite="#//ConstraintPin/supplier">
+      <eAnnotations source="gmf.affixed"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainEvent" eSuperTypes="#//ObjectNode">
+    <eAnnotations source="gmf.node">
+      <details key="label" value="name"/>
       <details key="color" value="243,156,18"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregate" eType="#//Aggregate"
-        eOpposite="#//Aggregate/query"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="readmodel" eType="#//ReadModel"
+        eOpposite="#//ReadModel/event">
+      <eAnnotations source="gmf.link">
+        <details key="tool.name" value="Event To ReadModel"/>
+        <details key="style" value="dash"/>
+        <details key="target.decoration" value="arrow"/>
+        <details key="width" value="2"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supplier" eType="#//Supplier"
+        eOpposite="#//Supplier/triggers"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" eType="#//ConstraintPin"
+        eOpposite="#//ConstraintPin/triggers"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConstraintPin" eSuperTypes="#//Pin">
+    <eAnnotations source="gmf.node">
+      <details key="figure" value="rectangle"/>
+      <details key="size" value="20,20"/>
+      <details key="label" value="name"/>
+      <details key="label.placement" value="external"/>
+      <details key="label.icon" value="false"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supplier" eType="#//Supplier"
+        eOpposite="#//Supplier/constraints"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
+        eType="#//DomainEvent" eOpposite="#//DomainEvent/constraint">
+      <eAnnotations source="gmf.link">
+        <details key="tool.name" value="Constraint to Event"/>
+        <details key="style" value="dash"/>
+        <details key="target.decoration" value="arrow"/>
+        <details key="width" value="2"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

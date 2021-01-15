@@ -1,0 +1,15 @@
+{
+  "generator-jhipster": {
+    "deploymentType": "docker-compose",
+    "gatewayType": "zuul",
+    "monitoring": "no",
+    "directoryPath": "../",
+    "appsFolders": ["cargo", "uaa", "gateway"],
+    "clusteredDbApps": [],
+    "consoleOptions": [],
+    "serviceDiscoveryType": "eureka",
+    "dockerRepositoryName": "cargo",
+    "dockerPushCommand": "docker push",
+    "jwtSecretKey": "ZjFhZjYzZDU1NTk5NWNkMWEyYjhhYmYwNzIxNzVkODZlNDg0NTUwZDRiNGVlNzY4MWFiYTI1MTkyZDlhZGE5NjJlYTcxODcxYzU2NDJiYWJmYTRkODE0NGVjODAwMTEwNWU3Yw=="
+  }
+}

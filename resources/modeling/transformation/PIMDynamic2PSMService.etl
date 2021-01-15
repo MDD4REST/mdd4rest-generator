@@ -1,0 +1,301 @@
+import "../utilities/DynamicPIM.eol";
+import "../utilities/ServicePSM.eol";
+
+@abstract
+rule AbstractProject transform c:DynamicPIM!Project
+ 	to a:ServicePSM!Project{
+ 	guard: c.hasApplication.size() > 0
+}
+
+@abstract
+rule AbstractApplication transform c:DynamicPIM!Application
+	to a:ServicePSM!Application{
+	a.name = c.name;
+	a.project = c.project.equivalent();
+	a.project.applications.add(a);
+}
+
+/*
+rule primitiveType2primitiveType transform c:DynamicPIM!PrimitiveType
+	to a:ServicePSM!PrimitiveType{
+	a.type ::= c.type;
+	a.typeName = c.typeName;
+	psmModel.primitivetype.add(a);
+}
+*/
+
+@abstract
+rule AbstractAggregate transform c:DynamicPIM!Aggregate 
+	to a:ServicePSM!Aggregate{
+	a.name = c.name;
+	a.aggregateRoot ::= c.aggregateRoot;
+}
+ 
+ 
+@abstract
+rule AbstractDomainObject transform c:DynamicPIM!DomainObject
+	to a:ServicePSM!DomainObject{
+	// type definition
+	a.typeName = c.typeName;
+	
+	// attributes
+	a.name = c.name;
+	a.aggregateRoot = c.aggregateRoot;
+	
+	// references
+	// a.hasInheritance ::= c.hasInheritance;	
+}
+
+@abstract
+rule AbstractionOfValueObject transform c:DynamicPIM!ValueObject
+	to a:ServicePSM!ValueObject extends AbstractDomainObject{
+	c.println();
+}
+
+@abstract
+rule AbstractBasicType transform c:DynamicPIM!BasicType
+	to a:ServicePSM!BasicType extends AbstractionOfValueObject{
+	"------- non lazy --------------".println();
+	c.println();
+}
+
+@abstract
+rule AbstractDomainEvent transform c:DynamicPIM!DomainEvent
+	to a:ServicePSM!DomainEvent extends AbstractionOfValueObject{
+	"------- DomainEvent --------------".println();
+	c.println();
+}
+
+@abstract
+rule AbstractCommandEvent transform c:DynamicPIM!CommandEvent
+	to a:ServicePSM!CommandEvent extends AbstractionOfValueObject{
+	"------- CommandEvent --------------".println();
+	c.println();
+}
+
+@abstract
+rule AbstractDTO transform c:DynamicPIM!DTO
+	to a:ServicePSM!DTO extends AbstractionOfValueObject{
+	"------- DTO --------------".println();
+	c.println();
+}
+
+@abstract
+rule AbstractValueObject transform c:DynamicPIM!ValueObject
+	to a:ServicePSM!ValueObject extends AbstractionOfValueObject{
+	"------- ValueObject --------------".println();
+	c.println();
+}
+
+@abstract
+rule AbstractEntity transform c:DynamicPIM!Entity
+	to a:ServicePSM!Entity extends AbstractDomainObject{
+	"------- entity --------------".println();
+	
+	c.println();
+	
+}
+
+@abstract
+rule AbstractEnumeration transform c:DynamicPIM!Enumeration
+	to a:ServicePSM!Enumeration extends AbstractDomainObject{
+	"------- enumeration --------------".println();
+}
+
+@abstract
+rule AbstractPublish transform c:DynamicPIM!Publish
+	to a:ServicePSM!Publish{
+	"------- Publish --------------".println();
+	a.eventType = c.eventType.equivalent();
+	if(c.eventType != null)
+		a.topic = c.eventType.name + "Channel";
+}
+
+@abstract
+rule AbstractPolicy2Subscribe transform c:DynamicPIM!Policy
+	to a:ServicePSM!Subscribe{
+	"------- Subscribe --------------".println();
+	if(c.eventType != null)
+		a.topic = c.eventType.name + "Channel";
+}
+
+@abstract
+rule AbstractResource transform c:DynamicPIM!Resource
+	to a:ServicePSM!Resource{
+	"------- Resource iiiiiiiii --------------".println();
+	var path = new ServicePSM!Path;
+	var application = c.aggregate.application.equivalent();
+	
+	path.relativePath = c.relativePath();
+	a.path = path;
+	a.name = c.name;
+	
+	a.module = application.getRestModule();
+	a.module.resources.add(a);
+}
+
+@abstract
+rule AbstractProcess2CommandService transform c:DynamicPIM!Process
+	to a:ServicePSM!Service{
+	guard: c.hasCommandOperation()
+	"------- CommandProcess --------------".println();
+	var application = c.aggregate.application.equivalent();
+		
+	a.name = "Internal" + c.name + "CommandService";
+	a.module = application.getCommandModule();
+	a.module.services.add(a);
+}
+
+@abstract
+rule AbstractProcess2QueryService transform c:DynamicPIM!Process
+	to a:ServicePSM!Service{
+	guard: c.hasQueryOperation()
+	"------- QueryProcess --------------".println();
+	var application = c.aggregate.application.equivalent();
+		
+	a.name = "Internal" + c.name + "QueryService";
+	
+	a.module = application.getQueryModule();
+	a.module.services.add(a);
+}
+	
+@abstract
+rule AbstractCommandOperation2ServiceOperation transform c:DynamicPIM!CommandOperation
+	to a:ServicePSM!ServiceOperation{
+	"------- CommandOperation --------------".println();
+	a.name = c.name;
+	a.publish = c.publish.equivalent();
+	var application = c.process.aggregate.application.equivalent();
+	var module = application.getCommandModule();
+	a.service = module.getService("Internal" + c.process.name + "CommandService");
+	if(c.returntype != null)
+		a.returntype = a.service.module.application.findTypeDefinition(c.returntype.typeName);
+		
+	for (dynamicParameter in c.hasParameter){
+		var type = null;
+		if(dynamicParameter.type != null)
+			type = a.service.module.application.findTypeDefinition(dynamicParameter.type.typeName);
+		a.addParameter(dynamicParameter.name, type);
+	}
+	c.policy.println();
+	c.policy.equivalent().println();
+	if(c.policy != null)
+		a.service.subscribe = c.policy.equivalent();
+	a.service.operations.add(a);
+}
+
+@abstract
+rule AbstractQueryOperation2ServiceOperation transform c:DynamicPIM!QueryOperation
+	to a:ServicePSM!ServiceOperation{
+	"------- QueryOperation --------------".println();
+	a.name = c.name;
+	
+	var application = c.process.aggregate.application.equivalent();
+	var module = application.getQueryModule();
+	
+	a.service = module.getService("Internal" + c.process.name + "QueryService");
+	if(c.returntype != null)
+		a.returntype = a.service.module.application.findTypeDefinition(c.returntype.typeName);
+		
+	for (dynamicParameter in c.hasParameter){
+		var type = null;
+		if(dynamicParameter.type != null)
+			type = a.service.module.application.findTypeDefinition(dynamicParameter.type.typeName);
+		a.addParameter(dynamicParameter.name, type);
+	}
+	a.service.operations.add(a);
+}
+	
+@abstract
+rule AbstractResourceActivity2ResourceOperation transform c:DynamicPIM!ResourceActivity
+	to a:ServicePSM!ResourceOperation{
+	"------- ResourceOperation --------------".println();
+	var application = c.resource.aggregate.application.equivalent();
+	
+	a.name = c.name;
+	a.resource = c.resource.equivalent();
+		
+	c.trigger.println();
+	if(c.trigger != null){
+		"HIIIIsds".println();
+		var serviceName = "";
+		var module = null;
+		if (c.trigger.type() == "CommandOperation"){
+			serviceName =  c.trigger.process.name + "CommandService";
+			module = application.getCommandModule();
+		} else {
+			serviceName =  c.trigger.process.name + "QueryService";
+			module = application.getQueryModule();
+		}
+		
+		var webservice = module.getOrAddService("External" + serviceName);
+		var internalService = module.getService("Internal" + serviceName);
+		("Internal" + serviceName).println();
+		internalService.println();
+		"ws".println();
+		var webserviceOperation = new ServicePSM!ServiceOperation;
+		webservice.webService = true;
+		
+		webservice.addDependencyIfNotExist(internalService);
+		webserviceOperation.name = a.name;
+		webserviceOperation.service = webservice;
+		webservice.operations.add(webserviceOperation);
+			
+		for (dynamicParameter in c.hasParameter){
+			var type = null;
+			if(dynamicParameter.type != null)
+				type = module.application.findTypeDefinition(dynamicParameter.type.typeName);
+			webserviceOperation.addParameter(dynamicParameter.name, type);
+		}
+	
+		a.delegate = webserviceOperation;
+	}
+		
+	for (dynamicParameter in c.hasParameter){
+		var type = null;
+		if(dynamicParameter.type != null)
+			type = a.resource.module.application.findTypeDefinition(dynamicParameter.type.typeName);
+		a.addParameter(dynamicParameter.name, type);
+	}
+		
+	if(c.returntype != null)
+		a.returntype = a.service.module.application.findTypeDefinition(c.returntype.typeName);
+	a.resource.operations.add(a);
+}
+
+@abstract
+rule AbstractRead2resourceOperation transform c:DynamicPIM!Read
+	to a:ServicePSM!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	a.httpMethod = ServicePSM!HttpMethod#GET;
+}
+
+@abstract
+rule AbstractCreate2resourceOperation transform c:DynamicPIM!Create
+	to a:ServicePSM!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	a.httpMethod = ServicePSM!HttpMethod#POST;
+}
+
+@abstract
+rule AbstractOther2ResourceOperation transform c:DynamicPIM!Other
+	to a:ServicePSM!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	a.httpMethod = ServicePSM!HttpMethod#UNDEFINED;
+}
+
+@abstract
+rule AbstractDelete2ResourceOperation transform c:DynamicPIM!Delete
+	to a:ServicePSM!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	a.httpMethod = ServicePSM!HttpMethod#DELETE;
+}
+
+
+@abstract
+rule AbstractProcess2Service transform c:DynamicPIM!Process
+	to a:ServicePSM!Service{
+	"------- Process --------------".println();
+	var application = c.aggregate.application.equivalent();
+	
+	a.name = "Internal" + c.name + "Service";
+	
+	a.module = application.getRestModule();
+	a.module.services.add(a);
+}

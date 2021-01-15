@@ -1,0 +1,28 @@
+{
+  "name": "Voyage",
+  "fields": [
+    {
+      "fieldName": "voyageNumber",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210104213109",
+  "entityTableName": "voyage",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "cargo"
+  ],
+  "readOnly": false,
+  "embedded": false
+}

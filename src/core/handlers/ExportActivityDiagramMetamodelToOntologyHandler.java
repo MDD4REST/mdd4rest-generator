@@ -14,20 +14,20 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import ActivityDiagramMetamodel.Action;
 import ActivityDiagramMetamodel.ActivityDiagram;
-import ActivityDiagramMetamodel.ActivityDiagramMetamodelFactory;
 import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
 import ActivityDiagramMetamodel.ActivityEdge;
 import ActivityDiagramMetamodel.ActivityNode;
 import ActivityDiagramMetamodel.ActivityPartition;
 import ActivityDiagramMetamodel.Aggregate;
 import ActivityDiagramMetamodel.CommandAction;
-import ActivityDiagramMetamodel.ControlNode;
 import ActivityDiagramMetamodel.DecisionNode;
-import ActivityDiagramMetamodel.EventAction;
+import ActivityDiagramMetamodel.DomainEvent;
+import ActivityDiagramMetamodel.DomainObject;
 import ActivityDiagramMetamodel.FinalNode;
 import ActivityDiagramMetamodel.InitialNode;
 import ActivityDiagramMetamodel.QueryAction;
-import ActivityDiagramMetamodel.impl.ControlNodeImpl;
+import ActivityDiagramMetamodel.ReadModel;
+import ActivityDiagramMetamodel.Supplier;
 import core.ontology.DynamicOntologyAPI;
 
 public class ExportActivityDiagramMetamodelToOntologyHandler {
@@ -72,13 +72,18 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 			ActivityDiagram acd = (ActivityDiagram) resource.getContents().get(0);
 			activityDiagramTransformation(acd);
 		}
+		
+		System.out.println();
+		System.out.println("ACTIVITY DIAGRAMS ADDED");
+		System.out.println("***************************");
+		System.out.println();
 
 		dynamicOntology.close();
 		return dynamicOntology;
 	}
 
 	private void activityDiagramTransformation(ActivityDiagram acd) {
-		String diagramName = acd.getName();
+		String diagramName = "ACD_" + acd.getName();
 		System.out.println(diagramName);
 		dynamicOntology.addActivityDiagram(diagramName);
 
@@ -87,23 +92,36 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 
 		if (acd.getPrecondition() != null)
 			dynamicOntology.addPreconditionToDiagram(diagramName, acd.getPostcondition());
-
+		
+		ArrayList<ActivityEdge> edges = new ArrayList<ActivityEdge>();
+		
 		for (ActivityPartition activityPartition : acd.getActivitypartition()) {
 			activityPartitionTranformation(diagramName, activityPartition);
+			edges.addAll(activityPartitionEdges(diagramName, activityPartition));
+		}
+		
+		for (ActivityEdge edge : edges) {
+			transitionTransformation(diagramName, edge);
 		}
 	}
 
 	private void activityPartitionTranformation(String diagramName, ActivityPartition activityPartition) {
 		String actorName = activityPartition.getName();
-		if (!dynamicOntology.getActors().contains(actorName)) {
+		if (activityPartition.eClass().getClassifierID() == ActivityDiagramMetamodelPackage.ACTOR) {
+			dynamicOntology.addUserActor(actorName);
+		} else if (activityPartition.eClass().getClassifierID() == ActivityDiagramMetamodelPackage.SYSTEM) {
+			dynamicOntology.addSystemActor(actorName);
+		} else {
 			dynamicOntology.addActor(actorName);
 		}
-
+		
 		ArrayList<CommandAction> commands = new ArrayList<CommandAction>();
 		ArrayList<QueryAction> queries = new ArrayList<QueryAction>();
-		ArrayList<EventAction> events = new ArrayList<EventAction>();
+		ArrayList<DomainEvent> events = new ArrayList<DomainEvent>();
 		ArrayList<Aggregate> aggregates = new ArrayList<Aggregate>();
 		ArrayList<DecisionNode> policies = new ArrayList<DecisionNode>();
+		ArrayList<ReadModel> readModels = new ArrayList<ReadModel>();
+
 		InitialNode initialNode = null;
 		FinalNode finalNode = null;
 
@@ -136,8 +154,8 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 				commands.add((CommandAction) activityNode);
 				break;
 			}
-			case ActivityDiagramMetamodelPackage.EVENT_ACTION: {
-				events.add((EventAction) activityNode);
+			case ActivityDiagramMetamodelPackage.DOMAIN_EVENT: {
+				events.add((DomainEvent) activityNode);
 				break;
 			}
 
@@ -154,40 +172,62 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 				aggregates.add((Aggregate) activityNode);
 				break;
 			}
+
+			case ActivityDiagramMetamodelPackage.READ_MODEL: {
+				readModels.add((ReadModel) activityNode);
+				break;
+			}
+
 			default:
 				break;
 			}
 		}
 		
-		if(initialNode!=null)
+		if (initialNode != null)
 			initialNodeTransformation(diagramName, initialNode);
-		
+
 		for (CommandAction action : commands) {
 			commandNodesTransformation(diagramName, actorName, action);
 		}
-		
+
 		for (QueryAction action : queries) {
 			queryNodesTransformation(diagramName, actorName, action);
 		}
-		
+
 		for (Aggregate aggregate : aggregates) {
 			aggregateNodesTransformation(actorName, aggregate);
 		}
-		
-		for (EventAction action : events) {
-			eventNodesTransformation(actorName, action);
+
+		for (DomainEvent event : events) {
+			eventNodesTransformation(event);
+		}
+
+		for (ReadModel readModel : readModels) {
+			readModelTransformation(readModel);
 		}
 		
-		if(finalNode != null)
+		if (finalNode != null)
 			finalNodeTransformation(diagramName, finalNode);
 		
-		transitionTransformation(diagramName, initialNode);
-
 		for (ActivityPartition subPartition : activityPartition.getSubpartition()) {
 			activityPartitionTranformation(diagramName, subPartition);
 		}
 	}
-
+	
+	private ArrayList<ActivityEdge> activityPartitionEdges(String diagramName, ActivityPartition activityPartition) {
+		ArrayList<ActivityEdge> transitions = new ArrayList<ActivityEdge>();
+		
+		for (ActivityNode activityNode : activityPartition.getActivitynode()) {
+			transitions.addAll(activityNode.getOutcomming());
+		}
+		
+		for (ActivityPartition subPartition : activityPartition.getSubpartition()) {
+			transitions.addAll(activityPartitionEdges(diagramName, subPartition));
+		}
+		
+		return transitions;
+	}
+	
 	private void commandNodesTransformation(String diagramName, String actorName, CommandAction action) {
 		String activityName = action.getName();
 		dynamicOntology.addActivity(activityName);
@@ -200,16 +240,38 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 		String activityName = action.getName();
 		dynamicOntology.addActivity(activityName);
 		dynamicOntology.connectActivityDiagramToElement(diagramName, activityName);
-		dynamicOntology.addCommandToActivity(activityName, activityName);
+		dynamicOntology.addQueryToActivity(activityName, activityName);
 		dynamicOntology.connectActorToActivity(actorName, activityName);
 	}
 
-	private void eventNodesTransformation(String actorName, EventAction action) {
-		if (action.getAggregate() != null) {
-			String actionName = action.getName();
-			String activityName = getActivityNameOfAggregation(action.getAggregate());
-			if (activityName != null)
-				dynamicOntology.addEventToActivity(activityName, actionName);
+	private void eventNodesTransformation(DomainEvent event) {
+		if (event.getSupplier() != null) {
+			String eventName = event.getName();
+			String activityName = getActivityNameOfAggregation(event.getSupplier());
+			dynamicOntology.addEventToActivity(activityName, eventName);
+			dynamicOntology.addEventToSupplier(event.getSupplier().getName(), eventName);
+		} else if (event.getConstraint() != null) {
+			System.out.println("Constraint " + event.getConstraint());
+			String eventName = event.getName();
+			String activityName = getActivityNameOfAggregation(event.getConstraint().getSupplier());
+			dynamicOntology.addEventToActivity(activityName, eventName);
+			dynamicOntology.addEventToSupplier(event.getConstraint().getSupplier().getName(), eventName);
+		}
+	}
+
+	private void readModelTransformation(ReadModel readModel) {
+		String readModelName = readModel.getName();
+		Supplier supplier;
+		if (readModel.getSupplier() != null) {
+			supplier = readModel.getSupplier();
+			String activityName = getActivityNameOfAggregation(supplier);
+			dynamicOntology.addReadModelToActivity(activityName, readModelName);
+			dynamicOntology.addReadModelToSupplier(supplier.getName(), readModelName);
+		} else if (readModel.getEvent() != null) {
+			supplier = readModel.getEvent().getSupplier();
+			String activityName = getActivityNameOfAggregation(supplier);
+			dynamicOntology.addReadModelToActivity(activityName, readModelName);
+			dynamicOntology.addReadModelToEvent(readModel.getEvent().getName(), readModelName);
 		}
 	}
 
@@ -218,17 +280,17 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 		String activityName = getActivityNameOfAggregation(aggregate);
 		if (activityName != null)
 			dynamicOntology.addAggregateToActivity(activityName, aggregateName);
+		addDomainObjectsToAggregate(activityName, aggregate);
+
 	}
 
 	private void initialNodeTransformation(String diagramName, InitialNode activityNode) {
 		String activityName = "StartNode__" + diagramName;
 		dynamicOntology.addInitialActivity(activityName);
 		dynamicOntology.connectActivityDiagramToElement(diagramName, activityName);
-		
+
 		if (activityNode == null)
 			return;
-		
-		
 	}
 
 	private void finalNodeTransformation(String diagramName, FinalNode activityNode) {
@@ -236,35 +298,88 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 		dynamicOntology.addFinalActivity(activityName);
 		dynamicOntology.connectActivityDiagramToElement(diagramName, activityName);
 	}
-	
-	private void transitionTransformation(String diagramName, InitialNode initialNode) {
-		String initialString = "StartNode__" + diagramName;
-		
-		if (initialNode!= null) {
-			for(ActivityEdge outgoing: initialNode.getOutcomming()) {
-				ActivityNode targetNode = outgoing.getTarget();
-				if(targetNode != null) {
-					if(ActivityDiagramMetamodelPackage.Literals.ACTION.isSuperTypeOf(targetNode.eClass())) {
-						Action actionNode = (Action) targetNode;
-						System.out.println(actionNode.getName());
-						dynamicOntology.addTransition(initialString, actionNode.getName());
-						dynamicOntology.connectActivityDiagramToTransition(diagramName, initialString, actionNode.getName());
-					}
-					
-				}
+
+	private void transitionTransformation(String diagramName, ActivityEdge edge) {
+		ActivityNode sourceNode = edge.getSource();
+		ActivityNode targetNode = edge.getTarget();
+		String fromString = "";
+		String toString = targetTransitionName(diagramName, targetNode);
+		if (ActivityDiagramMetamodelPackage.Literals.INITIAL_NODE.isSuperTypeOf(sourceNode.eClass())) {
+			fromString = "StartNode__" + diagramName;
+			addTransition(diagramName, fromString, toString);
+		} else if(ActivityDiagramMetamodelPackage.Literals.READ_MODEL.isSuperTypeOf(sourceNode.eClass())) {
+			ReadModel node = (ReadModel) sourceNode;
+			fromString = node.getName();
+			addTransition(diagramName, fromString, toString);
+		} else if(ActivityDiagramMetamodelPackage.Literals.DECISION_NODE.isSuperTypeOf(sourceNode.eClass())) {
+			DecisionNode source = (DecisionNode) sourceNode;
+			fromString = dynamicOntology.getSourceOfPolicy(source.getName());
+			String transitionName = "FROM__" + fromString + "__TO__" + toString;
+			addTransition(diagramName, fromString, toString);
+			dynamicOntology.addPolicyToTransition(transitionName, source.getName());
+		} else if(ActivityDiagramMetamodelPackage.Literals.DOMAIN_EVENT.isSuperTypeOf(sourceNode.eClass())) {
+			DomainEvent source = (DomainEvent) sourceNode;
+			fromString = source.getName();
+			if(ActivityDiagramMetamodelPackage.Literals.DECISION_NODE.isSuperTypeOf(targetNode.eClass())) {
+				dynamicOntology.addEventSourceToPolicy(toString, fromString);
+				return;
 			}
+			addTransition(diagramName, fromString, toString);
+		}
+	}
+	
+	private String targetTransitionName(String diagramName, ActivityNode node) {
+		switch(node.eClass().getClassifierID()) {
+		case ActivityDiagramMetamodelPackage.ACTION: {
+			return ((Action) node).getName();
+		}
+		case ActivityDiagramMetamodelPackage.COMMAND_ACTION: {
+			return ((CommandAction) node).getName();
+		}
+		case ActivityDiagramMetamodelPackage.QUERY_ACTION: {
+			return ((QueryAction) node).getName();
+		}
+		case ActivityDiagramMetamodelPackage.READ_MODEL: {
+			return ((ReadModel) node).getName();
+		}
+		case ActivityDiagramMetamodelPackage.DECISION_NODE: {
+			return ((DecisionNode) node).getName();
+		}
+		case ActivityDiagramMetamodelPackage.FINAL_NODE: {
+			return "FinalNode__" + diagramName;
+		}
+		default:
+			return null;
+		}
+	}
+	
+	private void addTransition(String diagramName, String fromString, String toString) {
+		dynamicOntology.addTransition(fromString, toString);
+		dynamicOntology.connectActivityDiagramToTransition(diagramName, fromString, toString);
+	}
+
+	private void addDomainObjectsToAggregate(String activityName, Aggregate aggregate) {
+		for (DomainObject domain : aggregate.getDomainobject()) {
+			switch (domain.eClass().getClassifierID()) {
+			case ActivityDiagramMetamodelPackage.ENTITY: {
+				dynamicOntology.addEntityToAggregate(aggregate.getName(), domain.getName());
+				break;
+			}
+			case ActivityDiagramMetamodelPackage.VALUE_OBJECT: {
+				dynamicOntology.addValueObjectToAggregate(aggregate.getName(), domain.getName());
+				break;
+			}
+			default: {
+				dynamicOntology.addObjectToAggregate(aggregate.getName(), domain.getName());
+				break;
+			}
+			}
+			dynamicOntology.addObjectToActivity(activityName, domain.getName());
 		}
 	}
 
-	private String getActivityNameOfAggregation(Aggregate aggregate) {
-		CommandAction command = aggregate.getCommand();
-		QueryAction query = aggregate.getQuery();
-		if (command != null) {
-			return command.getName();
-		} else if (query != null) {
-			return query.getName();
-		} else {
-			return null;
-		}
+	private String getActivityNameOfAggregation(Supplier supplier) {
+		Action action = supplier.getAction();
+		return action.getName();
 	}
 }

@@ -142,6 +142,47 @@ public class StaticOntologyAPI {
 	public ArrayList<String> getObjects() {
 		return staticOntology.getIndividualsOfClass("object");
 	}
+	
+	public ArrayList<String> getLiterals(){
+		return staticOntology.getIndividualsOfClass("literal");
+	}
+	
+	public ArrayList<String> getLiteralsOfEnumeration(String enumeration){
+		return staticOntology.getIndividualNamesGivenIndividualAndProperty(enumeration, "has_literal");
+	}
+	
+	public ArrayList<String> getEnumerations() {
+		return staticOntology.getIndividualsOfClass("enumeration");
+	}
+	
+	public ArrayList<String> getEntities() {
+		return staticOntology.getIndividualsOfClass("entity");
+	}
+	
+	public ArrayList<String> getValueObjects() {
+		return staticOntology.getIndividualsOfClass("value_object");
+	}
+	
+	public String getNameOfElement(String element) {
+		return staticOntology.getIndividualPropertyValue(element, "has_name");
+	}
+	
+	public Boolean getManyOfReference(String reference) {
+		String many = staticOntology.getIndividualPropertyValue(reference, "many");
+		return many != null ? many.equalsIgnoreCase("true") ? true : false : false;
+	}
+	
+	public ArrayList<String> getSourceOfReference(String reference) {
+		return staticOntology.getIndividualNamesGivenIndividualAndProperty(reference, "has_source");
+	}
+	
+	public ArrayList<String> getTargetOfReference(String reference) {
+		return staticOntology.getIndividualNamesGivenIndividualAndProperty(reference, "has_target");
+	}
+	
+	public ArrayList<String> getReferences() {
+		return staticOntology.getIndividualsOfClass("reference");
+	}
 
 	/**
 	 * Returns the properties of a specific object.
@@ -169,8 +210,8 @@ public class StaticOntologyAPI {
 	 * @param object the name of the object of which the related objects are returned.
 	 * @return an {@link ArrayList} containing the names of the related objects.
 	 */
-	public ArrayList<String> getRelatedObjectsOfObject(String object) {
-		return staticOntology.getIndividualNamesGivenIndividualAndProperty(object, "relates_to");
+	public ArrayList<String> getReferenceObjectsOfObject(String object) {
+		return staticOntology.getIndividualNamesGivenIndividualAndProperty(object, "has_reference");
 	}
 
 	/**
@@ -258,7 +299,7 @@ public class StaticOntologyAPI {
 	 * @param object2 the second object that is related to the first.
 	 */
 	public void connectObjectToObject(String object1, String object2) {
-		staticOntology.addPropertyAndReverseBetweenIndividuals(object1, "relates_to", object2);
+		staticOntology.addPropertyAndReverseBetweenIndividuals(object1, "has_reference", object2);
 	}
 
 	/**
@@ -286,7 +327,6 @@ public class StaticOntologyAPI {
 	 * Add Aggregate
 	 * @param aggregate
 	 */
-	
 	public void addAggregate(String aggregate) {
 		staticOntology.addIndividual("aggregate", aggregate);
 	}
@@ -295,16 +335,16 @@ public class StaticOntologyAPI {
 	 * 
 	 * @param reference
 	 */
-	
-	public void addReference(String reference) {
+	public void addReference(String reference, String sourceObject, String targetObject) {
 		staticOntology.addIndividual("reference", reference);
+		staticOntology.addPropertyAndReverseBetweenIndividuals(reference, "has_source", sourceObject);
+		staticOntology.addPropertyAndReverseBetweenIndividuals(reference, "has_target", targetObject);
 	}
 	
 	/**
 	 * 
 	 * @param enumeration
 	 */
-	
 	public void addEnumeration(String enumeration) {
 		staticOntology.addIndividual("enumeration", enumeration);
 	}
@@ -314,8 +354,9 @@ public class StaticOntologyAPI {
 	 * @param literal
 	 */
 	
-	public void addLiteral(String literal) {
+	public void addLiteralToEnumeration(String enumeration, String literal) {
 		staticOntology.addIndividual("literal", literal);
+		staticOntology.addPropertyAndReverseBetweenIndividuals(enumeration, "has_literal", literal);
 	}
 	
 	/**
@@ -343,14 +384,5 @@ public class StaticOntologyAPI {
 	 */
 	public void connectEnumerationToObject(String enumeration, String object) {
 		staticOntology.addPropertyAndReverseBetweenIndividuals(object, "has_property", enumeration);
-	}
-	
-	/**
-	 * 
-	 * @param enumeration
-	 * @param literal
-	 */
-	public void connectLiteralToEnumeration(String enumeration, String literal) {
-		staticOntology.addPropertyAndReverseBetweenIndividuals(enumeration, "has_literal", literal);
 	}
 }

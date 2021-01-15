@@ -1,509 +1,1072 @@
 <?xml version="1.0"?>
-<rdf:RDF
-xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
-xmlns="http://www.owl-ontologies.com/Ontology1273059028.owl#"
-xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
-xmlns:owl="http://www.w3.org/2002/07/owl#"
-xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
-xmlns:swrl="http://www.w3.org/2003/11/swrl#"
-xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-xml:base="file:/C:/Users/user/Desktop/ontologies/LinkedOntology.owl">
-<owl:Ontology rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation">
-<rdfs:subClassOf>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-</rdfs:subClassOf>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram">
-<rdfs:subClassOf>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
-</rdfs:subClassOf>
-</owl:Class>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:unionOf>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource">
-<rdfs:subClassOf>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-</rdfs:subClassOf>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition">
-<rdfs:subClassOf>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-</rdfs:subClassOf>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Element">
-<rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
-</owl:Class>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:unionOf>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Project">
-<rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
-</owl:Class>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:unionOf>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Representation">
-<rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Property">
-<rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement">
-<rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity">
-<rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-></rdfs:comment>
-</owl:Class>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:unionOf>
-</owl:Class>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:unionOf>
-</owl:Class>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:unionOf>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Action">
-<rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation">
-<rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Representation"/>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype">
-<rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-</owl:Class>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation">
-<rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Representation"/>
-</owl:Class>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:unionOf>
-</owl:Class>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_query_parameters">
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_query_parameter_of"/>
-</owl:inverseOf>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_action">
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_action_of"/>
-</owl:inverseOf>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_query_parameter_of">
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#has_query_parameters"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_input">
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_input_of"/>
-</owl:inverseOf>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_output">
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_output_of"/>
-</owl:inverseOf>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_input_of">
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#has_input"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of">
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_activity"/>
-</owl:inverseOf>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_related_resource_of">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_related_resource"/>
-</owl:inverseOf>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_elements_of">
-<rdfs:domain>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Representation"/>
-</owl:unionOf>
-</owl:Class>
-</rdfs:domain>
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_elements"/>
-</owl:inverseOf>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Representation"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of">
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_condition"/>
-</owl:inverseOf>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_previous_activity">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_next_activity"/>
-</owl:inverseOf>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_related_resource">
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_related_resource_of"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_element_of">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_element"/>
-</owl:inverseOf>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_activity_diagram">
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_diagram_of"/>
-</owl:inverseOf>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_activity">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_operation">
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_operation_of"/>
-</owl:inverseOf>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_operation_of">
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#has_operation"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_condition">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_property">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Property"/>
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of"/>
-</owl:inverseOf>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_element">
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_element_of"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#has_property"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Property"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_action_of">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#has_action"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_elements">
-<rdfs:range>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Representation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype"/>
-</owl:unionOf>
-</owl:Class>
-</rdfs:range>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Representation"/>
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_elements_of"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_output_of">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#has_output"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_diagram_of">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#has_activity_diagram"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#element_is_contained_in">
-<rdfs:range>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
-</owl:unionOf>
-</owl:Class>
-</rdfs:range>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#contains_element"/>
-</owl:inverseOf>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_requirement_of">
-<owl:inverseOf>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_requirement"/>
-</owl:inverseOf>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_requirement">
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_requirement_of"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#contains_element">
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#element_is_contained_in"/>
-<rdfs:domain>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
-</owl:unionOf>
-</owl:Class>
-</rdfs:domain>
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_next_activity">
-<rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-<owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#has_previous_activity"/>
-</owl:ObjectProperty>
-<owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isOptional">
-<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-</owl:DatatypeProperty>
-<owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isAuthToken">
-<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-</owl:DatatypeProperty>
-<owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasURIParameters">
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-</owl:DatatypeProperty>
-<owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activitytype">
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
-</owl:DatatypeProperty>
-<owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasResponseType">
-<rdfs:range>
-<owl:DataRange>
-<owl:oneOf rdf:parseType="Resource">
-<rdf:rest rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->XML</rdf:first>
-<rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-</rdf:rest>
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->JSON</rdf:first>
-</owl:oneOf>
-</owl:DataRange>
-</rdfs:range>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-</owl:DatatypeProperty>
-<owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isExternalService">
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Resource"/>
-<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-</owl:DatatypeProperty>
-<owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasDefaultValue">
-<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-</owl:DatatypeProperty>
-<owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasName">
-<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-<rdfs:domain>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:unionOf>
-</owl:Class>
-</rdfs:domain>
-</owl:FunctionalProperty>
-<owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isType">
-<rdfs:domain>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OutputRepresentation"/>
-</owl:unionOf>
-</owl:Class>
-</rdfs:domain>
-<rdfs:range>
-<owl:DataRange>
-<owl:oneOf rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->Array</rdf:first>
-<rdf:rest rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->Object</rdf:first>
-<rdf:rest rdf:parseType="Resource">
-<rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->Primitive</rdf:first>
-</rdf:rest>
-</rdf:rest>
-</owl:oneOf>
-</owl:DataRange>
-</rdfs:range>
-<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-</owl:FunctionalProperty>
-<owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasResourcePath">
-<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-</owl:FunctionalProperty>
-<owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#belongsToURL">
-<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-<rdfs:domain>
-<owl:Class>
-<owl:unionOf rdf:parseType="Collection">
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-<owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#InputRepresentation"/>
-</owl:unionOf>
-</owl:Class>
-</rdfs:domain>
-</owl:FunctionalProperty>
-<owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#belongsToWSType">
-<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-<rdfs:range>
-<owl:DataRange>
-<owl:oneOf rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->RESTful</rdf:first>
-<rdf:rest rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->SOAP</rdf:first>
-<rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-</rdf:rest>
-</owl:oneOf>
-</owl:DataRange>
-</rdfs:range>
-</owl:FunctionalProperty>
-<owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasCRUDVerb">
-<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-<rdfs:range>
-<owl:DataRange>
-<owl:oneOf rdf:parseType="Resource">
-<rdf:rest rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->PUT</rdf:first>
-<rdf:rest rdf:parseType="Resource">
-<rdf:rest rdf:parseType="Resource">
-<rdf:rest rdf:parseType="Resource">
-<rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->DELETE</rdf:first>
-</rdf:rest>
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->UPDATE</rdf:first>
-</rdf:rest>
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->POST</rdf:first>
-</rdf:rest>
-</rdf:rest>
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->GET</rdf:first>
-</owl:oneOf>
-</owl:DataRange>
-</rdfs:range>
-<rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Operation"/>
-</owl:FunctionalProperty>
-<PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
-<PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#int"/>
-<owl:DataRange>
-<owl:oneOf rdf:parseType="Resource">
-<rdf:rest rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
->true</rdf:first>
-<rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-</rdf:rest>
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
->false</rdf:first>
-</owl:oneOf>
-</owl:DataRange>
-<PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#string"/>
-<PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#char"/>
-<PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#long"/>
-<owl:DataRange>
-<owl:oneOf rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->String</rdf:first>
-<rdf:rest rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->Float</rdf:first>
-<rdf:rest rdf:parseType="Resource">
-<rdf:rest rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->Integer</rdf:first>
-<rdf:rest rdf:parseType="Resource">
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->Char</rdf:first>
-<rdf:rest rdf:parseType="Resource">
-<rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->Double</rdf:first>
-</rdf:rest>
-</rdf:rest>
-</rdf:rest>
-<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
->Boolean</rdf:first>
-</rdf:rest>
-</rdf:rest>
-</owl:oneOf>
-</owl:DataRange>
-<PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#boolean"/>
-<PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#float"/>
-<PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#double"/>
+<rdf:RDF xmlns="http://www.owl-ontologies.com/Ontology1273059028.owl#"
+     xml:base="http://www.owl-ontologies.com/Ontology1273059028.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:opla-sd="http://ontologydesignpatterns.org/opla-sd#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#">
+    <owl:Ontology rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontologydesignpatterns.org/opla-sd#entityPosition -->
+
+    <owl:AnnotationProperty rdf:about="http://ontologydesignpatterns.org/opla-sd#entityPosition"/>
+    
+
+
+    <!-- http://ontologydesignpatterns.org/opla-sd#entityPositionX -->
+
+    <owl:AnnotationProperty rdf:about="http://ontologydesignpatterns.org/opla-sd#entityPositionX"/>
+    
+
+
+    <!-- http://ontologydesignpatterns.org/opla-sd#entityPositionY -->
+
+    <owl:AnnotationProperty rdf:about="http://ontologydesignpatterns.org/opla-sd#entityPositionY"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_object -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_object">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of_activity"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_readmodel -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_readmodel">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_readmodel_of_activity"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#contains_element -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#contains_element">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#element_is_contained_in"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#diagram_has_activity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#diagram_has_activity">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of_diagram"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#element_is_contained_in -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#element_is_contained_in">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#event_has_readmodel -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#event_has_readmodel">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_readmodel_of_event"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_action -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_action">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_action_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_activity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_activity">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_activity_diagram -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_activity_diagram">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_diagram_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_condition -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_condition">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_element -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_element">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_element_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_elements -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_elements">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_elements_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_entity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_entity">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_entity_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_enumeration -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_enumeration">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_enumeration_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_event -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_event">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_event_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_literal -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_literal">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_literal_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Literal"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_object -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_object">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_policy -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_policy">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_policy_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Policy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_property -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_property">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_reference -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_reference">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_reference_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_requirement -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_requirement">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_requirement_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_role -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_role">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_role_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_source -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_source">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_target -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_target">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_value_object -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_value_object">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_value_object_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_action_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_action_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_diagram_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_diagram_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of_diagram -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of_diagram">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_element_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_element_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_elements_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_elements_of"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_entity_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_entity_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Entity"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_enumeration_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_enumeration_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_event_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_event_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_literal_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_literal_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Literal"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of_activity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of_activity">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_policy_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_policy_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Policy"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_readmodel_of_activity -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_readmodel_of_activity">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_readmodel_of_event -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_readmodel_of_event">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_reference_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_reference_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_requirement_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_requirement_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_role_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_role_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Role"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of_policy -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of_policy">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#policy_source"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Policy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_value_object_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_value_object_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#policy_source -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#policy_source">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Policy"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#activitytype -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activitytype">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Command</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Query</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#belongsToURL -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#belongsToURL">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#belongsToWSType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#belongsToWSType">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RESTful</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SOAP</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#hasCRUDVerb -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasCRUDVerb">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DELETE</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GET</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">POST</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PUT</rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UPDATE</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#hasDefaultValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasDefaultValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#hasName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasName">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#hasResourcePath -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasResourcePath">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#hasResponseType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasResponseType">
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JSON</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XML</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#hasURIParameters -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasURIParameters">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#isAuthToken -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isAuthToken">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#isExternalService -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isExternalService">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#isOptional -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isOptional">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#isType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isType">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Array</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Object</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Primitive</rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#many -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#many">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Action -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Action">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Activity -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Application -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Application">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Concept -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Condition -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Element -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Element">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Entity -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Entity">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+        <opla-sd:entityPosition>
+            <rdf:Description>
+                <opla-sd:entityPositionX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">60.248082537923</opla-sd:entityPositionX>
+                <opla-sd:entityPositionY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">270.6353069232712</opla-sd:entityPositionY>
+                <rdfs:comment xml:lang="en">This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view.</rdfs:comment>
+            </rdf:Description>
+        </opla-sd:entityPosition>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Event -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Event">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#ExternalSystem -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ExternalSystem">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Literal -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Literal">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Object -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Object">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Policy -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Policy">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Project -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Project">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Property -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Property">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Reference -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Role -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Role">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#boolean -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#boolean">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#char -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#char">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#double -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#double">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#float -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#float">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#int -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#int">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#long -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#long">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#object -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#object">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#string -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#string">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype"/>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
-<!-- Created with Protege (with OWL Plugin 3.5, Build 663)  http://protege.stanford.edu -->
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+

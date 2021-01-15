@@ -1,0 +1,32 @@
+@Ecore(invocationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", settingDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot", validationDelegates="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot")
+@namespace(uri="resources/mm/DeploymentPSMMetamodel.ecore", prefix="mde")
+package DeploymentPSM;
+
+import "platform:/resource/MyCore/resources/mm/PSM/ServicePSMMetamodel.ecore";
+
+enum DatabaseType {
+	SQL = 0;
+	MONGODB = 1;
+	CASSANDRA = 2;
+	COUCHBASE = 3;
+	NO = 4;
+}
+
+enum DeploymentType {
+	DOCKER = 0;
+	KUBERNETES = 1;
+	OPENSHIFT = 2;
+}
+
+class Deployment {
+	attr DeploymentType deploymentType;
+	attr String directoryPath;
+	attr String dbPassword;
+	attr String[1] name;
+	attr String dbIP;
+	attr String dbUsername;
+	attr String dbPort;
+	attr DatabaseType dbType;
+	ref ServicePSM.Application application;
+}
+

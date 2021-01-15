@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/MyCore/src" modelPluginID="MyCore"
+    modelName="StaticPIM" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>StaticPIMMetamodel.ecore</foreignModel>
+  <genPackages prefix="StaticPIM" disposableProviderFactory="true" ecorePackage="StaticPIMMetamodel.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="StaticPIMMetamodel.ecore#//MediaType">
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//MediaType/JSON"/>
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//MediaType/XML"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="StaticPIMMetamodel.ecore#//Multiplicity">
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//Multiplicity/ONE_TO_MANY"/>
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//Multiplicity/MANY_TO_ONE"/>
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//Multiplicity/ONE_TO_ONE"/>
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//Multiplicity/MANY_TO_MANY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="StaticPIMMetamodel.ecore#//DefaultType">
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//DefaultType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//DefaultType/Integer"/>
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//DefaultType/Float"/>
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//DefaultType/Boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//DefaultType/null"/>
+      <genEnumLiterals ecoreEnumLiteral="StaticPIMMetamodel.ecore#//DefaultType/Date"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="StaticPIMMetamodel.ecore#//Resource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Resource/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Resource/hasInputRepresentation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Resource/hasOutputRepresentation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Resource/hasRelatedResource"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Resource/isRelatedResource"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Resource/aggregate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Resource/simpleName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Resource/pathName"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Property/isUnique"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Property/isNamingProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Property/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Property/isRequired"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Property/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Property/max"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Property/type"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//InputRepresentation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//InputRepresentation/inputMediaType"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//OutputRepresentation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//OutputRepresentation/outputMediaType"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//Project">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Project/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Project/basePath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Project/hasApplication"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Project/primitiveTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//Relation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Relation/multiplicity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Relation/target"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Relation/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Relation/cascade"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Relation/orderBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Relation/visibility"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Relation/required"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Relation/nullable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Relation/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Relation/opposite"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Relation/type"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//Application">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Application/hasAggregate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Application/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Application/project"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Application/complextypes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="StaticPIMMetamodel.ecore#//TypeDefinition"/>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//Enumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Enumeration/hasLiteral"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//BasicType"/>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//Literal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Literal/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Literal/value"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//Entity"/>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//DTO"/>
+    <genClasses image="false" ecoreClass="StaticPIMMetamodel.ecore#//DomainObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//DomainObject/hasProperty"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//DomainObject/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//DomainObject/abstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//DomainObject/aggregateRoot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//DomainObject/hasRelation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//DomainObject/aggregate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//DomainObject/extends"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//DomainObject/scaffold"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//ValueObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//ValueObject/immutable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//ValueObject/persistent"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//Aggregate">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Aggregate/hasDomainobject"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//Aggregate/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Aggregate/application"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Aggregate/hasResource"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//Aggregate/aggregateRoot"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//SingletonResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//SingletonResource/lookupField"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="StaticPIMMetamodel.ecore#//Event"/>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//CommandEvent"/>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//DomainEvent"/>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//PrimitiveType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//PrimitiveType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//CollectionResource"/>
+    <genClasses image="false" ecoreClass="StaticPIMMetamodel.ecore#//SimpleType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute StaticPIMMetamodel.ecore#//SimpleType/typeName"/>
+    </genClasses>
+    <genClasses ecoreClass="StaticPIMMetamodel.ecore#//ComplexType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference StaticPIMMetamodel.ecore#//ComplexType/type"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

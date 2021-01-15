@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:mde="resources/mm/CIM/ActivityDiagram.ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmi:id="_7Ma7UENvEeuJD91cFvm1WA" type="ActivityDiagramMetamodel" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_gTSgQENwEeuJD91cFvm1WA" type="2047">
+    <children xmi:type="notation:DecorationNode" xmi:id="_gTTHUENwEeuJD91cFvm1WA" type="5035"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_gTTHUUNwEeuJD91cFvm1WA" type="7004">
+      <children xmi:type="notation:Node" xmi:id="_p8Ip0ENwEeuJD91cFvm1WA" type="3006">
+        <children xmi:type="notation:DecorationNode" xmi:id="_p8Ip1UNwEeuJD91cFvm1WA" type="5023"/>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_p8Ip0UNwEeuJD91cFvm1WA"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_p8Ip0kNwEeuJD91cFvm1WA" fontName="Segoe UI"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_p8Ip00NwEeuJD91cFvm1WA"/>
+        <element xmi:type="mde:QueryAction" href="Tracking.activitydiagrammetamodel#//@activitypartition.0/@activitynode.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p8Ip1ENwEeuJD91cFvm1WA" x="160" y="140"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_rPnq8ENwEeuJD91cFvm1WA" type="3005">
+        <children xmi:type="notation:DecorationNode" xmi:id="_rPnq9kNwEeuJD91cFvm1WA" type="5022"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_rPnq90NwEeuJD91cFvm1WA" type="7003">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_rPnq-ENwEeuJD91cFvm1WA"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_rPnq-UNwEeuJD91cFvm1WA"/>
+        </children>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_rPnq8UNwEeuJD91cFvm1WA"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_rPnq8kNwEeuJD91cFvm1WA" fontName="Segoe UI"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_rPnq80NwEeuJD91cFvm1WA"/>
+        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_rPnq9ENwEeuJD91cFvm1WA"/>
+        <element xmi:type="mde:Aggregate" href="Tracking.activitydiagrammetamodel#//@activitypartition.0/@activitynode.1"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rPnq9UNwEeuJD91cFvm1WA" x="326" y="141"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_tRElUENwEeuJD91cFvm1WA" type="3017">
+        <children xmi:type="notation:DecorationNode" xmi:id="_tRFMZENwEeuJD91cFvm1WA" type="5029"/>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_tRFMYENwEeuJD91cFvm1WA"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_tRFMYUNwEeuJD91cFvm1WA" fontName="Segoe UI"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_tRFMYkNwEeuJD91cFvm1WA"/>
+        <element xmi:type="mde:ReadModel" href="Tracking.activitydiagrammetamodel#//@activitypartition.0/@activitynode.2"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tRFMY0NwEeuJD91cFvm1WA" x="458" y="141"/>
+      </children>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_gTSgQUNwEeuJD91cFvm1WA"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_gTSgQkNwEeuJD91cFvm1WA" fontName="Segoe UI"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_gTSgQ0NwEeuJD91cFvm1WA"/>
+    <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_gTSgRENwEeuJD91cFvm1WA"/>
+    <element xmi:type="mde:Actor" href="Tracking.activitydiagrammetamodel#//@activitypartition.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gTSgRUNwEeuJD91cFvm1WA" x="234" y="206" width="949" height="371"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_7Ma7UUNvEeuJD91cFvm1WA"/>
+  <element xmi:type="mde:ActivityDiagram" href="Tracking.activitydiagrammetamodel#/"/>
+</notation:Diagram>

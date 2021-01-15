@@ -3,7 +3,6 @@
 package ActivityDiagramMetamodel.impl;
 
 import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
-import ActivityDiagramMetamodel.ModelingTestPackage;
 import ActivityDiagramMetamodel.ValueSpecification;
 
 import org.eclipse.emf.ecore.EClass;

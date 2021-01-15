@@ -3,7 +3,6 @@
 package ActivityDiagramMetamodel.impl;
 
 import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
-import ActivityDiagramMetamodel.ModelingTestPackage;
 import ActivityDiagramMetamodel.Variable;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link ActivityDiagramMetamodel.impl.VariableImpl#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link ActivityDiagramMetamodel.impl.VariableImpl#getLowerBound <em>Lower Bound</em>}</li>
+ *   <li>{@link ActivityDiagramMetamodel.impl.VariableImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +67,26 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	 * @ordered
 	 */
 	protected int lowerBound = LOWER_BOUND_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,12 +159,37 @@ public class VariableImpl extends EObjectImpl implements Variable {
 	 * @generated
 	 */
 	@Override
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ActivityDiagramMetamodelPackage.VARIABLE__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ActivityDiagramMetamodelPackage.VARIABLE__UPPER_BOUND:
 				return getUpperBound();
 			case ActivityDiagramMetamodelPackage.VARIABLE__LOWER_BOUND:
 				return getLowerBound();
+			case ActivityDiagramMetamodelPackage.VARIABLE__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -162,6 +207,9 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				return;
 			case ActivityDiagramMetamodelPackage.VARIABLE__LOWER_BOUND:
 				setLowerBound((Integer)newValue);
+				return;
+			case ActivityDiagramMetamodelPackage.VARIABLE__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -181,6 +229,9 @@ public class VariableImpl extends EObjectImpl implements Variable {
 			case ActivityDiagramMetamodelPackage.VARIABLE__LOWER_BOUND:
 				setLowerBound(LOWER_BOUND_EDEFAULT);
 				return;
+			case ActivityDiagramMetamodelPackage.VARIABLE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -197,6 +248,8 @@ public class VariableImpl extends EObjectImpl implements Variable {
 				return upperBound != UPPER_BOUND_EDEFAULT;
 			case ActivityDiagramMetamodelPackage.VARIABLE__LOWER_BOUND:
 				return lowerBound != LOWER_BOUND_EDEFAULT;
+			case ActivityDiagramMetamodelPackage.VARIABLE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -215,6 +268,8 @@ public class VariableImpl extends EObjectImpl implements Variable {
 		result.append(upperBound);
 		result.append(", lowerBound: ");
 		result.append(lowerBound);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

@@ -1,0 +1,1251 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns="http://www.owl-ontologies.com/Ontology1273059028.owl#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:opla-sd="http://ontologydesignpatterns.org/opla-sd#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Literal">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Application">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Entity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Policy">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Element">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ExternalSystem">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Project">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Object">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Property">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity">
+    <rdfs:comment></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Event">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Action">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#PrimitiveDatatype">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration">
+    <opla-sd:entityPosition rdf:parseType="Resource">
+      <rdfs:comment xml:lang="en">This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view.</rdfs:comment>
+      <opla-sd:entityPositionY rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+      >270.6353069232712</opla-sd:entityPositionY>
+      <opla-sd:entityPositionX rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+      >60.248082537923</opla-sd:entityPositionX>
+    </opla-sd:entityPosition>
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of_diagram">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_readmodel_of_activity">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of_activity">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#event_has_readmodel">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_readmodel_of_event"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_object">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_value_object_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_enumeration">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_enumeration_of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_policy_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Policy"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_enumeration_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_role_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <rdfs:domain>
+      <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Role">
+        <element_is_contained_in>
+          <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1">
+            <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Role"/>
+            <contains_element>
+              <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo">
+                <element_is_contained_in>
+                  <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6">
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                    <contains_element>
+                      <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#destination">
+                        <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6"/>
+                      </Property>
+                    </contains_element>
+                    <contains_element>
+                      <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Route">
+                        <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6"/>
+                      </Object>
+                    </contains_element>
+                    <rdfs:comment>Customer must be able reroute a cargo during transport, in which case the destination is changed and a new route is requested.</rdfs:comment>
+                  </Requirement>
+                </element_is_contained_in>
+                <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+                <has_property>
+                  <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_deadline">
+                    <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+                  </Property>
+                </has_property>
+                <element_is_contained_in>
+                  <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7">
+                    <contains_element>
+                      <Aggregate rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event">
+                        <has_activity>
+                          <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Register_Handling_Event_Handling_Event">
+                            <is_activity_of_diagram>
+                              <ActivityDiagram rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Handling">
+                                <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Register_Handling_Event_Handling_Event"/>
+                                <contains_element>
+                                  <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Report_Form_View_Handling_Event">
+                                    <is_activity_of_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Handling"/>
+                                    <activity_has_readmodel>
+                                      <ReadModel rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Report_Form"/>
+                                    </activity_has_readmodel>
+                                    <has_role>
+                                      <Role rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Shipping_Clerck">
+                                        <is_role_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Register_Handling_Event_Handling_Event"/>
+                                        <is_role_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Report_Form_View_Handling_Event"/>
+                                      </Role>
+                                    </has_role>
+                                    <activitytype>Query</activitytype>
+                                    <has_action>
+                                      <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Report_Form_View"/>
+                                    </has_action>
+                                  </Activity>
+                                </contains_element>
+                                <contains_element>
+                                  <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Register_Handling_Event"/>
+                                </contains_element>
+                                <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event"/>
+                                <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                                <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Register_Handling_Event_Handling_Event"/>
+                                <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Report_Form_View"/>
+                                <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Report_Form_View_Handling_Event"/>
+                                <contains_element>
+                                  <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Update_Event_of_Cargo_Cargo">
+                                    <has_event>
+                                      <Event rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Is_Claimed_Event"/>
+                                    </has_event>
+                                    <has_action>
+                                      <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Update_Event_of_Cargo"/>
+                                    </has_action>
+                                    <has_event>
+                                      <Event rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Next_Expected_Handling_Activity"/>
+                                    </has_event>
+                                    <has_policy>
+                                      <Policy rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Whenever_a_Handling_Event_Registered">
+                                        <policy_source>
+                                          <Event rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event_Registered">
+                                            <is_source_of_policy rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Whenever_a_Handling_Event_Registered"/>
+                                          </Event>
+                                        </policy_source>
+                                        <is_policy_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Update_Event_of_Cargo_Cargo"/>
+                                      </Policy>
+                                    </has_policy>
+                                    <has_event>
+                                      <Event rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Transport_Status_Recalculated"/>
+                                    </has_event>
+                                    <has_event>
+                                      <Event rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Last_Known_Updated"/>
+                                    </has_event>
+                                    <is_activity_of_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Handling"/>
+                                    <has_event>
+                                      <Event rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Current_Voyage_Updated"/>
+                                    </has_event>
+                                    <has_event>
+                                      <Event rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Is_Unloaded_At_Destination"/>
+                                    </has_event>
+                                    <activitytype>Command</activitytype>
+                                  </Activity>
+                                </contains_element>
+                                <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Update_Event_of_Cargo"/>
+                                <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Update_Event_of_Cargo_Cargo"/>
+                              </ActivityDiagram>
+                            </is_activity_of_diagram>
+                            <has_event rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event_Registered"/>
+                            <has_role rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Shipping_Clerck"/>
+                            <activitytype>Command</activitytype>
+                            <has_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Register_Handling_Event"/>
+                          </Activity>
+                        </has_activity>
+                        <has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Report_Form_View_Handling_Event"/>
+                        <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+                        <has_property>
+                          <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#registration_time">
+                            <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+                          </Property>
+                        </has_property>
+                        <has_property>
+                          <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#completion_time">
+                            <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+                          </Property>
+                        </has_property>
+                        <is_source_of>
+                          <Reference rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage__Reference__has_source__Handling_Event__has_target__voyage">
+                            <hasName>voyage</hasName>
+                            <many rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                            >false</many>
+                            <has_target>
+                              <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Voyage">
+                                <has_property>
+                                  <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#location">
+                                    <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+                                  </Property>
+                                </has_property>
+                                <has_property>
+                                  <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_number">
+                                    <element_is_contained_in>
+                                      <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9">
+                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_number"/>
+                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Voyage"/>
+                                        <contains_element>
+                                          <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Schedule">
+                                            <is_source_of>
+                                              <Reference rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#list__Reference__has_source__schedule__has_target__carrier_movements">
+                                                <hasName>list</hasName>
+                                                <many rdf:datatype=
+                                                "http://www.w3.org/2001/XMLSchema#boolean"
+                                                >true</many>
+                                                <has_target>
+                                                  <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Carrier_movements">
+                                                    <element_is_contained_in>
+                                                      <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10">
+                                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Carrier_movements"/>
+                                                        <contains_element>
+                                                          <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#departure">
+                                                            <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+                                                          </Property>
+                                                        </contains_element>
+                                                        <contains_element>
+                                                          <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_location">
+                                                            <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+                                                          </Property>
+                                                        </contains_element>
+                                                        <contains_element>
+                                                          <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_time">
+                                                            <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+                                                          </Property>
+                                                        </contains_element>
+                                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Schedule"/>
+                                                        <rdfs:comment
+                                                        >The voyage clerk create a schedule by list of carrier movements which has departure, arrival time, and arrival location.</rdfs:comment>
+                                                      </Requirement>
+                                                    </element_is_contained_in>
+                                                    <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#departure"/>
+                                                    <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_location"/>
+                                                    <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_time"/>
+                                                  </Object>
+                                                </has_target>
+                                                <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Schedule"/>
+                                              </Reference>
+                                            </is_source_of>
+                                            <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+                                            <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9"/>
+                                          </Object>
+                                        </contains_element>
+                                        <rdfs:comment>The voyage clerk create a new voyage by voyage number and schedule</rdfs:comment>
+                                      </Requirement>
+                                    </element_is_contained_in>
+                                    <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+                                  </Property>
+                                </has_property>
+                                <is_source_of>
+                                  <Reference rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo__Reference__has_source__Voyage__has_target__cargo">
+                                    <hasName>cargo</hasName>
+                                    <many rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                                    >false</many>
+                                    <has_target rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                                    <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Voyage"/>
+                                  </Reference>
+                                </is_source_of>
+                                <is_source_of>
+                                  <Reference rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#schedule__Reference__has_source__Voyage__has_target__schedule">
+                                    <hasName>schedule</hasName>
+                                    <many rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                                    >false</many>
+                                    <has_target rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Schedule"/>
+                                    <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Voyage"/>
+                                  </Reference>
+                                </is_source_of>
+                                <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9"/>
+                                <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+                              </Object>
+                            </has_target>
+                            <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event"/>
+                          </Reference>
+                        </is_source_of>
+                        <is_source_of>
+                          <Reference rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#type__Reference__has_source__Handling_Event__has_target__type">
+                            <hasName>type</hasName>
+                            <many rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                            >false</many>
+                            <has_target>
+                              <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Type">
+                                <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+                                <has_literal>
+                                  <Literal rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Unload"/>
+                                </has_literal>
+                                <has_literal>
+                                  <Literal rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Customs"/>
+                                </has_literal>
+                                <has_literal>
+                                  <Literal rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Claim_1"/>
+                                </has_literal>
+                                <has_literal>
+                                  <Literal rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Load"/>
+                                </has_literal>
+                                <has_literal>
+                                  <Literal rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Receive"/>
+                                </has_literal>
+                                <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration"/>
+                              </Object>
+                            </has_target>
+                            <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event"/>
+                          </Reference>
+                        </is_source_of>
+                        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+                      </Aggregate>
+                    </contains_element>
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#location"/>
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#completion_time"/>
+                    <rdfs:comment>The shipping clerk must be able create a Handling Event by providing type which can be load, unload, receive, claim, customs; completion time, registration time, voyage by voyage number, location, and cargo.</rdfs:comment>
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Voyage"/>
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_number"/>
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#registration_time"/>
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Type"/>
+                  </Requirement>
+                </element_is_contained_in>
+                <has_activity>
+                  <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_List_View_Cargo">
+                    <is_activity_of_diagram>
+                      <ActivityDiagram rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Cargo">
+                        <contains_element>
+                          <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Change_Destination_Cargo">
+                            <is_activity_of_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Cargo"/>
+                            <has_event>
+                              <Event rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Destination_Changed"/>
+                            </has_event>
+                            <has_role>
+                              <Role rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer">
+                                <is_role_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Change_Destination_Cargo"/>
+                                <is_role_of>
+                                  <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Details_View_Cargo">
+                                    <is_activity_of_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Cargo"/>
+                                    <activity_has_readmodel>
+                                      <ReadModel rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Details"/>
+                                    </activity_has_readmodel>
+                                    <has_role rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+                                    <activitytype>Query</activitytype>
+                                    <has_action>
+                                      <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Details_View"/>
+                                    </has_action>
+                                  </Activity>
+                                </is_role_of>
+                                <is_role_of>
+                                  <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Form_View_Cargo">
+                                    <activity_has_object rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                                    <is_activity_of_diagram>
+                                      <ActivityDiagram rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Booking">
+                                        <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Form_View_Cargo"/>
+                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Form_View_Cargo"/>
+                                        <contains_element>
+                                          <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Form_View"/>
+                                        </contains_element>
+                                        <diagram_has_activity>
+                                          <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_New_Cargo_Cargo">
+                                            <has_role rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+                                            <is_activity_of_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Booking"/>
+                                            <activity_has_object>
+                                              <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Itinerary">
+                                                <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject"/>
+                                              </Object>
+                                            </activity_has_object>
+                                            <activity_has_object rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                                            <has_event>
+                                              <Event rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Booked"/>
+                                            </has_event>
+                                            <has_action>
+                                              <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_New_Cargo"/>
+                                            </has_action>
+                                            <activitytype>Command</activitytype>
+                                            <activity_has_object>
+                                              <ReadModel rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Tracking_ID">
+                                                <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+                                                <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject"/>
+                                              </ReadModel>
+                                            </activity_has_object>
+                                            <activity_has_readmodel rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Tracking_ID"/>
+                                          </Activity>
+                                        </diagram_has_activity>
+                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_New_Cargo_Cargo"/>
+                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_New_Cargo"/>
+                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                                      </ActivityDiagram>
+                                    </is_activity_of_diagram>
+                                    <activity_has_readmodel>
+                                      <ReadModel rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Form"/>
+                                    </activity_has_readmodel>
+                                    <has_role rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+                                    <activitytype>Query</activitytype>
+                                    <has_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Form_View"/>
+                                  </Activity>
+                                </is_role_of>
+                                <is_role_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_List_View_Cargo"/>
+                                <is_role_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_New_Cargo_Cargo"/>
+                                <is_role_of>
+                                  <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Pick_New_Destination_View_Cargo">
+                                    <is_activity_of_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Cargo"/>
+                                    <activity_has_readmodel>
+                                      <ReadModel rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Change_Destination_Form"/>
+                                    </activity_has_readmodel>
+                                    <has_role rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+                                    <activitytype>Query</activitytype>
+                                    <has_action>
+                                      <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Pick_New_Destination_View"/>
+                                    </has_action>
+                                  </Activity>
+                                </is_role_of>
+                              </Role>
+                            </has_role>
+                            <activitytype>Command</activitytype>
+                            <has_action>
+                              <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Change_Destination"/>
+                            </has_action>
+                          </Activity>
+                        </contains_element>
+                        <contains_element>
+                          <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Assign_Cargo_To_Route_Cargo">
+                            <is_activity_of_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Cargo"/>
+                            <has_event>
+                              <Event rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Assigned_to_Route"/>
+                            </has_event>
+                            <has_role>
+                              <Role rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Clerk">
+                                <is_role_of>
+                                  <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Request_Possible_Routes_For_Cargo_Cargo">
+                                    <is_activity_of_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Cargo"/>
+                                    <activity_has_readmodel>
+                                      <ReadModel rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Possible_Routes_For_Cargo"/>
+                                    </activity_has_readmodel>
+                                    <has_role rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Clerk"/>
+                                    <activitytype>Query</activitytype>
+                                    <has_action>
+                                      <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Request_Possible_Routes_For_Cargo"/>
+                                    </has_action>
+                                  </Activity>
+                                </is_role_of>
+                                <is_role_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Assign_Cargo_To_Route_Cargo"/>
+                              </Role>
+                            </has_role>
+                            <activitytype>Command</activitytype>
+                            <has_action>
+                              <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Assign_Cargo_To_Route"/>
+                            </has_action>
+                          </Activity>
+                        </contains_element>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Request_Possible_Routes_For_Cargo_Cargo"/>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Change_Destination"/>
+                        <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Request_Possible_Routes_For_Cargo_Cargo"/>
+                        <contains_element>
+                          <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_List_View"/>
+                        </contains_element>
+                        <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Change_Destination_Cargo"/>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Assign_Cargo_To_Route"/>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Details_View"/>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Pick_New_Destination_View_Cargo"/>
+                        <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Details_View_Cargo"/>
+                        <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_List_View_Cargo"/>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_List_View_Cargo"/>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Pick_New_Destination_View"/>
+                        <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Assign_Cargo_To_Route_Cargo"/>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Request_Possible_Routes_For_Cargo"/>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Details_View_Cargo"/>
+                        <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Pick_New_Destination_View_Cargo"/>
+                      </ActivityDiagram>
+                    </is_activity_of_diagram>
+                    <activity_has_readmodel>
+                      <ReadModel rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_List"/>
+                    </activity_has_readmodel>
+                    <has_role rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+                    <activitytype>Query</activitytype>
+                    <has_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_List_View"/>
+                  </Activity>
+                </has_activity>
+                <has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Request_Possible_Routes_For_Cargo_Cargo"/>
+                <has_property>
+                  <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#legs">
+                    <element_is_contained_in>
+                      <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5">
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                        <contains_element>
+                          <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#itinerary">
+                            <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+                            <element_is_contained_in>
+                              <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR4">
+                                <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                                <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#itinerary"/>
+                                <rdfs:comment>System Should assign the itinerary to cargo upon creation.</rdfs:comment>
+                              </Requirement>
+                            </element_is_contained_in>
+                          </Property>
+                        </contains_element>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#legs"/>
+                        <contains_element>
+                          <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#tracking_id">
+                            <element_is_contained_in>
+                              <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR3">
+                                <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                                <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#tracking_id"/>
+                                <rdfs:comment>System Should assign the tracking id to cargo upon creation and is never changed.</rdfs:comment>
+                              </Requirement>
+                            </element_is_contained_in>
+                            <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+                          </Property>
+                        </contains_element>
+                        <rdfs:comment>Each Customer must be able to retrieve a detailed information of cargo by tracking id, detailed information was itinerary, legs.</rdfs:comment>
+                      </Requirement>
+                    </element_is_contained_in>
+                  </Property>
+                </has_property>
+                <is_source_of>
+                  <Reference rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#route_specification__Reference__has_source__Cargo__has_target__route_specification">
+                    <hasName>route_specification</hasName>
+                    <many rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                    >false</many>
+                    <has_target>
+                      <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Route_specification">
+                        <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+                      </Object>
+                    </has_target>
+                    <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                  </Reference>
+                </is_source_of>
+                <has_entity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                <has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Form_View_Cargo"/>
+                <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+                <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR4"/>
+                <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+                <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Entity"/>
+                <has_value_object rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Itinerary"/>
+                <is_source_of>
+                  <Reference rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#receiever__Reference__has_source__cargo__has_target__role">
+                    <hasName>receiever</hasName>
+                    <many rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                    >false</many>
+                    <has_target rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Role"/>
+                    <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                  </Reference>
+                </is_source_of>
+                <has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Pick_New_Destination_View_Cargo"/>
+                <has_object rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Itinerary"/>
+                <has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Change_Destination_Cargo"/>
+                <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#destination"/>
+                <is_source_of>
+                  <Reference rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#sender__Reference__has_source__cargo__has_target__role">
+                    <hasName>sender</hasName>
+                    <many rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                    >false</many>
+                    <has_target rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Role"/>
+                    <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                  </Reference>
+                </is_source_of>
+                <has_property>
+                  <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#destination_location">
+                    <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+                  </Property>
+                </has_property>
+                <has_property>
+                  <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#origin_location">
+                    <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+                  </Property>
+                </has_property>
+                <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#itinerary"/>
+                <has_activity>
+                  <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Track_a_Cargo_Cargo">
+                    <is_activity_of_diagram>
+                      <ActivityDiagram rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Tracking">
+                        <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Track_a_Cargo_Cargo"/>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Track_a_Cargo_Cargo"/>
+                        <contains_element>
+                          <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Track_a_Cargo"/>
+                        </contains_element>
+                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                      </ActivityDiagram>
+                    </is_activity_of_diagram>
+                    <activity_has_readmodel>
+                      <ReadModel rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_with_Handling_Events"/>
+                    </activity_has_readmodel>
+                    <has_role>
+                      <Role rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#User">
+                        <is_role_of>
+                          <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#List_of_Shipping_Location_Location">
+                            <activity_has_object>
+                              <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Location">
+                                <has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#List_of_Shipping_Location_Location"/>
+                                <has_activity>
+                                  <Activity rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Find_Location_Location">
+                                    <activity_has_object rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Location"/>
+                                    <is_activity_of_diagram>
+                                      <ActivityDiagram rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Routing">
+                                        <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#List_of_Shipping_Location_Location"/>
+                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#List_of_Shipping_Location_Location"/>
+                                        <contains_element>
+                                          <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#List_of_Shipping_Location"/>
+                                        </contains_element>
+                                        <diagram_has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Find_Location_Location"/>
+                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Find_Location_Location"/>
+                                        <contains_element>
+                                          <Action rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Find_Location"/>
+                                        </contains_element>
+                                        <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Location"/>
+                                      </ActivityDiagram>
+                                    </is_activity_of_diagram>
+                                    <activity_has_readmodel>
+                                      <ReadModel rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Location_Details"/>
+                                    </activity_has_readmodel>
+                                    <has_role rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#User"/>
+                                    <activitytype>Query</activitytype>
+                                    <has_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Find_Location"/>
+                                  </Activity>
+                                </has_activity>
+                                <has_object rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Location"/>
+                                <has_entity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Location"/>
+                                <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Entity"/>
+                                <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+                              </Object>
+                            </activity_has_object>
+                            <is_activity_of_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Routing"/>
+                            <activity_has_readmodel>
+                              <ReadModel rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Shipping_Locations"/>
+                            </activity_has_readmodel>
+                            <has_role rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#User"/>
+                            <activitytype>Query</activitytype>
+                            <has_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#List_of_Shipping_Location"/>
+                          </Activity>
+                        </is_role_of>
+                        <is_role_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Track_a_Cargo_Cargo"/>
+                        <is_role_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Find_Location_Location"/>
+                      </Role>
+                    </has_role>
+                    <activitytype>Query</activitytype>
+                    <has_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Track_a_Cargo"/>
+                  </Activity>
+                </has_activity>
+                <has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Assign_Cargo_To_Route_Cargo"/>
+                <has_value_object rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Tracking_ID"/>
+                <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#tracking_id"/>
+                <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR3"/>
+                <element_is_contained_in>
+                  <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR2">
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Role"/>
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                    <rdfs:comment>Each Customer must be able to claim a cargo as receiever role.</rdfs:comment>
+                  </Requirement>
+                </element_is_contained_in>
+                <has_object rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                <element_is_contained_in>
+                  <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR8">
+                    <contains_element>
+                      <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Possible_routes">
+                        <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR8"/>
+                      </Object>
+                    </contains_element>
+                    <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+                    <rdfs:comment>The booking clerk requests a list of possible routes, matching a route specification, and assigns the cargo to one route.</rdfs:comment>
+                  </Requirement>
+                </element_is_contained_in>
+                <has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Update_Event_of_Cargo_Cargo"/>
+                <has_object rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Tracking_ID"/>
+                <has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Details_View_Cargo"/>
+                <has_activity rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_New_Cargo_Cargo"/>
+              </Object>
+            </contains_element>
+            <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#destination_location"/>
+            <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#origin_location"/>
+            <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_deadline"/>
+            <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Route_specification"/>
+            <rdfs:comment>Each Customer must be able to booking a new cargo as sender role by providing an origin location and a destination location and arrival deadline route specification.</rdfs:comment>
+          </Requirement>
+        </element_is_contained_in>
+        <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR2"/>
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+      </Object>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_elements_of"/>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_element_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_event">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_event_of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_activity">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Supplier"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_reference_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_value_object">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ValueObject"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_value_object_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_object">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of_activity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_elements">
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_elements_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_object_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_readmodel_of_event">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_reference">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_reference_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activity_has_readmodel">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ReadModel"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_readmodel_of_activity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_literal">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Literal"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_literal_of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#element_is_contained_in">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_literal_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Enumeration"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Literal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#contains_element">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#element_is_contained_in"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_source">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_action">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_action_of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_policy">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Policy"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_policy_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_entity">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Entity"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_entity_of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of_policy">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Policy"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#policy_source"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_role">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Role"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_role_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_target">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#diagram_has_activity">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_of_diagram"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_activity_diagram">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_diagram_of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#policy_source">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Policy"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_condition">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Condition"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_condition_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_property">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Property"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_element">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Element"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_element_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Property"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_action_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Action"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_activity_diagram_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ActivityDiagram"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Object"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_entity_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Aggregate"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Entity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_requirement_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_requirement">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_requirement_of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_event_of">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Event"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasURIParameters">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#activitytype">
+    <rdfs:range>
+      <rdfs:Datatype>
+        <owl:oneOf>
+          <rdf:List>
+            <rdf:rest>
+              <rdf:List>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                <rdf:first>Query</rdf:first>
+              </rdf:List>
+            </rdf:rest>
+            <rdf:first>Command</rdf:first>
+          </rdf:List>
+        </owl:oneOf>
+      </rdfs:Datatype>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Activity"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasResponseType">
+    <rdfs:range>
+      <rdfs:Datatype>
+        <owl:oneOf>
+          <rdf:List>
+            <rdf:rest>
+              <rdf:List>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                <rdf:first>XML</rdf:first>
+              </rdf:List>
+            </rdf:rest>
+            <rdf:first>JSON</rdf:first>
+          </rdf:List>
+        </owl:oneOf>
+      </rdfs:Datatype>
+    </rdfs:range>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#many">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isExternalService">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isAuthToken">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isOptional">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Reference"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#isType">
+    <rdfs:range>
+      <rdfs:Datatype>
+        <owl:oneOf>
+          <rdf:List>
+            <rdf:rest>
+              <rdf:List>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    <rdf:first>Primitive</rdf:first>
+                  </rdf:List>
+                </rdf:rest>
+                <rdf:first>Object</rdf:first>
+              </rdf:List>
+            </rdf:rest>
+            <rdf:first>Array</rdf:first>
+          </rdf:List>
+        </owl:oneOf>
+      </rdfs:Datatype>
+    </rdfs:range>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasResourcePath">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#belongsToURL">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#belongsToWSType">
+    <rdfs:range>
+      <rdfs:Datatype>
+        <owl:oneOf>
+          <rdf:List>
+            <rdf:rest>
+              <rdf:List>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                <rdf:first>SOAP</rdf:first>
+              </rdf:List>
+            </rdf:rest>
+            <rdf:first>RESTful</rdf:first>
+          </rdf:List>
+        </owl:oneOf>
+      </rdfs:Datatype>
+    </rdfs:range>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasCRUDVerb">
+    <rdfs:range>
+      <rdfs:Datatype>
+        <owl:oneOf>
+          <rdf:List>
+            <rdf:rest>
+              <rdf:List>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest>
+                          <rdf:List>
+                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            <rdf:first>UPDATE</rdf:first>
+                          </rdf:List>
+                        </rdf:rest>
+                        <rdf:first>PUT</rdf:first>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first>POST</rdf:first>
+                  </rdf:List>
+                </rdf:rest>
+                <rdf:first>GET</rdf:first>
+              </rdf:List>
+            </rdf:rest>
+            <rdf:first>DELETE</rdf:first>
+          </rdf:List>
+        </owl:oneOf>
+      </rdfs:Datatype>
+    </rdfs:range>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#hasDefaultValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:AnnotationProperty rdf:about="http://ontologydesignpatterns.org/opla-sd#entityPosition"/>
+  <Project rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo">
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR2"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_List_View_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Details_View"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_New_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Assign_Cargo_To_Route_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#destination_location"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Form_View_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_New_Cargo_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#legs"/>
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR4"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Role"/>
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR8"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Request_Possible_Routes_For_Cargo_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_deadline"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#origin_location"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#tracking_id"/>
+    <has_activity_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Booking"/>
+    <has_element>
+      <Object rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Location_1">
+        <element_is_contained_in>
+          <Requirement rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11">
+            <contains_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Location_1"/>
+            <contains_element>
+              <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#unlocode">
+                <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+              </Property>
+            </contains_element>
+            <contains_element>
+              <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#port_code">
+                <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+              </Property>
+            </contains_element>
+            <contains_element>
+              <Property rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#name">
+                <element_is_contained_in rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+              </Property>
+            </contains_element>
+            <rdfs:comment>The voyage clerk create a location by providing name, port code, unlocode.</rdfs:comment>
+          </Requirement>
+        </element_is_contained_in>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#unlocode"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#port_code"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#name"/>
+      </Object>
+    </has_element>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#List_of_Shipping_Location"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Possible_routes"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Request_Possible_Routes_For_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Update_Event_of_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_Details_View_Cargo"/>
+    <has_activity_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Schedule"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Booking_Form_View"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Update_Event_of_Cargo_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Register_Handling_Event_Handling_Event"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Change_Destination_Cargo"/>
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Find_Location"/>
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Assign_Cargo_To_Route"/>
+    <has_activity_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Routing"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#List_of_Shipping_Location_Location"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Route_specification"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Change_Destination"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#name"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#unlocode"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Voyage"/>
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#location"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#destination"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#port_code"/>
+    <has_activity_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Handling"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Location"/>
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Track_a_Cargo_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Find_Location_Location"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#itinerary"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Route"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#registration_time"/>
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR3"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_number"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Pick_New_Destination_View_Cargo"/>
+    <has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+    <has_activity_diagram rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ACD_Tracking"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Track_a_Cargo"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Report_Form_View"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Cargo_List_View"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#completion_time"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Type"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Pick_New_Destination_View"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_location"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Register_Handling_Event"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#departure"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_time"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Carrier_movements"/>
+    <has_element rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Report_Form_View_Handling_Event"/>
+  </Project>
+  <PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#string">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </PrimitiveDatatype>
+  <PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#char">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </PrimitiveDatatype>
+  <PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#boolean">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </PrimitiveDatatype>
+  <PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#object">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </PrimitiveDatatype>
+  <owl:AnnotationProperty rdf:about="http://ontologydesignpatterns.org/opla-sd#entityPositionX"/>
+  <owl:AnnotationProperty rdf:about="http://ontologydesignpatterns.org/opla-sd#entityPositionY"/>
+  <PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#long">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </PrimitiveDatatype>
+  <PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#int">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </PrimitiveDatatype>
+  <PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#float">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </PrimitiveDatatype>
+  <PrimitiveDatatype rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#double">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </PrimitiveDatatype>
+</rdf:RDF>

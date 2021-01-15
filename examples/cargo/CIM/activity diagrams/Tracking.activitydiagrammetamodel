@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mde:ActivityDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="resources/mm/CIM/ActivityDiagram.ecore" name="Tracking">
+  <activitypartition xsi:type="mde:Actor" name="User">
+    <activitynode xsi:type="mde:QueryAction" name="Track a Cargo" supplier="//@activitypartition.0/@activitynode.1"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" action="//@activitypartition.0/@activitynode.0" readmodels="//@activitypartition.0/@activitynode.2"/>
+    <activitynode xsi:type="mde:ReadModel" name="Cargo with Handling Events" supplier="//@activitypartition.0/@activitynode.1"/>
+  </activitypartition>
+</mde:ActivityDiagram>

@@ -2,82 +2,111 @@ package mde.pimGenerator;
 
 import java.util.ArrayList;
 
-import QueryPIM.QueryPIMMetamodelFactory;
+import DynamicPIM.DynamicPIMFactory;
+import mde.inputParser.YamlAggregate;
 import mde.inputParser.YamlApplication;
-import mde.inputParser.YamlEnumeration;
-import mde.inputParser.YamlResource;
 import mde.inputParser.YamlRole;
-import ServicePIM.ServicePIMFactory;
-import SecurityPIM.SecurityPIMMetamodelFactory;
-import ServicePIM.RESTfulServicePIM;
+import StaticPIM.Project;
+import StaticPIM.StaticPIMFactory;
 
 public abstract class APIMProducer {
-	protected RESTfulServicePIM oRESTfulServicePIM;
+	protected Project oProjectStatic;
+	protected DynamicPIM.Project oProjectDynamic;
 	protected ArrayList<YamlApplication> listOfYamlApplications;
-	protected ArrayList<YamlResource> listOfYamlResources;
+	protected ArrayList<YamlAggregate> listOfYamlAggregates;
 	protected ArrayList<YamlRole> listOfYamlRoles;
-	protected ArrayList<YamlEnumeration> listOfYamlEnumerations;
-	protected ServicePIMFactory oServicePIMFactory;
-	protected SecurityPIMMetamodelFactory oSecurityPIMFactory;
-	protected QueryPIMMetamodelFactory oQueryPIMFactory;
+	protected StaticPIMFactory oStaticPIMFactory;
+	protected DynamicPIMFactory oDynamicPIMFactory;
+//	protected SecurityPIMMetamodelFactory oSecurityPIMFactory;
+//	protected QueryPIMMetamodelFactory oQueryPIMFactory;
 	protected String strProjectName;
 	protected String strProjectBasePath;
-
-	public APIMProducer(
-			ArrayList<YamlApplication> listOfYamlApplications,
-			ArrayList<YamlResource> listofYamlResources,
-			ArrayList<YamlRole> listOfRoles,
-			ArrayList<YamlEnumeration> listOfEnumerations
-		) {
-		this.listOfYamlApplications = listOfYamlApplications;
-		this.listOfYamlResources = listofYamlResources;
-		this.listOfYamlRoles = listOfRoles;
-		this.listOfYamlEnumerations = listOfEnumerations;
-		this.oServicePIMFactory = ServicePIMFactory.eINSTANCE;
-		this.oSecurityPIMFactory = SecurityPIMMetamodelFactory.eINSTANCE;
-		this.oQueryPIMFactory = QueryPIMMetamodelFactory.eINSTANCE;
-		this.strProjectName = "Amir Project";
-		this.oRESTfulServicePIM = this.oServicePIMFactory.createRESTfulServicePIM();
-		this.oRESTfulServicePIM.setName(strProjectName);
-		this.oRESTfulServicePIM.setBasePath("");
-
+	
+	private void initializePIMProducer() {
+		this.oStaticPIMFactory = StaticPIMFactory.eINSTANCE;
+		this.oDynamicPIMFactory = DynamicPIMFactory.eINSTANCE;
+//		this.oSecurityPIMFactory = SecurityPIMMetamodelFactory.eINSTANCE;
+//		this.oQueryPIMFactory = QueryPIMMetamodelFactory.eINSTANCE;
+		this.oProjectStatic = this.oStaticPIMFactory.createProject();
+		this.oProjectStatic.setName(this.strProjectName);
+		this.oProjectStatic.setBasePath(this.strProjectBasePath);
+		this.oProjectDynamic = this.oDynamicPIMFactory.createProject();
+		this.oProjectDynamic.setName(this.strProjectName);
+		this.oProjectDynamic.setBasePath(this.strProjectBasePath);
 	}
 
-	public APIMProducer(ArrayList<YamlApplication> listOfYamlApplications, ArrayList<YamlResource> listofYamlResources,
-			ArrayList<YamlRole> listOfRoles, ArrayList<YamlEnumeration> listOfEnumerations, String strProjectName,
+	public APIMProducer(ArrayList<YamlApplication> listOfYamlApplications,
+			ArrayList<YamlAggregate> listOfYamlAggregates) {
+		this.listOfYamlApplications = listOfYamlApplications;
+		this.listOfYamlAggregates = listOfYamlAggregates;
+		this.listOfYamlRoles = new ArrayList<YamlRole>();
+		this.strProjectName = "MyCore";
+		this.strProjectBasePath = "resources/examples/MyCore";
+		initializePIMProducer();
+	}
+
+	public APIMProducer(ArrayList<YamlApplication> listOfYamlApplications,
+			ArrayList<YamlAggregate> listOfYamlAggregates, String strProjectName, String strProjectOutputPath) {
+		this.listOfYamlApplications = listOfYamlApplications;
+		this.listOfYamlAggregates = listOfYamlAggregates;
+		this.listOfYamlRoles = new ArrayList<YamlRole>();
+		this.strProjectBasePath = strProjectOutputPath;
+		this.strProjectName = strProjectName;
+		initializePIMProducer();
+	}
+
+	public APIMProducer(ArrayList<YamlApplication> listOfYamlApplications,
+			ArrayList<YamlAggregate> listOfYamlAggregates,
+			ArrayList<YamlRole> listOfRoles) {
+		this.listOfYamlApplications = listOfYamlApplications;
+		this.listOfYamlAggregates = listOfYamlAggregates;
+		this.listOfYamlRoles = listOfRoles;
+		this.strProjectName = "MyCore";
+		this.strProjectBasePath = "resources/examples/MyCore";
+		initializePIMProducer();
+	}
+
+	public APIMProducer(ArrayList<YamlApplication> listOfYamlApplications,
+			ArrayList<YamlAggregate> listOfYamlAggregates,
+			ArrayList<YamlRole> listOfRoles, String strProjectName,
 			String strProjectOutputPath) {
 		this.listOfYamlApplications = listOfYamlApplications;
-		this.listOfYamlResources = listofYamlResources;
+		this.listOfYamlAggregates = listOfYamlAggregates;
 		this.listOfYamlRoles = listOfRoles;
-		this.listOfYamlEnumerations = listOfEnumerations;
-		this.oServicePIMFactory = ServicePIMFactory.eINSTANCE;
-		this.oSecurityPIMFactory = SecurityPIMMetamodelFactory.eINSTANCE;
-		this.oQueryPIMFactory = QueryPIMMetamodelFactory.eINSTANCE;
-		this.strProjectName = strProjectName;
-		this.oRESTfulServicePIM = this.oServicePIMFactory.createRESTfulServicePIM();
-		this.oRESTfulServicePIM.setName(strProjectName);
-		this.oRESTfulServicePIM.setBasePath(strProjectOutputPath);
+		this.strProjectName = "MyCore";
+		this.strProjectBasePath = "resources/examples/MyCore";
+		initializePIMProducer();
 	}
 
-	public RESTfulServicePIM getRESTfulServicePIM() {
-		return this.oRESTfulServicePIM;
+	public Project getProjectStatic() {
+		return this.oProjectStatic;
+	}
+	
+	public DynamicPIM.Project getProjectDynamic() {
+		return this.oProjectDynamic;
 	}
 
-	public ServicePIMFactory getServicePIMFactory() {
-		return this.oServicePIMFactory;
+	public StaticPIMFactory getServicePIMFactory() {
+		return this.oStaticPIMFactory;
+	}
+	
+	public DynamicPIMFactory getDynamicPIMFactory() {
+		return this.oDynamicPIMFactory;
 	}
 
-	public SecurityPIMMetamodelFactory getSecurityPIMFactory() {
-		return oSecurityPIMFactory;
-	}
-
-	public QueryPIMMetamodelFactory getQueryPIMFactory() {
-		return oQueryPIMFactory;
-	}
+//	public SecurityPIMMetamodelFactory getSecurityPIMFactory() {
+//		return oSecurityPIMFactory;
+//	}
+//
+//	public QueryPIMMetamodelFactory getQueryPIMFactory() {
+//		return oQueryPIMFactory;
+//	}
 
 	public String getProjectName() {
 		return this.strProjectName;
 	}
 
-	public abstract RESTfulServicePIM producePIM();
+	public abstract Project producePIMStatic();
+	
+	public abstract DynamicPIM.Project producePIMDynamic();
 }

@@ -58,10 +58,10 @@ public class Property {
 	 * @return a YAML representation of this object.
 	 */
 	public String toYAMLString() {
-		String all = "  - Name: " + Name;
-		all += "\n    Type: " + Type;
-		all += "\n    Unique: " + Unique;
-		all += "\n    NamingProperty: " + NamingProperty;
+		String all = "    - Name: " + Name;
+		all += "\n      Type: " + Type;
+		all += "\n      Unique: " + Unique;
+		all += "\n      NamingProperty: " + NamingProperty;
 		return all;
 	}
 

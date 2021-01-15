@@ -1,0 +1,7 @@
+rule JDL
+	transform jdl: JDL{
+	
+	template : "JDL2JSON.egl"
+	
+	target : "../../../examples/cargo/PSM/generators dsl/entities.jdl"
+}

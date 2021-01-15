@@ -4,19 +4,18 @@ package ActivityDiagramMetamodel.impl;
 
 import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
 import ActivityDiagramMetamodel.Aggregate;
+import ActivityDiagramMetamodel.DomainObject;
 
-import ActivityDiagramMetamodel.CommandAction;
-import ActivityDiagramMetamodel.EventAction;
-import ActivityDiagramMetamodel.QueryAction;
 import java.util.Collection;
-import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -27,41 +26,22 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ActivityDiagramMetamodel.impl.AggregateImpl#getEvents <em>Events</em>}</li>
- *   <li>{@link ActivityDiagramMetamodel.impl.AggregateImpl#getCommand <em>Command</em>}</li>
- *   <li>{@link ActivityDiagramMetamodel.impl.AggregateImpl#getQuery <em>Query</em>}</li>
+ *   <li>{@link ActivityDiagramMetamodel.impl.AggregateImpl#getDomainobject <em>Domainobject</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AggregateImpl extends ObjectNodeImpl implements Aggregate {
+public class AggregateImpl extends SupplierImpl implements Aggregate {
 	/**
-	 * The cached value of the '{@link #getEvents() <em>Events</em>}' reference list.
+	 * The cached value of the '{@link #getDomainobject() <em>Domainobject</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEvents()
+	 * @see #getDomainobject()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EventAction> events;
-	/**
-	 * The cached value of the '{@link #getCommand() <em>Command</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCommand()
-	 * @generated
-	 * @ordered
-	 */
-	protected CommandAction command;
-	/**
-	 * The cached value of the '{@link #getQuery() <em>Query</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQuery()
-	 * @generated
-	 * @ordered
-	 */
-	protected QueryAction query;
+	protected EList<DomainObject> domainobject;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -87,158 +67,11 @@ public class AggregateImpl extends ObjectNodeImpl implements Aggregate {
 	 * @generated
 	 */
 	@Override
-	public EList<EventAction> getEvents() {
-		if (events == null) {
-			events = new EObjectWithInverseResolvingEList<EventAction>(EventAction.class, this, ActivityDiagramMetamodelPackage.AGGREGATE__EVENTS, ActivityDiagramMetamodelPackage.EVENT_ACTION__AGGREGATE);
+	public EList<DomainObject> getDomainobject() {
+		if (domainobject == null) {
+			domainobject = new EObjectContainmentEList<DomainObject>(DomainObject.class, this, ActivityDiagramMetamodelPackage.AGGREGATE__DOMAINOBJECT);
 		}
-		return events;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public CommandAction getCommand() {
-		if (command != null && command.eIsProxy()) {
-			InternalEObject oldCommand = (InternalEObject)command;
-			command = (CommandAction)eResolveProxy(oldCommand);
-			if (command != oldCommand) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityDiagramMetamodelPackage.AGGREGATE__COMMAND, oldCommand, command));
-			}
-		}
-		return command;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CommandAction basicGetCommand() {
-		return command;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCommand(CommandAction newCommand, NotificationChain msgs) {
-		CommandAction oldCommand = command;
-		command = newCommand;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ActivityDiagramMetamodelPackage.AGGREGATE__COMMAND, oldCommand, newCommand);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setCommand(CommandAction newCommand) {
-		if (newCommand != command) {
-			NotificationChain msgs = null;
-			if (command != null)
-				msgs = ((InternalEObject)command).eInverseRemove(this, ActivityDiagramMetamodelPackage.COMMAND_ACTION__AGGREGATE, CommandAction.class, msgs);
-			if (newCommand != null)
-				msgs = ((InternalEObject)newCommand).eInverseAdd(this, ActivityDiagramMetamodelPackage.COMMAND_ACTION__AGGREGATE, CommandAction.class, msgs);
-			msgs = basicSetCommand(newCommand, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityDiagramMetamodelPackage.AGGREGATE__COMMAND, newCommand, newCommand));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public QueryAction getQuery() {
-		if (query != null && query.eIsProxy()) {
-			InternalEObject oldQuery = (InternalEObject)query;
-			query = (QueryAction)eResolveProxy(oldQuery);
-			if (query != oldQuery) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityDiagramMetamodelPackage.AGGREGATE__QUERY, oldQuery, query));
-			}
-		}
-		return query;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public QueryAction basicGetQuery() {
-		return query;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetQuery(QueryAction newQuery, NotificationChain msgs) {
-		QueryAction oldQuery = query;
-		query = newQuery;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ActivityDiagramMetamodelPackage.AGGREGATE__QUERY, oldQuery, newQuery);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setQuery(QueryAction newQuery) {
-		if (newQuery != query) {
-			NotificationChain msgs = null;
-			if (query != null)
-				msgs = ((InternalEObject)query).eInverseRemove(this, ActivityDiagramMetamodelPackage.QUERY_ACTION__AGGREGATE, QueryAction.class, msgs);
-			if (newQuery != null)
-				msgs = ((InternalEObject)newQuery).eInverseAdd(this, ActivityDiagramMetamodelPackage.QUERY_ACTION__AGGREGATE, QueryAction.class, msgs);
-			msgs = basicSetQuery(newQuery, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityDiagramMetamodelPackage.AGGREGATE__QUERY, newQuery, newQuery));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityDiagramMetamodelPackage.AGGREGATE__EVENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getEvents()).basicAdd(otherEnd, msgs);
-			case ActivityDiagramMetamodelPackage.AGGREGATE__COMMAND:
-				if (command != null)
-					msgs = ((InternalEObject)command).eInverseRemove(this, ActivityDiagramMetamodelPackage.COMMAND_ACTION__AGGREGATE, CommandAction.class, msgs);
-				return basicSetCommand((CommandAction)otherEnd, msgs);
-			case ActivityDiagramMetamodelPackage.AGGREGATE__QUERY:
-				if (query != null)
-					msgs = ((InternalEObject)query).eInverseRemove(this, ActivityDiagramMetamodelPackage.QUERY_ACTION__AGGREGATE, QueryAction.class, msgs);
-				return basicSetQuery((QueryAction)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		return domainobject;
 	}
 
 	/**
@@ -249,12 +82,8 @@ public class AggregateImpl extends ObjectNodeImpl implements Aggregate {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ActivityDiagramMetamodelPackage.AGGREGATE__EVENTS:
-				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
-			case ActivityDiagramMetamodelPackage.AGGREGATE__COMMAND:
-				return basicSetCommand(null, msgs);
-			case ActivityDiagramMetamodelPackage.AGGREGATE__QUERY:
-				return basicSetQuery(null, msgs);
+			case ActivityDiagramMetamodelPackage.AGGREGATE__DOMAINOBJECT:
+				return ((InternalEList<?>)getDomainobject()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -267,14 +96,8 @@ public class AggregateImpl extends ObjectNodeImpl implements Aggregate {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ActivityDiagramMetamodelPackage.AGGREGATE__EVENTS:
-				return getEvents();
-			case ActivityDiagramMetamodelPackage.AGGREGATE__COMMAND:
-				if (resolve) return getCommand();
-				return basicGetCommand();
-			case ActivityDiagramMetamodelPackage.AGGREGATE__QUERY:
-				if (resolve) return getQuery();
-				return basicGetQuery();
+			case ActivityDiagramMetamodelPackage.AGGREGATE__DOMAINOBJECT:
+				return getDomainobject();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -288,15 +111,9 @@ public class AggregateImpl extends ObjectNodeImpl implements Aggregate {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ActivityDiagramMetamodelPackage.AGGREGATE__EVENTS:
-				getEvents().clear();
-				getEvents().addAll((Collection<? extends EventAction>)newValue);
-				return;
-			case ActivityDiagramMetamodelPackage.AGGREGATE__COMMAND:
-				setCommand((CommandAction)newValue);
-				return;
-			case ActivityDiagramMetamodelPackage.AGGREGATE__QUERY:
-				setQuery((QueryAction)newValue);
+			case ActivityDiagramMetamodelPackage.AGGREGATE__DOMAINOBJECT:
+				getDomainobject().clear();
+				getDomainobject().addAll((Collection<? extends DomainObject>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -310,14 +127,8 @@ public class AggregateImpl extends ObjectNodeImpl implements Aggregate {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ActivityDiagramMetamodelPackage.AGGREGATE__EVENTS:
-				getEvents().clear();
-				return;
-			case ActivityDiagramMetamodelPackage.AGGREGATE__COMMAND:
-				setCommand((CommandAction)null);
-				return;
-			case ActivityDiagramMetamodelPackage.AGGREGATE__QUERY:
-				setQuery((QueryAction)null);
+			case ActivityDiagramMetamodelPackage.AGGREGATE__DOMAINOBJECT:
+				getDomainobject().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -331,12 +142,8 @@ public class AggregateImpl extends ObjectNodeImpl implements Aggregate {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ActivityDiagramMetamodelPackage.AGGREGATE__EVENTS:
-				return events != null && !events.isEmpty();
-			case ActivityDiagramMetamodelPackage.AGGREGATE__COMMAND:
-				return command != null;
-			case ActivityDiagramMetamodelPackage.AGGREGATE__QUERY:
-				return query != null;
+			case ActivityDiagramMetamodelPackage.AGGREGATE__DOMAINOBJECT:
+				return domainobject != null && !domainobject.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

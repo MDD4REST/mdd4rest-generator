@@ -220,15 +220,6 @@ public interface ActivityDiagramMetamodelFactory extends EFactory {
 	CallAction createCallAction();
 
 	/**
-	 * Returns a new object of class '<em>Variable Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable Action</em>'.
-	 * @generated
-	 */
-	VariableAction createVariableAction();
-
-	/**
 	 * Returns a new object of class '<em>Start Object Behavior Action</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -283,15 +274,6 @@ public interface ActivityDiagramMetamodelFactory extends EFactory {
 	ActivityPartition createActivityPartition();
 
 	/**
-	 * Returns a new object of class '<em>Event Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Event Action</em>'.
-	 * @generated
-	 */
-	EventAction createEventAction();
-
-	/**
 	 * Returns a new object of class '<em>Command Action</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -317,6 +299,87 @@ public interface ActivityDiagramMetamodelFactory extends EFactory {
 	 * @generated
 	 */
 	QueryAction createQueryAction();
+
+	/**
+	 * Returns a new object of class '<em>Domain Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Domain Object</em>'.
+	 * @generated
+	 */
+	DomainObject createDomainObject();
+
+	/**
+	 * Returns a new object of class '<em>Value Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Value Object</em>'.
+	 * @generated
+	 */
+	ValueObject createValueObject();
+
+	/**
+	 * Returns a new object of class '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Entity</em>'.
+	 * @generated
+	 */
+	Entity createEntity();
+
+	/**
+	 * Returns a new object of class '<em>Actor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Actor</em>'.
+	 * @generated
+	 */
+	Actor createActor();
+
+	/**
+	 * Returns a new object of class '<em>System</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>System</em>'.
+	 * @generated
+	 */
+	System createSystem();
+
+	/**
+	 * Returns a new object of class '<em>External System</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>External System</em>'.
+	 * @generated
+	 */
+	ExternalSystem createExternalSystem();
+
+	/**
+	 * Returns a new object of class '<em>Read Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Read Model</em>'.
+	 * @generated
+	 */
+	ReadModel createReadModel();
+
+	/**
+	 * Returns a new object of class '<em>Domain Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Domain Event</em>'.
+	 * @generated
+	 */
+	DomainEvent createDomainEvent();
+
+	/**
+	 * Returns a new object of class '<em>Constraint Pin</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Constraint Pin</em>'.
+	 * @generated
+	 */
+	ConstraintPin createConstraintPin();
 
 	/**
 	 * Returns the package supported by this factory.

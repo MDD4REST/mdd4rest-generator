@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ASCII"?>
+<mde:JDL xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="resources/mm/PIM/JDLMetamodel.ecore" xsi:schemaLocation="resources/mm/PIM/JDLMetamodel.ecore ../../../../resources/mm/PSM/JDLMetamodel.emf">
+  <applications entities="//@entities.0 //@entities.1 //@entities.2 //@entities.3 //@entities.4 //@entities.5 //@entities.6 //@entities.7 //@entities.8 //@entities.9">
+    <config baseName="cargo"/>
+  </applications>
+  <entities name="Cargo"/>
+  <entities name="Voyage">
+    <fields name="voyageNumber" type="String" required="true" unique="true"/>
+  </entities>
+  <entities name="HandlingEvent">
+    <fields name="registrationTime" type="Date" required="true" unique="true"/>
+    <fields name="completionTime" type="Date" required="true" unique="true"/>
+    <fields name="handlingType" type="HandlingEventType"/>
+    <relationships xsi:type="mde:UnidirectionalRelationship" multiplicity="ONE_TO_ONE" toName="Voyage" fromName="HandlingEvent" toEntity="//@entities.1">
+      <fromColumn name="voyage" entity="//@entities.2"/>
+    </relationships>
+    <relationships xsi:type="mde:UnidirectionalRelationship" multiplicity="ONE_TO_ONE" toName="Location" fromName="HandlingEvent" toEntity="//@entities.3">
+      <fromColumn name="location" entity="//@entities.2"/>
+    </relationships>
+    <relationships xsi:type="mde:UnidirectionalRelationship" multiplicity="ONE_TO_ONE" toName="Cargo" fromName="HandlingEvent" toEntity="//@entities.0">
+      <fromColumn name="cargo" entity="//@entities.2"/>
+    </relationships>
+  </entities>
+  <entities name="Location">
+    <fields name="unlocode" type="String" required="true" unique="true"/>
+    <fields name="portCode" type="String" required="true" unique="true"/>
+    <fields name="name" type="String" required="true" unique="true"/>
+  </entities>
+  <entities name="Customer">
+    <fields name="name" type="String" required="true"/>
+  </entities>
+  <entities name="CargoQuery"/>
+  <entities name="VoyageQuery">
+    <fields name="voyageNumber" type="String" required="true" unique="true"/>
+  </entities>
+  <entities name="HandlingEventQuery">
+    <fields name="registrationTime" type="Date" required="true" unique="true"/>
+    <fields name="completionTime" type="Date" required="true" unique="true"/>
+  </entities>
+  <entities name="LocationQuery">
+    <fields name="unlocode" type="String" required="true" unique="true"/>
+    <fields name="portCode" type="String" required="true" unique="true"/>
+    <fields name="name" type="String" required="true" unique="true"/>
+  </entities>
+  <entities name="CustomerQuery">
+    <fields name="name" type="String" required="true"/>
+  </entities>
+  <enums name="TransportStatus">
+    <literals name="NotReceived"/>
+    <literals name="InPort" value="1"/>
+    <literals name="OnboardCarrier" value="2"/>
+    <literals name="Claimed" value="3"/>
+    <literals name="Unknown" value="4"/>
+  </enums>
+  <enums name="RoutingStatus">
+    <literals name="NotRouted"/>
+    <literals name="Routed" value="1"/>
+    <literals name="Misrouted" value="2"/>
+  </enums>
+  <enums name="HandlingEventType">
+    <literals name="Unload"/>
+    <literals name="Customs" value="1"/>
+    <literals name="Claim" value="2"/>
+    <literals name="Load" value="3"/>
+    <literals name="Receive" value="4"/>
+  </enums>
+</mde:JDL>

@@ -1,0 +1,517 @@
+Application Cargo {
+  basePackage = org.cargo
+ 
+  Module command {
+ 
+    Entity Cargo {
+		
+		- @RouteSpecification routespecification
+		- @Itinerary itinerary
+		- @Role receiever
+		- @Role sender
+		- @TrackingID trackingId
+	
+		Repository CargoRepository {
+			
+ 
+		}
+	}
+ 
+    Entity Voyage {
+		String voyageNumber nullable
+		- @Schedule schedule
+	
+		Repository VoyageRepository {
+			
+ 
+		}
+	}
+ 
+    Entity HandlingEvent {
+		Date registrationTime nullable
+		Date completionTime nullable
+		- @HandlingEventType handlingType
+		- @Voyage voyage
+		- @Location location
+		- @Cargo cargo
+	
+		Repository HandlingEventRepository {
+			
+ 
+		}
+	}
+ 
+    Entity Location {
+		String unlocode nullable
+		String portCode nullable
+		String name nullable
+		
+	
+		Repository LocationRepository {
+			
+ 
+		}
+	}
+ 
+    Entity Customer {
+		String name nullable
+		
+	
+		Repository CustomerRepository {
+			
+ 
+		}
+	}
+ 
+    DomainEvent ACargoBooked {
+		
+		- @Cargo cargo
+	}
+ 
+    DomainEvent CargoDestinationChanged {
+		
+		
+	}
+ 
+    DomainEvent CargoAssignedToRoute {
+		
+		
+	}
+ 
+    DomainEvent CargoIsClaimedEvent {
+		
+		
+	}
+ 
+    DomainEvent NextExpectedHandlingActivity {
+		
+		
+	}
+ 
+    DomainEvent CargoTransportStatusRecalculated {
+		
+		
+	}
+ 
+    DomainEvent CargoLastKnownUpdated {
+		
+		
+	}
+ 
+    DomainEvent CargoCurrentVoyageUpdated {
+		
+		
+	}
+ 
+    DomainEvent CargoIsUnloadedAtDestination {
+		
+		
+	}
+ 
+    DomainEvent HandlingEventRegistered {
+		
+		
+	}
+ 
+    CommandEvent BookingANewCargoCommand {
+		String originUnlocode nullable
+		String destinationUnlocode nullable
+		String arrivalDeadline nullable
+		
+	}
+ 
+    CommandEvent ChangeDestinationCommand {
+		
+		
+	}
+ 
+    CommandEvent AssignCargoToRouteCommand {
+		
+		
+	}
+ 
+    CommandEvent UpdateEventOfCargoCommand {
+		
+		
+	}
+ 
+    CommandEvent RegisterHandlingEventCommand {
+		
+		
+	}
+ 
+    ValueObject Leg {
+		!immutable 
+		!persistent 
+		Date loadTime nullable
+		Date unLoadTime nullable
+		- @Voyage voyage
+		- @Location loadLocation
+	}
+ 
+    ValueObject TrackingID {
+		!immutable 
+		!persistent 
+		String id nullable
+		
+	}
+ 
+    ValueObject Itinerary {
+		!immutable 
+		!persistent 
+		
+		- Set<@Leg> legs
+	}
+ 
+    ValueObject Role {
+		!immutable 
+		!persistent 
+		
+		- @Customer customer
+		- @Cargo cargo
+	}
+ 
+    ValueObject RouteSpecification {
+		!immutable 
+		!persistent 
+		Date arrivalDeadline nullable
+		- @Location origin
+		- @Location destination
+	}
+ 
+    ValueObject Delivery {
+		!immutable 
+		!persistent 
+		Boolean misdirected nullable
+		Date eta nullable
+		Boolean isUnloadedAtDestination nullable
+		Date calculatedAt nullable
+		- @TransportStatus transportStatus
+		- @Location lastKnownLocation
+		- @Voyage currentVoyage
+		- @HandlingActivity nextExpectedActivity
+		- @RoutingStatus routingStatus
+		- @HandlingEvent lastEvent
+	}
+ 
+    ValueObject HandlingActivity {
+		!immutable 
+		!persistent 
+		
+		- @HandlingEventType handlingEventType
+		- @Location location
+		- @Voyage voyage
+	}
+ 
+    ValueObject CarrierMovement {
+		!immutable 
+		!persistent 
+		Date departureTime nullable
+		Date arrivalTime nullable
+		- @Location arrivalLocation
+		- @Location departureLocation
+	}
+ 
+    ValueObject Schedule {
+		!immutable 
+		!persistent 
+		
+		- Set<@CarrierMovement> carrierMovements
+	}
+ 
+    ValueObject HandlingHistory {
+		!immutable 
+		!persistent 
+		
+		- Set<@HandlingEvent> handlingEvents
+	}
+ 
+    enum TransportStatus {
+		
+		
+		NotReceived, 
+		InPort, 
+		OnboardCarrier, 
+		Claimed, 
+		Unknown 
+	}
+ 
+    enum RoutingStatus {
+		
+		
+		NotRouted, 
+		Routed, 
+		Misrouted 
+	}
+ 
+    enum HandlingEventType {
+		
+		
+		Unload, 
+		Customs, 
+		Claim, 
+		Load, 
+		Receive 
+	}
+    
+ 
+    Service InternalCargoCommandService {
+    	
+	     changeDestination() publish @CargoDestinationChanged to CargoDestinationChangedChannel ; 
+	     assignCargoToRoute() publish @CargoAssignedToRoute to CargoAssignedToRouteChannel ; 
+ 
+	}
+ 
+    Service InternalBookingCommandService {
+    	
+	     bookingNewCargo() publish to  ; 
+ 
+	}
+ 
+    Service InternalHandlingCommandService {
+    	subscribe to 
+	     updateEventOfCargo() publish @CargoIsUnloadedAtDestination to CargoIsUnloadedAtDestinationChannel ; 
+	     registerHandlingEvent() publish @HandlingEventRegistered to HandlingEventRegisteredChannel ; 
+ 
+	}
+ 
+    Service InternalHandlingCommandService {
+    	
+ 
+	}
+  }
+ 
+  Module ^query {
+ 
+    Entity CargoQuery {
+		
+		
+	
+		Repository CargoQueryRepository {
+			subscribe to CargoStoreChannel
+ 
+		}
+	}
+ 
+    Entity VoyageQuery {
+		String voyageNumber nullable
+		
+	
+		Repository VoyageQueryRepository {
+			subscribe to VoyageStoreChannel
+ 
+		}
+	}
+ 
+    Entity HandlingEventQuery {
+		Date registrationTime nullable
+		Date completionTime nullable
+		
+	
+		Repository HandlingEventQueryRepository {
+			subscribe to HandlingEventStoreChannel
+ 
+		}
+	}
+ 
+    Entity LocationQuery {
+		String unlocode nullable
+		String portCode nullable
+		String name nullable
+		
+	
+		Repository LocationQueryRepository {
+			subscribe to LocationStoreChannel
+ 
+		}
+	}
+ 
+    Entity CustomerQuery {
+		String name nullable
+		
+	
+		Repository CustomerQueryRepository {
+			subscribe to CustomerStoreChannel
+ 
+		}
+	}
+ 
+    DataTransferObject PossibleRoutesForCargoDTO {
+		
+		
+	}
+ 
+    DataTransferObject BookingFormDTO {
+		
+		- @Cargo cargo
+	}
+ 
+    DataTransferObject ChangeDestinationFormDTO {
+		
+		
+	}
+ 
+    DataTransferObject CargoWithHandlingEventsDTO {
+		
+		
+	}
+ 
+    DataTransferObject CargoDetailsDTO {
+		
+		
+	}
+ 
+    DataTransferObject TrackingIDDTO {
+		
+		- @Itinerary itinerary
+		- @Cargo cargo
+		- @TrackingID trackingId
+	}
+ 
+    DataTransferObject ReportFormDTO {
+		
+		
+	}
+ 
+    DataTransferObject ShippingLocationsDTO {
+		
+		- @Location location
+	}
+ 
+    DataTransferObject LocationDetailsDTO {
+		
+		- @Location location
+	}
+    
+ 
+    Service InternalCargoQueryService {
+    	
+	     cargoListView(); 
+	     requestPossibleRoutesForCargo(); 
+	     pickNewDestinationView(); 
+	     cargoDetailsView(); 
+ 
+	}
+ 
+    Service InternalBookingQueryService {
+    	
+	     bookingFormView(); 
+ 
+	}
+ 
+    Service InternalTrackingQueryService {
+    	
+	     trackACargo(); 
+ 
+	}
+ 
+    Service InternalHandlingQueryService {
+    	
+	     reportFormView(); 
+ 
+	}
+ 
+    Service InternalRoutingQueryService {
+    	
+	     listOfShippingLocation(); 
+	     findLocation(); 
+ 
+	}
+ 
+    Service ExternalBookingQueryService {
+    	
+	     bookingFormView(); 
+	     bookingNewCargo(); 
+ 
+	}
+ 
+    Service ExternalTrackingQueryService {
+    	
+	     trackACargo(); 
+ 
+	}
+ 
+    Service ExternalCargoQueryService {
+    	
+	     cargoListView(); 
+	     cargoDetailsView(); 
+	     pickNewDestinationView(); 
+	     requestPossibleRoutesForCargo(); 
+	     changeDestination(); 
+	     assignCargoToRoute(); 
+ 
+	}
+ 
+    Service ExternalHandlingQueryService {
+    	
+	     reportFormView(); 
+	     registerHandlingEvent(); 
+ 
+	}
+ 
+    Service ExternalRoutingQueryService {
+    	
+	     listOfShippingLocation(); 
+	     findLocation(); 
+ 
+	}
+  }
+ 
+  Module rest {
+    
+    
+    Resource RegistrationResource {
+ 
+	}
+    
+    Resource TrackingResource {
+ 
+	}
+    
+    Resource CargoesResource {
+	    bookingFormView => ExternalBookingQueryService.bookingFormView; 
+	    trackACargo => ExternalTrackingQueryService.trackACargo; 
+	    cargoListView => ExternalCargoQueryService.cargoListView; 
+	    cargoDetailsView => ExternalCargoQueryService.cargoDetailsView; 
+	    pickNewDestinationView => ExternalCargoQueryService.pickNewDestinationView; 
+	    requestPossibleRoutesForCargo => ExternalCargoQueryService.requestPossibleRoutesForCargo; 
+	    bookingNewCargo => ExternalBookingQueryService.bookingNewCargo; 
+	    changeDestination => ExternalCargoQueryService.changeDestination; 
+	    assignCargoToRoute => ExternalCargoQueryService.assignCargoToRoute; 
+ 
+	}
+    
+    Resource CargoResource {
+ 
+	}
+    
+    Resource Destination {
+ 
+	}
+    
+    Resource RoutesResource {
+ 
+	}
+    
+    Resource VoyagesResource {
+ 
+	}
+    
+    Resource HandlingsResource {
+	    reportFormView => ExternalHandlingQueryService.reportFormView; 
+	    registerHandlingEvent => ExternalHandlingQueryService.registerHandlingEvent; 
+ 
+	}
+    
+    Resource LocationsResource {
+	    listOfShippingLocation => ExternalRoutingQueryService.listOfShippingLocation; 
+	    findLocation => ExternalRoutingQueryService.findLocation; 
+ 
+	}
+    
+    Resource CustomersResource {
+ 
+	}
+  }
+}
+

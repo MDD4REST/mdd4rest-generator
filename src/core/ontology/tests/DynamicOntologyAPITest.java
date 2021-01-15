@@ -5,7 +5,7 @@ import core.ontology.DynamicOntologyAPI;
 /**
  * An example instantiation of the dynamic ontology.
  * 
- * @author themis
+ * @author amirdeljouyi
  */
 public class DynamicOntologyAPITest {
 

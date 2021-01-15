@@ -1,0 +1,48 @@
+[% for (application in Application.all) { %]
+application {
+    config {
+        baseName [%=application.config.baseName%]
+    }
+    entities [% for (entity in application.entities) { %][%=entity.name%], [% } %]
+    
+}
+[% } %]
+
+[% for (entity in Entity.all) { %]
+entity [%=entity.name%] {
+[% for (field in entity.fields) { %]
+    [%=field.name%] [%=field.type%][% if (field.required) {%] required[% } %][% if (field.unique) {%] unique[% } %], 	
+[% } %]
+}
+[% } %]
+
+[% for (enum in Enum.all) { %]
+enum [%=enum.name%] {
+    [% for (literal in enum.literals) { %][%=literal.name%], [% } %]
+    
+}
+[% } %]
+
+relationship OneToOne {
+[% for (relationship in Relationship.all.select(t|t.multiplicity.name=="ONE_TO_ONE")) { %]
+    [%=relationship.fromName%]{[%=relationship.fromColumn.name%]} to [%=relationship.toName%],
+[% } %]
+}
+
+relationship OneToMany {
+[% for (relationship in Relationship.all.select(t|t.multiplicity.name=="ONE_TO_MANY")) { %]
+    [%=relationship.fromName%]{[%=relationship.fromColumn.name%]} to [%=relationship.toName%],
+[% } %]
+}
+
+relationship ManyToOne {
+[% for (relationship in Relationship.all.select(t|t.multiplicity.name=="MANY_TO_ONE")) { %]
+    [%=relationship.fromName%]{[%=relationship.fromColumn.name%]} to [%=relationship.toName%],
+[% } %]
+}
+
+relationship ManyToMany {
+[% for (relationship in Relationship.all.select(t|t.multiplicity.name=="MANY_TO_MANY")) { %]
+    [%=relationship.fromName%]{[%=relationship.fromColumn.name%]} to [%=relationship.toName%],
+[% } %]
+}

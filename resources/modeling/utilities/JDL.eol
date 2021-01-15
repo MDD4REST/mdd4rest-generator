@@ -1,0 +1,7 @@
+operation JDL!JDLPIM findEntity(name:String){
+	for (entity in self.entities){
+		if (entity.name == name){
+			return entity;
+		}
+	}
+}

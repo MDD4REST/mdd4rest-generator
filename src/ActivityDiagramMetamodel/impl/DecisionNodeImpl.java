@@ -4,7 +4,6 @@ package ActivityDiagramMetamodel.impl;
 
 import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
 import ActivityDiagramMetamodel.DecisionNode;
-import ActivityDiagramMetamodel.ModelingTestPackage;
 import ActivityDiagramMetamodel.ObjectNode;
 
 import java.util.Collection;

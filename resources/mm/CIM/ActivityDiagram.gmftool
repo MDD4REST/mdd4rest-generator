@@ -12,35 +12,17 @@
         collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Action"
-          description="Create new Action">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="ActivityNode"
-          description="Create new ActivityNode">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="ActivityParameterNode"
-          description="Create new ActivityParameterNode">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
           title="ActivityPartition"
           description="Create new ActivityPartition">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Actor"
+          description="Create new Actor">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -57,44 +39,17 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="CallAction"
-          description="Create new CallAction">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="CallActivityAction"
-          description="Create new CallActivityAction">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="CallBehaviorAction"
-          description="Create new CallBehaviorAction">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="CallOperationAction"
-          description="Create new CallOperationAction">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
           title="CommandAction"
           description="Create new CommandAction">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="ConstraintPin"
+          description="Create new ConstraintPin">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -120,8 +75,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="EventAction"
-          description="Create new EventAction">
+          title="DomainEvent"
+          description="Create new DomainEvent">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -129,8 +84,26 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="ExecutableNode"
-          description="Create new ExecutableNode">
+          title="DomainObject"
+          description="Create new DomainObject">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Entity"
+          description="Create new Entity">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="ExternalSystem"
+          description="Create new ExternalSystem">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -165,15 +138,6 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="InputPin"
-          description="Create new InputPin">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
           title="Join Node"
           description="Create new Join Node">
         <smallIcon
@@ -192,42 +156,6 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="ObjectAction"
-          description="Create new ObjectAction">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="ObjectNode"
-          description="Create new ObjectNode">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="OutputPin"
-          description="Create new OutputPin">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
-          title="Pin"
-          description="Create new Pin">
-        <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
-        <largeIcon
-            xsi:type="gmftool:DefaultImage"/>
-      </tools>
-      <tools
-          xsi:type="gmftool:CreationTool"
           title="QueryAction"
           description="Create new QueryAction">
         <smallIcon
@@ -237,8 +165,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="StartObjectBehaviorAction"
-          description="Create new StartObjectBehaviorAction">
+          title="ReadModel"
+          description="Create new ReadModel">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -246,8 +174,17 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="VariableAction"
-          description="Create new VariableAction">
+          title="System"
+          description="Create new System">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="ValueObject"
+          description="Create new ValueObject">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -260,6 +197,15 @@
         collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
+          title="Action to Supplier"
+          description="Create new Action to Supplier">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
           title="ActivityEdge"
           description="Create new ActivityEdge">
         <smallIcon
@@ -269,8 +215,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Aggregate"
-          description="Create new Aggregate">
+          title="Constraint to Event"
+          description="Create new Constraint to Event">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -287,8 +233,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Events"
-          description="Create new Events">
+          title="Event To ReadModel"
+          description="Create new Event To ReadModel">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -298,6 +244,24 @@
           xsi:type="gmftool:CreationTool"
           title="ObjectFlow"
           description="Create new ObjectFlow">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Supplier to Event"
+          description="Create new Supplier to Event">
+        <smallIcon
+            xsi:type="gmftool:DefaultImage"/>
+        <largeIcon
+            xsi:type="gmftool:DefaultImage"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Supplier to ReadModel"
+          description="Create new Supplier to ReadModel">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

@@ -4,24 +4,18 @@ import java.util.ArrayList;
 
 public class YamlRESTfulService {
 	
+	public ArrayList<YamlAggregate> Aggregates;
 	public ArrayList<YamlApplication> Applications;
-	public ArrayList<YamlResource> Resources;
 	public ArrayList<YamlRole> Roles;
-	public ArrayList<YamlEnumeration> Enumerations;
 	
 	public YamlRESTfulService() {
-		this.Enumerations = new ArrayList<YamlEnumeration>();
-		this.Resources = new ArrayList<YamlResource>();
+		this.Aggregates = new ArrayList<YamlAggregate>();
 		this.Applications = new ArrayList<YamlApplication>();
 		this.Roles = new ArrayList<YamlRole>();
 	}
 	
-	public void addResource(YamlResource Resource) {
-		Resources.add(Resource);
-	}
-	
-	public void addEnumeration(YamlEnumeration Enumeration) {
-		Enumerations.add(Enumeration);
+	public void addAggregate(YamlAggregate Aggregate) {
+		Aggregates.add(Aggregate);
 	}
 	
 	public void addApplication(YamlApplication Application) {
@@ -48,12 +42,47 @@ public class YamlRESTfulService {
 		return this.Applications;
 	}
 	
-	public ArrayList<YamlResource> getResources(){
-		return this.Resources;
+	public ArrayList<YamlAggregate> getAggregates(){
+		return this.Aggregates;
 	}
 	
-	public ArrayList<YamlEnumeration> getEnumerations(){
-		return this.Enumerations;
+	public YamlDomainObject getDomainObjectByName(String name, String aggregateName) {
+		YamlAggregate yamlAggregate = getAggregateByName(aggregateName);;
+
+		for (YamlDomainObject yamlDomainObject : yamlAggregate.getDomainObjects()) {
+			if (yamlDomainObject.getName().equals(name))
+				return yamlDomainObject;
+		}
+		return null;
+	}
+	
+	public YamlActivity getActivityByName(String name, String aggregateName, String processName) {
+		YamlProcess yamlProcess = getProcessByName(processName, aggregateName);
+		for (YamlActivity yamlActivity : yamlProcess.getActivities()) {
+			if (yamlActivity.getAction().equals(name))
+				return yamlActivity;
+		}
+		return null;
+	}
+	
+	public YamlProcess getProcessByName(String name, String aggregateName) {
+		YamlAggregate yamlAggregate = getAggregateByName(aggregateName);
+		
+		for (YamlProcess yamlProcess : yamlAggregate.getProcess()) {
+			if (yamlProcess.getName().equals(name))
+				return yamlProcess;
+		}
+		return null;
+	}
+	
+	
+	
+	public YamlAggregate getAggregateByName(String name) {
+		for (YamlAggregate aggregate : Aggregates) {
+			if (aggregate.getName().equals(name))
+				return aggregate;
+		}
+		return null;
 	}
 	
 	public ArrayList<YamlRole> getRoles(){

@@ -1,0 +1,48 @@
+{
+  "generator-jhipster": {
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "org.cargo.command",
+    "packageFolder": "org/cargo/command",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "serviceDiscoveryType": "eureka",
+    "skipClient": true,
+    "testFrameworks": [
+      "cucumber",
+      "gatling"
+    ],
+    "websocket": false,
+    "baseName": "cargo",
+    "applicationType": "microservice",
+    "authenticationType": "uaa",
+    "uaaBaseName": "uaa",
+    "serverPort": "8881",
+    "jhipsterVersion": "6.10.5",
+    "buildTool": "maven",
+    "skipUserManagement": true,
+    "clientPackageManager": "npm",
+    "cacheProvider": "hazelcast",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "creationTimestamp": 1609858860033
+  },
+  "entities": [
+    "Cargo",
+    "Voyage",
+    "HandlingEvent",
+    "Location",
+    "Customer"
+  ]
+}

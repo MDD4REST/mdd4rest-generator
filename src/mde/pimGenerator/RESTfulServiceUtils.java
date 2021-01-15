@@ -1,94 +1,32 @@
 package mde.pimGenerator;
 
-import QueryPIM.QueryPIMMetamodelFactory;
-import SecurityPIM.Role;
-import SecurityPIM.SecurityPIMMetamodelFactory;
-import SecurityPIM.User;
-import SecurityPIM.Username;
-import ServicePIM.BasicType;
-import ServicePIM.Enumeration;
-import ServicePIM.Property;
-import ServicePIM.PropertyType;
-import ServicePIM.RESTfulServicePIM;
-import ServicePIM.Resource;
-import ServicePIM.ServicePIMFactory;
+import DynamicPIM.DynamicPIMFactory;
+import StaticPIM.Aggregate;
+import StaticPIM.Application;
+import StaticPIM.DomainObject;
+import StaticPIM.PrimitiveType;
+import StaticPIM.Project;
+import StaticPIM.Property;
+import StaticPIM.StaticPIMFactory;
 
 public class RESTfulServiceUtils {
 	
-	protected RESTfulServicePIM oRESTfulServicePIM;
-	protected ServicePIMFactory oServicePIMFactory;
-	protected SecurityPIMMetamodelFactory oSecurityPIMFactory;
-	protected QueryPIMMetamodelFactory oQueryPIMFactory;
+	protected Project oPIMStatic;
+	protected DynamicPIM.Project oPIMDynamic;
+	protected StaticPIMFactory oStaticPIMFactory;
+	protected DynamicPIMFactory oDynamicPIMFactory;
+//	protected SecurityPIMMetamodelFactory oSecurityPIMFactory;
 	
-	public RESTfulServiceUtils(RESTfulServicePIM oRESTfulServicePIM) {
-		this.oRESTfulServicePIM = oRESTfulServicePIM;
-		this.oServicePIMFactory = ServicePIMFactory.eINSTANCE;
-		this.oSecurityPIMFactory = SecurityPIMMetamodelFactory.eINSTANCE;
-		this.oQueryPIMFactory = QueryPIMMetamodelFactory.eINSTANCE;
+	public RESTfulServiceUtils(Project oPIMStatic, DynamicPIM.Project oPIMDynamic) {
+		this.oPIMStatic = oPIMStatic;
+		this.oPIMDynamic = oPIMDynamic;
+		this.oStaticPIMFactory = StaticPIMFactory.eINSTANCE;
+		this.oDynamicPIMFactory = DynamicPIMFactory.eINSTANCE;
+//		this.oSecurityPIMFactory = SecurityPIMMetamodelFactory.eINSTANCE;
 	}
 	
-	public Resource UserResource() {
-		User user = this.oSecurityPIMFactory.createUser();
-		Username username = this.oSecurityPIMFactory.createUsername();
-		username.setIsNamingProperty(true);
-		username.setIsRequired(true);
-		username.setIsUnique(true);
-		username.setName("username");
-		BasicType type = this.oServicePIMFactory.createBasicType();
-		type.setType(PropertyType.STRING);
-		username.setType(type);
-		user.setName("User");
-		user.setIsAlgorithmic(false);
-		user.setUsername(username);
-		user.getHasProperty().add(username);
-		return user;
-	}
-	
-	public Resource CurrentUserResource() {
-		User user = this.oSecurityPIMFactory.createCurrentUser();
-		Username username = this.oSecurityPIMFactory.createUsername();
-		username.setIsNamingProperty(true);
-		username.setIsRequired(true);
-		username.setIsUnique(true);
-		username.setName("username");
-		BasicType type = this.oServicePIMFactory.createBasicType();
-		type.setType(PropertyType.STRING);
-		username.setType(type);
-		user.setName("CurrentUser");
-		user.setIsAlgorithmic(false);
-		user.setUsername(username);
-		user.getHasProperty().add(username);
-		return user;
-	}
-	public Resource findResource(String name) {
-//		System.out.println(oRESTfulServicePIM.getHasResources());
-		for(Resource resource :oRESTfulServicePIM.getHasResources()) {
-//			System.out.println(resource.getName() + " " + name);
-			if(resource.getName().equals(name)) {
-//				System.out.println("find: " + resource);
-				return resource;
-			}
-		}
-		return null;
-	}
-	
-//	public Resource findResourceWithDefaults(String name) {
-////		System.out.println(oRESTfulServicePIM.getHasResources());
-//		Resource resource = findResource(name);
-//		if (resource == null) {
-//			System.out.println("findResourceWithDefaults:: " + name);
-//			if (name.equals("User")) {
-//				
-//				resource = user;
-//			} else if (name.equals("CurrentUser")){
-//				
-//			}
-//		}
-//		return resource;
-//	}
-	
-	public Property findProperty(Resource resource, String propertyName) {
-		for(Property property : resource.getHasProperty()) {
+	public Property findProperty(DomainObject domainObject, String propertyName) {
+		for(Property property : domainObject.getHasProperty()) {
 			if(property.getName().equals(propertyName)) {
 				return property;
 			}
@@ -96,13 +34,13 @@ public class RESTfulServiceUtils {
 		return null;
 	}
 	
-	public Property findProperty(String resourceName, String propertyName) {
+	public Property findProperty(String applicationName, String domainObjectName, String propertyName) {
 //		System.out.println(oRESTfulServicePIM.getHasResources());
-		Resource resource = findResource(resourceName);
-		if(resource == null)
+		DomainObject domainObject = findDomainObject(domainObjectName, applicationName);
+		if(domainObject == null)
 			return null;
 	
-		for(Property property : resource.getHasProperty()) {
+		for(Property property : domainObject.getHasProperty()) {
 			if(property.getName().equals(propertyName)) {
 				return property;
 			}
@@ -110,47 +48,81 @@ public class RESTfulServiceUtils {
 		return null;
 	}
 	
-//	public Property findPropertyWithDefaults(String resourceName, String propertyName) {
+//	public Role findRole(String name) {
 ////		System.out.println(oRESTfulServicePIM.getHasResources());
-//		Resource resource = findResourceWithDefaults(resourceName);
-//		if(resource == null)
-//			return null;
-//	
-//		for(Property property : resource.getHasProperty()) {
-//			if(property.getName().equals(propertyName)) {
-//				return property;
+//		for(Role role :oPIMDomain.getHasRoles()) {
+////			System.out.println(resource.getName() + " " + name);
+//			if(role.getName().equals(name)) {
+////				System.out.println("find: " + resource);
+//				return role;
 //			}
 //		}
 //		return null;
 //	}
 	
-	public Role findRole(String name) {
-//		System.out.println(oRESTfulServicePIM.getHasResources());
-		for(Role role :oRESTfulServicePIM.getHasRoles()) {
-//			System.out.println(resource.getName() + " " + name);
-			if(role.getName().equals(name)) {
-//				System.out.println("find: " + resource);
-				return role;
+	public PrimitiveType findPrimitiveType(String name) {
+		for(PrimitiveType primitiveType :oPIMStatic.getPrimitiveTypes()) {
+			if(primitiveType.getType().getName().equalsIgnoreCase(name)) {
+				return primitiveType;
 			}
 		}
 		return null;
 	}
 	
-	public Enumeration findEnumeration(String name) {
-		for(Enumeration enumeration :oRESTfulServicePIM.getEnumerations()) {
-			if(enumeration.getName().equals(name)) {
-				return enumeration;
+	public Application findApplicattion(String name) {
+		for(Application application: oPIMStatic.getHasApplication()) {
+			if(application.getName().equalsIgnoreCase(name)) {
+				return application;
 			}
 		}
 		return null;
 	}
 	
-	public BasicType findBasicType(String name) {
-		for(BasicType basicType :oRESTfulServicePIM.getBasictypes()) {
-			if(basicType.getType().getName().equalsIgnoreCase(name)) {
-				return basicType;
+	public DomainObject findDomainObject(String name, String applicationName) {
+		Application application = findApplicattion(applicationName);
+		for (Aggregate aggregate: application.getHasAggregate()) {
+			for (DomainObject domainObject: aggregate.getHasDomainobject()) {
+				if(domainObject.getName().equalsIgnoreCase(name)) {
+					return domainObject;
+				}
 			}
 		}
 		return null;
 	}
+	
+	public DynamicPIM.Application findDynamicApplicattion(String name) {
+		for(DynamicPIM.Application application: oPIMDynamic.getHasApplication()) {
+			if(application.getName().equalsIgnoreCase(name)) {
+				return application;
+			}
+		}
+		return null;
+	}
+	
+	public DynamicPIM.DomainObject findDynamicDomainObject(String name, String applicationName) {
+		DynamicPIM.Application application = findDynamicApplicattion(applicationName);
+		for (DynamicPIM.Aggregate aggregate: application.getHasAggregate()) {
+			for (DynamicPIM.DomainObject domainObject: aggregate.getDomainobjects()) {
+				if(domainObject.getName().equalsIgnoreCase(name)) {
+					return domainObject;
+				}
+			}
+		}
+		return null;
+	}
+	
+	public DynamicPIM.ProcessOperation findProcessOperation(String name, String applicationName) {
+		DynamicPIM.Application application = findDynamicApplicattion(applicationName);
+		for (DynamicPIM.Aggregate aggregate: application.getHasAggregate()) {
+			for (DynamicPIM.Process process: aggregate.getHasProcess()) {
+				for(DynamicPIM.ProcessOperation processOperation: process.getHasOperation()) {
+					if (processOperation.getName().equalsIgnoreCase(name)) {
+						return processOperation;
+					}
+				}
+			}
+		}
+		return null;
+	}
+	
 }

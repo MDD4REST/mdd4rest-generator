@@ -1,0 +1,39 @@
+operation DynamicPIM!Resource relativePath(): String{
+	var relativePath = self.pathName;
+	var resource = self;
+	while (resource.isRelatedResource != null){
+		resource = resource.isRelatedResource;
+		relativePath = resource.pathName + "/" + relativePath;
+	}
+	relativePath = self.aggregate.name.firstToLowerCase() + "/" + relativePath;
+	return relativePath;
+}
+
+operation DynamicPIM!Aggregate hasQueryResource(): Boolean{
+	for(resource in self.hasResource){
+		for(resourceOperation in resource.hasOperation){
+			if(resourceOperation.type().name == "Read"){
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+operation DynamicPIM!Process hasQueryOperation(): Boolean{
+	for(soperation in self.hasOperation){
+		if(soperation.type().name == "QueryOperation"){
+			return true;
+		}
+	}
+	return false;
+}
+
+operation DynamicPIM!Process hasCommandOperation(): Boolean{
+	for(soperation in self.hasOperation){
+		if(soperation.type().name == "CommandOperation"){
+			return true;
+		}
+	}
+	return false;
+}

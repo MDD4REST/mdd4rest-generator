@@ -1,0 +1,40 @@
+Application Cargo {
+  basePackage = org.cargo
+
+    Module command {
+
+     Service PlanetService {
+        findById => PlanetRepository.findById;
+     	findAll => PlanetRepository.findAll;
+     	save => PlanetRepository.save;
+     	delete => PlanetRepository.delete;
+     }
+
+     Entity Planet {
+     	String name notBlank
+     	int diameter min="1"
+
+     	Repository PlanetRepository {
+     		findById;
+     		save;
+     		delete;
+     		findAll;
+     	}
+
+     }
+    }
+
+    Module web{
+    	Resource FrontResource {
+            String front return="front/overview";
+        }
+
+        Resource PlanetResource {
+        	show => PlanetService.findById;
+        	String createForm;
+        	create => PlanetService.save;
+        	delete => PlanetService.delete;
+        	showAll => PlanetService.findAll;
+        }
+  }
+}

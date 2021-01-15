@@ -2,6 +2,7 @@
  */
 package ActivityDiagramMetamodel;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,10 +17,11 @@ package ActivityDiagramMetamodel;
  *   <li>{@link ActivityDiagramMetamodel.ObjectNode#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link ActivityDiagramMetamodel.ObjectNode#isIsControlType <em>Is Control Type</em>}</li>
  *   <li>{@link ActivityDiagramMetamodel.ObjectNode#getOrder <em>Order</em>}</li>
+ *   <li>{@link ActivityDiagramMetamodel.ObjectNode#getVariables <em>Variables</em>}</li>
  * </ul>
  *
  * @see ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage#getObjectNode()
- * @model annotation="gmf.node label='name' label.placement='internal'"
+ * @model
  * @generated
  */
 public interface ObjectNode extends ActivityNode {
@@ -114,5 +116,17 @@ public interface ObjectNode extends ActivityNode {
 	 * @generated
 	 */
 	void setOrder(ObjectNodeOrderingKind value);
+
+	/**
+	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
+	 * The list contents are of type {@link ActivityDiagramMetamodel.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Variables</em>' containment reference list.
+	 * @see ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage#getObjectNode_Variables()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Variable> getVariables();
 
 } // ObjectNode

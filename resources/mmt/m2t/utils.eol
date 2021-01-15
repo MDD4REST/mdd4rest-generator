@@ -1,3 +1,0 @@
-operation targetPath(outDir: String, applicationName: String, folderPath:String, fileName:String , extension:String){
-	return outDir + applicationName + "/src/main/java/com/mycompany/myapp/" + folderPath + "/" + fileName + extension;
-}

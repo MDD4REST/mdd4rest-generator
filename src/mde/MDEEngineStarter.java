@@ -1,20 +1,8 @@
 package mde;
 
-import java.io.File;
-import java.util.ArrayList;
-
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import ServicePIM.RESTfulServicePIM;
-import ServicePIM.ServicePIMPackage;
-import mde.inputParser.YamlApplication;
-import mde.inputParser.YamlEnumeration;
+import StaticPIM.Project;
 import mde.inputParser.YamlInputParser;
 import mde.inputParser.YamlRESTfulService;
-import mde.inputParser.YamlResource;
-import mde.inputParser.YamlRole;
 import mde.pimGenerator.APIMProducer;
 import mde.pimGenerator.CorePIMProducer;
 import mde.pimGenerator.EcoreXMIExtractor;
@@ -30,36 +18,35 @@ public class MDEEngineStarter
 		System.out.println("MyCore MDE engine started.");
 		
 		//check input arguments sanity
-		if(args.length < 1)
+		if(args.length < 3)
 		{
-			System.out.println("Usage: java -cp path project_Name output_path database_ip database_port database_username database_password use_authentication use_searching?");
+			System.out.println("Usage: java -cp project_Name project_path yaml_path?");
 			return;
 		}
+		
+		String projectName = args[0];
+		String projectPath = args[1];
+		String yamlPath = args[2];
 		
 		//parse the input yaml file
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("PARSING YAML INPUT");
-		oYamlInputParser = new YamlInputParser(args[0]);
+		oYamlInputParser = new YamlInputParser(yamlPath);
 		YamlRESTfulService listOfYaml = oYamlInputParser.parseYamlRESTfulServiceInputFile();
-		ArrayList<YamlResource> listOfYamlResources = oYamlInputParser.getListOfYamlResources();
-		ArrayList<YamlApplication> listOfYamlApplications = oYamlInputParser.getListOfYamlApplications();
-		ArrayList<YamlRole> listOfYamlRoles = oYamlInputParser.getListOfYamlRoles();
-		ArrayList<YamlEnumeration> listOfYamlEnumerations = oYamlInputParser.getListOfYamlEnumerations();
 		System.out.println("PARSING YAML DONE");
 		
 		//initiate PIM generator
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("PIM DEFINITION START");
 		System.out.println("------------------------------------------------------------------------");
-		oAPIMProducer = new CorePIMProducer(listOfYamlApplications, listOfYamlResources, listOfYamlRoles, listOfYamlEnumerations);
-		RESTfulServicePIM oRESTfulServicePIM = oAPIMProducer.producePIM();
-		System.out.println(oRESTfulServicePIM.getHasApplications());
-		System.out.println("Created " + oRESTfulServicePIM.getHasApplications().size() + " PIM resources");
-		EcoreXMIExtractor oEcoreXMIExtractor = new EcoreXMIExtractor("bookmarks");
-		ServicePIMPackage eINSTANCE = ServicePIM.impl.ServicePIMPackageImpl.init();
-//		System.out.println(eINSTANCE.getRESTfulServicePIM());
-//		System.out.println(oRESTfulServicePIM.getSe);
-		oEcoreXMIExtractor.exportEcoreXMI(oRESTfulServicePIM);
+		oAPIMProducer = new CorePIMProducer(listOfYaml, projectName, projectPath);
+		Project oPIMStatic = oAPIMProducer.producePIMStatic();
+		DynamicPIM.Project oPIMDynamic = oAPIMProducer.producePIMDynamic();
+		System.out.println(oPIMStatic.getHasApplication());
+		System.out.println("Created " + oPIMStatic.getHasApplication().size() + " PIM Applications");
+		EcoreXMIExtractor oEcoreXMIExtractor = new EcoreXMIExtractor(projectName, projectPath);
+		oEcoreXMIExtractor.exportStaticEcoreXMI(oPIMStatic);
+		oEcoreXMIExtractor.exportDynamicEcoreXMI(oPIMDynamic);
 		
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("PIM DEFINITION END");

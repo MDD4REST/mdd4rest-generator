@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mde:ActivityDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="resources/mm/CIM/ActivityDiagram.ecore" name="Routing">
+  <activityedge target="//@activitypartition.0/@activitynode.1" source="//@activitypartition.0/@activitynode.3"/>
+  <activityedge target="//@activitypartition.0/@activitynode.4" source="//@activitypartition.0/@activitynode.3"/>
+  <activitypartition xsi:type="mde:Actor" name="User">
+    <activitynode xsi:type="mde:Aggregate" name="Location" action="//@activitypartition.0/@activitynode.1" readmodels="//@activitypartition.0/@activitynode.2">
+      <domainobject xsi:type="mde:Entity" name="Location"/>
+    </activitynode>
+    <activitynode xsi:type="mde:QueryAction" incomming="//@activityedge.0" name="Find Location" supplier="//@activitypartition.0/@activitynode.0"/>
+    <activitynode xsi:type="mde:ReadModel" name="Location Details" supplier="//@activitypartition.0/@activitynode.0"/>
+    <activitynode xsi:type="mde:InitialNode" outcomming="//@activityedge.0 //@activityedge.1"/>
+    <activitynode xsi:type="mde:QueryAction" incomming="//@activityedge.1" name="List of Shipping Location" supplier="//@activitypartition.0/@activitynode.5"/>
+    <activitynode xsi:type="mde:Aggregate" name="Location" action="//@activitypartition.0/@activitynode.4" readmodels="//@activitypartition.0/@activitynode.6">
+      <domainobject xsi:type="mde:Entity" name="Location"/>
+    </activitynode>
+    <activitynode xsi:type="mde:ReadModel" name="Shipping Locations" supplier="//@activitypartition.0/@activitynode.5"/>
+  </activitypartition>
+</mde:ActivityDiagram>

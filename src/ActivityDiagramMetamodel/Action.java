@@ -16,10 +16,12 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link ActivityDiagramMetamodel.Action#getName <em>Name</em>}</li>
  *   <li>{@link ActivityDiagramMetamodel.Action#getInputpin <em>Inputpin</em>}</li>
  *   <li>{@link ActivityDiagramMetamodel.Action#getOutputpin <em>Outputpin</em>}</li>
+ *   <li>{@link ActivityDiagramMetamodel.Action#getSupplier <em>Supplier</em>}</li>
+ *   <li>{@link ActivityDiagramMetamodel.Action#getCallactions <em>Callactions</em>}</li>
  * </ul>
  *
  * @see ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage#getAction()
- * @model annotation="gmf.node label='name' label.placement='internal'"
+ * @model
  * @generated
  */
 public interface Action extends ExecutableNode {
@@ -68,5 +70,42 @@ public interface Action extends ExecutableNode {
 	 * @generated
 	 */
 	EList<OutputPin> getOutputpin();
+
+	/**
+	 * Returns the value of the '<em><b>Supplier</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link ActivityDiagramMetamodel.Supplier#getAction <em>Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Supplier</em>' reference.
+	 * @see #setSupplier(Supplier)
+	 * @see ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage#getAction_Supplier()
+	 * @see ActivityDiagramMetamodel.Supplier#getAction
+	 * @model opposite="action"
+	 *        annotation="gmf.link tool.name='Action to Supplier' style='dash' target.decoration='arrow' width='2'"
+	 * @generated
+	 */
+	Supplier getSupplier();
+
+	/**
+	 * Sets the value of the '{@link ActivityDiagramMetamodel.Action#getSupplier <em>Supplier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Supplier</em>' reference.
+	 * @see #getSupplier()
+	 * @generated
+	 */
+	void setSupplier(Supplier value);
+
+	/**
+	 * Returns the value of the '<em><b>Callactions</b></em>' containment reference list.
+	 * The list contents are of type {@link ActivityDiagramMetamodel.CallAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Callactions</em>' containment reference list.
+	 * @see ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage#getAction_Callactions()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<CallAction> getCallactions();
 
 } // Action

@@ -3,18 +3,25 @@
 package ActivityDiagramMetamodel.impl;
 
 import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
-import ActivityDiagramMetamodel.ModelingTestPackage;
 import ActivityDiagramMetamodel.ObjectNode;
 import ActivityDiagramMetamodel.ObjectNodeOrderingKind;
 import ActivityDiagramMetamodel.ValueSpecification;
+import ActivityDiagramMetamodel.Variable;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link ActivityDiagramMetamodel.impl.ObjectNodeImpl#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link ActivityDiagramMetamodel.impl.ObjectNodeImpl#isIsControlType <em>Is Control Type</em>}</li>
  *   <li>{@link ActivityDiagramMetamodel.impl.ObjectNodeImpl#getOrder <em>Order</em>}</li>
+ *   <li>{@link ActivityDiagramMetamodel.impl.ObjectNodeImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  *
  * @generated
@@ -102,6 +110,16 @@ public class ObjectNodeImpl extends ActivityNodeImpl implements ObjectNode {
 	 * @ordered
 	 */
 	protected ObjectNodeOrderingKind order = ORDER_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Variable> variables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -242,10 +260,25 @@ public class ObjectNodeImpl extends ActivityNodeImpl implements ObjectNode {
 	 * @generated
 	 */
 	@Override
+	public EList<Variable> getVariables() {
+		if (variables == null) {
+			variables = new EObjectContainmentEList<Variable>(Variable.class, this, ActivityDiagramMetamodelPackage.OBJECT_NODE__VARIABLES);
+		}
+		return variables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ActivityDiagramMetamodelPackage.OBJECT_NODE__UPPER_BOUND:
 				return basicSetUpperBound(null, msgs);
+			case ActivityDiagramMetamodelPackage.OBJECT_NODE__VARIABLES:
+				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -266,6 +299,8 @@ public class ObjectNodeImpl extends ActivityNodeImpl implements ObjectNode {
 				return isIsControlType();
 			case ActivityDiagramMetamodelPackage.OBJECT_NODE__ORDER:
 				return getOrder();
+			case ActivityDiagramMetamodelPackage.OBJECT_NODE__VARIABLES:
+				return getVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -275,6 +310,7 @@ public class ObjectNodeImpl extends ActivityNodeImpl implements ObjectNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -289,6 +325,10 @@ public class ObjectNodeImpl extends ActivityNodeImpl implements ObjectNode {
 				return;
 			case ActivityDiagramMetamodelPackage.OBJECT_NODE__ORDER:
 				setOrder((ObjectNodeOrderingKind)newValue);
+				return;
+			case ActivityDiagramMetamodelPackage.OBJECT_NODE__VARIABLES:
+				getVariables().clear();
+				getVariables().addAll((Collection<? extends Variable>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -314,6 +354,9 @@ public class ObjectNodeImpl extends ActivityNodeImpl implements ObjectNode {
 			case ActivityDiagramMetamodelPackage.OBJECT_NODE__ORDER:
 				setOrder(ORDER_EDEFAULT);
 				return;
+			case ActivityDiagramMetamodelPackage.OBJECT_NODE__VARIABLES:
+				getVariables().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -334,6 +377,8 @@ public class ObjectNodeImpl extends ActivityNodeImpl implements ObjectNode {
 				return isControlType != IS_CONTROL_TYPE_EDEFAULT;
 			case ActivityDiagramMetamodelPackage.OBJECT_NODE__ORDER:
 				return order != ORDER_EDEFAULT;
+			case ActivityDiagramMetamodelPackage.OBJECT_NODE__VARIABLES:
+				return variables != null && !variables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

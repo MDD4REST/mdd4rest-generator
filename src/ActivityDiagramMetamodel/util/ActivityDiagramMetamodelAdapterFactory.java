@@ -2,7 +2,48 @@
  */
 package ActivityDiagramMetamodel.util;
 
-import ActivityDiagramMetamodel.*;
+import ActivityDiagramMetamodel.Action;
+import ActivityDiagramMetamodel.ActivityDiagram;
+import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
+import ActivityDiagramMetamodel.ActivityEdge;
+import ActivityDiagramMetamodel.ActivityNode;
+import ActivityDiagramMetamodel.ActivityParameterNode;
+import ActivityDiagramMetamodel.ActivityPartition;
+import ActivityDiagramMetamodel.Actor;
+import ActivityDiagramMetamodel.Aggregate;
+import ActivityDiagramMetamodel.CallAction;
+import ActivityDiagramMetamodel.CallActivityAction;
+import ActivityDiagramMetamodel.CallBehaviorAction;
+import ActivityDiagramMetamodel.CallOperationAction;
+import ActivityDiagramMetamodel.CommandAction;
+import ActivityDiagramMetamodel.ConstraintPin;
+import ActivityDiagramMetamodel.ControlFlow;
+import ActivityDiagramMetamodel.ControlNode;
+import ActivityDiagramMetamodel.DecisionNode;
+import ActivityDiagramMetamodel.DomainEvent;
+import ActivityDiagramMetamodel.DomainObject;
+import ActivityDiagramMetamodel.Entity;
+import ActivityDiagramMetamodel.ExecutableNode;
+import ActivityDiagramMetamodel.ExternalSystem;
+import ActivityDiagramMetamodel.FinalNode;
+import ActivityDiagramMetamodel.ForkNode;
+import ActivityDiagramMetamodel.InitialNode;
+import ActivityDiagramMetamodel.InputPin;
+import ActivityDiagramMetamodel.JoinNode;
+import ActivityDiagramMetamodel.MergeNode;
+import ActivityDiagramMetamodel.ObjectAction;
+import ActivityDiagramMetamodel.ObjectFlow;
+import ActivityDiagramMetamodel.ObjectNode;
+import ActivityDiagramMetamodel.OutputPin;
+import ActivityDiagramMetamodel.Pin;
+import ActivityDiagramMetamodel.QueryAction;
+import ActivityDiagramMetamodel.ReadModel;
+import ActivityDiagramMetamodel.StartObjectBehaviorAction;
+import ActivityDiagramMetamodel.Supplier;
+import ActivityDiagramMetamodel.Supply;
+import ActivityDiagramMetamodel.ValueObject;
+import ActivityDiagramMetamodel.ValueSpecification;
+import ActivityDiagramMetamodel.Variable;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -156,10 +197,6 @@ public class ActivityDiagramMetamodelAdapterFactory extends AdapterFactoryImpl {
 				return createCallActionAdapter();
 			}
 			@Override
-			public Adapter caseVariableAction(VariableAction object) {
-				return createVariableActionAdapter();
-			}
-			@Override
 			public Adapter caseStartObjectBehaviorAction(StartObjectBehaviorAction object) {
 				return createStartObjectBehaviorActionAdapter();
 			}
@@ -184,10 +221,6 @@ public class ActivityDiagramMetamodelAdapterFactory extends AdapterFactoryImpl {
 				return createActivityPartitionAdapter();
 			}
 			@Override
-			public Adapter caseEventAction(EventAction object) {
-				return createEventActionAdapter();
-			}
-			@Override
 			public Adapter caseCommandAction(CommandAction object) {
 				return createCommandActionAdapter();
 			}
@@ -198,6 +231,46 @@ public class ActivityDiagramMetamodelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseQueryAction(QueryAction object) {
 				return createQueryActionAdapter();
+			}
+			@Override
+			public Adapter caseDomainObject(DomainObject object) {
+				return createDomainObjectAdapter();
+			}
+			@Override
+			public Adapter caseValueObject(ValueObject object) {
+				return createValueObjectAdapter();
+			}
+			@Override
+			public Adapter caseEntity(Entity object) {
+				return createEntityAdapter();
+			}
+			@Override
+			public Adapter caseActor(Actor object) {
+				return createActorAdapter();
+			}
+			@Override
+			public Adapter caseSystem(ActivityDiagramMetamodel.System object) {
+				return createSystemAdapter();
+			}
+			@Override
+			public Adapter caseExternalSystem(ExternalSystem object) {
+				return createExternalSystemAdapter();
+			}
+			@Override
+			public Adapter caseReadModel(ReadModel object) {
+				return createReadModelAdapter();
+			}
+			@Override
+			public Adapter caseSupplier(Supplier object) {
+				return createSupplierAdapter();
+			}
+			@Override
+			public Adapter caseDomainEvent(DomainEvent object) {
+				return createDomainEventAdapter();
+			}
+			@Override
+			public Adapter caseConstraintPin(ConstraintPin object) {
+				return createConstraintPinAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -528,20 +601,6 @@ public class ActivityDiagramMetamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.VariableAction <em>Variable Action</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see ActivityDiagramMetamodel.VariableAction
-	 * @generated
-	 */
-	public Adapter createVariableActionAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.StartObjectBehaviorAction <em>Start Object Behavior Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -626,20 +685,6 @@ public class ActivityDiagramMetamodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.EventAction <em>Event Action</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see ActivityDiagramMetamodel.EventAction
-	 * @generated
-	 */
-	public Adapter createEventActionAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.CommandAction <em>Command Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -678,6 +723,146 @@ public class ActivityDiagramMetamodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createQueryActionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.DomainObject <em>Domain Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ActivityDiagramMetamodel.DomainObject
+	 * @generated
+	 */
+	public Adapter createDomainObjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.ValueObject <em>Value Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ActivityDiagramMetamodel.ValueObject
+	 * @generated
+	 */
+	public Adapter createValueObjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.Entity <em>Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ActivityDiagramMetamodel.Entity
+	 * @generated
+	 */
+	public Adapter createEntityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.Actor <em>Actor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ActivityDiagramMetamodel.Actor
+	 * @generated
+	 */
+	public Adapter createActorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.ExternalSystem <em>External System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ActivityDiagramMetamodel.ExternalSystem
+	 * @generated
+	 */
+	public Adapter createExternalSystemAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.ReadModel <em>Read Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ActivityDiagramMetamodel.ReadModel
+	 * @generated
+	 */
+	public Adapter createReadModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.Supplier <em>Supplier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ActivityDiagramMetamodel.Supplier
+	 * @generated
+	 */
+	public Adapter createSupplierAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.System <em>System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ActivityDiagramMetamodel.System
+	 * @generated
+	 */
+	public Adapter createSystemAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.DomainEvent <em>Domain Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ActivityDiagramMetamodel.DomainEvent
+	 * @generated
+	 */
+	public Adapter createDomainEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ActivityDiagramMetamodel.ConstraintPin <em>Constraint Pin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ActivityDiagramMetamodel.ConstraintPin
+	 * @generated
+	 */
+	public Adapter createConstraintPinAdapter() {
 		return null;
 	}
 

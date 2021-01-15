@@ -5,24 +5,13 @@
       <figures xsi:type="gmfgraph:PolylineDecoration" name="ActivityEdgeFigureTargetDecoration"/>
       <figures xsi:type="gmfgraph:PolylineDecoration" name="ObjectFlowFigureTargetDecoration"/>
       <figures xsi:type="gmfgraph:PolylineDecoration" name="ControlFlowFigureTargetDecoration"/>
-      <figures xsi:type="gmfgraph:PolylineDecoration" name="CommandActionAggregateFigureTargetDecoration"/>
-      <figures xsi:type="gmfgraph:PolylineDecoration" name="AggregateEventsFigureTargetDecoration"/>
-      <descriptors name="ActivityNodeFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ActivityNodeFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-        </actualFigure>
-      </descriptors>
+      <figures xsi:type="gmfgraph:PolylineDecoration" name="ActionSupplierFigureTargetDecoration"/>
+      <figures xsi:type="gmfgraph:PolylineDecoration" name="SupplierTriggersFigureTargetDecoration"/>
+      <figures xsi:type="gmfgraph:PolylineDecoration" name="SupplierReadmodelsFigureTargetDecoration"/>
+      <figures xsi:type="gmfgraph:PolylineDecoration" name="DomainEventReadmodelFigureTargetDecoration"/>
+      <figures xsi:type="gmfgraph:PolylineDecoration" name="ConstraintPinTriggersFigureTargetDecoration"/>
       <descriptors name="ControlNodeFigure">
         <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ControlNodeFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-        </actualFigure>
-      </descriptors>
-      <descriptors name="ExecutableNodeFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ExecutableNodeFigure">
           <border xsi:type="gmfgraph:MarginBorder">
             <insets top="5" left="5" bottom="5" right="5"/>
           </border>
@@ -78,123 +67,6 @@
           </border>
         </actualFigure>
       </descriptors>
-      <descriptors name="InputPinFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="InputPinFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="InputPinLabelFigure" text="InputPin"/>
-        </actualFigure>
-        <accessors accessor="getFigureInputPinLabelFigure" figure="/0/@figures.0/@descriptors.10/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="OutputPinFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="OutputPinFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="OutputPinLabelFigure" text="OutputPin"/>
-        </actualFigure>
-        <accessors accessor="getFigureOutputPinLabelFigure" figure="/0/@figures.0/@descriptors.11/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="PinFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="PinFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="PinLabelFigure" text="Pin"/>
-        </actualFigure>
-        <accessors accessor="getFigurePinLabelFigure" figure="/0/@figures.0/@descriptors.12/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="ObjectNodeFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ObjectNodeFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="ObjectNodeLabelFigure" text="ObjectNode"/>
-        </actualFigure>
-        <accessors accessor="getFigureObjectNodeLabelFigure" figure="/0/@figures.0/@descriptors.13/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="ActivityParameterNodeFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ActivityParameterNodeFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="ActivityParameterNodeLabelFigure" text="ActivityParameterNode"/>
-        </actualFigure>
-        <accessors accessor="getFigureActivityParameterNodeLabelFigure" figure="/0/@figures.0/@descriptors.14/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="ActionFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ActionFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="ActionLabelFigure" text="Action"/>
-        </actualFigure>
-        <accessors accessor="getFigureActionLabelFigure" figure="/0/@figures.0/@descriptors.15/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="CallActionFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="CallActionFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="CallActionLabelFigure" text="CallAction"/>
-        </actualFigure>
-        <accessors accessor="getFigureCallActionLabelFigure" figure="/0/@figures.0/@descriptors.16/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="VariableActionFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="VariableActionFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="VariableActionLabelFigure" text="VariableAction"/>
-        </actualFigure>
-        <accessors accessor="getFigureVariableActionLabelFigure" figure="/0/@figures.0/@descriptors.17/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="StartObjectBehaviorActionFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="StartObjectBehaviorActionFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="StartObjectBehaviorActionLabelFigure" text="StartObjectBehaviorAction"/>
-        </actualFigure>
-        <accessors accessor="getFigureStartObjectBehaviorActionLabelFigure" figure="/0/@figures.0/@descriptors.18/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="ObjectActionFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ObjectActionFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="ObjectActionLabelFigure" text="ObjectAction"/>
-        </actualFigure>
-        <accessors accessor="getFigureObjectActionLabelFigure" figure="/0/@figures.0/@descriptors.19/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="CallBehaviorActionFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="CallBehaviorActionFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="CallBehaviorActionLabelFigure" text="CallBehaviorAction"/>
-        </actualFigure>
-        <accessors accessor="getFigureCallBehaviorActionLabelFigure" figure="/0/@figures.0/@descriptors.20/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="CallOperationActionFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="CallOperationActionFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="CallOperationActionLabelFigure" text="CallOperationAction"/>
-        </actualFigure>
-        <accessors accessor="getFigureCallOperationActionLabelFigure" figure="/0/@figures.0/@descriptors.21/@actualFigure/@children.0"/>
-      </descriptors>
-      <descriptors name="CallActivityActionFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="CallActivityActionFigure">
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="CallActivityActionLabelFigure" text="CallActivityAction"/>
-        </actualFigure>
-        <accessors accessor="getFigureCallActivityActionLabelFigure" figure="/0/@figures.0/@descriptors.22/@actualFigure/@children.0"/>
-      </descriptors>
       <descriptors name="ActivityPartitionFigure">
         <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ActivityPartitionFigure">
           <border xsi:type="gmfgraph:MarginBorder">
@@ -203,22 +75,10 @@
           <children xsi:type="gmfgraph:Label" name="ActivityPartitionLabelFigure" text="ActivityPartition">
             <maximumSize dx="10000" dy="50"/>
           </children>
-          <children xsi:type="gmfgraph:Rectangle" name="ActivityPartitionSubpartitionCompartmentFigure" outline="false"/>
           <children xsi:type="gmfgraph:Rectangle" name="ActivityPartitionActivitynodeCompartmentFigure" outline="false"/>
         </actualFigure>
-        <accessors accessor="getFigureActivityPartitionLabelFigure" figure="/0/@figures.0/@descriptors.23/@actualFigure/@children.0"/>
-        <accessors accessor="getActivityPartitionSubpartitionCompartmentFigure" figure="/0/@figures.0/@descriptors.23/@actualFigure/@children.1"/>
-        <accessors accessor="getActivityPartitionActivitynodeCompartmentFigure" figure="/0/@figures.0/@descriptors.23/@actualFigure/@children.2"/>
-      </descriptors>
-      <descriptors name="EventActionFigure">
-        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="EventActionFigure">
-          <backgroundColor xsi:type="gmfgraph:RGBColor" red="243" green="156" blue="18"/>
-          <border xsi:type="gmfgraph:MarginBorder">
-            <insets top="5" left="5" bottom="5" right="5"/>
-          </border>
-          <children xsi:type="gmfgraph:Label" name="EventActionLabelFigure" text="EventAction"/>
-        </actualFigure>
-        <accessors accessor="getFigureEventActionLabelFigure" figure="/0/@figures.0/@descriptors.24/@actualFigure/@children.0"/>
+        <accessors accessor="getFigureActivityPartitionLabelFigure" figure="/0/@figures.0/@descriptors.8/@actualFigure/@children.0"/>
+        <accessors accessor="getActivityPartitionActivitynodeCompartmentFigure" figure="/0/@figures.0/@descriptors.8/@actualFigure/@children.1"/>
       </descriptors>
       <descriptors name="CommandActionFigure">
         <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="CommandActionFigure">
@@ -228,27 +88,126 @@
           </border>
           <children xsi:type="gmfgraph:Label" name="CommandActionLabelFigure" text="CommandAction"/>
         </actualFigure>
-        <accessors accessor="getFigureCommandActionLabelFigure" figure="/0/@figures.0/@descriptors.25/@actualFigure/@children.0"/>
+        <accessors accessor="getFigureCommandActionLabelFigure" figure="/0/@figures.0/@descriptors.9/@actualFigure/@children.0"/>
       </descriptors>
       <descriptors name="AggregateFigure">
         <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="AggregateFigure">
-          <backgroundColor xsi:type="gmfgraph:RGBColor" red="241" green="196" blue="15"/>
+          <backgroundColor xsi:type="gmfgraph:RGBColor" red="243" green="208" blue="43"/>
           <border xsi:type="gmfgraph:MarginBorder">
             <insets top="5" left="5" bottom="5" right="5"/>
           </border>
-          <children xsi:type="gmfgraph:Label" name="AggregateLabelFigure" text="Aggregate"/>
+          <children xsi:type="gmfgraph:Label" name="AggregateLabelFigure" text="Aggregate">
+            <maximumSize dx="10000" dy="50"/>
+          </children>
+          <children xsi:type="gmfgraph:Rectangle" name="AggregateDomainobjectCompartmentFigure" outline="false"/>
         </actualFigure>
-        <accessors accessor="getFigureAggregateLabelFigure" figure="/0/@figures.0/@descriptors.26/@actualFigure/@children.0"/>
+        <accessors accessor="getFigureAggregateLabelFigure" figure="/0/@figures.0/@descriptors.10/@actualFigure/@children.0"/>
+        <accessors accessor="getAggregateDomainobjectCompartmentFigure" figure="/0/@figures.0/@descriptors.10/@actualFigure/@children.1"/>
       </descriptors>
       <descriptors name="QueryActionFigure">
         <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="QueryActionFigure">
-          <backgroundColor xsi:type="gmfgraph:RGBColor" red="243" green="156" blue="18"/>
+          <backgroundColor xsi:type="gmfgraph:RGBColor" red="108" green="198" blue="192"/>
           <border xsi:type="gmfgraph:MarginBorder">
             <insets top="5" left="5" bottom="5" right="5"/>
           </border>
           <children xsi:type="gmfgraph:Label" name="QueryActionLabelFigure" text="QueryAction"/>
         </actualFigure>
-        <accessors accessor="getFigureQueryActionLabelFigure" figure="/0/@figures.0/@descriptors.27/@actualFigure/@children.0"/>
+        <accessors accessor="getFigureQueryActionLabelFigure" figure="/0/@figures.0/@descriptors.11/@actualFigure/@children.0"/>
+      </descriptors>
+      <descriptors name="DomainObjectFigure">
+        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="DomainObjectFigure">
+          <border xsi:type="gmfgraph:MarginBorder">
+            <insets top="5" left="5" bottom="5" right="5"/>
+          </border>
+          <children xsi:type="gmfgraph:Label" name="DomainObjectLabelFigure" text="DomainObject"/>
+        </actualFigure>
+        <accessors accessor="getFigureDomainObjectLabelFigure" figure="/0/@figures.0/@descriptors.12/@actualFigure/@children.0"/>
+      </descriptors>
+      <descriptors name="ValueObjectFigure">
+        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ValueObjectFigure">
+          <border xsi:type="gmfgraph:MarginBorder">
+            <insets top="5" left="5" bottom="5" right="5"/>
+          </border>
+          <children xsi:type="gmfgraph:Label" name="ValueObjectLabelFigure" text="ValueObject"/>
+        </actualFigure>
+        <accessors accessor="getFigureValueObjectLabelFigure" figure="/0/@figures.0/@descriptors.13/@actualFigure/@children.0"/>
+      </descriptors>
+      <descriptors name="EntityFigure">
+        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="EntityFigure">
+          <border xsi:type="gmfgraph:MarginBorder">
+            <insets top="5" left="5" bottom="5" right="5"/>
+          </border>
+          <children xsi:type="gmfgraph:Label" name="EntityLabelFigure" text="Entity"/>
+        </actualFigure>
+        <accessors accessor="getFigureEntityLabelFigure" figure="/0/@figures.0/@descriptors.14/@actualFigure/@children.0"/>
+      </descriptors>
+      <descriptors name="ActorFigure">
+        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ActorFigure">
+          <backgroundColor xsi:type="gmfgraph:RGBColor" red="255" green="249" blue="178"/>
+          <border xsi:type="gmfgraph:MarginBorder">
+            <insets top="5" left="5" bottom="5" right="5"/>
+          </border>
+          <children xsi:type="gmfgraph:Label" name="ActorLabelFigure" text="Actor">
+            <maximumSize dx="10000" dy="50"/>
+          </children>
+          <children xsi:type="gmfgraph:Rectangle" name="ActorActivitynodeCompartmentFigure" outline="false"/>
+        </actualFigure>
+        <accessors accessor="getFigureActorLabelFigure" figure="/0/@figures.0/@descriptors.15/@actualFigure/@children.0"/>
+        <accessors accessor="getActorActivitynodeCompartmentFigure" figure="/0/@figures.0/@descriptors.15/@actualFigure/@children.1"/>
+      </descriptors>
+      <descriptors name="SystemFigure">
+        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="SystemFigure">
+          <border xsi:type="gmfgraph:MarginBorder">
+            <insets top="5" left="5" bottom="5" right="5"/>
+          </border>
+          <children xsi:type="gmfgraph:Label" name="SystemLabelFigure" text="System">
+            <maximumSize dx="10000" dy="50"/>
+          </children>
+          <children xsi:type="gmfgraph:Rectangle" name="SystemActivitynodeCompartmentFigure" outline="false"/>
+        </actualFigure>
+        <accessors accessor="getFigureSystemLabelFigure" figure="/0/@figures.0/@descriptors.16/@actualFigure/@children.0"/>
+        <accessors accessor="getSystemActivitynodeCompartmentFigure" figure="/0/@figures.0/@descriptors.16/@actualFigure/@children.1"/>
+      </descriptors>
+      <descriptors name="ExternalSystemFigure">
+        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ExternalSystemFigure">
+          <backgroundColor xsi:type="gmfgraph:RGBColor" red="231" green="147" blue="186"/>
+          <border xsi:type="gmfgraph:MarginBorder">
+            <insets top="5" left="5" bottom="5" right="5"/>
+          </border>
+          <children xsi:type="gmfgraph:Label" name="ExternalSystemLabelFigure" text="ExternalSystem"/>
+        </actualFigure>
+        <accessors accessor="getFigureExternalSystemLabelFigure" figure="/0/@figures.0/@descriptors.17/@actualFigure/@children.0"/>
+      </descriptors>
+      <descriptors name="ReadModelFigure">
+        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="ReadModelFigure">
+          <backgroundColor xsi:type="gmfgraph:RGBColor" red="209" green="227" blue="109"/>
+          <border xsi:type="gmfgraph:MarginBorder">
+            <insets top="5" left="5" bottom="5" right="5"/>
+          </border>
+          <children xsi:type="gmfgraph:Label" name="ReadModelLabelFigure" text="ReadModel"/>
+        </actualFigure>
+        <accessors accessor="getFigureReadModelLabelFigure" figure="/0/@figures.0/@descriptors.18/@actualFigure/@children.0"/>
+      </descriptors>
+      <descriptors name="DomainEventFigure">
+        <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="DomainEventFigure">
+          <backgroundColor xsi:type="gmfgraph:RGBColor" red="243" green="156" blue="18"/>
+          <border xsi:type="gmfgraph:MarginBorder">
+            <insets top="5" left="5" bottom="5" right="5"/>
+          </border>
+          <children xsi:type="gmfgraph:Label" name="DomainEventLabelFigure" text="DomainEvent"/>
+        </actualFigure>
+        <accessors accessor="getFigureDomainEventLabelFigure" figure="/0/@figures.0/@descriptors.19/@actualFigure/@children.0"/>
+      </descriptors>
+      <descriptors name="ConstraintPinFigure">
+        <actualFigure xsi:type="gmfgraph:Rectangle" name="ConstraintPinFigure">
+          <preferredSize dx="20" dy="20"/>
+          <border xsi:type="gmfgraph:MarginBorder">
+            <insets top="5" left="5" bottom="5" right="5"/>
+          </border>
+        </actualFigure>
+      </descriptors>
+      <descriptors name="ConstraintPinLabelFigure">
+        <actualFigure xsi:type="gmfgraph:Label" name="ConstraintPinLabelFigure" text="ConstraintPin"/>
       </descriptors>
       <descriptors name="ActivityEdgeFigure">
         <actualFigure xsi:type="gmfgraph:PolylineConnection" name="ActivityEdgeFigure" lineWidth="2" targetDecoration="/0/@figures.0/@figures.0"/>
@@ -259,22 +218,38 @@
       <descriptors name="ControlFlowFigure">
         <actualFigure xsi:type="gmfgraph:PolylineConnection" name="ControlFlowFigure" lineWidth="2" targetDecoration="/0/@figures.0/@figures.2"/>
       </descriptors>
-      <descriptors name="CommandActionAggregateFigure">
-        <actualFigure xsi:type="gmfgraph:PolylineConnection" name="CommandActionAggregateFigure" lineWidth="2" lineKind="LINE_DASH" targetDecoration="/0/@figures.0/@figures.3"/>
+      <descriptors name="ActionSupplierFigure">
+        <actualFigure xsi:type="gmfgraph:PolylineConnection" name="ActionSupplierFigure" lineWidth="2" lineKind="LINE_DASH" targetDecoration="/0/@figures.0/@figures.3"/>
       </descriptors>
-      <descriptors name="CommandActionAggregateExternalLabelFigure">
-        <actualFigure xsi:type="gmfgraph:Label" name="CommandActionAggregateExternalLabel"/>
+      <descriptors name="ActionSupplierExternalLabelFigure">
+        <actualFigure xsi:type="gmfgraph:Label" name="ActionSupplierExternalLabel"/>
       </descriptors>
-      <descriptors name="AggregateEventsFigure">
-        <actualFigure xsi:type="gmfgraph:PolylineConnection" name="AggregateEventsFigure" lineWidth="2" lineKind="LINE_DASH" targetDecoration="/0/@figures.0/@figures.4"/>
+      <descriptors name="SupplierTriggersFigure">
+        <actualFigure xsi:type="gmfgraph:PolylineConnection" name="SupplierTriggersFigure" lineWidth="2" lineKind="LINE_DASH" targetDecoration="/0/@figures.0/@figures.4"/>
       </descriptors>
-      <descriptors name="AggregateEventsExternalLabelFigure">
-        <actualFigure xsi:type="gmfgraph:Label" name="AggregateEventsExternalLabel"/>
+      <descriptors name="SupplierTriggersExternalLabelFigure">
+        <actualFigure xsi:type="gmfgraph:Label" name="SupplierTriggersExternalLabel"/>
+      </descriptors>
+      <descriptors name="SupplierReadmodelsFigure">
+        <actualFigure xsi:type="gmfgraph:PolylineConnection" name="SupplierReadmodelsFigure" lineWidth="2" lineKind="LINE_DASH" targetDecoration="/0/@figures.0/@figures.5"/>
+      </descriptors>
+      <descriptors name="SupplierReadmodelsExternalLabelFigure">
+        <actualFigure xsi:type="gmfgraph:Label" name="SupplierReadmodelsExternalLabel"/>
+      </descriptors>
+      <descriptors name="DomainEventReadmodelFigure">
+        <actualFigure xsi:type="gmfgraph:PolylineConnection" name="DomainEventReadmodelFigure" lineWidth="2" lineKind="LINE_DASH" targetDecoration="/0/@figures.0/@figures.6"/>
+      </descriptors>
+      <descriptors name="DomainEventReadmodelExternalLabelFigure">
+        <actualFigure xsi:type="gmfgraph:Label" name="DomainEventReadmodelExternalLabel"/>
+      </descriptors>
+      <descriptors name="ConstraintPinTriggersFigure">
+        <actualFigure xsi:type="gmfgraph:PolylineConnection" name="ConstraintPinTriggersFigure" lineWidth="2" lineKind="LINE_DASH" targetDecoration="/0/@figures.0/@figures.7"/>
+      </descriptors>
+      <descriptors name="ConstraintPinTriggersExternalLabelFigure">
+        <actualFigure xsi:type="gmfgraph:Label" name="ConstraintPinTriggersExternalLabel"/>
       </descriptors>
     </figures>
-    <nodes name="ActivityNode" figure="ActivityNodeFigure"/>
     <nodes name="ControlNode" figure="ControlNodeFigure"/>
-    <nodes name="ExecutableNode" figure="ExecutableNodeFigure"/>
     <nodes name="InitialNode" figure="InitialNodeFigure">
       <facets xsi:type="gmfgraph:DefaultSizeFacet">
         <defaultSize dx="30" dy="30"/>
@@ -301,56 +276,56 @@
         <defaultSize dx="30" dy="60"/>
       </facets>
     </nodes>
-    <nodes name="InputPin" figure="InputPinFigure"/>
-    <nodes name="OutputPin" figure="OutputPinFigure"/>
-    <nodes name="Pin" figure="PinFigure"/>
-    <nodes name="ObjectNode" figure="ObjectNodeFigure"/>
-    <nodes name="ActivityParameterNode" figure="ActivityParameterNodeFigure"/>
-    <nodes name="Action" figure="ActionFigure"/>
-    <nodes name="CallAction" figure="CallActionFigure"/>
-    <nodes name="VariableAction" figure="VariableActionFigure"/>
-    <nodes name="StartObjectBehaviorAction" figure="StartObjectBehaviorActionFigure"/>
-    <nodes name="ObjectAction" figure="ObjectActionFigure"/>
-    <nodes name="CallBehaviorAction" figure="CallBehaviorActionFigure"/>
-    <nodes name="CallOperationAction" figure="CallOperationActionFigure"/>
-    <nodes name="CallActivityAction" figure="CallActivityActionFigure"/>
     <nodes name="ActivityPartition" figure="ActivityPartitionFigure"/>
-    <nodes name="EventAction" figure="EventActionFigure"/>
     <nodes name="CommandAction" figure="CommandActionFigure"/>
     <nodes name="Aggregate" figure="AggregateFigure"/>
     <nodes name="QueryAction" figure="QueryActionFigure"/>
+    <nodes name="DomainObject" figure="DomainObjectFigure"/>
+    <nodes name="ValueObject" figure="ValueObjectFigure"/>
+    <nodes name="Entity" figure="EntityFigure"/>
+    <nodes name="Actor" figure="ActorFigure"/>
+    <nodes name="System" figure="SystemFigure"/>
+    <nodes name="ExternalSystem" figure="ExternalSystemFigure"/>
+    <nodes name="ReadModel" figure="ReadModelFigure"/>
+    <nodes name="DomainEvent" figure="DomainEventFigure"/>
+    <nodes name="ConstraintPin" figure="ConstraintPinFigure" affixedParentSide="NORTH">
+      <facets xsi:type="gmfgraph:DefaultSizeFacet">
+        <defaultSize dx="20" dy="20"/>
+      </facets>
+    </nodes>
     <connections name="ActivityEdge" figure="ActivityEdgeFigure"/>
     <connections name="ObjectFlow" figure="ObjectFlowFigure"/>
     <connections name="ControlFlow" figure="ControlFlowFigure"/>
-    <connections name="CommandActionAggregate" figure="CommandActionAggregateFigure"/>
-    <connections name="AggregateEvents" figure="AggregateEventsFigure"/>
-    <compartments name="ActivityPartitionSubpartitionCompartment" figure="ActivityPartitionFigure" collapsible="true" accessor="/0/@figures.0/@descriptors.23/@accessors.1"/>
-    <compartments name="ActivityPartitionActivitynodeCompartment" figure="ActivityPartitionFigure" collapsible="true" accessor="/0/@figures.0/@descriptors.23/@accessors.2"/>
+    <connections name="ActionSupplier" figure="ActionSupplierFigure"/>
+    <connections name="SupplierTriggers" figure="SupplierTriggersFigure"/>
+    <connections name="SupplierReadmodels" figure="SupplierReadmodelsFigure"/>
+    <connections name="DomainEventReadmodel" figure="DomainEventReadmodelFigure"/>
+    <connections name="ConstraintPinTriggers" figure="ConstraintPinTriggersFigure"/>
+    <compartments name="ActivityPartitionActivitynodeCompartment" figure="ActivityPartitionFigure" collapsible="true" accessor="/0/@figures.0/@descriptors.8/@accessors.1"/>
+    <compartments name="AggregateDomainobjectCompartment" figure="AggregateFigure" accessor="/0/@figures.0/@descriptors.10/@accessors.1"/>
+    <compartments name="ActorActivitynodeCompartment" figure="ActorFigure" collapsible="true" accessor="/0/@figures.0/@descriptors.15/@accessors.1"/>
+    <compartments name="SystemActivitynodeCompartment" figure="SystemFigure" collapsible="true" accessor="/0/@figures.0/@descriptors.16/@accessors.1"/>
     <labels name="DecisionNodeLabel" figure="DecisionNodeLabelFigure" elementIcon="false"/>
-    <labels name="InputPinLabel" figure="InputPinFigure" accessor="/0/@figures.0/@descriptors.10/@accessors.0"/>
-    <labels name="OutputPinLabel" figure="OutputPinFigure" accessor="/0/@figures.0/@descriptors.11/@accessors.0"/>
-    <labels name="PinLabel" figure="PinFigure" accessor="/0/@figures.0/@descriptors.12/@accessors.0"/>
-    <labels name="ObjectNodeLabel" figure="ObjectNodeFigure" accessor="/0/@figures.0/@descriptors.13/@accessors.0"/>
-    <labels name="ActivityParameterNodeLabel" figure="ActivityParameterNodeFigure" accessor="/0/@figures.0/@descriptors.14/@accessors.0"/>
-    <labels name="ActionLabel" figure="ActionFigure" accessor="/0/@figures.0/@descriptors.15/@accessors.0"/>
-    <labels name="CallActionLabel" figure="CallActionFigure" accessor="/0/@figures.0/@descriptors.16/@accessors.0"/>
-    <labels name="VariableActionLabel" figure="VariableActionFigure" accessor="/0/@figures.0/@descriptors.17/@accessors.0"/>
-    <labels name="StartObjectBehaviorActionLabel" figure="StartObjectBehaviorActionFigure" accessor="/0/@figures.0/@descriptors.18/@accessors.0"/>
-    <labels name="ObjectActionLabel" figure="ObjectActionFigure" accessor="/0/@figures.0/@descriptors.19/@accessors.0"/>
-    <labels name="CallBehaviorActionLabel" figure="CallBehaviorActionFigure" accessor="/0/@figures.0/@descriptors.20/@accessors.0"/>
-    <labels name="CallOperationActionLabel" figure="CallOperationActionFigure" accessor="/0/@figures.0/@descriptors.21/@accessors.0"/>
-    <labels name="CallActivityActionLabel" figure="CallActivityActionFigure" accessor="/0/@figures.0/@descriptors.22/@accessors.0"/>
-    <labels name="ActivityPartitionLabel" figure="ActivityPartitionFigure" accessor="/0/@figures.0/@descriptors.23/@accessors.0"/>
-    <labels name="EventActionLabel" figure="EventActionFigure" accessor="/0/@figures.0/@descriptors.24/@accessors.0"/>
-    <labels name="CommandActionLabel" figure="CommandActionFigure" accessor="/0/@figures.0/@descriptors.25/@accessors.0"/>
-    <labels name="AggregateLabel" figure="AggregateFigure" accessor="/0/@figures.0/@descriptors.26/@accessors.0"/>
-    <labels name="QueryActionLabel" figure="QueryActionFigure" accessor="/0/@figures.0/@descriptors.27/@accessors.0"/>
-    <labels name="CommandActionAggregateExternalLabel" figure="CommandActionAggregateExternalLabelFigure" elementIcon="false"/>
-    <labels name="AggregateEventsExternalLabel" figure="AggregateEventsExternalLabelFigure" elementIcon="false"/>
+    <labels name="ActivityPartitionLabel" figure="ActivityPartitionFigure" accessor="/0/@figures.0/@descriptors.8/@accessors.0"/>
+    <labels name="CommandActionLabel" figure="CommandActionFigure" accessor="/0/@figures.0/@descriptors.9/@accessors.0"/>
+    <labels name="AggregateLabel" figure="AggregateFigure" accessor="/0/@figures.0/@descriptors.10/@accessors.0"/>
+    <labels name="QueryActionLabel" figure="QueryActionFigure" accessor="/0/@figures.0/@descriptors.11/@accessors.0"/>
+    <labels name="DomainObjectLabel" figure="DomainObjectFigure" accessor="/0/@figures.0/@descriptors.12/@accessors.0"/>
+    <labels name="ValueObjectLabel" figure="ValueObjectFigure" accessor="/0/@figures.0/@descriptors.13/@accessors.0"/>
+    <labels name="EntityLabel" figure="EntityFigure" accessor="/0/@figures.0/@descriptors.14/@accessors.0"/>
+    <labels name="ActorLabel" figure="ActorFigure" accessor="/0/@figures.0/@descriptors.15/@accessors.0"/>
+    <labels name="SystemLabel" figure="SystemFigure" accessor="/0/@figures.0/@descriptors.16/@accessors.0"/>
+    <labels name="ExternalSystemLabel" figure="ExternalSystemFigure" accessor="/0/@figures.0/@descriptors.17/@accessors.0"/>
+    <labels name="ReadModelLabel" figure="ReadModelFigure" accessor="/0/@figures.0/@descriptors.18/@accessors.0"/>
+    <labels name="DomainEventLabel" figure="DomainEventFigure" accessor="/0/@figures.0/@descriptors.19/@accessors.0"/>
+    <labels name="ConstraintPinLabel" figure="ConstraintPinLabelFigure" elementIcon="false"/>
+    <labels name="ActionSupplierExternalLabel" figure="ActionSupplierExternalLabelFigure" elementIcon="false"/>
+    <labels name="SupplierTriggersExternalLabel" figure="SupplierTriggersExternalLabelFigure" elementIcon="false"/>
+    <labels name="SupplierReadmodelsExternalLabel" figure="SupplierReadmodelsExternalLabelFigure" elementIcon="false"/>
+    <labels name="DomainEventReadmodelExternalLabel" figure="DomainEventReadmodelExternalLabelFigure" elementIcon="false"/>
+    <labels name="ConstraintPinTriggersExternalLabel" figure="ConstraintPinTriggersExternalLabelFigure" elementIcon="false"/>
   </gmfgraph:Canvas>
-  <gmfgraph:Label name="ActivityNodeLabelFigure" text="ActivityNode"/>
   <gmfgraph:Label name="ControlNodeLabelFigure" text="ControlNode"/>
-  <gmfgraph:Label name="ExecutableNodeLabelFigure" text="ExecutableNode"/>
   <gmfgraph:Label name="InitialNodeLabelFigure" text="InitialNode"/>
   <gmfgraph:Label name="ForkNodeLabelFigure" text="ForkNode"/>
   <gmfgraph:Label name="JoinNodeLabelFigure" text="JoinNode"/>

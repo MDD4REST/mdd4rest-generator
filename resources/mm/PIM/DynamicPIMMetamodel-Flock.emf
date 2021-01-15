@@ -1,0 +1,169 @@
+@namespace(uri="platform:/resource/MyCore/resources/mm/PIM/DynamicPIMMetamodel.ecore", prefix="dynamic")
+package DomainPIM;
+
+abstract class Resource {
+	id attr String[1] name;
+	ref Resource[*]#isRelatedResource hasRelatedResource;
+	ref Resource#hasRelatedResource isRelatedResource;
+	ref Read readActivity;
+	ref Create createActivity;
+	ref Delete deleteActivity;
+	ref Other[*] otherActivities;
+	ref Aggregate#hasResource aggregate;
+	val ResourceActivity[*] hasActivity;
+	attr String pathName;
+}
+
+enum MediaType {
+	JSON = 0;
+	XML = 1;
+}
+
+class Application {
+	attr String name;
+	val Aggregate[+]#application hasAggregate;
+	ref Project[1]#hasApplication project;
+	val ComplexType[*] complextypes;
+}
+
+abstract class ResourceActivity extends Operation {
+	attr boolean isAuthenticatedRequired;
+	ref ProcessOperation trigger;
+	ref Resource resource;
+	attr String pathName;
+}
+
+class Create extends ResourceActivity {
+}
+
+class Read extends ResourceActivity {
+}
+
+class Other extends ResourceActivity {
+}
+
+class Delete extends ResourceActivity {
+}
+
+class Operation {
+	attr String name;
+	val Publish publish;
+	val Parameter[*] parameter;
+	ref TypeDefinition returntype;
+}
+
+class SingletonResource extends Resource {
+	attr String lookupField;
+}
+
+class PrimitiveType extends SimpleType {
+	attr DefaultType type;
+}
+
+abstract class Event extends ValueObject {
+}
+
+class Publish {
+	ref Event eventType;
+}
+
+class CommandEvent extends Event {
+}
+
+class DomainEvent extends Event {
+}
+
+class DomainObjectOperation extends Operation {
+	!unique attr boolean ~abstract;
+	ref DomainObject[1]#hasOperation domainobject;
+}
+
+class Policy {
+	ref Event eventType;
+}
+
+class CommandOperation extends ProcessOperation {
+}
+
+class QueryOperation extends ProcessOperation {
+}
+
+class ProcessOperation extends Operation {
+	ref ProcessOperation delegate;
+	val Policy[*] policy;
+	ref Process[1]#hasOperation process;
+}
+
+class Process {
+	val ProcessOperation[*]#process hasOperation;
+	attr String[1] name;
+	ref Aggregate[1]#hasProcess aggregate;
+}
+
+class Project {
+	id attr String[1] name;
+	attr String[1] basePath;
+	val Application[+]#project hasApplication;
+	val PrimitiveType[*] primitiveTypes;
+}
+
+class CollectionResource extends Resource {
+}
+
+abstract class TypeDefinition {
+}
+
+class Parameter {
+	ref TypeDefinition type;
+	attr String name;
+}
+
+class Aggregate {
+	op DomainObject[1] aggregateRoot();
+	attr String name;
+	val Process[*]#aggregate hasProcess;
+	ref Application[1]#hasAggregate application;
+	val DomainObject[*]#aggregate domainobjects;
+	val Resource[*]#aggregate hasResource;
+	ref DomainObject[1] aggregateRoot;
+}
+
+abstract class DomainObject extends SimpleType {
+	attr String name;
+	!unique attr boolean aggregateRoot = false;
+	val DomainObjectOperation[*]#domainobject hasOperation;
+	ref Aggregate[1]#domainobjects aggregate;
+}
+
+class Entity extends DomainObject {
+}
+
+class ValueObject extends DomainObject {
+}
+
+class DTO extends ValueObject {
+}
+
+enum DefaultType {
+	String = 0;
+	Integer = 1;
+	Float = 2;
+	Boolean = 3;
+	null = 4;
+	Date = 5;
+}
+
+class Enumeration extends DomainObject {
+}
+
+class BasicType extends ValueObject {
+}
+
+abstract class SimpleType extends TypeDefinition {
+	id attr String[1] typeName;
+}
+
+class ComplexType extends TypeDefinition {
+	ref TypeDefinition[1] type;
+}
+

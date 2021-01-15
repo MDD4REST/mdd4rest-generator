@@ -4,10 +4,13 @@ package ActivityDiagramMetamodel.impl;
 
 import ActivityDiagramMetamodel.Action;
 import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
+import ActivityDiagramMetamodel.Actor;
+import ActivityDiagramMetamodel.CallAction;
 import ActivityDiagramMetamodel.InputPin;
-import ActivityDiagramMetamodel.ModelingTestPackage;
 import ActivityDiagramMetamodel.OutputPin;
 
+import ActivityDiagramMetamodel.Supplier;
+import ActivityDiagramMetamodel.Supply;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -34,6 +37,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link ActivityDiagramMetamodel.impl.ActionImpl#getName <em>Name</em>}</li>
  *   <li>{@link ActivityDiagramMetamodel.impl.ActionImpl#getInputpin <em>Inputpin</em>}</li>
  *   <li>{@link ActivityDiagramMetamodel.impl.ActionImpl#getOutputpin <em>Outputpin</em>}</li>
+ *   <li>{@link ActivityDiagramMetamodel.impl.ActionImpl#getSupplier <em>Supplier</em>}</li>
+ *   <li>{@link ActivityDiagramMetamodel.impl.ActionImpl#getCallactions <em>Callactions</em>}</li>
  * </ul>
  *
  * @generated
@@ -78,6 +83,26 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @ordered
 	 */
 	protected EList<OutputPin> outputpin;
+
+	/**
+	 * The cached value of the '{@link #getSupplier() <em>Supplier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSupplier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Supplier supplier;
+
+	/**
+	 * The cached value of the '{@link #getCallactions() <em>Callactions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCallactions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CallAction> callactions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,12 +178,107 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 	 * @generated
 	 */
 	@Override
+	public Supplier getSupplier() {
+		if (supplier != null && supplier.eIsProxy()) {
+			InternalEObject oldSupplier = (InternalEObject)supplier;
+			supplier = (Supplier)eResolveProxy(oldSupplier);
+			if (supplier != oldSupplier) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityDiagramMetamodelPackage.ACTION__SUPPLIER, oldSupplier, supplier));
+			}
+		}
+		return supplier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Supplier basicGetSupplier() {
+		return supplier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSupplier(Supplier newSupplier, NotificationChain msgs) {
+		Supplier oldSupplier = supplier;
+		supplier = newSupplier;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ActivityDiagramMetamodelPackage.ACTION__SUPPLIER, oldSupplier, newSupplier);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setSupplier(Supplier newSupplier) {
+		if (newSupplier != supplier) {
+			NotificationChain msgs = null;
+			if (supplier != null)
+				msgs = ((InternalEObject)supplier).eInverseRemove(this, ActivityDiagramMetamodelPackage.SUPPLIER__ACTION, Supplier.class, msgs);
+			if (newSupplier != null)
+				msgs = ((InternalEObject)newSupplier).eInverseAdd(this, ActivityDiagramMetamodelPackage.SUPPLIER__ACTION, Supplier.class, msgs);
+			msgs = basicSetSupplier(newSupplier, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ActivityDiagramMetamodelPackage.ACTION__SUPPLIER, newSupplier, newSupplier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<CallAction> getCallactions() {
+		if (callactions == null) {
+			callactions = new EObjectContainmentEList<CallAction>(CallAction.class, this, ActivityDiagramMetamodelPackage.ACTION__CALLACTIONS);
+		}
+		return callactions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ActivityDiagramMetamodelPackage.ACTION__SUPPLIER:
+				if (supplier != null)
+					msgs = ((InternalEObject)supplier).eInverseRemove(this, ActivityDiagramMetamodelPackage.SUPPLIER__ACTION, Supplier.class, msgs);
+				return basicSetSupplier((Supplier)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ActivityDiagramMetamodelPackage.ACTION__INPUTPIN:
 				return ((InternalEList<?>)getInputpin()).basicRemove(otherEnd, msgs);
 			case ActivityDiagramMetamodelPackage.ACTION__OUTPUTPIN:
 				return ((InternalEList<?>)getOutputpin()).basicRemove(otherEnd, msgs);
+			case ActivityDiagramMetamodelPackage.ACTION__SUPPLIER:
+				return basicSetSupplier(null, msgs);
+			case ActivityDiagramMetamodelPackage.ACTION__CALLACTIONS:
+				return ((InternalEList<?>)getCallactions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -177,6 +297,11 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 				return getInputpin();
 			case ActivityDiagramMetamodelPackage.ACTION__OUTPUTPIN:
 				return getOutputpin();
+			case ActivityDiagramMetamodelPackage.ACTION__SUPPLIER:
+				if (resolve) return getSupplier();
+				return basicGetSupplier();
+			case ActivityDiagramMetamodelPackage.ACTION__CALLACTIONS:
+				return getCallactions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -201,6 +326,13 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 				getOutputpin().clear();
 				getOutputpin().addAll((Collection<? extends OutputPin>)newValue);
 				return;
+			case ActivityDiagramMetamodelPackage.ACTION__SUPPLIER:
+				setSupplier((Supplier)newValue);
+				return;
+			case ActivityDiagramMetamodelPackage.ACTION__CALLACTIONS:
+				getCallactions().clear();
+				getCallactions().addAll((Collection<? extends CallAction>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -222,6 +354,12 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 			case ActivityDiagramMetamodelPackage.ACTION__OUTPUTPIN:
 				getOutputpin().clear();
 				return;
+			case ActivityDiagramMetamodelPackage.ACTION__SUPPLIER:
+				setSupplier((Supplier)null);
+				return;
+			case ActivityDiagramMetamodelPackage.ACTION__CALLACTIONS:
+				getCallactions().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -240,6 +378,10 @@ public class ActionImpl extends ExecutableNodeImpl implements Action {
 				return inputpin != null && !inputpin.isEmpty();
 			case ActivityDiagramMetamodelPackage.ACTION__OUTPUTPIN:
 				return outputpin != null && !outputpin.isEmpty();
+			case ActivityDiagramMetamodelPackage.ACTION__SUPPLIER:
+				return supplier != null;
+			case ActivityDiagramMetamodelPackage.ACTION__CALLACTIONS:
+				return callactions != null && !callactions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

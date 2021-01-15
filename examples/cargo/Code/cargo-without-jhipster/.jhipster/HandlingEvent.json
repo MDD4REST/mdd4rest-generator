@@ -1,0 +1,66 @@
+{
+  "name": "HandlingEvent",
+  "fields": [
+    {
+      "fieldName": "registrationTime",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ]
+    },
+    {
+      "fieldName": "completionTime",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ]
+    },
+    {
+      "fieldName": "handlingType",
+      "fieldType": "HandlingEventType",
+      "fieldValues": "UNLOAD,CUSTOMS,CLAIM,LOAD,RECEIVE"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "voyage",
+      "otherEntityRelationshipName": "handlingEvent",
+      "relationshipName": "voyage",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "handlingEvent",
+      "relationshipName": "location",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "cargo",
+      "otherEntityRelationshipName": "handlingEvent",
+      "relationshipName": "cargo",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210104213110",
+  "entityTableName": "handling_event",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "cargo"
+  ],
+  "readOnly": false,
+  "embedded": false
+}

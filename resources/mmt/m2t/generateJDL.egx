@@ -1,7 +1,0 @@
-rule JDL
-	transform jdl: JDLPIM{
-	
-	template : "JDL2JSON.egl"
-	
-	target : "../../m/entities.jdl"
-}

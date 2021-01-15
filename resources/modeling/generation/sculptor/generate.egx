@@ -1,0 +1,28 @@
+import "../../utilities/Generators.eol";
+
+pre{
+	var extension: String = ".btdesign";
+	var outDir: String = "../../../examples/";
+}
+
+rule rootModel {
+	parameters: Map{
+		"applications" = Application.allInstances
+	}
+	template: "btdesign-root.egl"
+	
+	target {
+		Project.all.first.println();
+		return targetPath(outDir, Project.all.first.name, "model" , extension);
+	}
+}
+
+rule Applications
+	transform app: Application{
+	
+	template : "btdesign-application.egl"
+	
+	target {
+		return targetPath(outDir, app.name, "model-" + app.name.ftlc() , extension);
+	}
+}

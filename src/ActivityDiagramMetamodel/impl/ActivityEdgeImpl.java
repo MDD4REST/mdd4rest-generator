@@ -6,7 +6,6 @@ import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
 import ActivityDiagramMetamodel.ActivityEdge;
 import ActivityDiagramMetamodel.ActivityNode;
 import ActivityDiagramMetamodel.ActivityPartition;
-import ActivityDiagramMetamodel.ModelingTestPackage;
 import ActivityDiagramMetamodel.ValueSpecification;
 
 import java.util.Collection;
@@ -23,7 +22,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -366,7 +364,6 @@ public class ActivityEdgeImpl extends EObjectImpl implements ActivityEdge {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {

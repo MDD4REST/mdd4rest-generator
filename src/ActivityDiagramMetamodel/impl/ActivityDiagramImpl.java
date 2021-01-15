@@ -7,7 +7,6 @@ import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
 import ActivityDiagramMetamodel.ActivityEdge;
 import ActivityDiagramMetamodel.ActivityNode;
 import ActivityDiagramMetamodel.ActivityPartition;
-import ActivityDiagramMetamodel.ModelingTestPackage;
 import ActivityDiagramMetamodel.Variable;
 
 import java.util.Collection;

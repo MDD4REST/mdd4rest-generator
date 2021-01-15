@@ -882,13 +882,22 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int OBJECT_NODE__ORDER = ACTIVITY_NODE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_NODE__VARIABLES = ACTIVITY_NODE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Object Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OBJECT_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 4;
+	int OBJECT_NODE_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.PinImpl <em>Pin</em>}' class.
@@ -962,6 +971,15 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PIN__ORDER = OBJECT_NODE__ORDER;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN__VARIABLES = OBJECT_NODE__VARIABLES;
 
 	/**
 	 * The number of structural features of the '<em>Pin</em>' class.
@@ -1046,6 +1064,15 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int INPUT_PIN__ORDER = PIN__ORDER;
 
 	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__VARIABLES = PIN__VARIABLES;
+
+	/**
 	 * The number of structural features of the '<em>Input Pin</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1126,6 +1153,15 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTPUT_PIN__ORDER = PIN__ORDER;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__VARIABLES = PIN__VARIABLES;
 
 	/**
 	 * The number of structural features of the '<em>Output Pin</em>' class.
@@ -1210,6 +1246,15 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int ACTIVITY_PARAMETER_NODE__ORDER = OBJECT_NODE__ORDER;
 
 	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARAMETER_NODE__VARIABLES = OBJECT_NODE__VARIABLES;
+
+	/**
 	 * The number of structural features of the '<em>Activity Parameter Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1247,13 +1292,22 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int VARIABLE__LOWER_BOUND = 1;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__NAME = 2;
+
+	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = 2;
+	int VARIABLE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.ValueSpecificationImpl <em>Value Specification</em>}' class.
@@ -1339,13 +1393,31 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int ACTION__OUTPUTPIN = EXECUTABLE_NODE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__SUPPLIER = EXECUTABLE_NODE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Callactions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__CALLACTIONS = EXECUTABLE_NODE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_FEATURE_COUNT = EXECUTABLE_NODE_FEATURE_COUNT + 3;
+	int ACTION_FEATURE_COUNT = EXECUTABLE_NODE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.CallActionImpl <em>Call Action</em>}' class.
@@ -1412,6 +1484,24 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int CALL_ACTION__OUTPUTPIN = ACTION__OUTPUTPIN;
 
 	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_ACTION__SUPPLIER = ACTION__SUPPLIER;
+
+	/**
+	 * The feature id for the '<em><b>Callactions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_ACTION__CALLACTIONS = ACTION__CALLACTIONS;
+
+	/**
 	 * The number of structural features of the '<em>Call Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1421,88 +1511,6 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int CALL_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.VariableActionImpl <em>Variable Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ActivityDiagramMetamodel.impl.VariableActionImpl
-	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getVariableAction()
-	 * @generated
-	 */
-	int VARIABLE_ACTION = 22;
-
-	/**
-	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ACTION__INCOMMING = CALL_ACTION__INCOMMING;
-
-	/**
-	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ACTION__OUTCOMMING = CALL_ACTION__OUTCOMMING;
-
-	/**
-	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ACTION__ACTIVITYPARTITION = CALL_ACTION__ACTIVITYPARTITION;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ACTION__NAME = CALL_ACTION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Inputpin</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ACTION__INPUTPIN = CALL_ACTION__INPUTPIN;
-
-	/**
-	 * The feature id for the '<em><b>Outputpin</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ACTION__OUTPUTPIN = CALL_ACTION__OUTPUTPIN;
-
-	/**
-	 * The feature id for the '<em><b>Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ACTION__KIND = CALL_ACTION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Variable Action</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ACTION_FEATURE_COUNT = CALL_ACTION_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.StartObjectBehaviorActionImpl <em>Start Object Behavior Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1510,7 +1518,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getStartObjectBehaviorAction()
 	 * @generated
 	 */
-	int START_OBJECT_BEHAVIOR_ACTION = 23;
+	int START_OBJECT_BEHAVIOR_ACTION = 22;
 
 	/**
 	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
@@ -1567,6 +1575,24 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int START_OBJECT_BEHAVIOR_ACTION__OUTPUTPIN = CALL_ACTION__OUTPUTPIN;
 
 	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START_OBJECT_BEHAVIOR_ACTION__SUPPLIER = CALL_ACTION__SUPPLIER;
+
+	/**
+	 * The feature id for the '<em><b>Callactions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START_OBJECT_BEHAVIOR_ACTION__CALLACTIONS = CALL_ACTION__CALLACTIONS;
+
+	/**
 	 * The number of structural features of the '<em>Start Object Behavior Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1583,7 +1609,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getObjectAction()
 	 * @generated
 	 */
-	int OBJECT_ACTION = 24;
+	int OBJECT_ACTION = 23;
 
 	/**
 	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
@@ -1640,6 +1666,24 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int OBJECT_ACTION__OUTPUTPIN = CALL_ACTION__OUTPUTPIN;
 
 	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_ACTION__SUPPLIER = CALL_ACTION__SUPPLIER;
+
+	/**
+	 * The feature id for the '<em><b>Callactions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_ACTION__CALLACTIONS = CALL_ACTION__CALLACTIONS;
+
+	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1665,7 +1709,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getCallBehaviorAction()
 	 * @generated
 	 */
-	int CALL_BEHAVIOR_ACTION = 25;
+	int CALL_BEHAVIOR_ACTION = 24;
 
 	/**
 	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
@@ -1722,6 +1766,24 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int CALL_BEHAVIOR_ACTION__OUTPUTPIN = CALL_ACTION__OUTPUTPIN;
 
 	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_BEHAVIOR_ACTION__SUPPLIER = CALL_ACTION__SUPPLIER;
+
+	/**
+	 * The feature id for the '<em><b>Callactions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_BEHAVIOR_ACTION__CALLACTIONS = CALL_ACTION__CALLACTIONS;
+
+	/**
 	 * The number of structural features of the '<em>Call Behavior Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1738,7 +1800,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getCallOperationAction()
 	 * @generated
 	 */
-	int CALL_OPERATION_ACTION = 26;
+	int CALL_OPERATION_ACTION = 25;
 
 	/**
 	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
@@ -1795,6 +1857,24 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int CALL_OPERATION_ACTION__OUTPUTPIN = CALL_ACTION__OUTPUTPIN;
 
 	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_OPERATION_ACTION__SUPPLIER = CALL_ACTION__SUPPLIER;
+
+	/**
+	 * The feature id for the '<em><b>Callactions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_OPERATION_ACTION__CALLACTIONS = CALL_ACTION__CALLACTIONS;
+
+	/**
 	 * The number of structural features of the '<em>Call Operation Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1811,7 +1891,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getCallActivityAction()
 	 * @generated
 	 */
-	int CALL_ACTIVITY_ACTION = 27;
+	int CALL_ACTIVITY_ACTION = 26;
 
 	/**
 	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
@@ -1868,6 +1948,24 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int CALL_ACTIVITY_ACTION__OUTPUTPIN = CALL_ACTION__OUTPUTPIN;
 
 	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_ACTIVITY_ACTION__SUPPLIER = CALL_ACTION__SUPPLIER;
+
+	/**
+	 * The feature id for the '<em><b>Callactions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_ACTIVITY_ACTION__CALLACTIONS = CALL_ACTION__CALLACTIONS;
+
+	/**
 	 * The feature id for the '<em><b>Activitydiagram</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1893,7 +1991,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getActivityPartition()
 	 * @generated
 	 */
-	int ACTIVITY_PARTITION = 28;
+	int ACTIVITY_PARTITION = 27;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1941,88 +2039,6 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int ACTIVITY_PARTITION_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.EventActionImpl <em>Event Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ActivityDiagramMetamodel.impl.EventActionImpl
-	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getEventAction()
-	 * @generated
-	 */
-	int EVENT_ACTION = 29;
-
-	/**
-	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_ACTION__INCOMMING = ACTION__INCOMMING;
-
-	/**
-	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_ACTION__OUTCOMMING = ACTION__OUTCOMMING;
-
-	/**
-	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_ACTION__ACTIVITYPARTITION = ACTION__ACTIVITYPARTITION;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_ACTION__NAME = ACTION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Inputpin</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_ACTION__INPUTPIN = ACTION__INPUTPIN;
-
-	/**
-	 * The feature id for the '<em><b>Outputpin</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_ACTION__OUTPUTPIN = ACTION__OUTPUTPIN;
-
-	/**
-	 * The feature id for the '<em><b>Aggregate</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_ACTION__AGGREGATE = ACTION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Event Action</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.CommandActionImpl <em>Command Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2030,7 +2046,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getCommandAction()
 	 * @generated
 	 */
-	int COMMAND_ACTION = 30;
+	int COMMAND_ACTION = 28;
 
 	/**
 	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
@@ -2087,13 +2103,22 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int COMMAND_ACTION__OUTPUTPIN = ACTION__OUTPUTPIN;
 
 	/**
-	 * The feature id for the '<em><b>Aggregate</b></em>' reference.
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_ACTION__AGGREGATE = ACTION_FEATURE_COUNT + 0;
+	int COMMAND_ACTION__SUPPLIER = ACTION__SUPPLIER;
+
+	/**
+	 * The feature id for the '<em><b>Callactions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_ACTION__CALLACTIONS = ACTION__CALLACTIONS;
 
 	/**
 	 * The number of structural features of the '<em>Command Action</em>' class.
@@ -2102,7 +2127,144 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
+	int COMMAND_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.SupplierImpl <em>Supplier</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ActivityDiagramMetamodel.impl.SupplierImpl
+	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getSupplier()
+	 * @generated
+	 */
+	int SUPPLIER = 38;
+
+	/**
+	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__INCOMMING = OBJECT_NODE__INCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__OUTCOMMING = OBJECT_NODE__OUTCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__ACTIVITYPARTITION = OBJECT_NODE__ACTIVITYPARTITION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__NAME = OBJECT_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__UPPER_BOUND = OBJECT_NODE__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__IS_CONTROL_TYPE = OBJECT_NODE__IS_CONTROL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__ORDER = OBJECT_NODE__ORDER;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__VARIABLES = OBJECT_NODE__VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Action</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__ACTION = OBJECT_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Triggers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__TRIGGERS = OBJECT_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Readmodels</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__READMODELS = OBJECT_NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER__CONSTRAINTS = OBJECT_NODE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Supplier</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPLIER_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.SystemImpl <em>System</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ActivityDiagramMetamodel.impl.SystemImpl
+	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getSystem()
+	 * @generated
+	 */
+	int SYSTEM = 35;
 
 	/**
 	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.AggregateImpl <em>Aggregate</em>}' class.
@@ -2112,7 +2274,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getAggregate()
 	 * @generated
 	 */
-	int AGGREGATE = 31;
+	int AGGREGATE = 29;
 
 	/**
 	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
@@ -2121,7 +2283,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE__INCOMMING = OBJECT_NODE__INCOMMING;
+	int AGGREGATE__INCOMMING = SUPPLIER__INCOMMING;
 
 	/**
 	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
@@ -2130,7 +2292,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE__OUTCOMMING = OBJECT_NODE__OUTCOMMING;
+	int AGGREGATE__OUTCOMMING = SUPPLIER__OUTCOMMING;
 
 	/**
 	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
@@ -2139,7 +2301,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE__ACTIVITYPARTITION = OBJECT_NODE__ACTIVITYPARTITION;
+	int AGGREGATE__ACTIVITYPARTITION = SUPPLIER__ACTIVITYPARTITION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2148,7 +2310,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE__NAME = OBJECT_NODE__NAME;
+	int AGGREGATE__NAME = SUPPLIER__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
@@ -2157,7 +2319,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE__UPPER_BOUND = OBJECT_NODE__UPPER_BOUND;
+	int AGGREGATE__UPPER_BOUND = SUPPLIER__UPPER_BOUND;
 
 	/**
 	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
@@ -2166,7 +2328,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE__IS_CONTROL_TYPE = OBJECT_NODE__IS_CONTROL_TYPE;
+	int AGGREGATE__IS_CONTROL_TYPE = SUPPLIER__IS_CONTROL_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Order</b></em>' attribute.
@@ -2175,34 +2337,61 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE__ORDER = OBJECT_NODE__ORDER;
+	int AGGREGATE__ORDER = SUPPLIER__ORDER;
 
 	/**
-	 * The feature id for the '<em><b>Events</b></em>' reference list.
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE__EVENTS = OBJECT_NODE_FEATURE_COUNT + 0;
+	int AGGREGATE__VARIABLES = SUPPLIER__VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Command</b></em>' reference.
+	 * The feature id for the '<em><b>Action</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE__COMMAND = OBJECT_NODE_FEATURE_COUNT + 1;
+	int AGGREGATE__ACTION = SUPPLIER__ACTION;
 
 	/**
-	 * The feature id for the '<em><b>Query</b></em>' reference.
+	 * The feature id for the '<em><b>Triggers</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE__QUERY = OBJECT_NODE_FEATURE_COUNT + 2;
+	int AGGREGATE__TRIGGERS = SUPPLIER__TRIGGERS;
+
+	/**
+	 * The feature id for the '<em><b>Readmodels</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGGREGATE__READMODELS = SUPPLIER__READMODELS;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGGREGATE__CONSTRAINTS = SUPPLIER__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Domainobject</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGGREGATE__DOMAINOBJECT = SUPPLIER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Aggregate</em>' class.
@@ -2211,7 +2400,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATE_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 3;
+	int AGGREGATE_FEATURE_COUNT = SUPPLIER_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.QueryActionImpl <em>Query Action</em>}' class.
@@ -2221,7 +2410,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getQueryAction()
 	 * @generated
 	 */
-	int QUERY_ACTION = 32;
+	int QUERY_ACTION = 30;
 
 	/**
 	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
@@ -2278,13 +2467,22 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	int QUERY_ACTION__OUTPUTPIN = ACTION__OUTPUTPIN;
 
 	/**
-	 * The feature id for the '<em><b>Aggregate</b></em>' reference.
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_ACTION__AGGREGATE = ACTION_FEATURE_COUNT + 0;
+	int QUERY_ACTION__SUPPLIER = ACTION__SUPPLIER;
+
+	/**
+	 * The feature id for the '<em><b>Callactions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_ACTION__CALLACTIONS = ACTION__CALLACTIONS;
 
 	/**
 	 * The number of structural features of the '<em>Query Action</em>' class.
@@ -2293,7 +2491,852 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUERY_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
+	int QUERY_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.DomainObjectImpl <em>Domain Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ActivityDiagramMetamodel.impl.DomainObjectImpl
+	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getDomainObject()
+	 * @generated
+	 */
+	int DOMAIN_OBJECT = 31;
+
+	/**
+	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT__INCOMMING = OBJECT_NODE__INCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT__OUTCOMMING = OBJECT_NODE__OUTCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT__ACTIVITYPARTITION = OBJECT_NODE__ACTIVITYPARTITION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT__NAME = OBJECT_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT__UPPER_BOUND = OBJECT_NODE__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT__IS_CONTROL_TYPE = OBJECT_NODE__IS_CONTROL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT__ORDER = OBJECT_NODE__ORDER;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT__VARIABLES = OBJECT_NODE__VARIABLES;
+
+	/**
+	 * The number of structural features of the '<em>Domain Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.ValueObjectImpl <em>Value Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ActivityDiagramMetamodel.impl.ValueObjectImpl
+	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getValueObject()
+	 * @generated
+	 */
+	int VALUE_OBJECT = 32;
+
+	/**
+	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__INCOMMING = DOMAIN_OBJECT__INCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__OUTCOMMING = DOMAIN_OBJECT__OUTCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__ACTIVITYPARTITION = DOMAIN_OBJECT__ACTIVITYPARTITION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__NAME = DOMAIN_OBJECT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__UPPER_BOUND = DOMAIN_OBJECT__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__IS_CONTROL_TYPE = DOMAIN_OBJECT__IS_CONTROL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__ORDER = DOMAIN_OBJECT__ORDER;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT__VARIABLES = DOMAIN_OBJECT__VARIABLES;
+
+	/**
+	 * The number of structural features of the '<em>Value Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OBJECT_FEATURE_COUNT = DOMAIN_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.EntityImpl <em>Entity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ActivityDiagramMetamodel.impl.EntityImpl
+	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getEntity()
+	 * @generated
+	 */
+	int ENTITY = 33;
+
+	/**
+	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__INCOMMING = DOMAIN_OBJECT__INCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__OUTCOMMING = DOMAIN_OBJECT__OUTCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__ACTIVITYPARTITION = DOMAIN_OBJECT__ACTIVITYPARTITION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__NAME = DOMAIN_OBJECT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__UPPER_BOUND = DOMAIN_OBJECT__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__IS_CONTROL_TYPE = DOMAIN_OBJECT__IS_CONTROL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__ORDER = DOMAIN_OBJECT__ORDER;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__VARIABLES = DOMAIN_OBJECT__VARIABLES;
+
+	/**
+	 * The number of structural features of the '<em>Entity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FEATURE_COUNT = DOMAIN_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.ActorImpl <em>Actor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ActivityDiagramMetamodel.impl.ActorImpl
+	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getActor()
+	 * @generated
+	 */
+	int ACTOR = 34;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__NAME = ACTIVITY_PARTITION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Subpartition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__SUBPARTITION = ACTIVITY_PARTITION__SUBPARTITION;
+
+	/**
+	 * The feature id for the '<em><b>Activityedge</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__ACTIVITYEDGE = ACTIVITY_PARTITION__ACTIVITYEDGE;
+
+	/**
+	 * The feature id for the '<em><b>Activitynode</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__ACTIVITYNODE = ACTIVITY_PARTITION__ACTIVITYNODE;
+
+	/**
+	 * The number of structural features of the '<em>Actor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR_FEATURE_COUNT = ACTIVITY_PARTITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__NAME = ACTIVITY_PARTITION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Subpartition</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__SUBPARTITION = ACTIVITY_PARTITION__SUBPARTITION;
+
+	/**
+	 * The feature id for the '<em><b>Activityedge</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__ACTIVITYEDGE = ACTIVITY_PARTITION__ACTIVITYEDGE;
+
+	/**
+	 * The feature id for the '<em><b>Activitynode</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM__ACTIVITYNODE = ACTIVITY_PARTITION__ACTIVITYNODE;
+
+	/**
+	 * The number of structural features of the '<em>System</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_FEATURE_COUNT = ACTIVITY_PARTITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.ExternalSystemImpl <em>External System</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ActivityDiagramMetamodel.impl.ExternalSystemImpl
+	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getExternalSystem()
+	 * @generated
+	 */
+	int EXTERNAL_SYSTEM = 36;
+
+	/**
+	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__INCOMMING = SUPPLIER__INCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__OUTCOMMING = SUPPLIER__OUTCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__ACTIVITYPARTITION = SUPPLIER__ACTIVITYPARTITION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__NAME = SUPPLIER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__UPPER_BOUND = SUPPLIER__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__IS_CONTROL_TYPE = SUPPLIER__IS_CONTROL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__ORDER = SUPPLIER__ORDER;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__VARIABLES = SUPPLIER__VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Action</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__ACTION = SUPPLIER__ACTION;
+
+	/**
+	 * The feature id for the '<em><b>Triggers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__TRIGGERS = SUPPLIER__TRIGGERS;
+
+	/**
+	 * The feature id for the '<em><b>Readmodels</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__READMODELS = SUPPLIER__READMODELS;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM__CONSTRAINTS = SUPPLIER__CONSTRAINTS;
+
+	/**
+	 * The number of structural features of the '<em>External System</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTERNAL_SYSTEM_FEATURE_COUNT = SUPPLIER_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.ReadModelImpl <em>Read Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ActivityDiagramMetamodel.impl.ReadModelImpl
+	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getReadModel()
+	 * @generated
+	 */
+	int READ_MODEL = 37;
+
+	/**
+	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL__INCOMMING = OBJECT_NODE__INCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL__OUTCOMMING = OBJECT_NODE__OUTCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL__ACTIVITYPARTITION = OBJECT_NODE__ACTIVITYPARTITION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL__NAME = OBJECT_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL__UPPER_BOUND = OBJECT_NODE__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL__IS_CONTROL_TYPE = OBJECT_NODE__IS_CONTROL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL__ORDER = OBJECT_NODE__ORDER;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL__VARIABLES = OBJECT_NODE__VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL__SUPPLIER = OBJECT_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Event</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL__EVENT = OBJECT_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Read Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int READ_MODEL_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.DomainEventImpl <em>Domain Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ActivityDiagramMetamodel.impl.DomainEventImpl
+	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getDomainEvent()
+	 * @generated
+	 */
+	int DOMAIN_EVENT = 39;
+
+	/**
+	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__INCOMMING = OBJECT_NODE__INCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__OUTCOMMING = OBJECT_NODE__OUTCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__ACTIVITYPARTITION = OBJECT_NODE__ACTIVITYPARTITION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__NAME = OBJECT_NODE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__UPPER_BOUND = OBJECT_NODE__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__IS_CONTROL_TYPE = OBJECT_NODE__IS_CONTROL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__ORDER = OBJECT_NODE__ORDER;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__VARIABLES = OBJECT_NODE__VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Readmodel</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__READMODEL = OBJECT_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__SUPPLIER = OBJECT_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Constraint</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT__CONSTRAINT = OBJECT_NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Domain Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_EVENT_FEATURE_COUNT = OBJECT_NODE_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link ActivityDiagramMetamodel.impl.ConstraintPinImpl <em>Constraint Pin</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ActivityDiagramMetamodel.impl.ConstraintPinImpl
+	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getConstraintPin()
+	 * @generated
+	 */
+	int CONSTRAINT_PIN = 40;
+
+	/**
+	 * The feature id for the '<em><b>Incomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__INCOMMING = PIN__INCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Outcomming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__OUTCOMMING = PIN__OUTCOMMING;
+
+	/**
+	 * The feature id for the '<em><b>Activitypartition</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__ACTIVITYPARTITION = PIN__ACTIVITYPARTITION;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__NAME = PIN__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__UPPER_BOUND = PIN__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Is Control Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__IS_CONTROL_TYPE = PIN__IS_CONTROL_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__ORDER = PIN__ORDER;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__VARIABLES = PIN__VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__SUPPLIER = PIN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Triggers</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__TRIGGERS = PIN_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN__DESCRIPTION = PIN_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Constraint Pin</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_PIN_FEATURE_COUNT = PIN_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link ActivityDiagramMetamodel.ObjectNodeOrderingKind <em>Object Node Ordering Kind</em>}' enum.
@@ -2303,7 +3346,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getObjectNodeOrderingKind()
 	 * @generated
 	 */
-	int OBJECT_NODE_ORDERING_KIND = 33;
+	int OBJECT_NODE_ORDERING_KIND = 41;
 
 	/**
 	 * The meta object id for the '{@link ActivityDiagramMetamodel.ObjectActionKind <em>Object Action Kind</em>}' enum.
@@ -2313,17 +3356,7 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getObjectActionKind()
 	 * @generated
 	 */
-	int OBJECT_ACTION_KIND = 34;
-
-	/**
-	 * The meta object id for the '{@link ActivityDiagramMetamodel.VariableActionKind <em>Variable Action Kind</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ActivityDiagramMetamodel.VariableActionKind
-	 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getVariableActionKind()
-	 * @generated
-	 */
-	int VARIABLE_ACTION_KIND = 35;
+	int OBJECT_ACTION_KIND = 42;
 
 
 	/**
@@ -2761,6 +3794,17 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	EAttribute getObjectNode_Order();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link ActivityDiagramMetamodel.ObjectNode#getVariables <em>Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @see ActivityDiagramMetamodel.ObjectNode#getVariables()
+	 * @see #getObjectNode()
+	 * @generated
+	 */
+	EReference getObjectNode_Variables();
+
+	/**
 	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.ActivityParameterNode <em>Activity Parameter Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2801,6 +3845,17 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getVariable_LowerBound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ActivityDiagramMetamodel.Variable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ActivityDiagramMetamodel.Variable#getName()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Name();
 
 	/**
 	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.ValueSpecification <em>Value Specification</em>}'.
@@ -2856,6 +3911,28 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	EReference getAction_Outputpin();
 
 	/**
+	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.Action#getSupplier <em>Supplier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Supplier</em>'.
+	 * @see ActivityDiagramMetamodel.Action#getSupplier()
+	 * @see #getAction()
+	 * @generated
+	 */
+	EReference getAction_Supplier();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ActivityDiagramMetamodel.Action#getCallactions <em>Callactions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Callactions</em>'.
+	 * @see ActivityDiagramMetamodel.Action#getCallactions()
+	 * @see #getAction()
+	 * @generated
+	 */
+	EReference getAction_Callactions();
+
+	/**
 	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.CallAction <em>Call Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2864,27 +3941,6 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCallAction();
-
-	/**
-	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.VariableAction <em>Variable Action</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Variable Action</em>'.
-	 * @see ActivityDiagramMetamodel.VariableAction
-	 * @generated
-	 */
-	EClass getVariableAction();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ActivityDiagramMetamodel.VariableAction#getKind <em>Kind</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Kind</em>'.
-	 * @see ActivityDiagramMetamodel.VariableAction#getKind()
-	 * @see #getVariableAction()
-	 * @generated
-	 */
-	EAttribute getVariableAction_Kind();
 
 	/**
 	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.StartObjectBehaviorAction <em>Start Object Behavior Action</em>}'.
@@ -3013,27 +4069,6 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	EReference getActivityPartition_Activitynode();
 
 	/**
-	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.EventAction <em>Event Action</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Event Action</em>'.
-	 * @see ActivityDiagramMetamodel.EventAction
-	 * @generated
-	 */
-	EClass getEventAction();
-
-	/**
-	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.EventAction#getAggregate <em>Aggregate</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Aggregate</em>'.
-	 * @see ActivityDiagramMetamodel.EventAction#getAggregate()
-	 * @see #getEventAction()
-	 * @generated
-	 */
-	EReference getEventAction_Aggregate();
-
-	/**
 	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.CommandAction <em>Command Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3042,17 +4077,6 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCommandAction();
-
-	/**
-	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.CommandAction#getAggregate <em>Aggregate</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Aggregate</em>'.
-	 * @see ActivityDiagramMetamodel.CommandAction#getAggregate()
-	 * @see #getCommandAction()
-	 * @generated
-	 */
-	EReference getCommandAction_Aggregate();
 
 	/**
 	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.Aggregate <em>Aggregate</em>}'.
@@ -3065,37 +4089,15 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	EClass getAggregate();
 
 	/**
-	 * Returns the meta object for the reference list '{@link ActivityDiagramMetamodel.Aggregate#getEvents <em>Events</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ActivityDiagramMetamodel.Aggregate#getDomainobject <em>Domainobject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Events</em>'.
-	 * @see ActivityDiagramMetamodel.Aggregate#getEvents()
+	 * @return the meta object for the containment reference list '<em>Domainobject</em>'.
+	 * @see ActivityDiagramMetamodel.Aggregate#getDomainobject()
 	 * @see #getAggregate()
 	 * @generated
 	 */
-	EReference getAggregate_Events();
-
-	/**
-	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.Aggregate#getCommand <em>Command</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Command</em>'.
-	 * @see ActivityDiagramMetamodel.Aggregate#getCommand()
-	 * @see #getAggregate()
-	 * @generated
-	 */
-	EReference getAggregate_Command();
-
-	/**
-	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.Aggregate#getQuery <em>Query</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Query</em>'.
-	 * @see ActivityDiagramMetamodel.Aggregate#getQuery()
-	 * @see #getAggregate()
-	 * @generated
-	 */
-	EReference getAggregate_Query();
+	EReference getAggregate_Domainobject();
 
 	/**
 	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.QueryAction <em>Query Action</em>}'.
@@ -3108,15 +4110,236 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	EClass getQueryAction();
 
 	/**
-	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.QueryAction#getAggregate <em>Aggregate</em>}'.
+	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.DomainObject <em>Domain Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Aggregate</em>'.
-	 * @see ActivityDiagramMetamodel.QueryAction#getAggregate()
-	 * @see #getQueryAction()
+	 * @return the meta object for class '<em>Domain Object</em>'.
+	 * @see ActivityDiagramMetamodel.DomainObject
 	 * @generated
 	 */
-	EReference getQueryAction_Aggregate();
+	EClass getDomainObject();
+
+	/**
+	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.ValueObject <em>Value Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Value Object</em>'.
+	 * @see ActivityDiagramMetamodel.ValueObject
+	 * @generated
+	 */
+	EClass getValueObject();
+
+	/**
+	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.Entity <em>Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity</em>'.
+	 * @see ActivityDiagramMetamodel.Entity
+	 * @generated
+	 */
+	EClass getEntity();
+
+	/**
+	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.Actor <em>Actor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Actor</em>'.
+	 * @see ActivityDiagramMetamodel.Actor
+	 * @generated
+	 */
+	EClass getActor();
+
+	/**
+	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.ExternalSystem <em>External System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>External System</em>'.
+	 * @see ActivityDiagramMetamodel.ExternalSystem
+	 * @generated
+	 */
+	EClass getExternalSystem();
+
+	/**
+	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.ReadModel <em>Read Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Read Model</em>'.
+	 * @see ActivityDiagramMetamodel.ReadModel
+	 * @generated
+	 */
+	EClass getReadModel();
+
+	/**
+	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.ReadModel#getSupplier <em>Supplier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Supplier</em>'.
+	 * @see ActivityDiagramMetamodel.ReadModel#getSupplier()
+	 * @see #getReadModel()
+	 * @generated
+	 */
+	EReference getReadModel_Supplier();
+
+	/**
+	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.ReadModel#getEvent <em>Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Event</em>'.
+	 * @see ActivityDiagramMetamodel.ReadModel#getEvent()
+	 * @see #getReadModel()
+	 * @generated
+	 */
+	EReference getReadModel_Event();
+
+	/**
+	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.Supplier <em>Supplier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Supplier</em>'.
+	 * @see ActivityDiagramMetamodel.Supplier
+	 * @generated
+	 */
+	EClass getSupplier();
+
+	/**
+	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.Supplier#getAction <em>Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Action</em>'.
+	 * @see ActivityDiagramMetamodel.Supplier#getAction()
+	 * @see #getSupplier()
+	 * @generated
+	 */
+	EReference getSupplier_Action();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ActivityDiagramMetamodel.Supplier#getTriggers <em>Triggers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Triggers</em>'.
+	 * @see ActivityDiagramMetamodel.Supplier#getTriggers()
+	 * @see #getSupplier()
+	 * @generated
+	 */
+	EReference getSupplier_Triggers();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ActivityDiagramMetamodel.Supplier#getReadmodels <em>Readmodels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Readmodels</em>'.
+	 * @see ActivityDiagramMetamodel.Supplier#getReadmodels()
+	 * @see #getSupplier()
+	 * @generated
+	 */
+	EReference getSupplier_Readmodels();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link ActivityDiagramMetamodel.Supplier#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
+	 * @see ActivityDiagramMetamodel.Supplier#getConstraints()
+	 * @see #getSupplier()
+	 * @generated
+	 */
+	EReference getSupplier_Constraints();
+
+	/**
+	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.System <em>System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>System</em>'.
+	 * @see ActivityDiagramMetamodel.System
+	 * @generated
+	 */
+	EClass getSystem();
+
+	/**
+	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.DomainEvent <em>Domain Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Domain Event</em>'.
+	 * @see ActivityDiagramMetamodel.DomainEvent
+	 * @generated
+	 */
+	EClass getDomainEvent();
+
+	/**
+	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.DomainEvent#getReadmodel <em>Readmodel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Readmodel</em>'.
+	 * @see ActivityDiagramMetamodel.DomainEvent#getReadmodel()
+	 * @see #getDomainEvent()
+	 * @generated
+	 */
+	EReference getDomainEvent_Readmodel();
+
+	/**
+	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.DomainEvent#getSupplier <em>Supplier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Supplier</em>'.
+	 * @see ActivityDiagramMetamodel.DomainEvent#getSupplier()
+	 * @see #getDomainEvent()
+	 * @generated
+	 */
+	EReference getDomainEvent_Supplier();
+
+	/**
+	 * Returns the meta object for the reference '{@link ActivityDiagramMetamodel.DomainEvent#getConstraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Constraint</em>'.
+	 * @see ActivityDiagramMetamodel.DomainEvent#getConstraint()
+	 * @see #getDomainEvent()
+	 * @generated
+	 */
+	EReference getDomainEvent_Constraint();
+
+	/**
+	 * Returns the meta object for class '{@link ActivityDiagramMetamodel.ConstraintPin <em>Constraint Pin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Constraint Pin</em>'.
+	 * @see ActivityDiagramMetamodel.ConstraintPin
+	 * @generated
+	 */
+	EClass getConstraintPin();
+
+	/**
+	 * Returns the meta object for the container reference '{@link ActivityDiagramMetamodel.ConstraintPin#getSupplier <em>Supplier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Supplier</em>'.
+	 * @see ActivityDiagramMetamodel.ConstraintPin#getSupplier()
+	 * @see #getConstraintPin()
+	 * @generated
+	 */
+	EReference getConstraintPin_Supplier();
+
+	/**
+	 * Returns the meta object for the reference list '{@link ActivityDiagramMetamodel.ConstraintPin#getTriggers <em>Triggers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Triggers</em>'.
+	 * @see ActivityDiagramMetamodel.ConstraintPin#getTriggers()
+	 * @see #getConstraintPin()
+	 * @generated
+	 */
+	EReference getConstraintPin_Triggers();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ActivityDiagramMetamodel.ConstraintPin#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see ActivityDiagramMetamodel.ConstraintPin#getDescription()
+	 * @see #getConstraintPin()
+	 * @generated
+	 */
+	EAttribute getConstraintPin_Description();
 
 	/**
 	 * Returns the meta object for enum '{@link ActivityDiagramMetamodel.ObjectNodeOrderingKind <em>Object Node Ordering Kind</em>}'.
@@ -3137,16 +4360,6 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getObjectActionKind();
-
-	/**
-	 * Returns the meta object for enum '{@link ActivityDiagramMetamodel.VariableActionKind <em>Variable Action Kind</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Variable Action Kind</em>'.
-	 * @see ActivityDiagramMetamodel.VariableActionKind
-	 * @generated
-	 */
-	EEnum getVariableActionKind();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3533,6 +4746,14 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 		EAttribute OBJECT_NODE__ORDER = eINSTANCE.getObjectNode_Order();
 
 		/**
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OBJECT_NODE__VARIABLES = eINSTANCE.getObjectNode_Variables();
+
+		/**
 		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.ActivityParameterNodeImpl <em>Activity Parameter Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3567,6 +4788,14 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VARIABLE__LOWER_BOUND = eINSTANCE.getVariable_LowerBound();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
 
 		/**
 		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.ValueSpecificationImpl <em>Value Specification</em>}' class.
@@ -3613,6 +4842,22 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 		EReference ACTION__OUTPUTPIN = eINSTANCE.getAction_Outputpin();
 
 		/**
+		 * The meta object literal for the '<em><b>Supplier</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION__SUPPLIER = eINSTANCE.getAction_Supplier();
+
+		/**
+		 * The meta object literal for the '<em><b>Callactions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTION__CALLACTIONS = eINSTANCE.getAction_Callactions();
+
+		/**
 		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.CallActionImpl <em>Call Action</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3621,24 +4866,6 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CALL_ACTION = eINSTANCE.getCallAction();
-
-		/**
-		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.VariableActionImpl <em>Variable Action</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see ActivityDiagramMetamodel.impl.VariableActionImpl
-		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getVariableAction()
-		 * @generated
-		 */
-		EClass VARIABLE_ACTION = eINSTANCE.getVariableAction();
-
-		/**
-		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute VARIABLE_ACTION__KIND = eINSTANCE.getVariableAction_Kind();
 
 		/**
 		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.StartObjectBehaviorActionImpl <em>Start Object Behavior Action</em>}' class.
@@ -3749,24 +4976,6 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 		EReference ACTIVITY_PARTITION__ACTIVITYNODE = eINSTANCE.getActivityPartition_Activitynode();
 
 		/**
-		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.EventActionImpl <em>Event Action</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see ActivityDiagramMetamodel.impl.EventActionImpl
-		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getEventAction()
-		 * @generated
-		 */
-		EClass EVENT_ACTION = eINSTANCE.getEventAction();
-
-		/**
-		 * The meta object literal for the '<em><b>Aggregate</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EVENT_ACTION__AGGREGATE = eINSTANCE.getEventAction_Aggregate();
-
-		/**
 		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.CommandActionImpl <em>Command Action</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3775,14 +4984,6 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass COMMAND_ACTION = eINSTANCE.getCommandAction();
-
-		/**
-		 * The meta object literal for the '<em><b>Aggregate</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMMAND_ACTION__AGGREGATE = eINSTANCE.getCommandAction_Aggregate();
 
 		/**
 		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.AggregateImpl <em>Aggregate</em>}' class.
@@ -3795,28 +4996,12 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 		EClass AGGREGATE = eINSTANCE.getAggregate();
 
 		/**
-		 * The meta object literal for the '<em><b>Events</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Domainobject</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference AGGREGATE__EVENTS = eINSTANCE.getAggregate_Events();
-
-		/**
-		 * The meta object literal for the '<em><b>Command</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference AGGREGATE__COMMAND = eINSTANCE.getAggregate_Command();
-
-		/**
-		 * The meta object literal for the '<em><b>Query</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference AGGREGATE__QUERY = eINSTANCE.getAggregate_Query();
+		EReference AGGREGATE__DOMAINOBJECT = eINSTANCE.getAggregate_Domainobject();
 
 		/**
 		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.QueryActionImpl <em>Query Action</em>}' class.
@@ -3829,12 +5014,200 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 		EClass QUERY_ACTION = eINSTANCE.getQueryAction();
 
 		/**
-		 * The meta object literal for the '<em><b>Aggregate</b></em>' reference feature.
+		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.DomainObjectImpl <em>Domain Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ActivityDiagramMetamodel.impl.DomainObjectImpl
+		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getDomainObject()
+		 * @generated
+		 */
+		EClass DOMAIN_OBJECT = eINSTANCE.getDomainObject();
+
+		/**
+		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.ValueObjectImpl <em>Value Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ActivityDiagramMetamodel.impl.ValueObjectImpl
+		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getValueObject()
+		 * @generated
+		 */
+		EClass VALUE_OBJECT = eINSTANCE.getValueObject();
+
+		/**
+		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.EntityImpl <em>Entity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ActivityDiagramMetamodel.impl.EntityImpl
+		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getEntity()
+		 * @generated
+		 */
+		EClass ENTITY = eINSTANCE.getEntity();
+
+		/**
+		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.ActorImpl <em>Actor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ActivityDiagramMetamodel.impl.ActorImpl
+		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getActor()
+		 * @generated
+		 */
+		EClass ACTOR = eINSTANCE.getActor();
+
+		/**
+		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.ExternalSystemImpl <em>External System</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ActivityDiagramMetamodel.impl.ExternalSystemImpl
+		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getExternalSystem()
+		 * @generated
+		 */
+		EClass EXTERNAL_SYSTEM = eINSTANCE.getExternalSystem();
+
+		/**
+		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.ReadModelImpl <em>Read Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ActivityDiagramMetamodel.impl.ReadModelImpl
+		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getReadModel()
+		 * @generated
+		 */
+		EClass READ_MODEL = eINSTANCE.getReadModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Supplier</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference QUERY_ACTION__AGGREGATE = eINSTANCE.getQueryAction_Aggregate();
+		EReference READ_MODEL__SUPPLIER = eINSTANCE.getReadModel_Supplier();
+
+		/**
+		 * The meta object literal for the '<em><b>Event</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference READ_MODEL__EVENT = eINSTANCE.getReadModel_Event();
+
+		/**
+		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.SupplierImpl <em>Supplier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ActivityDiagramMetamodel.impl.SupplierImpl
+		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getSupplier()
+		 * @generated
+		 */
+		EClass SUPPLIER = eINSTANCE.getSupplier();
+
+		/**
+		 * The meta object literal for the '<em><b>Action</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUPPLIER__ACTION = eINSTANCE.getSupplier_Action();
+
+		/**
+		 * The meta object literal for the '<em><b>Triggers</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUPPLIER__TRIGGERS = eINSTANCE.getSupplier_Triggers();
+
+		/**
+		 * The meta object literal for the '<em><b>Readmodels</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUPPLIER__READMODELS = eINSTANCE.getSupplier_Readmodels();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUPPLIER__CONSTRAINTS = eINSTANCE.getSupplier_Constraints();
+
+		/**
+		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.SystemImpl <em>System</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ActivityDiagramMetamodel.impl.SystemImpl
+		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getSystem()
+		 * @generated
+		 */
+		EClass SYSTEM = eINSTANCE.getSystem();
+
+		/**
+		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.DomainEventImpl <em>Domain Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ActivityDiagramMetamodel.impl.DomainEventImpl
+		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getDomainEvent()
+		 * @generated
+		 */
+		EClass DOMAIN_EVENT = eINSTANCE.getDomainEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Readmodel</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_EVENT__READMODEL = eINSTANCE.getDomainEvent_Readmodel();
+
+		/**
+		 * The meta object literal for the '<em><b>Supplier</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_EVENT__SUPPLIER = eINSTANCE.getDomainEvent_Supplier();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraint</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_EVENT__CONSTRAINT = eINSTANCE.getDomainEvent_Constraint();
+
+		/**
+		 * The meta object literal for the '{@link ActivityDiagramMetamodel.impl.ConstraintPinImpl <em>Constraint Pin</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ActivityDiagramMetamodel.impl.ConstraintPinImpl
+		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getConstraintPin()
+		 * @generated
+		 */
+		EClass CONSTRAINT_PIN = eINSTANCE.getConstraintPin();
+
+		/**
+		 * The meta object literal for the '<em><b>Supplier</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONSTRAINT_PIN__SUPPLIER = eINSTANCE.getConstraintPin_Supplier();
+
+		/**
+		 * The meta object literal for the '<em><b>Triggers</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONSTRAINT_PIN__TRIGGERS = eINSTANCE.getConstraintPin_Triggers();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTRAINT_PIN__DESCRIPTION = eINSTANCE.getConstraintPin_Description();
 
 		/**
 		 * The meta object literal for the '{@link ActivityDiagramMetamodel.ObjectNodeOrderingKind <em>Object Node Ordering Kind</em>}' enum.
@@ -3855,16 +5228,6 @@ public interface ActivityDiagramMetamodelPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum OBJECT_ACTION_KIND = eINSTANCE.getObjectActionKind();
-
-		/**
-		 * The meta object literal for the '{@link ActivityDiagramMetamodel.VariableActionKind <em>Variable Action Kind</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see ActivityDiagramMetamodel.VariableActionKind
-		 * @see ActivityDiagramMetamodel.impl.ActivityDiagramMetamodelPackageImpl#getVariableActionKind()
-		 * @generated
-		 */
-		EEnum VARIABLE_ACTION_KIND = eINSTANCE.getVariableActionKind();
 
 	}
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mde:ActivityDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="resources/mm/CIM/ActivityDiagram.ecore" name="booking">
+  <activityedge target="//@activitypartition.1/@activitynode.1" source="//@activitypartition.1/@activitynode.0"/>
+  <activityedge xsi:type="mde:ControlFlow" target="//@activitypartition.1/@activitynode.3" source="//@activitypartition.1/@activitynode.2"/>
+  <activityedge xsi:type="mde:ControlFlow" target="//@activitypartition.0/@activitynode.2" source="//@activitypartition.1/@activitynode.3"/>
+  <activityedge xsi:type="mde:ControlFlow" target="//@activitypartition.0/@activitynode.1" source="//@activitypartition.0/@activitynode.2"/>
+  <activityedge xsi:type="mde:ControlFlow" target="//@activitypartition.0/@activitynode.0" source="//@activitypartition.0/@activitynode.2"/>
+  <activityedge xsi:type="mde:ControlFlow" target="//@activitypartition.0/@activitynode.5" source="//@activitypartition.0/@activitynode.3"/>
+  <activityedge xsi:type="mde:ControlFlow" target="//@activitypartition.0/@activitynode.5" source="//@activitypartition.0/@activitynode.4"/>
+  <activityedge xsi:type="mde:ControlFlow" target="//@activitypartition.1/@activitynode.4" source="//@activitypartition.0/@activitynode.5"/>
+  <activitypartition name="System">
+    <activitynode xsi:type="mde:CommandAction" incomming="//@activityedge.4" name="Assign Itinerary to cargo" aggregate="//@activitypartition.0/@activitynode.7"/>
+    <activitynode xsi:type="mde:CommandAction" incomming="//@activityedge.3" name="Assign tracking Id to cargo" aggregate="//@activitypartition.0/@activitynode.6"/>
+    <activitynode xsi:type="mde:ForkNode" incomming="//@activityedge.2" outcomming="//@activityedge.3 //@activityedge.4"/>
+    <activitynode xsi:type="mde:EventAction" outcomming="//@activityedge.5" name="tracking ID assigned to the cargo" aggregate="//@activitypartition.0/@activitynode.6"/>
+    <activitynode xsi:type="mde:EventAction" outcomming="//@activityedge.6" name="Itinerary assigned to the cargo" aggregate="//@activitypartition.0/@activitynode.7"/>
+    <activitynode xsi:type="mde:JoinNode" incomming="//@activityedge.5 //@activityedge.6" outcomming="//@activityedge.7"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" events="//@activitypartition.0/@activitynode.3" command="//@activitypartition.0/@activitynode.1">
+      <domainobject xsi:type="mde:ValueObject" name="TrackingID"/>
+    </activitynode>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" events="//@activitypartition.0/@activitynode.4" command="//@activitypartition.0/@activitynode.0">
+      <domainobject xsi:type="mde:ValueObject" name="Itinerary"/>
+    </activitynode>
+  </activitypartition>
+  <activitypartition name="Customer">
+    <activitynode xsi:type="mde:InitialNode" outcomming="//@activityedge.0"/>
+    <activitynode xsi:type="mde:CommandAction" incomming="//@activityedge.0" name="booking a new cargo" aggregate="//@activitypartition.1/@activitynode.5"/>
+    <activitynode xsi:type="mde:EventAction" outcomming="//@activityedge.1" name="A Cargo booked" aggregate="//@activitypartition.1/@activitynode.5"/>
+    <activitynode xsi:type="mde:DecisionNode" incomming="//@activityedge.1" outcomming="//@activityedge.2" name="Whenever a cargo booked"/>
+    <activitynode xsi:type="mde:FinalNode" incomming="//@activityedge.7"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" events="//@activitypartition.1/@activitynode.2" command="//@activitypartition.1/@activitynode.1">
+      <domainobject xsi:type="mde:Entity" name="Cargo"/>
+    </activitynode>
+  </activitypartition>
+</mde:ActivityDiagram>

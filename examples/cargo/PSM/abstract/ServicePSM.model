@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="resources/mm/ServicePSMMetamodel.ecore">
+  <mde:Project name="cargo" basePath="resources/examples/cargo" architecture="CQRS">
+    <applications name="cargo">
+      <complextypes type="Leg"/>
+      <complextypes type="CarrierMovement"/>
+      <complextypes type="HandlingEvent"/>
+      <modules name="command">
+        <aggregates name="Cargo" aggregateRoot="Cargo">
+          <domainobjects xsi:type="mde:ValueObject" typeName="Leg" name="Leg" aggregateRoot="false">
+            <properties name="loadTime" type="Date"/>
+            <properties name="unLoadTime" type="Date"/>
+            <relations target="Voyage" name="voyage" type="Voyage"/>
+            <relations target="Location" name="loadLocation" type="Location"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:ValueObject" typeName="TrackingID" name="TrackingID" aggregateRoot="false">
+            <properties unique="true" name="id" type="String"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:ValueObject" typeName="Itinerary" name="Itinerary" aggregateRoot="false">
+            <relations target="Leg" name="legs" type="/0/@applications.0/@complextypes.0"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:Entity" typeName="Cargo" name="Cargo">
+            <relations target="RouteSpecification" name="routespecification" type="RouteSpecification"/>
+            <relations target="Itinerary" name="itinerary" type="Itinerary"/>
+            <relations target="Role" name="receiever" type="Role"/>
+            <relations target="Role" name="sender" type="Role"/>
+            <relations target="TrackingID" name="trackingId" type="TrackingID"/>
+            <repository name="CargoRepository">
+              <operations xsi:type="mde:Operation" name="save">
+                <publish topic="CargoStoreChannel"/>
+              </operations>
+            </repository>
+          </domainobjects>
+          <domainobjects xsi:type="mde:ValueObject" typeName="Role" name="Role" aggregateRoot="false">
+            <relations target="Customer" name="customer" type="Customer"/>
+            <relations target="Cargo" name="cargo" type="Cargo"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:ValueObject" typeName="RouteSpecification" name="RouteSpecification" aggregateRoot="false">
+            <properties name="arrivalDeadline" type="Date"/>
+            <relations target="Location" name="origin" type="Location"/>
+            <relations target="Location" name="destination" type="Location"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:ValueObject" typeName="Delivery" name="Delivery" aggregateRoot="false">
+            <properties name="misdirected" type="Boolean"/>
+            <properties name="eta" type="Date"/>
+            <properties name="isUnloadedAtDestination" type="Boolean"/>
+            <properties name="calculatedAt" type="Date"/>
+            <relations target="TransportStatus" name="transportStatus" type="TransportStatus"/>
+            <relations target="Location" name="lastKnownLocation" type="Location"/>
+            <relations target="Voyage" name="currentVoyage" type="Voyage"/>
+            <relations target="HandlingActivity" name="nextExpectedActivity" type="HandlingActivity"/>
+            <relations target="RoutingStatus" name="routingStatus" type="RoutingStatus"/>
+            <relations target="HandlingEvent" name="lastEvent" type="HandlingEvent"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:ValueObject" typeName="HandlingActivity" name="HandlingActivity" aggregateRoot="false">
+            <relations target="HandlingEventType" name="handlingEventType" type="HandlingEventType"/>
+            <relations target="Location" name="location" type="Location"/>
+            <relations target="Voyage" name="voyage" type="Voyage"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:Enumeration" typeName="TransportStatus" name="TransportStatus" aggregateRoot="false">
+            <literals name="NotReceived"/>
+            <literals name="InPort" value="1"/>
+            <literals name="OnboardCarrier" value="2"/>
+            <literals name="Claimed" value="3"/>
+            <literals name="Unknown" value="4"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:Enumeration" typeName="RoutingStatus" name="RoutingStatus" aggregateRoot="false">
+            <literals name="NotRouted"/>
+            <literals name="Routed" value="1"/>
+            <literals name="Misrouted" value="2"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:CommandEvent" typeName="BookingANewCargoCommand" name="BookingANewCargoCommand" aggregateRoot="false">
+            <properties name="originUnlocode" type="String"/>
+            <properties name="destinationUnlocode" type="String"/>
+            <properties name="arrivalDeadline" type="String"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:DomainEvent" typeName="ACargoBooked" name="ACargoBooked" aggregateRoot="false">
+            <relations target="Cargo" name="cargo" type="Cargo"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:CommandEvent" typeName="ChangeDestinationCommand" name="ChangeDestinationCommand" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DomainEvent" typeName="CargoDestinationChanged" name="CargoDestinationChanged" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:CommandEvent" typeName="AssignCargoToRouteCommand" name="AssignCargoToRouteCommand" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DomainEvent" typeName="CargoAssignedToRoute" name="CargoAssignedToRoute" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:CommandEvent" typeName="UpdateEventOfCargoCommand" name="UpdateEventOfCargoCommand" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DomainEvent" typeName="CargoIsClaimedEvent" name="CargoIsClaimedEvent" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DomainEvent" typeName="NextExpectedHandlingActivity" name="NextExpectedHandlingActivity" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DomainEvent" typeName="CargoTransportStatusRecalculated" name="CargoTransportStatusRecalculated" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DomainEvent" typeName="CargoLastKnownUpdated" name="CargoLastKnownUpdated" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DomainEvent" typeName="CargoCurrentVoyageUpdated" name="CargoCurrentVoyageUpdated" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DomainEvent" typeName="CargoIsUnloadedAtDestination" name="CargoIsUnloadedAtDestination" aggregateRoot="false"/>
+        </aggregates>
+        <aggregates name="Voyage" aggregateRoot="Voyage">
+          <domainobjects xsi:type="mde:ValueObject" typeName="CarrierMovement" name="CarrierMovement" aggregateRoot="false">
+            <properties unique="true" name="departureTime" type="Date"/>
+            <properties unique="true" name="arrivalTime" type="Date"/>
+            <relations target="Location" name="arrivalLocation" type="Location"/>
+            <relations target="Location" name="departureLocation" type="Location"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:Entity" typeName="Voyage" name="Voyage">
+            <properties unique="true" name="voyageNumber" type="String"/>
+            <relations target="Schedule" name="schedule" type="Schedule"/>
+            <repository name="VoyageRepository">
+              <operations xsi:type="mde:Operation" name="save">
+                <publish topic="VoyageStoreChannel"/>
+              </operations>
+            </repository>
+          </domainobjects>
+          <domainobjects xsi:type="mde:ValueObject" typeName="Schedule" name="Schedule" aggregateRoot="false">
+            <relations target="CarrierMovement" name="carrierMovements" type="/0/@applications.0/@complextypes.1"/>
+          </domainobjects>
+        </aggregates>
+        <aggregates name="Handling" aggregateRoot="HandlingEvent">
+          <domainobjects xsi:type="mde:Entity" typeName="HandlingEvent" name="HandlingEvent">
+            <properties unique="true" name="registrationTime" type="Date"/>
+            <properties unique="true" name="completionTime" type="Date"/>
+            <relations target="HandlingEventType" name="handlingType" type="HandlingEventType"/>
+            <relations target="Voyage" name="voyage" type="Voyage"/>
+            <relations target="Location" name="location" type="Location"/>
+            <relations target="Cargo" name="cargo" type="Cargo"/>
+            <repository name="HandlingEventRepository">
+              <operations xsi:type="mde:Operation" name="save">
+                <publish topic="HandlingEventStoreChannel"/>
+              </operations>
+            </repository>
+          </domainobjects>
+          <domainobjects xsi:type="mde:ValueObject" typeName="HandlingHistory" name="HandlingHistory" aggregateRoot="false">
+            <relations target="HandlingEvent" name="handlingEvents" type="/0/@applications.0/@complextypes.2"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:Enumeration" typeName="HandlingEventType" name="HandlingEventType" aggregateRoot="false">
+            <literals name="Unload"/>
+            <literals name="Customs" value="1"/>
+            <literals name="Claim" value="2"/>
+            <literals name="Load" value="3"/>
+            <literals name="Receive" value="4"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:CommandEvent" typeName="RegisterHandlingEventCommand" name="RegisterHandlingEventCommand" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DomainEvent" typeName="HandlingEventRegistered" name="HandlingEventRegistered" aggregateRoot="false"/>
+        </aggregates>
+        <aggregates name="Location" aggregateRoot="Location">
+          <domainobjects xsi:type="mde:Entity" typeName="Location" name="Location">
+            <properties unique="true" name="unlocode" type="String"/>
+            <properties unique="true" name="portCode" type="String"/>
+            <properties unique="true" name="name" type="String"/>
+            <repository name="LocationRepository">
+              <operations xsi:type="mde:Operation" name="save">
+                <publish topic="LocationStoreChannel"/>
+              </operations>
+            </repository>
+          </domainobjects>
+        </aggregates>
+        <aggregates name="Customer" aggregateRoot="Customer">
+          <domainobjects xsi:type="mde:Entity" typeName="Customer" name="Customer">
+            <properties isNamingProperty="true" name="name" type="String"/>
+            <repository name="CustomerRepository">
+              <operations xsi:type="mde:Operation" name="save">
+                <publish topic="CustomerStoreChannel"/>
+              </operations>
+            </repository>
+          </domainobjects>
+        </aggregates>
+        <services name="InternalCargoCommandService">
+          <operations name="changeDestination">
+            <publish topic="CargoDestinationChangedChannel" eventType="CargoDestinationChanged"/>
+          </operations>
+          <operations name="assignCargoToRoute">
+            <publish topic="CargoAssignedToRouteChannel" eventType="CargoAssignedToRoute"/>
+          </operations>
+        </services>
+        <services name="InternalBookingCommandService">
+          <operations name="bookingNewCargo">
+            <publish/>
+          </operations>
+        </services>
+        <services name="InternalHandlingCommandService">
+          <operations name="updateEventOfCargo">
+            <publish topic="CargoIsUnloadedAtDestinationChannel" eventType="CargoIsUnloadedAtDestination"/>
+          </operations>
+          <operations name="registerHandlingEvent">
+            <publish topic="HandlingEventRegisteredChannel" eventType="HandlingEventRegistered"/>
+          </operations>
+          <subscribe/>
+        </services>
+        <services name="InternalHandlingCommandService"/>
+      </modules>
+      <modules name="^query">
+        <aggregates name="Cargo" aggregateRoot="CargoQuery">
+          <domainobjects xsi:type="mde:Entity" typeName="CargoQuery" name="CargoQuery">
+            <repository name="CargoQueryRepository">
+              <subscribe topic="CargoStoreChannel"/>
+            </repository>
+          </domainobjects>
+          <domainobjects xsi:type="mde:DTO" typeName="PossibleRoutesForCargoDTO" name="PossibleRoutesForCargoDTO" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DTO" typeName="BookingFormDTO" name="BookingFormDTO" aggregateRoot="false">
+            <relations target="Cargo" name="cargo" type="Cargo"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:DTO" typeName="ChangeDestinationFormDTO" name="ChangeDestinationFormDTO" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DTO" typeName="CargoWithHandlingEventsDTO" name="CargoWithHandlingEventsDTO" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DTO" typeName="CargoDetailsDTO" name="CargoDetailsDTO" aggregateRoot="false"/>
+          <domainobjects xsi:type="mde:DTO" typeName="TrackingIDDTO" name="TrackingIDDTO" aggregateRoot="false">
+            <relations target="Itinerary" name="itinerary" type="Itinerary"/>
+            <relations target="Cargo" name="cargo" type="Cargo"/>
+            <relations target="TrackingID" name="trackingId" type="TrackingID"/>
+          </domainobjects>
+        </aggregates>
+        <aggregates name="Voyage" aggregateRoot="VoyageQuery">
+          <domainobjects xsi:type="mde:Entity" typeName="VoyageQuery" name="VoyageQuery">
+            <properties unique="true" name="voyageNumber" type="String"/>
+            <repository name="VoyageQueryRepository">
+              <subscribe topic="VoyageStoreChannel"/>
+            </repository>
+          </domainobjects>
+        </aggregates>
+        <aggregates name="Handling" aggregateRoot="HandlingEventQuery">
+          <domainobjects xsi:type="mde:Entity" typeName="HandlingEventQuery" name="HandlingEventQuery">
+            <properties unique="true" name="registrationTime" type="Date"/>
+            <properties unique="true" name="completionTime" type="Date"/>
+            <repository name="HandlingEventQueryRepository">
+              <subscribe topic="HandlingEventStoreChannel"/>
+            </repository>
+          </domainobjects>
+          <domainobjects xsi:type="mde:DTO" typeName="ReportFormDTO" name="ReportFormDTO" aggregateRoot="false"/>
+        </aggregates>
+        <aggregates name="Location" aggregateRoot="LocationQuery">
+          <domainobjects xsi:type="mde:Entity" typeName="LocationQuery" name="LocationQuery">
+            <properties unique="true" name="unlocode" type="String"/>
+            <properties unique="true" name="portCode" type="String"/>
+            <properties unique="true" name="name" type="String"/>
+            <repository name="LocationQueryRepository">
+              <subscribe topic="LocationStoreChannel"/>
+            </repository>
+          </domainobjects>
+          <domainobjects xsi:type="mde:DTO" typeName="ShippingLocationsDTO" name="ShippingLocationsDTO" aggregateRoot="false">
+            <relations target="Location" name="location" type="Location"/>
+          </domainobjects>
+          <domainobjects xsi:type="mde:DTO" typeName="LocationDetailsDTO" name="LocationDetailsDTO" aggregateRoot="false">
+            <relations target="Location" name="location" type="Location"/>
+          </domainobjects>
+        </aggregates>
+        <aggregates name="Customer" aggregateRoot="CustomerQuery">
+          <domainobjects xsi:type="mde:Entity" typeName="CustomerQuery" name="CustomerQuery">
+            <properties name="name" type="String"/>
+            <repository name="CustomerQueryRepository">
+              <subscribe topic="CustomerStoreChannel"/>
+            </repository>
+          </domainobjects>
+        </aggregates>
+        <services name="InternalCargoQueryService">
+          <operations name="cargoListView"/>
+          <operations name="requestPossibleRoutesForCargo"/>
+          <operations name="pickNewDestinationView"/>
+          <operations name="cargoDetailsView"/>
+        </services>
+        <services name="InternalBookingQueryService">
+          <operations name="bookingFormView"/>
+        </services>
+        <services name="InternalTrackingQueryService">
+          <operations name="trackACargo"/>
+        </services>
+        <services name="InternalHandlingQueryService">
+          <operations name="reportFormView"/>
+        </services>
+        <services name="InternalRoutingQueryService">
+          <operations name="listOfShippingLocation"/>
+          <operations name="findLocation"/>
+        </services>
+        <services serviceDependencies="/0/@applications.0/@modules.1/@services.1" webService="true" name="ExternalBookingQueryService">
+          <operations name="bookingFormView"/>
+          <operations name="bookingNewCargo"/>
+        </services>
+        <services serviceDependencies="/0/@applications.0/@modules.1/@services.2" webService="true" name="ExternalTrackingQueryService">
+          <operations name="trackACargo"/>
+        </services>
+        <services serviceDependencies="/0/@applications.0/@modules.1/@services.0" webService="true" name="ExternalCargoQueryService">
+          <operations name="cargoListView"/>
+          <operations name="cargoDetailsView"/>
+          <operations name="pickNewDestinationView"/>
+          <operations name="requestPossibleRoutesForCargo"/>
+          <operations name="changeDestination"/>
+          <operations name="assignCargoToRoute"/>
+        </services>
+        <services serviceDependencies="/0/@applications.0/@modules.1/@services.3" webService="true" name="ExternalHandlingQueryService">
+          <operations name="reportFormView"/>
+          <operations name="registerHandlingEvent"/>
+        </services>
+        <services serviceDependencies="/0/@applications.0/@modules.1/@services.4" webService="true" name="ExternalRoutingQueryService">
+          <operations name="listOfShippingLocation"/>
+          <operations name="findLocation"/>
+        </services>
+      </modules>
+      <modules name="rest">
+        <resources name="RegistrationResource">
+          <path relativePath="cargo/\registration"/>
+        </resources>
+        <resources name="TrackingResource">
+          <path relativePath="cargo//tracking"/>
+        </resources>
+        <resources name="CargoesResource">
+          <operations name="bookingFormView" delegate="/0/@applications.0/@modules.1/@services.5/@operations.0"/>
+          <operations name="trackACargo" delegate="/0/@applications.0/@modules.1/@services.6/@operations.0"/>
+          <operations name="cargoListView" delegate="/0/@applications.0/@modules.1/@services.7/@operations.0"/>
+          <operations name="cargoDetailsView" delegate="/0/@applications.0/@modules.1/@services.7/@operations.1"/>
+          <operations name="pickNewDestinationView" delegate="/0/@applications.0/@modules.1/@services.7/@operations.2"/>
+          <operations name="requestPossibleRoutesForCargo" delegate="/0/@applications.0/@modules.1/@services.7/@operations.3"/>
+          <operations name="bookingNewCargo" delegate="/0/@applications.0/@modules.1/@services.5/@operations.1"/>
+          <operations name="changeDestination" delegate="/0/@applications.0/@modules.1/@services.7/@operations.4"/>
+          <operations name="assignCargoToRoute" delegate="/0/@applications.0/@modules.1/@services.7/@operations.5"/>
+          <path relativePath="cargo/"/>
+        </resources>
+        <resources name="CargoResource">
+          <path relativePath="cargo//{trackingID}"/>
+        </resources>
+        <resources name="Destination">
+          <path relativePath="cargo//{trackingID}/\destination"/>
+        </resources>
+        <resources name="RoutesResource">
+          <path relativePath="cargo//{trackingID}/\routes"/>
+        </resources>
+        <resources name="VoyagesResource">
+          <path relativePath="voyage/"/>
+        </resources>
+        <resources name="HandlingsResource">
+          <operations name="reportFormView" delegate="/0/@applications.0/@modules.1/@services.8/@operations.0"/>
+          <operations name="registerHandlingEvent" delegate="/0/@applications.0/@modules.1/@services.8/@operations.1"/>
+          <path relativePath="handling/"/>
+        </resources>
+        <resources name="LocationsResource">
+          <operations name="listOfShippingLocation" delegate="/0/@applications.0/@modules.1/@services.9/@operations.0"/>
+          <operations name="findLocation" delegate="/0/@applications.0/@modules.1/@services.9/@operations.1"/>
+          <path relativePath="location/"/>
+        </resources>
+        <resources name="CustomersResource">
+          <path relativePath="customer/"/>
+        </resources>
+      </modules>
+    </applications>
+  </mde:Project>
+  <mde:PrimitiveType typeName="Date"/>
+  <mde:PrimitiveType typeName="String"/>
+  <mde:PrimitiveType typeName="Boolean"/>
+  <mde:PrimitiveType typeName="Integer"/>
+  <mde:PrimitiveType typeName="Float"/>
+  <mde:PrimitiveType typeName="Null"/>
+  <mde:Property name="handlingType" required="false"/>
+  <mde:Property name="handlingType" required="false" type="HandlingEventType"/>
+</xmi:XMI>

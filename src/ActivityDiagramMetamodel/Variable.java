@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link ActivityDiagramMetamodel.Variable#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link ActivityDiagramMetamodel.Variable#getLowerBound <em>Lower Bound</em>}</li>
+ *   <li>{@link ActivityDiagramMetamodel.Variable#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage#getVariable()
@@ -65,5 +66,27 @@ public interface Variable extends EObject {
 	 * @generated
 	 */
 	void setLowerBound(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage#getVariable_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link ActivityDiagramMetamodel.Variable#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 } // Variable

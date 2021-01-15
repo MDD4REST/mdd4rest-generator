@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modelink threeWay="false" forceExeedL="false" forceExeedM="false" forceExeedR="false">
+  <model path="\cargo\PIM\StaticPIM.staticpim" position="LEFT" />
+  <model path="\cargo\PIM\DynamicPIM.dynamicpim" position="LEFT" />
+</modelink>
+

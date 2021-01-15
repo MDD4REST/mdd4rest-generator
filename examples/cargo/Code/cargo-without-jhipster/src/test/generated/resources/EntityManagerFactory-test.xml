@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:util="http://www.springframework.org/schema/util"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			https://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context
+			https://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/aop
+			https://www.springframework.org/schema/aop/spring-aop.xsd
+			http://www.springframework.org/schema/jee
+			https://www.springframework.org/schema/jee/spring-jee.xsd
+			http://www.springframework.org/schema/tx
+			https://www.springframework.org/schema/tx/spring-tx.xsd
+			http://www.springframework.org/schema/util
+			https://www.springframework.org/schema/util/spring-util.xsd
+			">
+
+	<bean id="testDataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<property name="driverClassName" value="${test.jdbc.driverClassName}"/>
+		<property name="jdbcUrl" value="${test.jdbc.url}"/>
+		<property name="username" value="${test.jdbc.username}"/>
+		<property name="password" value="${test.jdbc.password}"/>
+		<!-- override following properties by extending SpringTmpl.testDataSourceAdditions -->
+		<property name="maximumPoolSize" value="5" />
+		<property name="connectionTimeout" value="2000" />
+		<property name="leakDetectionThreshold" value="5000" />
+	</bean>
+
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+
+	<!-- Creates a EntityManagerFactory for use with JPA provider -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="testDataSource"/>
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence-test.xml"/>
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
+	</bean>
+
+	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>
+	
+	<!--
+	  TODO: Problem when using jndi lookup of persistent unit, instead of LocalContainerEntityManagerFactoryBean.
+	  PersistenceExceptionTranslationPostProcessor needs a PersistenceExceptionTranslator, e.g. LocalContainerEntityManagerFactoryBean
+	-->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	<!-- add additional beans by extending SpringTmpl.entityManagerFactoryAdditions -->
+</beans>

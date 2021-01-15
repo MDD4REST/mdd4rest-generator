@@ -11,206 +11,6 @@
         href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
     <ownedChild>
       <domainMetaElement
-          href="ActivityDiagram.ecore#//VariableAction"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#VariableActionLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//Action/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.26"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#VariableAction"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//StartObjectBehaviorAction"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#StartObjectBehaviorActionLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//Action/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.25"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#StartObjectBehaviorAction"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//ObjectAction"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#ObjectActionLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//Action/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.20"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#ObjectAction"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//CallBehaviorAction"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#CallBehaviorActionLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//Action/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.7"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#CallBehaviorAction"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//CallOperationAction"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#CallOperationActionLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//Action/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.8"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#CallOperationAction"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//CallActivityAction"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#CallActivityActionLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//Action/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.6"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#CallActivityAction"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//InputPin"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#InputPinLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//ObjectNode/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.17"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#InputPin"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//OutputPin"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#OutputPinLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//ObjectNode/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.22"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#OutputPin"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//CallAction"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#CallActionLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//Action/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.5"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#CallAction"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//EventAction"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#EventActionLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//Action/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.12"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#EventAction"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
           href="ActivityDiagram.ecore#//CommandAction"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
@@ -221,9 +21,58 @@
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.9"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.3"/>
       <diagramNode
           href="ActivityDiagram.gmfgraph#CommandAction"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
+    <ownedChild
+        relatedDiagrams="//@diagram">
+      <domainMetaElement
+          href="ActivityDiagram.ecore#//Aggregate"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="ActivityDiagram.gmfgraph#AggregateLabel"/>
+        <features
+            href="ActivityDiagram.ecore#//ObjectNode/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.2"/>
+      <diagramNode
+          href="ActivityDiagram.gmfgraph#Aggregate"/>
+      <children
+          referencedChild="//@nodes.6/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//Supplier/constraints"/>
+      </children>
+      <children
+          compartment="//@nodes.1/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.3/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//Aggregate/domainobject"/>
+      </children>
+      <children
+          compartment="//@nodes.1/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.4/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//Aggregate/domainobject"/>
+      </children>
+      <children
+          compartment="//@nodes.1/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.13/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//Aggregate/domainobject"/>
+      </children>
+      <compartments
+          children="//@nodes.1/@ownedChild/@children.1 //@nodes.1/@ownedChild/@children.2 //@nodes.1/@ownedChild/@children.3">
+        <compartment
+            href="ActivityDiagram.gmfgraph#AggregateDomainobjectCompartment"/>
+      </compartments>
     </ownedChild>
   </nodes>
   <nodes>
@@ -241,9 +90,94 @@
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.24"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.16"/>
       <diagramNode
           href="ActivityDiagram.gmfgraph#QueryAction"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
+    <ownedChild>
+      <domainMetaElement
+          href="ActivityDiagram.ecore#//ValueObject"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="ActivityDiagram.gmfgraph#ValueObjectLabel"/>
+        <features
+            href="ActivityDiagram.ecore#//ObjectNode/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.19"/>
+      <diagramNode
+          href="ActivityDiagram.gmfgraph#ValueObject"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
+    <ownedChild>
+      <domainMetaElement
+          href="ActivityDiagram.ecore#//Entity"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="ActivityDiagram.gmfgraph#EntityLabel"/>
+        <features
+            href="ActivityDiagram.ecore#//ObjectNode/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.9"/>
+      <diagramNode
+          href="ActivityDiagram.gmfgraph#Entity"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
+    <ownedChild>
+      <domainMetaElement
+          href="ActivityDiagram.ecore#//ExternalSystem"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="ActivityDiagram.gmfgraph#ExternalSystemLabel"/>
+        <features
+            href="ActivityDiagram.ecore#//ObjectNode/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.10"/>
+      <diagramNode
+          href="ActivityDiagram.gmfgraph#ExternalSystem"/>
+      <children
+          referencedChild="//@nodes.6/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//Supplier/constraints"/>
+      </children>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
+    <ownedChild>
+      <domainMetaElement
+          href="ActivityDiagram.ecore#//ConstraintPin"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="ActivityDiagram.gmfgraph#ConstraintPinLabel"/>
+        <features
+            href="ActivityDiagram.ecore#//ObjectNode/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.4"/>
+      <diagramNode
+          href="ActivityDiagram.gmfgraph#ConstraintPin"/>
     </ownedChild>
   </nodes>
   <nodes>
@@ -254,7 +188,7 @@
           href="ActivityDiagram.ecore#//InitialNode"/>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.16"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.13"/>
       <diagramNode
           href="ActivityDiagram.gmfgraph#InitialNode"/>
     </ownedChild>
@@ -267,7 +201,7 @@
           href="ActivityDiagram.ecore#//ForkNode"/>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.15"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.12"/>
       <diagramNode
           href="ActivityDiagram.gmfgraph#ForkNode"/>
     </ownedChild>
@@ -280,7 +214,7 @@
           href="ActivityDiagram.ecore#//JoinNode"/>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.18"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.14"/>
       <diagramNode
           href="ActivityDiagram.gmfgraph#JoinNode"/>
     </ownedChild>
@@ -300,7 +234,7 @@
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.11"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.6"/>
       <diagramNode
           href="ActivityDiagram.gmfgraph#DecisionNode"/>
     </ownedChild>
@@ -313,7 +247,7 @@
           href="ActivityDiagram.ecore#//MergeNode"/>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.19"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.15"/>
       <diagramNode
           href="ActivityDiagram.gmfgraph#MergeNode"/>
     </ownedChild>
@@ -326,7 +260,7 @@
           href="ActivityDiagram.ecore#//FinalNode"/>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.14"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.11"/>
       <diagramNode
           href="ActivityDiagram.gmfgraph#FinalNode"/>
     </ownedChild>
@@ -336,19 +270,19 @@
         href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
     <ownedChild>
       <domainMetaElement
-          href="ActivityDiagram.ecore#//Pin"/>
+          href="ActivityDiagram.ecore#//DomainObject"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
-            href="ActivityDiagram.gmfgraph#PinLabel"/>
+            href="ActivityDiagram.gmfgraph#DomainObjectLabel"/>
         <features
             href="ActivityDiagram.ecore#//ObjectNode/name"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.23"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.8"/>
       <diagramNode
-          href="ActivityDiagram.gmfgraph#Pin"/>
+          href="ActivityDiagram.gmfgraph#DomainObject"/>
     </ownedChild>
   </nodes>
   <nodes>
@@ -356,19 +290,19 @@
         href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
     <ownedChild>
       <domainMetaElement
-          href="ActivityDiagram.ecore#//ActivityParameterNode"/>
+          href="ActivityDiagram.ecore#//ReadModel"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
-            href="ActivityDiagram.gmfgraph#ActivityParameterNodeLabel"/>
+            href="ActivityDiagram.gmfgraph#ReadModelLabel"/>
         <features
             href="ActivityDiagram.ecore#//ObjectNode/name"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.2"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.17"/>
       <diagramNode
-          href="ActivityDiagram.gmfgraph#ActivityParameterNode"/>
+          href="ActivityDiagram.gmfgraph#ReadModel"/>
     </ownedChild>
   </nodes>
   <nodes>
@@ -376,39 +310,19 @@
         href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
     <ownedChild>
       <domainMetaElement
-          href="ActivityDiagram.ecore#//Action"/>
+          href="ActivityDiagram.ecore#//DomainEvent"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
-            href="ActivityDiagram.gmfgraph#ActionLabel"/>
-        <features
-            href="ActivityDiagram.ecore#//Action/name"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.0"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#Action"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//Aggregate"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="ActivityDiagram.gmfgraph#AggregateLabel"/>
+            href="ActivityDiagram.gmfgraph#DomainEventLabel"/>
         <features
             href="ActivityDiagram.ecore#//ObjectNode/name"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.4"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.7"/>
       <diagramNode
-          href="ActivityDiagram.gmfgraph#Aggregate"/>
+          href="ActivityDiagram.gmfgraph#DomainEvent"/>
     </ownedChild>
   </nodes>
   <nodes>
@@ -419,55 +333,265 @@
           href="ActivityDiagram.ecore#//ControlNode"/>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.10"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.5"/>
       <diagramNode
           href="ActivityDiagram.gmfgraph#ControlNode"/>
     </ownedChild>
   </nodes>
   <nodes>
     <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
+        href="ActivityDiagram.ecore#//ActivityDiagram/activitypartition"/>
+    <ownedChild
+        relatedDiagrams="//@diagram">
       <domainMetaElement
-          href="ActivityDiagram.ecore#//ExecutableNode"/>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.13"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#ExecutableNode"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//ObjectNode"/>
+          href="ActivityDiagram.ecore#//Actor"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
-            href="ActivityDiagram.gmfgraph#ObjectNodeLabel"/>
+            href="ActivityDiagram.gmfgraph#ActorLabel"/>
         <features
-            href="ActivityDiagram.ecore#//ObjectNode/name"/>
+            href="ActivityDiagram.ecore#//ActivityPartition/name"/>
       </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.21"/>
-      <diagramNode
-          href="ActivityDiagram.gmfgraph#ObjectNode"/>
-    </ownedChild>
-  </nodes>
-  <nodes>
-    <containmentFeature
-        href="ActivityDiagram.ecore#//ActivityDiagram/activitynode"/>
-    <ownedChild>
-      <domainMetaElement
-          href="ActivityDiagram.ecore#//ActivityNode"/>
       <tool
           xsi:type="gmftool:CreationTool"
           href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.1"/>
       <diagramNode
-          href="ActivityDiagram.gmfgraph#ActivityNode"/>
+          href="ActivityDiagram.gmfgraph#Actor"/>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.0/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.1/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.2/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.3/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.4/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.5/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.6/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.7/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.8/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.9/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.10/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.11/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.12/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.13/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.14/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.15/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.17/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.16/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <compartments
+          children="//@nodes.17/@ownedChild/@children.0 //@nodes.17/@ownedChild/@children.1 //@nodes.17/@ownedChild/@children.2 //@nodes.17/@ownedChild/@children.3 //@nodes.17/@ownedChild/@children.4 //@nodes.17/@ownedChild/@children.5 //@nodes.17/@ownedChild/@children.6 //@nodes.17/@ownedChild/@children.7 //@nodes.17/@ownedChild/@children.8 //@nodes.17/@ownedChild/@children.9 //@nodes.17/@ownedChild/@children.10 //@nodes.17/@ownedChild/@children.11 //@nodes.17/@ownedChild/@children.12 //@nodes.17/@ownedChild/@children.13 //@nodes.17/@ownedChild/@children.14 //@nodes.17/@ownedChild/@children.15 //@nodes.17/@ownedChild/@children.16">
+        <compartment
+            href="ActivityDiagram.gmfgraph#ActorActivitynodeCompartment"/>
+      </compartments>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="ActivityDiagram.ecore#//ActivityDiagram/activitypartition"/>
+    <ownedChild
+        relatedDiagrams="//@diagram">
+      <domainMetaElement
+          href="ActivityDiagram.ecore#//System"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="ActivityDiagram.gmfgraph#SystemLabel"/>
+        <features
+            href="ActivityDiagram.ecore#//ActivityPartition/name"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.18"/>
+      <diagramNode
+          href="ActivityDiagram.gmfgraph#System"/>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.0/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.1/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.2/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.3/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.4/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.5/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.6/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.7/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.8/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.9/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.10/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.11/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.12/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.13/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.14/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.15/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <children
+          compartment="//@nodes.18/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.16/@ownedChild">
+        <containmentFeature
+            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
+      </children>
+      <compartments
+          children="//@nodes.18/@ownedChild/@children.0 //@nodes.18/@ownedChild/@children.1 //@nodes.18/@ownedChild/@children.2 //@nodes.18/@ownedChild/@children.3 //@nodes.18/@ownedChild/@children.4 //@nodes.18/@ownedChild/@children.5 //@nodes.18/@ownedChild/@children.6 //@nodes.18/@ownedChild/@children.7 //@nodes.18/@ownedChild/@children.8 //@nodes.18/@ownedChild/@children.9 //@nodes.18/@ownedChild/@children.10 //@nodes.18/@ownedChild/@children.11 //@nodes.18/@ownedChild/@children.12 //@nodes.18/@ownedChild/@children.13 //@nodes.18/@ownedChild/@children.14 //@nodes.18/@ownedChild/@children.15 //@nodes.18/@ownedChild/@children.16">
+        <compartment
+            href="ActivityDiagram.gmfgraph#SystemActivitynodeCompartment"/>
+      </compartments>
     </ownedChild>
   </nodes>
   <nodes>
@@ -486,178 +610,113 @@
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
-          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.3"/>
+          href="ActivityDiagram.gmftool#//@palette/@tools.0/@tools.0"/>
       <diagramNode
           href="ActivityDiagram.gmfgraph#ActivityPartition"/>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.0/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.1/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.2/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.3/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.4/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.5/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.6/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.7/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.8/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.9/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.10/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.11/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.12/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.13/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.14/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.15/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
       <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
+          compartment="//@nodes.19/@ownedChild/@compartments.0"
           referencedChild="//@nodes.16/@ownedChild">
         <containmentFeature
             href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
       </children>
-      <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
-          referencedChild="//@nodes.17/@ownedChild">
-        <containmentFeature
-            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
-      </children>
-      <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
-          referencedChild="//@nodes.18/@ownedChild">
-        <containmentFeature
-            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
-      </children>
-      <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
-          referencedChild="//@nodes.19/@ownedChild">
-        <containmentFeature
-            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
-      </children>
-      <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
-          referencedChild="//@nodes.20/@ownedChild">
-        <containmentFeature
-            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
-      </children>
-      <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
-          referencedChild="//@nodes.21/@ownedChild">
-        <containmentFeature
-            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
-      </children>
-      <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
-          referencedChild="//@nodes.22/@ownedChild">
-        <containmentFeature
-            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
-      </children>
-      <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
-          referencedChild="//@nodes.23/@ownedChild">
-        <containmentFeature
-            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
-      </children>
-      <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
-          referencedChild="//@nodes.24/@ownedChild">
-        <containmentFeature
-            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
-      </children>
-      <children
-          compartment="//@nodes.26/@ownedChild/@compartments.0"
-          referencedChild="//@nodes.26/@ownedChild">
-        <containmentFeature
-            href="ActivityDiagram.ecore#//ActivityPartition/subpartition"/>
-      </children>
-      <children
-          compartment="//@nodes.26/@ownedChild/@compartments.1"
-          referencedChild="//@nodes.25/@ownedChild">
-        <containmentFeature
-            href="ActivityDiagram.ecore#//ActivityPartition/activitynode"/>
-      </children>
       <compartments
-          children="//@nodes.26/@ownedChild/@children.25">
-        <compartment
-            href="ActivityDiagram.gmfgraph#ActivityPartitionSubpartitionCompartment"/>
-      </compartments>
-      <compartments
-          children="//@nodes.26/@ownedChild/@children.0 //@nodes.26/@ownedChild/@children.1 //@nodes.26/@ownedChild/@children.2 //@nodes.26/@ownedChild/@children.3 //@nodes.26/@ownedChild/@children.4 //@nodes.26/@ownedChild/@children.5 //@nodes.26/@ownedChild/@children.6 //@nodes.26/@ownedChild/@children.7 //@nodes.26/@ownedChild/@children.8 //@nodes.26/@ownedChild/@children.9 //@nodes.26/@ownedChild/@children.10 //@nodes.26/@ownedChild/@children.11 //@nodes.26/@ownedChild/@children.12 //@nodes.26/@ownedChild/@children.13 //@nodes.26/@ownedChild/@children.14 //@nodes.26/@ownedChild/@children.15 //@nodes.26/@ownedChild/@children.16 //@nodes.26/@ownedChild/@children.17 //@nodes.26/@ownedChild/@children.18 //@nodes.26/@ownedChild/@children.19 //@nodes.26/@ownedChild/@children.20 //@nodes.26/@ownedChild/@children.21 //@nodes.26/@ownedChild/@children.22 //@nodes.26/@ownedChild/@children.23 //@nodes.26/@ownedChild/@children.24 //@nodes.26/@ownedChild/@children.26">
+          children="//@nodes.19/@ownedChild/@children.0 //@nodes.19/@ownedChild/@children.1 //@nodes.19/@ownedChild/@children.2 //@nodes.19/@ownedChild/@children.3 //@nodes.19/@ownedChild/@children.4 //@nodes.19/@ownedChild/@children.5 //@nodes.19/@ownedChild/@children.6 //@nodes.19/@ownedChild/@children.7 //@nodes.19/@ownedChild/@children.8 //@nodes.19/@ownedChild/@children.9 //@nodes.19/@ownedChild/@children.10 //@nodes.19/@ownedChild/@children.11 //@nodes.19/@ownedChild/@children.12 //@nodes.19/@ownedChild/@children.13 //@nodes.19/@ownedChild/@children.14 //@nodes.19/@ownedChild/@children.15 //@nodes.19/@ownedChild/@children.16">
         <compartment
             href="ActivityDiagram.gmfgraph#ActivityPartitionActivitynodeCompartment"/>
       </compartments>
@@ -670,7 +729,7 @@
         href="ActivityDiagram.ecore#//ActivityDiagram/activityedge"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.4"/>
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.5"/>
     <diagramLink
         href="ActivityDiagram.gmfgraph#ObjectFlow"/>
     <sourceMetaFeature
@@ -687,7 +746,7 @@
         href="ActivityDiagram.ecore#//ActivityPartition/activityedge"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.4"/>
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.5"/>
     <diagramLink
         href="ActivityDiagram.gmfgraph#ObjectFlow"/>
     <sourceMetaFeature
@@ -704,7 +763,7 @@
         href="ActivityDiagram.ecore#//ActivityDiagram/activityedge"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.2"/>
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.3"/>
     <diagramLink
         href="ActivityDiagram.gmfgraph#ControlFlow"/>
     <sourceMetaFeature
@@ -721,7 +780,7 @@
         href="ActivityDiagram.ecore#//ActivityPartition/activityedge"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.2"/>
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.3"/>
     <diagramLink
         href="ActivityDiagram.gmfgraph#ControlFlow"/>
     <sourceMetaFeature
@@ -738,7 +797,7 @@
         href="ActivityDiagram.ecore#//ActivityDiagram/activityedge"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.0"/>
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.1"/>
     <diagramLink
         href="ActivityDiagram.gmfgraph#ActivityEdge"/>
     <sourceMetaFeature
@@ -755,7 +814,7 @@
         href="ActivityDiagram.ecore#//ActivityPartition/activityedge"/>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.0"/>
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.1"/>
     <diagramLink
         href="ActivityDiagram.gmfgraph#ActivityEdge"/>
     <sourceMetaFeature
@@ -770,32 +829,80 @@
         xsi:type="gmfmap:DesignLabelMapping"
         readOnly="true">
       <diagramLabel
-          href="ActivityDiagram.gmfgraph#CommandActionAggregateExternalLabel"/>
+          href="ActivityDiagram.gmfgraph#ActionSupplierExternalLabel"/>
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.1"/>
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.0"/>
     <diagramLink
-        href="ActivityDiagram.gmfgraph#CommandActionAggregate"/>
+        href="ActivityDiagram.gmfgraph#ActionSupplier"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="ActivityDiagram.ecore#//CommandAction/aggregate"/>
+        href="ActivityDiagram.ecore#//Action/supplier"/>
   </links>
   <links>
     <labelMappings
         xsi:type="gmfmap:DesignLabelMapping"
         readOnly="true">
       <diagramLabel
-          href="ActivityDiagram.gmfgraph#AggregateEventsExternalLabel"/>
+          href="ActivityDiagram.gmfgraph#SupplierTriggersExternalLabel"/>
     </labelMappings>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.3"/>
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.6"/>
     <diagramLink
-        href="ActivityDiagram.gmfgraph#AggregateEvents"/>
+        href="ActivityDiagram.gmfgraph#SupplierTriggers"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="ActivityDiagram.ecore#//Aggregate/events"/>
+        href="ActivityDiagram.ecore#//Supplier/triggers"/>
+  </links>
+  <links>
+    <labelMappings
+        xsi:type="gmfmap:DesignLabelMapping"
+        readOnly="true">
+      <diagramLabel
+          href="ActivityDiagram.gmfgraph#SupplierReadmodelsExternalLabel"/>
+    </labelMappings>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.7"/>
+    <diagramLink
+        href="ActivityDiagram.gmfgraph#SupplierReadmodels"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="ActivityDiagram.ecore#//Supplier/readmodels"/>
+  </links>
+  <links>
+    <labelMappings
+        xsi:type="gmfmap:DesignLabelMapping"
+        readOnly="true">
+      <diagramLabel
+          href="ActivityDiagram.gmfgraph#DomainEventReadmodelExternalLabel"/>
+    </labelMappings>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.4"/>
+    <diagramLink
+        href="ActivityDiagram.gmfgraph#DomainEventReadmodel"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="ActivityDiagram.ecore#//DomainEvent/readmodel"/>
+  </links>
+  <links>
+    <labelMappings
+        xsi:type="gmfmap:DesignLabelMapping"
+        readOnly="true">
+      <diagramLabel
+          href="ActivityDiagram.gmfgraph#ConstraintPinTriggersExternalLabel"/>
+    </labelMappings>
+    <tool
+        xsi:type="gmftool:CreationTool"
+        href="ActivityDiagram.gmftool#//@palette/@tools.1/@tools.2"/>
+    <diagramLink
+        href="ActivityDiagram.gmfgraph#ConstraintPinTriggers"/>
+    <linkMetaFeature
+        xsi:type="ecore:EReference"
+        href="ActivityDiagram.ecore#//ConstraintPin/triggers"/>
   </links>
   <diagram>
     <diagramCanvas

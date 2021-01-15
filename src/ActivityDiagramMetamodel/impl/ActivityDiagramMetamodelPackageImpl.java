@@ -10,17 +10,22 @@ import ActivityDiagramMetamodel.ActivityEdge;
 import ActivityDiagramMetamodel.ActivityNode;
 import ActivityDiagramMetamodel.ActivityParameterNode;
 import ActivityDiagramMetamodel.ActivityPartition;
+import ActivityDiagramMetamodel.Actor;
 import ActivityDiagramMetamodel.Aggregate;
 import ActivityDiagramMetamodel.CallAction;
 import ActivityDiagramMetamodel.CallActivityAction;
 import ActivityDiagramMetamodel.CallBehaviorAction;
 import ActivityDiagramMetamodel.CallOperationAction;
 import ActivityDiagramMetamodel.CommandAction;
+import ActivityDiagramMetamodel.ConstraintPin;
 import ActivityDiagramMetamodel.ControlFlow;
 import ActivityDiagramMetamodel.ControlNode;
 import ActivityDiagramMetamodel.DecisionNode;
-import ActivityDiagramMetamodel.EventAction;
+import ActivityDiagramMetamodel.DomainEvent;
+import ActivityDiagramMetamodel.DomainObject;
+import ActivityDiagramMetamodel.Entity;
 import ActivityDiagramMetamodel.ExecutableNode;
+import ActivityDiagramMetamodel.ExternalSystem;
 import ActivityDiagramMetamodel.FinalNode;
 import ActivityDiagramMetamodel.ForkNode;
 import ActivityDiagramMetamodel.InitialNode;
@@ -35,11 +40,13 @@ import ActivityDiagramMetamodel.ObjectNodeOrderingKind;
 import ActivityDiagramMetamodel.OutputPin;
 import ActivityDiagramMetamodel.Pin;
 import ActivityDiagramMetamodel.QueryAction;
+import ActivityDiagramMetamodel.ReadModel;
 import ActivityDiagramMetamodel.StartObjectBehaviorAction;
+import ActivityDiagramMetamodel.Supplier;
+import ActivityDiagramMetamodel.Supply;
+import ActivityDiagramMetamodel.ValueObject;
 import ActivityDiagramMetamodel.ValueSpecification;
 import ActivityDiagramMetamodel.Variable;
-import ActivityDiagramMetamodel.VariableAction;
-import ActivityDiagramMetamodel.VariableActionKind;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -215,13 +222,6 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass variableActionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass startObjectBehaviorActionEClass = null;
 
 	/**
@@ -264,13 +264,6 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass eventActionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass commandActionEClass = null;
 
 	/**
@@ -292,6 +285,76 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass domainObjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass valueObjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass entityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass actorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass externalSystemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass readModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass supplierEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass systemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass domainEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass constraintPinEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum objectNodeOrderingKindEEnum = null;
 
 	/**
@@ -300,13 +363,6 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	private EEnum objectActionKindEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum variableActionKindEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -785,6 +841,16 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	@Override
+	public EReference getObjectNode_Variables() {
+		return (EReference)objectNodeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getActivityParameterNode() {
 		return activityParameterNodeEClass;
 	}
@@ -817,6 +883,16 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	@Override
 	public EAttribute getVariable_LowerBound() {
 		return (EAttribute)variableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getVariable_Name() {
+		return (EAttribute)variableEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -875,28 +951,28 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	@Override
+	public EReference getAction_Supplier() {
+		return (EReference)actionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAction_Callactions() {
+		return (EReference)actionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCallAction() {
 		return callActionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getVariableAction() {
-		return variableActionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getVariableAction_Kind() {
-		return (EAttribute)variableActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1025,38 +1101,8 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	@Override
-	public EClass getEventAction() {
-		return eventActionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEventAction_Aggregate() {
-		return (EReference)eventActionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getCommandAction() {
 		return commandActionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCommandAction_Aggregate() {
-		return (EReference)commandActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1075,28 +1121,8 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	@Override
-	public EReference getAggregate_Events() {
+	public EReference getAggregate_Domainobject() {
 		return (EReference)aggregateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getAggregate_Command() {
-		return (EReference)aggregateEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getAggregate_Query() {
-		return (EReference)aggregateEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1115,8 +1141,218 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	 * @generated
 	 */
 	@Override
-	public EReference getQueryAction_Aggregate() {
-		return (EReference)queryActionEClass.getEStructuralFeatures().get(0);
+	public EClass getDomainObject() {
+		return domainObjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getValueObject() {
+		return valueObjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEntity() {
+		return entityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getActor() {
+		return actorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getExternalSystem() {
+		return externalSystemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getReadModel() {
+		return readModelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getReadModel_Supplier() {
+		return (EReference)readModelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getReadModel_Event() {
+		return (EReference)readModelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSupplier() {
+		return supplierEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSupplier_Action() {
+		return (EReference)supplierEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSupplier_Triggers() {
+		return (EReference)supplierEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSupplier_Readmodels() {
+		return (EReference)supplierEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSupplier_Constraints() {
+		return (EReference)supplierEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSystem() {
+		return systemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDomainEvent() {
+		return domainEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDomainEvent_Readmodel() {
+		return (EReference)domainEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDomainEvent_Supplier() {
+		return (EReference)domainEventEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDomainEvent_Constraint() {
+		return (EReference)domainEventEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConstraintPin() {
+		return constraintPinEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConstraintPin_Supplier() {
+		return (EReference)constraintPinEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConstraintPin_Triggers() {
+		return (EReference)constraintPinEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConstraintPin_Description() {
+		return (EAttribute)constraintPinEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1137,16 +1373,6 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	@Override
 	public EEnum getObjectActionKind() {
 		return objectActionKindEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getVariableActionKind() {
-		return variableActionKindEEnum;
 	}
 
 	/**
@@ -1235,12 +1461,14 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 		createEReference(objectNodeEClass, OBJECT_NODE__UPPER_BOUND);
 		createEAttribute(objectNodeEClass, OBJECT_NODE__IS_CONTROL_TYPE);
 		createEAttribute(objectNodeEClass, OBJECT_NODE__ORDER);
+		createEReference(objectNodeEClass, OBJECT_NODE__VARIABLES);
 
 		activityParameterNodeEClass = createEClass(ACTIVITY_PARAMETER_NODE);
 
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__UPPER_BOUND);
 		createEAttribute(variableEClass, VARIABLE__LOWER_BOUND);
+		createEAttribute(variableEClass, VARIABLE__NAME);
 
 		valueSpecificationEClass = createEClass(VALUE_SPECIFICATION);
 
@@ -1248,11 +1476,10 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 		createEAttribute(actionEClass, ACTION__NAME);
 		createEReference(actionEClass, ACTION__INPUTPIN);
 		createEReference(actionEClass, ACTION__OUTPUTPIN);
+		createEReference(actionEClass, ACTION__SUPPLIER);
+		createEReference(actionEClass, ACTION__CALLACTIONS);
 
 		callActionEClass = createEClass(CALL_ACTION);
-
-		variableActionEClass = createEClass(VARIABLE_ACTION);
-		createEAttribute(variableActionEClass, VARIABLE_ACTION__KIND);
 
 		startObjectBehaviorActionEClass = createEClass(START_OBJECT_BEHAVIOR_ACTION);
 
@@ -1272,24 +1499,48 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__ACTIVITYEDGE);
 		createEReference(activityPartitionEClass, ACTIVITY_PARTITION__ACTIVITYNODE);
 
-		eventActionEClass = createEClass(EVENT_ACTION);
-		createEReference(eventActionEClass, EVENT_ACTION__AGGREGATE);
-
 		commandActionEClass = createEClass(COMMAND_ACTION);
-		createEReference(commandActionEClass, COMMAND_ACTION__AGGREGATE);
 
 		aggregateEClass = createEClass(AGGREGATE);
-		createEReference(aggregateEClass, AGGREGATE__EVENTS);
-		createEReference(aggregateEClass, AGGREGATE__COMMAND);
-		createEReference(aggregateEClass, AGGREGATE__QUERY);
+		createEReference(aggregateEClass, AGGREGATE__DOMAINOBJECT);
 
 		queryActionEClass = createEClass(QUERY_ACTION);
-		createEReference(queryActionEClass, QUERY_ACTION__AGGREGATE);
+
+		domainObjectEClass = createEClass(DOMAIN_OBJECT);
+
+		valueObjectEClass = createEClass(VALUE_OBJECT);
+
+		entityEClass = createEClass(ENTITY);
+
+		actorEClass = createEClass(ACTOR);
+
+		systemEClass = createEClass(SYSTEM);
+
+		externalSystemEClass = createEClass(EXTERNAL_SYSTEM);
+
+		readModelEClass = createEClass(READ_MODEL);
+		createEReference(readModelEClass, READ_MODEL__SUPPLIER);
+		createEReference(readModelEClass, READ_MODEL__EVENT);
+
+		supplierEClass = createEClass(SUPPLIER);
+		createEReference(supplierEClass, SUPPLIER__ACTION);
+		createEReference(supplierEClass, SUPPLIER__TRIGGERS);
+		createEReference(supplierEClass, SUPPLIER__READMODELS);
+		createEReference(supplierEClass, SUPPLIER__CONSTRAINTS);
+
+		domainEventEClass = createEClass(DOMAIN_EVENT);
+		createEReference(domainEventEClass, DOMAIN_EVENT__READMODEL);
+		createEReference(domainEventEClass, DOMAIN_EVENT__SUPPLIER);
+		createEReference(domainEventEClass, DOMAIN_EVENT__CONSTRAINT);
+
+		constraintPinEClass = createEClass(CONSTRAINT_PIN);
+		createEReference(constraintPinEClass, CONSTRAINT_PIN__SUPPLIER);
+		createEReference(constraintPinEClass, CONSTRAINT_PIN__TRIGGERS);
+		createEAttribute(constraintPinEClass, CONSTRAINT_PIN__DESCRIPTION);
 
 		// Create enums
 		objectNodeOrderingKindEEnum = createEEnum(OBJECT_NODE_ORDERING_KIND);
 		objectActionKindEEnum = createEEnum(OBJECT_ACTION_KIND);
-		variableActionKindEEnum = createEEnum(VARIABLE_ACTION_KIND);
 	}
 
 	/**
@@ -1337,16 +1588,24 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 		activityParameterNodeEClass.getESuperTypes().add(this.getObjectNode());
 		actionEClass.getESuperTypes().add(this.getExecutableNode());
 		callActionEClass.getESuperTypes().add(this.getAction());
-		variableActionEClass.getESuperTypes().add(this.getCallAction());
 		startObjectBehaviorActionEClass.getESuperTypes().add(this.getCallAction());
 		objectActionEClass.getESuperTypes().add(this.getCallAction());
 		callBehaviorActionEClass.getESuperTypes().add(this.getCallAction());
 		callOperationActionEClass.getESuperTypes().add(this.getCallAction());
 		callActivityActionEClass.getESuperTypes().add(this.getCallAction());
-		eventActionEClass.getESuperTypes().add(this.getAction());
 		commandActionEClass.getESuperTypes().add(this.getAction());
-		aggregateEClass.getESuperTypes().add(this.getObjectNode());
+		aggregateEClass.getESuperTypes().add(this.getSupplier());
 		queryActionEClass.getESuperTypes().add(this.getAction());
+		domainObjectEClass.getESuperTypes().add(this.getObjectNode());
+		valueObjectEClass.getESuperTypes().add(this.getDomainObject());
+		entityEClass.getESuperTypes().add(this.getDomainObject());
+		actorEClass.getESuperTypes().add(this.getActivityPartition());
+		systemEClass.getESuperTypes().add(this.getActivityPartition());
+		externalSystemEClass.getESuperTypes().add(this.getSupplier());
+		readModelEClass.getESuperTypes().add(this.getObjectNode());
+		supplierEClass.getESuperTypes().add(this.getObjectNode());
+		domainEventEClass.getESuperTypes().add(this.getObjectNode());
+		constraintPinEClass.getESuperTypes().add(this.getPin());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(activityDiagramEClass, ActivityDiagram.class, "ActivityDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1406,12 +1665,14 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 		initEReference(getObjectNode_UpperBound(), this.getValueSpecification(), null, "upperBound", null, 0, 1, ObjectNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getObjectNode_IsControlType(), ecorePackage.getEBoolean(), "isControlType", null, 0, 1, ObjectNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getObjectNode_Order(), this.getObjectNodeOrderingKind(), "order", "FIFO", 0, 1, ObjectNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getObjectNode_Variables(), this.getVariable(), null, "variables", null, 0, -1, ObjectNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(activityParameterNodeEClass, ActivityParameterNode.class, "ActivityParameterNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariable_UpperBound(), ecorePackage.getEInt(), "upperBound", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_LowerBound(), ecorePackage.getEInt(), "lowerBound", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(valueSpecificationEClass, ValueSpecification.class, "ValueSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1419,11 +1680,10 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 		initEAttribute(getAction_Name(), ecorePackage.getEString(), "name", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAction_Inputpin(), this.getInputPin(), null, "inputpin", null, 0, -1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAction_Outputpin(), this.getOutputPin(), null, "outputpin", null, 0, -1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAction_Supplier(), this.getSupplier(), this.getSupplier_Action(), "supplier", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAction_Callactions(), this.getCallAction(), null, "callactions", null, 0, -1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(callActionEClass, CallAction.class, "CallAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(variableActionEClass, VariableAction.class, "VariableAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariableAction_Kind(), this.getVariableActionKind(), "kind", null, 0, 1, VariableAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(startObjectBehaviorActionEClass, StartObjectBehaviorAction.class, "StartObjectBehaviorAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1443,19 +1703,44 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 		initEReference(getActivityPartition_Activityedge(), this.getActivityEdge(), this.getActivityEdge_Activitypartition(), "activityedge", null, 0, -1, ActivityPartition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getActivityPartition_Activitynode(), this.getActivityNode(), this.getActivityNode_Activitypartition(), "activitynode", null, 0, -1, ActivityPartition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(eventActionEClass, EventAction.class, "EventAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEventAction_Aggregate(), this.getAggregate(), this.getAggregate_Events(), "aggregate", null, 0, 1, EventAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(commandActionEClass, CommandAction.class, "CommandAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCommandAction_Aggregate(), this.getAggregate(), this.getAggregate_Command(), "aggregate", null, 0, 1, CommandAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(aggregateEClass, Aggregate.class, "Aggregate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAggregate_Events(), this.getEventAction(), this.getEventAction_Aggregate(), "events", null, 0, -1, Aggregate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAggregate_Command(), this.getCommandAction(), this.getCommandAction_Aggregate(), "command", null, 0, 1, Aggregate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAggregate_Query(), this.getQueryAction(), this.getQueryAction_Aggregate(), "query", null, 0, 1, Aggregate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAggregate_Domainobject(), this.getDomainObject(), null, "domainobject", null, 0, -1, Aggregate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(queryActionEClass, QueryAction.class, "QueryAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getQueryAction_Aggregate(), this.getAggregate(), this.getAggregate_Query(), "aggregate", null, 0, 1, QueryAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(domainObjectEClass, DomainObject.class, "DomainObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(valueObjectEClass, ValueObject.class, "ValueObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(actorEClass, Actor.class, "Actor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(systemEClass, ActivityDiagramMetamodel.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(externalSystemEClass, ExternalSystem.class, "ExternalSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(readModelEClass, ReadModel.class, "ReadModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getReadModel_Supplier(), this.getSupplier(), this.getSupplier_Readmodels(), "supplier", null, 0, 1, ReadModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReadModel_Event(), this.getDomainEvent(), this.getDomainEvent_Readmodel(), "event", null, 0, 1, ReadModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(supplierEClass, Supplier.class, "Supplier", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSupplier_Action(), this.getAction(), this.getAction_Supplier(), "action", null, 0, 1, Supplier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSupplier_Triggers(), this.getDomainEvent(), this.getDomainEvent_Supplier(), "triggers", null, 0, -1, Supplier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSupplier_Readmodels(), this.getReadModel(), this.getReadModel_Supplier(), "readmodels", null, 0, -1, Supplier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSupplier_Constraints(), this.getConstraintPin(), this.getConstraintPin_Supplier(), "constraints", null, 0, -1, Supplier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(domainEventEClass, DomainEvent.class, "DomainEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDomainEvent_Readmodel(), this.getReadModel(), this.getReadModel_Event(), "readmodel", null, 0, 1, DomainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainEvent_Supplier(), this.getSupplier(), this.getSupplier_Triggers(), "supplier", null, 0, 1, DomainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainEvent_Constraint(), this.getConstraintPin(), this.getConstraintPin_Triggers(), "constraint", null, 0, 1, DomainEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(constraintPinEClass, ConstraintPin.class, "ConstraintPin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConstraintPin_Supplier(), this.getSupplier(), this.getSupplier_Constraints(), "supplier", null, 0, 1, ConstraintPin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraintPin_Triggers(), this.getDomainEvent(), this.getDomainEvent_Constraint(), "triggers", null, 0, -1, ConstraintPin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConstraintPin_Description(), ecorePackage.getEString(), "description", null, 0, 1, ConstraintPin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(objectNodeOrderingKindEEnum, ObjectNodeOrderingKind.class, "ObjectNodeOrderingKind");
@@ -1471,12 +1756,6 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 		addEEnumLiteral(objectActionKindEEnum, ObjectActionKind.READ_SELF_ACTION);
 		addEEnumLiteral(objectActionKindEEnum, ObjectActionKind.VALUE_SPECIFICATION_ACTION);
 
-		initEEnum(variableActionKindEEnum, VariableActionKind.class, "VariableActionKind");
-		addEEnumLiteral(variableActionKindEEnum, VariableActionKind.CLEAR_VARIABLE_ACTION);
-		addEEnumLiteral(variableActionKindEEnum, VariableActionKind.WRITE_VARIABLE_ACTION);
-		addEEnumLiteral(variableActionKindEEnum, VariableActionKind.READ_VARIABLE_ACTION);
-		addEEnumLiteral(variableActionKindEEnum, VariableActionKind.MATHEMATICAL_VARIABLE_ACTION);
-
 		// Create resource
 		createResource(eNS_URI);
 
@@ -1485,12 +1764,14 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 		createGmfAnnotations();
 		// gmf.diagram
 		createGmf_1Annotations();
-		// gmf.node
-		createGmf_2Annotations();
 		// gmf.link
+		createGmf_2Annotations();
+		// gmf.node
 		createGmf_3Annotations();
 		// gmf.compartment
 		createGmf_4Annotations();
+		// gmf.affixed
+		createGmf_5Annotations();
 	}
 
 	/**
@@ -1524,19 +1805,77 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	}
 
 	/**
-	 * Initializes the annotations for <b>gmf.node</b>.
+	 * Initializes the annotations for <b>gmf.link</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void createGmf_2Annotations() {
-		String source = "gmf.node";
+		String source = "gmf.link";
 		addAnnotation
-		  (activityNodeEClass,
+		  (activityEdgeEClass,
 		   source,
 		   new String[] {
-			   "label.placement", "none"
+			   "source", "source",
+			   "target", "target",
+			   "target.decoration", "arrow",
+			   "width", "2"
 		   });
+		addAnnotation
+		  (getAction_Supplier(),
+		   source,
+		   new String[] {
+			   "tool.name", "Action to Supplier",
+			   "style", "dash",
+			   "target.decoration", "arrow",
+			   "width", "2"
+		   });
+		addAnnotation
+		  (getSupplier_Triggers(),
+		   source,
+		   new String[] {
+			   "tool.name", "Supplier to Event",
+			   "style", "dash",
+			   "target.decoration", "arrow",
+			   "width", "2"
+		   });
+		addAnnotation
+		  (getSupplier_Readmodels(),
+		   source,
+		   new String[] {
+			   "tool.name", "Supplier to ReadModel",
+			   "style", "dash",
+			   "target.decoration", "arrow",
+			   "width", "2"
+		   });
+		addAnnotation
+		  (getDomainEvent_Readmodel(),
+		   source,
+		   new String[] {
+			   "tool.name", "Event To ReadModel",
+			   "style", "dash",
+			   "target.decoration", "arrow",
+			   "width", "2"
+		   });
+		addAnnotation
+		  (getConstraintPin_Triggers(),
+		   source,
+		   new String[] {
+			   "tool.name", "Constraint to Event",
+			   "style", "dash",
+			   "target.decoration", "arrow",
+			   "width", "2"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>gmf.node</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGmf_3Annotations() {
+		String source = "gmf.node";
 		addAnnotation
 		  (controlNodeEClass,
 		   source,
@@ -1610,31 +1949,10 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 			   "margin", "2"
 		   });
 		addAnnotation
-		  (objectNodeEClass,
-		   source,
-		   new String[] {
-			   "label", "name",
-			   "label.placement", "internal"
-		   });
-		addAnnotation
-		  (actionEClass,
-		   source,
-		   new String[] {
-			   "label", "name",
-			   "label.placement", "internal"
-		   });
-		addAnnotation
 		  (activityPartitionEClass,
 		   source,
 		   new String[] {
 			   "label", "name"
-		   });
-		addAnnotation
-		  (eventActionEClass,
-		   source,
-		   new String[] {
-			   "label", "name",
-			   "color", "243,156,18"
 		   });
 		addAnnotation
 		  (commandActionEClass,
@@ -1648,49 +1966,72 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 		   source,
 		   new String[] {
 			   "label", "name",
-			   "color", "241,196,15"
+			   "color", "243,208,43"
 		   });
 		addAnnotation
 		  (queryActionEClass,
 		   source,
 		   new String[] {
 			   "label", "name",
+			   "color", "108,198,192"
+		   });
+		addAnnotation
+		  (domainObjectEClass,
+		   source,
+		   new String[] {
+			   "label", "name"
+		   });
+		addAnnotation
+		  (actorEClass,
+		   source,
+		   new String[] {
+			   "label", "name",
+			   "label.placement", "internal",
+			   "color", "255,249,178"
+		   });
+		addAnnotation
+		  (systemEClass,
+		   source,
+		   new String[] {
+			   "label", "name",
+			   "label.placement", "internal"
+		   });
+		addAnnotation
+		  (externalSystemEClass,
+		   source,
+		   new String[] {
+			   "label", "name",
+			   "color", "231,147,186"
+		   });
+		addAnnotation
+		  (readModelEClass,
+		   source,
+		   new String[] {
+			   "label", "name",
+			   "color", "209,227,109"
+		   });
+		addAnnotation
+		  (supplierEClass,
+		   source,
+		   new String[] {
+			   "label", "name"
+		   });
+		addAnnotation
+		  (domainEventEClass,
+		   source,
+		   new String[] {
+			   "label", "name",
 			   "color", "243,156,18"
 		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>gmf.link</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createGmf_3Annotations() {
-		String source = "gmf.link";
 		addAnnotation
-		  (activityEdgeEClass,
+		  (constraintPinEClass,
 		   source,
 		   new String[] {
-			   "source", "source",
-			   "target", "target",
-			   "target.decoration", "arrow",
-			   "width", "2"
-		   });
-		addAnnotation
-		  (getCommandAction_Aggregate(),
-		   source,
-		   new String[] {
-			   "style", "dash",
-			   "target.decoration", "arrow",
-			   "width", "2"
-		   });
-		addAnnotation
-		  (getAggregate_Events(),
-		   source,
-		   new String[] {
-			   "style", "dash",
-			   "target.decoration", "arrow",
-			   "width", "2"
+			   "figure", "rectangle",
+			   "size", "20,20",
+			   "label", "name",
+			   "label.placement", "external",
+			   "label.icon", "false"
 		   });
 	}
 
@@ -1703,12 +2044,29 @@ public class ActivityDiagramMetamodelPackageImpl extends EPackageImpl implements
 	protected void createGmf_4Annotations() {
 		String source = "gmf.compartment";
 		addAnnotation
-		  (getActivityPartition_Subpartition(),
+		  (getActivityPartition_Activitynode(),
 		   source,
 		   new String[] {
 		   });
 		addAnnotation
-		  (getActivityPartition_Activitynode(),
+		  (getAggregate_Domainobject(),
+		   source,
+		   new String[] {
+			   "layout", "list",
+			   "collapsible", "false"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>gmf.affixed</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGmf_5Annotations() {
+		String source = "gmf.affixed";
+		addAnnotation
+		  (getSupplier_Constraints(),
 		   source,
 		   new String[] {
 		   });

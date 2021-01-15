@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" uid="_E3_0gEOLEeuBHZCt1NwwTA" version="14.3.1.202003261200">
+  <semanticResources>Booking.activitydiagrammetamodel_diagram</semanticResources>
+  <semanticResources>Booking.activitydiagrammetamodel</semanticResources>
+  <semanticResources>Cargo.activitydiagrammetamodel_diagram</semanticResources>
+  <semanticResources>Cargo.activitydiagrammetamodel</semanticResources>
+  <semanticResources>Handling.activitydiagrammetamodel</semanticResources>
+  <semanticResources>Handling.activitydiagrammetamodel_diagram</semanticResources>
+  <semanticResources>Routing.activitydiagrammetamodel_diagram</semanticResources>
+  <semanticResources>Routing.activitydiagrammetamodel</semanticResources>
+  <semanticResources>Tracking.activitydiagrammetamodel_diagram</semanticResources>
+  <semanticResources>Tracking.activitydiagrammetamodel</semanticResources>
+</viewpoint:DAnalysis>

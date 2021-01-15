@@ -4,7 +4,6 @@ package ActivityDiagramMetamodel.impl;
 
 import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
 import ActivityDiagramMetamodel.ExecutableNode;
-import ActivityDiagramMetamodel.ModelingTestPackage;
 
 import org.eclipse.emf.ecore.EClass;
 

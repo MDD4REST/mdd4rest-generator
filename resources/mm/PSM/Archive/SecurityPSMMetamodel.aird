@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_N7dhMNPOEeqFDfJsMBFF3w" selectedViews="_N_S4UNPOEeqFDfJsMBFF3w _OAHXsNPOEeqFDfJsMBFF3w _OAa5sNPOEeqFDfJsMBFF3w _OAzUMNPOEeqFDfJsMBFF3w" version="14.3.0.201909031200">
+    <semanticResources>SecurityPSMMetamodel.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_N_S4UNPOEeqFDfJsMBFF3w">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_OjwQQdPOEeqFDfJsMBFF3w" name="SecurityPSM class diagram" repPath="#_OjdVUNPOEeqFDfJsMBFF3w" changeId="1632f35b-1180-497f-9e91-4429cd1cf7bf">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+        <target xmi:type="ecore:EPackage" href="SecurityPSMMetamodel.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_OAHXsNPOEeqFDfJsMBFF3w">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']"/>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_OAa5sNPOEeqFDfJsMBFF3w">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Archetype']"/>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_OAzUMNPOEeqFDfJsMBFF3w">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Generation']"/>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_OjdVUNPOEeqFDfJsMBFF3w">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_OjubENPOEeqFDfJsMBFF3w" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_OjubEdPOEeqFDfJsMBFF3w"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_OkGOgNPOEeqFDfJsMBFF3w" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_OkGOgdPOEeqFDfJsMBFF3w" type="Sirius" element="_OjdVUNPOEeqFDfJsMBFF3w" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_Pe1YcNPOEeqFDfJsMBFF3w" type="2003" element="_PepLMNPOEeqFDfJsMBFF3w">
+          <children xmi:type="notation:Node" xmi:id="_PfJhgNPOEeqFDfJsMBFF3w" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_PfLWsNPOEeqFDfJsMBFF3w" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_PfLWsdPOEeqFDfJsMBFF3w"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_PfLWstPOEeqFDfJsMBFF3w"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_Pe1YcdPOEeqFDfJsMBFF3w" fontName="Segoe UI" fontHeight="8" fillColor="0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pe1YctPOEeqFDfJsMBFF3w" x="384" y="132" width="120" height="100"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_M15VYNPQEeqFDfJsMBFF3w" type="2003" element="_M1yAoNPQEeqFDfJsMBFF3w">
+          <children xmi:type="notation:Node" xmi:id="_M16jgNPQEeqFDfJsMBFF3w" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_M16jgdPQEeqFDfJsMBFF3w" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_M16jgtPQEeqFDfJsMBFF3w"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_M16jg9PQEeqFDfJsMBFF3w"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_M15VYdPQEeqFDfJsMBFF3w" fontName="Segoe UI" fontHeight="8" fillColor="0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_M15VYtPQEeqFDfJsMBFF3w" x="702" y="210" width="120" height="100"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_OkGOgtPOEeqFDfJsMBFF3w"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_PepLMNPOEeqFDfJsMBFF3w" name="AuthoritiesConstants" tooltipText="" width="12" height="10">
+      <target xmi:type="ecore:EClass" href="SecurityPSMMetamodel.ecore#//AuthoritiesConstants"/>
+      <semanticElements xmi:type="ecore:EClass" href="SecurityPSMMetamodel.ecore#//AuthoritiesConstants"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_PerncNPOEeqFDfJsMBFF3w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_M1yAoNPQEeqFDfJsMBFF3w" name="Constants" tooltipText="" width="12" height="10">
+      <target xmi:type="ecore:EClass" href="SecurityPSMMetamodel.ecore#//Constants"/>
+      <semanticElements xmi:type="ecore:EClass" href="SecurityPSMMetamodel.ecore#//Constants"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_M1zOwNPQEeqFDfJsMBFF3w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_Ojo7gNPOEeqFDfJsMBFF3w"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Validation']"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']"/>
+    <target xmi:type="ecore:EPackage" href="SecurityPSMMetamodel.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

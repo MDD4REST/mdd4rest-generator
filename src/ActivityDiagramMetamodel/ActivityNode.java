@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage#getActivityNode()
- * @model annotation="gmf.node label.placement='none'"
+ * @model
  * @generated
  */
 public interface ActivityNode extends EObject {

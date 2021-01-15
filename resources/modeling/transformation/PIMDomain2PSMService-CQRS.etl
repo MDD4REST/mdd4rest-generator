@@ -1,0 +1,148 @@
+import "../utilities/StaticPIM.eol";
+import "../utilities/ServicePSM.eol";
+import "./PIMDomain2PSMService.etl";
+
+pre {
+	"Running ETL Transformation: ".println();
+	"----------------------------".println();
+	"".println();
+	var pimModel;
+	var psmModel;
+	
+	/* Default Value */
+	var optimisticLockingDefault = true;
+	var cacheDefault = false;
+	var gapClassDefault = false;
+}
+
+rule PrimitiveType transform c:StaticPIM!PrimitiveType
+	to a:ServicePSM!PrimitiveType extends AbstractPrimitiveType{
+}
+
+rule Project transform c:StaticPIM!Project
+ 	to a:ServicePSM!Project{
+ 	guard: c.hasApplication.size() > 0
+	pimModel = c;
+ 	psmModel = a;
+ 	a.primitivetype ::= c.primitiveTypes;
+}
+
+rule ComplexType transform c:StaticPIM!ComplexType
+	to a:ServicePSM!ComplexType extends AbstractComplexType{
+}
+
+rule Application transform c:StaticPIM!Application
+	to a:ServicePSM!Application extends AbstractApplication{
+	a.addModule("command");
+	a.addModule("^query");
+	a.addModule("rest");
+	a.complextypes ::= c.complextypes;
+}
+
+rule Aggregate transform c:StaticPIM!Aggregate 
+	to a:ServicePSM!Aggregate extends AbstractAggregate{
+	var application = c.application.equivalent();
+	
+	var queryAggregate = new ServicePSM!Aggregate;
+	queryAggregate.name = a.name;
+	queryAggregate.module = application.getQueryModule();
+	queryAggregate.module.aggregates.add(queryAggregate);
+	queryAggregate.module.aggregates.println();
+	
+	a.module = application.getCommandModule();
+	a.module.aggregates.add(a);
+}
+
+rule Property transform c:StaticPIM!Property
+	to a:ServicePSM!Property extends AbstractProperty{
+}
+
+rule BasicType transform c:StaticPIM!BasicType
+	to a:ServicePSM!BasicType extends AbstractBasicType{
+	// aggregate
+	var aggregate = c.aggregate.equivalent();
+	var application = c.aggregate.application.equivalent();
+	a.addDomainObjectToCommandAggregate(application, aggregate.name);
+}
+
+
+rule DomainEvent transform c:StaticPIM!DomainEvent
+	to a:ServicePSM!DomainEvent extends AbstractDomainEvent{
+	var aggregate = c.aggregate.equivalent();
+	var application = c.aggregate.application.equivalent();
+	a.addDomainObjectToCommandAggregate(application, aggregate.name);
+}
+
+
+rule CommandEvent transform c:StaticPIM!CommandEvent
+	to a:ServicePSM!CommandEvent extends AbstractCommandEvent{
+	var aggregate = c.aggregate.equivalent();
+	var application = c.aggregate.application.equivalent();
+	a.addDomainObjectToCommandAggregate(application, aggregate.name);
+}
+
+rule DTO transform c:StaticPIM!DTO
+	to a:ServicePSM!DTO extends AbstractDTO{
+	var aggregate = c.aggregate.equivalent();
+	var application = c.aggregate.application.equivalent();
+	a.addDomainObjectToQueryAggregate(application, aggregate.name);
+}
+
+
+rule ValueObject transform c:StaticPIM!ValueObject
+	to a:ServicePSM!ValueObject extends AbstractValueObject{
+	var aggregate = c.aggregate.equivalent();
+	var application = c.aggregate.application.equivalent();
+	a.addDomainObjectToCommandAggregate(application, aggregate.name);
+}
+
+rule Entity transform c:StaticPIM!Entity
+	to a:ServicePSM!Entity extends AbstractEntity{
+	var aggregate = c.aggregate.equivalent();
+	var application = c.aggregate.application.equivalent();
+	a.addDomainObjectToCommandAggregate(application, aggregate.name);
+	
+	// query entity
+	if (not a.`abstract`){
+		var queryEntity = new ServicePSM!Entity;
+		queryEntity.name = a.name + "Query";
+		queryEntity.typeName = a.typeName+ "Query";
+		queryEntity.aggregateRoot = a.aggregateRoot;
+		for (property in a.properties){
+			queryEntity.addProperty(property.name, property.required, property.unique, property.type);
+		}
+		
+		var saveOperation = a.repository.addOperation("save", null, null);
+		saveOperation.addPublish(null, a.name + "StoreChannel");
+		
+		queryEntity.addRepository();
+		queryEntity.repository.addSubscribe(null, a.name + "StoreChannel");
+		queryEntity.addDomainObjectToQueryAggregate(application, aggregate.name);
+	}
+}
+
+rule Literal transform c:StaticPIM!Literal
+	to a:ServicePSM!Literal extends AbstractLiteral{
+}
+
+rule Enumeration transform c:StaticPIM!Enumeration
+	to a:ServicePSM!Enumeration extends AbstractEnumeration{
+	var aggregate = c.aggregate.equivalent();
+	var application = c.aggregate.application.equivalent();
+	a.addDomainObjectToCommandAggregate(application, aggregate.name);
+}
+
+
+rule Relation transform c:StaticPIM!Relation
+	to a:ServicePSM!Relation extends AbstractRelation{
+}
+
+@greedy
+rule Resource transform c:StaticPIM!Resource
+	to a:ServicePSM!Resource extends AbstractResource{
+}
+
+post {
+}
+
+

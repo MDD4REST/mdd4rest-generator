@@ -1,11 +1,35 @@
 package core.ontologytoyamltools;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * A class that holds string manipulation functions.
  * 
  * @author themis
+ * 
+ * few changes bu amirdeljouyi
  */
 public class StringHelpers {
+	
+	public static String toNounClassStyle(String word) {
+		return toClassStyle(Stemmer.stemNounConstruct(word));
+	}
+	
+	public static String toClassStyle(String word) {
+		return underscoreToCamelCase(StringUtils.capitalize(word));
+	}
+	
+	public static String toNounVariableStyle(String word) {
+		return toVariableStyle(Stemmer.stemNounConstruct(word));
+	}
+	
+	public static String toOperationStyle(String word) {
+		return toVariableStyle(Stemmer.stemVerb(word));
+	}
+	
+	public static String toVariableStyle(String word) {
+		return underscoreToCamelCase(StringUtils.uncapitalize(word));
+	}
 
 	/**
 	 * Receives a word construct split in underscores and converts it to camelCase.

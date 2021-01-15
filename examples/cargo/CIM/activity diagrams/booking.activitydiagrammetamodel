@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mde:ActivityDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="resources/mm/CIM/ActivityDiagram.ecore" name="Booking">
+  <activityedge target="//@activitypartition.0/@activitynode.1" source="//@activitypartition.0/@activitynode.0"/>
+  <activityedge target="//@activitypartition.0/@activitynode.4" source="//@activitypartition.0/@activitynode.3"/>
+  <activityedge target="//@activitypartition.0/@activitynode.8" source="//@activitypartition.0/@activitynode.7"/>
+  <activitypartition xsi:type="mde:Actor" name="Customer">
+    <activitynode xsi:type="mde:InitialNode" outcomming="//@activityedge.0"/>
+    <activitynode xsi:type="mde:QueryAction" incomming="//@activityedge.0" name="Booking Form View" supplier="//@activitypartition.0/@activitynode.2"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" action="//@activitypartition.0/@activitynode.1" readmodels="//@activitypartition.0/@activitynode.3">
+      <domainobject xsi:type="mde:Entity" name="Cargo"/>
+    </activitynode>
+    <activitynode xsi:type="mde:ReadModel" outcomming="//@activityedge.1" name="Booking Form" supplier="//@activitypartition.0/@activitynode.2"/>
+    <activitynode xsi:type="mde:CommandAction" incomming="//@activityedge.1" name="Booking New Cargo" supplier="//@activitypartition.0/@activitynode.5"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" action="//@activitypartition.0/@activitynode.4" triggers="//@activitypartition.0/@activitynode.6">
+      <domainobject xsi:type="mde:Entity" name="Cargo"/>
+      <domainobject xsi:type="mde:ValueObject" name="Itinerary"/>
+      <domainobject xsi:type="mde:ValueObject" name="Tracking ID"/>
+    </activitynode>
+    <activitynode xsi:type="mde:DomainEvent" name="Cargo Booked" readmodel="//@activitypartition.0/@activitynode.7" supplier="//@activitypartition.0/@activitynode.5"/>
+    <activitynode xsi:type="mde:ReadModel" outcomming="//@activityedge.2" name="Tracking ID" event="//@activitypartition.0/@activitynode.6"/>
+    <activitynode xsi:type="mde:FinalNode" incomming="//@activityedge.2"/>
+  </activitypartition>
+</mde:ActivityDiagram>

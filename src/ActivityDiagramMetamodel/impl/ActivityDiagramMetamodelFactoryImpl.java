@@ -2,7 +2,49 @@
  */
 package ActivityDiagramMetamodel.impl;
 
-import ActivityDiagramMetamodel.*;
+import ActivityDiagramMetamodel.Action;
+import ActivityDiagramMetamodel.ActivityDiagram;
+import ActivityDiagramMetamodel.ActivityDiagramMetamodelFactory;
+import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
+import ActivityDiagramMetamodel.ActivityEdge;
+import ActivityDiagramMetamodel.ActivityNode;
+import ActivityDiagramMetamodel.ActivityParameterNode;
+import ActivityDiagramMetamodel.ActivityPartition;
+import ActivityDiagramMetamodel.Actor;
+import ActivityDiagramMetamodel.Aggregate;
+import ActivityDiagramMetamodel.CallAction;
+import ActivityDiagramMetamodel.CallActivityAction;
+import ActivityDiagramMetamodel.CallBehaviorAction;
+import ActivityDiagramMetamodel.CallOperationAction;
+import ActivityDiagramMetamodel.CommandAction;
+import ActivityDiagramMetamodel.ConstraintPin;
+import ActivityDiagramMetamodel.ControlFlow;
+import ActivityDiagramMetamodel.ControlNode;
+import ActivityDiagramMetamodel.DecisionNode;
+import ActivityDiagramMetamodel.DomainEvent;
+import ActivityDiagramMetamodel.DomainObject;
+import ActivityDiagramMetamodel.Entity;
+import ActivityDiagramMetamodel.ExecutableNode;
+import ActivityDiagramMetamodel.ExternalSystem;
+import ActivityDiagramMetamodel.FinalNode;
+import ActivityDiagramMetamodel.ForkNode;
+import ActivityDiagramMetamodel.InitialNode;
+import ActivityDiagramMetamodel.InputPin;
+import ActivityDiagramMetamodel.JoinNode;
+import ActivityDiagramMetamodel.MergeNode;
+import ActivityDiagramMetamodel.ObjectAction;
+import ActivityDiagramMetamodel.ObjectActionKind;
+import ActivityDiagramMetamodel.ObjectFlow;
+import ActivityDiagramMetamodel.ObjectNode;
+import ActivityDiagramMetamodel.ObjectNodeOrderingKind;
+import ActivityDiagramMetamodel.OutputPin;
+import ActivityDiagramMetamodel.Pin;
+import ActivityDiagramMetamodel.QueryAction;
+import ActivityDiagramMetamodel.ReadModel;
+import ActivityDiagramMetamodel.StartObjectBehaviorAction;
+import ActivityDiagramMetamodel.ValueObject;
+import ActivityDiagramMetamodel.ValueSpecification;
+import ActivityDiagramMetamodel.Variable;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -79,17 +121,24 @@ public class ActivityDiagramMetamodelFactoryImpl extends EFactoryImpl implements
 			case ActivityDiagramMetamodelPackage.VALUE_SPECIFICATION: return createValueSpecification();
 			case ActivityDiagramMetamodelPackage.ACTION: return createAction();
 			case ActivityDiagramMetamodelPackage.CALL_ACTION: return createCallAction();
-			case ActivityDiagramMetamodelPackage.VARIABLE_ACTION: return createVariableAction();
 			case ActivityDiagramMetamodelPackage.START_OBJECT_BEHAVIOR_ACTION: return createStartObjectBehaviorAction();
 			case ActivityDiagramMetamodelPackage.OBJECT_ACTION: return createObjectAction();
 			case ActivityDiagramMetamodelPackage.CALL_BEHAVIOR_ACTION: return createCallBehaviorAction();
 			case ActivityDiagramMetamodelPackage.CALL_OPERATION_ACTION: return createCallOperationAction();
 			case ActivityDiagramMetamodelPackage.CALL_ACTIVITY_ACTION: return createCallActivityAction();
 			case ActivityDiagramMetamodelPackage.ACTIVITY_PARTITION: return createActivityPartition();
-			case ActivityDiagramMetamodelPackage.EVENT_ACTION: return createEventAction();
 			case ActivityDiagramMetamodelPackage.COMMAND_ACTION: return createCommandAction();
 			case ActivityDiagramMetamodelPackage.AGGREGATE: return createAggregate();
 			case ActivityDiagramMetamodelPackage.QUERY_ACTION: return createQueryAction();
+			case ActivityDiagramMetamodelPackage.DOMAIN_OBJECT: return createDomainObject();
+			case ActivityDiagramMetamodelPackage.VALUE_OBJECT: return createValueObject();
+			case ActivityDiagramMetamodelPackage.ENTITY: return createEntity();
+			case ActivityDiagramMetamodelPackage.ACTOR: return createActor();
+			case ActivityDiagramMetamodelPackage.SYSTEM: return createSystem();
+			case ActivityDiagramMetamodelPackage.EXTERNAL_SYSTEM: return createExternalSystem();
+			case ActivityDiagramMetamodelPackage.READ_MODEL: return createReadModel();
+			case ActivityDiagramMetamodelPackage.DOMAIN_EVENT: return createDomainEvent();
+			case ActivityDiagramMetamodelPackage.CONSTRAINT_PIN: return createConstraintPin();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -107,8 +156,6 @@ public class ActivityDiagramMetamodelFactoryImpl extends EFactoryImpl implements
 				return createObjectNodeOrderingKindFromString(eDataType, initialValue);
 			case ActivityDiagramMetamodelPackage.OBJECT_ACTION_KIND:
 				return createObjectActionKindFromString(eDataType, initialValue);
-			case ActivityDiagramMetamodelPackage.VARIABLE_ACTION_KIND:
-				return createVariableActionKindFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -126,8 +173,6 @@ public class ActivityDiagramMetamodelFactoryImpl extends EFactoryImpl implements
 				return convertObjectNodeOrderingKindToString(eDataType, instanceValue);
 			case ActivityDiagramMetamodelPackage.OBJECT_ACTION_KIND:
 				return convertObjectActionKindToString(eDataType, instanceValue);
-			case ActivityDiagramMetamodelPackage.VARIABLE_ACTION_KIND:
-				return convertVariableActionKindToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -381,17 +426,6 @@ public class ActivityDiagramMetamodelFactoryImpl extends EFactoryImpl implements
 	 * @generated
 	 */
 	@Override
-	public VariableAction createVariableAction() {
-		VariableActionImpl variableAction = new VariableActionImpl();
-		return variableAction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public StartObjectBehaviorAction createStartObjectBehaviorAction() {
 		StartObjectBehaviorActionImpl startObjectBehaviorAction = new StartObjectBehaviorActionImpl();
 		return startObjectBehaviorAction;
@@ -458,17 +492,6 @@ public class ActivityDiagramMetamodelFactoryImpl extends EFactoryImpl implements
 	 * @generated
 	 */
 	@Override
-	public EventAction createEventAction() {
-		EventActionImpl eventAction = new EventActionImpl();
-		return eventAction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public CommandAction createCommandAction() {
 		CommandActionImpl commandAction = new CommandActionImpl();
 		return commandAction;
@@ -494,6 +517,105 @@ public class ActivityDiagramMetamodelFactoryImpl extends EFactoryImpl implements
 	public QueryAction createQueryAction() {
 		QueryActionImpl queryAction = new QueryActionImpl();
 		return queryAction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DomainObject createDomainObject() {
+		DomainObjectImpl domainObject = new DomainObjectImpl();
+		return domainObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ValueObject createValueObject() {
+		ValueObjectImpl valueObject = new ValueObjectImpl();
+		return valueObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Entity createEntity() {
+		EntityImpl entity = new EntityImpl();
+		return entity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Actor createActor() {
+		ActorImpl actor = new ActorImpl();
+		return actor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ActivityDiagramMetamodel.System createSystem() {
+		SystemImpl system = new SystemImpl();
+		return system;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ExternalSystem createExternalSystem() {
+		ExternalSystemImpl externalSystem = new ExternalSystemImpl();
+		return externalSystem;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ReadModel createReadModel() {
+		ReadModelImpl readModel = new ReadModelImpl();
+		return readModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DomainEvent createDomainEvent() {
+		DomainEventImpl domainEvent = new DomainEventImpl();
+		return domainEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ConstraintPin createConstraintPin() {
+		ConstraintPinImpl constraintPin = new ConstraintPinImpl();
+		return constraintPin;
 	}
 
 	/**
@@ -533,26 +655,6 @@ public class ActivityDiagramMetamodelFactoryImpl extends EFactoryImpl implements
 	 * @generated
 	 */
 	public String convertObjectActionKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public VariableActionKind createVariableActionKindFromString(EDataType eDataType, String initialValue) {
-		VariableActionKind result = VariableActionKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertVariableActionKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

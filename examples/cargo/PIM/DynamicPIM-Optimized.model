@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ASCII"?>
+<mde:Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="platform:/resource/MyCore/resources/mm/PIM/DynamicPIMMetamodel.ecore" xmi:id="__1Yq0EbuEeur67Bs5EuW2g" name="cargo" basePath="resources/examples/cargo">
+  <hasApplication xmi:id="__1ZR4EbuEeur67Bs5EuW2g" name="cargo">
+    <hasAggregate xmi:id="__1Z48EbuEeur67Bs5EuW2g" name="Cargo" aggregateRoot="__1mGMEbuEeur67Bs5EuW2g">
+      <hasProcess xmi:id="__1agAEbuEeur67Bs5EuW2g" name="Cargo">
+        <hasOperation xsi:type="mde:QueryOperation" xmi:id="__1bHEEbuEeur67Bs5EuW2g" name="cargoListView"/>
+        <hasOperation xsi:type="mde:QueryOperation" xmi:id="__1buIEbuEeur67Bs5EuW2g" name="requestPossibleRoutesForCargo"/>
+        <hasOperation xsi:type="mde:QueryOperation" xmi:id="__1cVMEbuEeur67Bs5EuW2g" name="pickNewDestinationView"/>
+        <hasOperation xsi:type="mde:CommandOperation" xmi:id="__1c8QEbuEeur67Bs5EuW2g" name="changeDestination">
+          <publish xmi:id="__1djUEbuEeur67Bs5EuW2g" eventType="__1vQIEbuEeur67Bs5EuW2g"/>
+        </hasOperation>
+        <hasOperation xsi:type="mde:CommandOperation" xmi:id="__1djUUbuEeur67Bs5EuW2g" name="assignCargoToRoute">
+          <publish xmi:id="__1eKYEbuEeur67Bs5EuW2g" eventType="__1xFUEbuEeur67Bs5EuW2g"/>
+        </hasOperation>
+        <hasOperation xsi:type="mde:QueryOperation" xmi:id="__1excEbuEeur67Bs5EuW2g" name="cargoDetailsView"/>
+      </hasProcess>
+      <hasProcess xmi:id="__1fYgEbuEeur67Bs5EuW2g" name="Booking">
+        <hasOperation xsi:type="mde:QueryOperation" xmi:id="__1f_kEbuEeur67Bs5EuW2g" name="bookingFormView"/>
+        <hasOperation xsi:type="mde:CommandOperation" xmi:id="__1gmoEbuEeur67Bs5EuW2g" name="bookingNewCargo">
+          <publish xmi:id="__1hNsEbuEeur67Bs5EuW2g"/>
+        </hasOperation>
+      </hasProcess>
+      <hasProcess xmi:id="__1h0wEbuEeur67Bs5EuW2g" name="Tracking">
+        <hasOperation xsi:type="mde:QueryOperation" xmi:id="__1h0wUbuEeur67Bs5EuW2g" name="trackACargo"/>
+      </hasProcess>
+      <hasProcess xmi:id="__1jC4EbuEeur67Bs5EuW2g" name="Handling">
+        <hasOperation xsi:type="mde:CommandOperation" xmi:id="__1jp8EbuEeur67Bs5EuW2g" name="updateEventOfCargo">
+          <publish xmi:id="__1kRAEbuEeur67Bs5EuW2g" eventType="__1190EbuEeur67Bs5EuW2g"/>
+          <policy xmi:id="__1k4EEbuEeur67Bs5EuW2g"/>
+        </hasOperation>
+      </hasProcess>
+      <domainobjects xsi:type="mde:ValueObject" xmi:id="__1k4EUbuEeur67Bs5EuW2g" typeName="TrackingID" name="TrackingID"/>
+      <domainobjects xsi:type="mde:ValueObject" xmi:id="__1lfIEbuEeur67Bs5EuW2g" typeName="Itinerary" name="Itinerary"/>
+      <domainobjects xsi:type="mde:Entity" xmi:id="__1mGMEbuEeur67Bs5EuW2g" typeName="Cargo" name="Cargo" aggregateRoot="true"/>
+      <domainobjects xsi:type="mde:ValueObject" xmi:id="__1mtQEbuEeur67Bs5EuW2g" typeName="Role" name="Role"/>
+      <domainobjects xsi:type="mde:ValueObject" xmi:id="__1nUUEbuEeur67Bs5EuW2g" typeName="RouteSpecification" name="RouteSpecification"/>
+      <domainobjects xsi:type="mde:ValueObject" xmi:id="__1n7YEbuEeur67Bs5EuW2g" typeName="Delivery" name="Delivery"/>
+      <domainobjects xsi:type="mde:ValueObject" xmi:id="__1oicEbuEeur67Bs5EuW2g" typeName="Leg" name="Leg"/>
+      <domainobjects xsi:type="mde:ValueObject" xmi:id="__1pJgEbuEeur67Bs5EuW2g" typeName="HandlingActivity" name="HandlingActivity"/>
+      <domainobjects xsi:type="mde:Enumeration" xmi:id="__1pwkEbuEeur67Bs5EuW2g" typeName="TransportStatus" name="TransportStatus"/>
+      <domainobjects xsi:type="mde:Enumeration" xmi:id="__1qXoEbuEeur67Bs5EuW2g" typeName="RoutingStatus" name="RoutingStatus"/>
+      <domainobjects xsi:type="mde:CommandEvent" xmi:id="__1q-sEbuEeur67Bs5EuW2g" typeName="BookingANewCargoCommand" name="BookingANewCargoCommand"/>
+      <domainobjects xsi:type="mde:DomainEvent" xmi:id="__1rlwEbuEeur67Bs5EuW2g" typeName="ACargoBooked" name="ACargoBooked"/>
+      <domainobjects xsi:type="mde:DTO" xmi:id="__1sM0EbuEeur67Bs5EuW2g" typeName="PossibleRoutesForCargoDTO" name="PossibleRoutesForCargoDTO"/>
+      <domainobjects xsi:type="mde:DTO" xmi:id="__1sz4EbuEeur67Bs5EuW2g" typeName="BookingFormDTO" name="BookingFormDTO"/>
+      <domainobjects xsi:type="mde:DTO" xmi:id="__1ta8EbuEeur67Bs5EuW2g" typeName="ChangeDestinationFormDTO" name="ChangeDestinationFormDTO"/>
+      <domainobjects xsi:type="mde:CommandEvent" xmi:id="__1upEEbuEeur67Bs5EuW2g" typeName="ChangeDestinationCommand" name="ChangeDestinationCommand"/>
+      <domainobjects xsi:type="mde:DomainEvent" xmi:id="__1vQIEbuEeur67Bs5EuW2g" typeName="CargoDestinationChanged" name="CargoDestinationChanged"/>
+      <domainobjects xsi:type="mde:DTO" xmi:id="__1v3MEbuEeur67Bs5EuW2g" typeName="CargoWithHandlingEventsDTO" name="CargoWithHandlingEventsDTO"/>
+      <domainobjects xsi:type="mde:CommandEvent" xmi:id="__1weQEbuEeur67Bs5EuW2g" typeName="AssignCargoToRouteCommand" name="AssignCargoToRouteCommand"/>
+      <domainobjects xsi:type="mde:DomainEvent" xmi:id="__1xFUEbuEeur67Bs5EuW2g" typeName="CargoAssignedToRoute" name="CargoAssignedToRoute"/>
+      <domainobjects xsi:type="mde:CommandEvent" xmi:id="__1xsYEbuEeur67Bs5EuW2g" typeName="UpdateEventOfCargoCommand" name="UpdateEventOfCargoCommand"/>
+      <domainobjects xsi:type="mde:DomainEvent" xmi:id="__1yTcEbuEeur67Bs5EuW2g" typeName="CargoIsClaimedEvent" name="CargoIsClaimedEvent"/>
+      <domainobjects xsi:type="mde:DomainEvent" xmi:id="__1y6gEbuEeur67Bs5EuW2g" typeName="NextExpectedHandlingActivity" name="NextExpectedHandlingActivity"/>
+      <domainobjects xsi:type="mde:DomainEvent" xmi:id="__1zhkEbuEeur67Bs5EuW2g" typeName="CargoTransportStatusRecalculated" name="CargoTransportStatusRecalculated"/>
+      <domainobjects xsi:type="mde:DomainEvent" xmi:id="__10IoEbuEeur67Bs5EuW2g" typeName="CargoLastKnownUpdated" name="CargoLastKnownUpdated"/>
+      <domainobjects xsi:type="mde:DomainEvent" xmi:id="__11WwEbuEeur67Bs5EuW2g" typeName="CargoCurrentVoyageUpdated" name="CargoCurrentVoyageUpdated"/>
+      <domainobjects xsi:type="mde:DomainEvent" xmi:id="__1190EbuEeur67Bs5EuW2g" typeName="CargoIsUnloadedAtDestination" name="CargoIsUnloadedAtDestination"/>
+      <domainobjects xsi:type="mde:DTO" xmi:id="__12k4EbuEeur67Bs5EuW2g" typeName="CargoDetailsDTO" name="CargoDetailsDTO"/>
+      <domainobjects xsi:type="mde:DTO" xmi:id="__13L8EbuEeur67Bs5EuW2g" typeName="TrackingIDDTO" name="TrackingIDDTO"/>
+      <hasResource xsi:type="mde:SingletonResource" xmi:id="_6bfN4EeyEeuc_6Q9vMgJJA" name="RegistrationResource" isRelatedResource="__13zAEbuEeur67Bs5EuW2g" pathName="\registration">
+        <hasActivity xsi:type="mde:Read" xmi:id="__162UEbuEeur67Bs5EuW2g" name="bookingFormView" trigger="__1f_kEbuEeur67Bs5EuW2g" resource="__13zAEbuEeur67Bs5EuW2g"/>
+        <hasActivity xsi:type="mde:Other" xmi:id="__162UUbuEeur67Bs5EuW2g" name="bookingNewCargo" trigger="__1gmoEbuEeur67Bs5EuW2g" resource="__13zAEbuEeur67Bs5EuW2g"/>
+      </hasResource>
+      <hasResource xsi:type="mde:CollectionResource" xmi:id="_2xpZYEeyEeuc_6Q9vMgJJA" name="TrackingResource" isRelatedResource="__13zAEbuEeur67Bs5EuW2g" readActivity="__17dYEbuEeur67Bs5EuW2g">
+        <hasActivity xsi:type="mde:Read" xmi:id="__17dYEbuEeur67Bs5EuW2g" name="trackACargo" trigger="__1h0wUbuEeur67Bs5EuW2g" resource="__13zAEbuEeur67Bs5EuW2g"/>
+      </hasResource>
+      <hasResource xsi:type="mde:CollectionResource" xmi:id="__13zAEbuEeur67Bs5EuW2g" name="CargoesResource" hasRelatedResource="_6bfN4EeyEeuc_6Q9vMgJJA _fkQswEeyEeuc_6Q9vMgJJA _2xpZYEeyEeuc_6Q9vMgJJA" readActivity="__17dYEbuEeur67Bs5EuW2g" otherActivities="__15oMUbuEeur67Bs5EuW2g __16PQEbuEeur67Bs5EuW2g __162UUbuEeur67Bs5EuW2g">
+        <hasActivity xsi:type="mde:Read" xmi:id="__14aEEbuEeur67Bs5EuW2g" name="cargoListView" trigger="__1bHEEbuEeur67Bs5EuW2g" resource="__13zAEbuEeur67Bs5EuW2g"/>
+      </hasResource>
+      <hasResource xsi:type="mde:SingletonResource" xmi:id="_fkQswEeyEeuc_6Q9vMgJJA" name="CargoResource" hasRelatedResource="_er-Z4EeyEeuc_6Q9vMgJJA _T0VQAEe0Eeuc_6Q9vMgJJA" isRelatedResource="__13zAEbuEeur67Bs5EuW2g" readActivity="__16PQUbuEeur67Bs5EuW2g" pathName="/{trackingID}">
+        <hasActivity xsi:type="mde:Read" xmi:id="__16PQUbuEeur67Bs5EuW2g" name="cargoDetailsView" trigger="__1excEbuEeur67Bs5EuW2g" resource="__13zAEbuEeur67Bs5EuW2g"/>
+      </hasResource>
+      <hasResource xsi:type="mde:SingletonResource" xmi:id="_T0VQAEe0Eeuc_6Q9vMgJJA" name="Destination" isRelatedResource="_fkQswEeyEeuc_6Q9vMgJJA" otherActivities="__15oMUbuEeur67Bs5EuW2g">
+        <hasActivity xsi:type="mde:Read" xmi:id="_W7oYIEe0Eeuc_6Q9vMgJJA" name="pickNewDestinationView" trigger="__1cVMEbuEeur67Bs5EuW2g" resource="__13zAEbuEeur67Bs5EuW2g"/>
+        <hasActivity xsi:type="mde:Other" xmi:id="__15oMUbuEeur67Bs5EuW2g" name="changeDestination" trigger="__1c8QEbuEeur67Bs5EuW2g" resource="__13zAEbuEeur67Bs5EuW2g"/>
+      </hasResource>
+      <hasResource xsi:type="mde:CollectionResource" xmi:id="_er-Z4EeyEeuc_6Q9vMgJJA" name="RoutesResource" isRelatedResource="_fkQswEeyEeuc_6Q9vMgJJA" otherActivities="__16PQEbuEeur67Bs5EuW2g" pathName="\routes">
+        <hasActivity xsi:type="mde:Read" xmi:id="__15BIEbuEeur67Bs5EuW2g" name="requestPossibleRoutesForCargo" trigger="__1buIEbuEeur67Bs5EuW2g" resource="__13zAEbuEeur67Bs5EuW2g"/>
+        <hasActivity xsi:type="mde:Other" xmi:id="__16PQEbuEeur67Bs5EuW2g" name="assignCargoToRoute" trigger="__1djUUbuEeur67Bs5EuW2g" resource="__13zAEbuEeur67Bs5EuW2g"/>
+      </hasResource>
+    </hasAggregate>
+    <hasAggregate xmi:id="__18EcEbuEeur67Bs5EuW2g" name="Voyage" aggregateRoot="__18rgEbuEeur67Bs5EuW2g">
+      <domainobjects xsi:type="mde:Entity" xmi:id="__18rgEbuEeur67Bs5EuW2g" typeName="Voyage" name="Voyage" aggregateRoot="true"/>
+      <domainobjects xsi:type="mde:ValueObject" xmi:id="__19SkEbuEeur67Bs5EuW2g" typeName="Schedule" name="Schedule"/>
+      <domainobjects xsi:type="mde:ValueObject" xmi:id="__195oEbuEeur67Bs5EuW2g" typeName="CarrierMovement" name="CarrierMovement"/>
+      <hasResource xsi:type="mde:CollectionResource" xmi:id="__1-gsEbuEeur67Bs5EuW2g" name="VoyagesResource"/>
+    </hasAggregate>
+    <hasAggregate xmi:id="__1_HwEbuEeur67Bs5EuW2g" name="Handling" aggregateRoot="__2CLEEbuEeur67Bs5EuW2g">
+      <hasProcess xmi:id="__1_u0EbuEeur67Bs5EuW2g" name="Handling">
+        <hasOperation xsi:type="mde:CommandOperation" xmi:id="__2AV4EbuEeur67Bs5EuW2g" name="registerHandlingEvent">
+          <publish xmi:id="__2A88EbuEeur67Bs5EuW2g" eventType="__2EAQEbuEeur67Bs5EuW2g"/>
+        </hasOperation>
+        <hasOperation xsi:type="mde:QueryOperation" xmi:id="__2BkAEbuEeur67Bs5EuW2g" name="reportFormView"/>
+      </hasProcess>
+      <domainobjects xsi:type="mde:Entity" xmi:id="__2CLEEbuEeur67Bs5EuW2g" typeName="HandlingEvent" name="HandlingEvent" aggregateRoot="true"/>
+      <domainobjects xsi:type="mde:ValueObject" xmi:id="__2CyIEbuEeur67Bs5EuW2g" typeName="HandlingHistory" name="HandlingHistory"/>
+      <domainobjects xsi:type="mde:Enumeration" xmi:id="__2DZMEbuEeur67Bs5EuW2g" typeName="HandlingEventType" name="HandlingEventType"/>
+      <domainobjects xsi:type="mde:CommandEvent" xmi:id="__2DZMUbuEeur67Bs5EuW2g" typeName="RegisterHandlingEventCommand" name="RegisterHandlingEventCommand"/>
+      <domainobjects xsi:type="mde:DomainEvent" xmi:id="__2EAQEbuEeur67Bs5EuW2g" typeName="HandlingEventRegistered" name="HandlingEventRegistered"/>
+      <domainobjects xsi:type="mde:DTO" xmi:id="__2EnUEbuEeur67Bs5EuW2g" typeName="ReportFormDTO" name="ReportFormDTO"/>
+      <hasResource xsi:type="mde:CollectionResource" xmi:id="__2FOYEbuEeur67Bs5EuW2g" name="HandlingsResource" readActivity="__2GcgEbuEeur67Bs5EuW2g" otherActivities="__2F1cEbuEeur67Bs5EuW2g">
+        <hasActivity xsi:type="mde:Other" xmi:id="__2F1cEbuEeur67Bs5EuW2g" name="registerHandlingEvent" trigger="__2AV4EbuEeur67Bs5EuW2g" resource="__2FOYEbuEeur67Bs5EuW2g"/>
+        <hasActivity xsi:type="mde:Read" xmi:id="__2GcgEbuEeur67Bs5EuW2g" name="reportFormView" trigger="__2BkAEbuEeur67Bs5EuW2g" resource="__2FOYEbuEeur67Bs5EuW2g"/>
+      </hasResource>
+    </hasAggregate>
+    <hasAggregate xmi:id="__2GcgUbuEeur67Bs5EuW2g" name="Location" aggregateRoot="__2I4wEbuEeur67Bs5EuW2g">
+      <hasProcess xmi:id="__2HDkEbuEeur67Bs5EuW2g" name="Routing">
+        <hasOperation xsi:type="mde:QueryOperation" xmi:id="__2HqoEbuEeur67Bs5EuW2g" name="listOfShippingLocation"/>
+        <hasOperation xsi:type="mde:QueryOperation" xmi:id="__2IRsEbuEeur67Bs5EuW2g" name="findLocation"/>
+      </hasProcess>
+      <domainobjects xsi:type="mde:Entity" xmi:id="__2I4wEbuEeur67Bs5EuW2g" typeName="Location" name="Location" aggregateRoot="true"/>
+      <domainobjects xsi:type="mde:DTO" xmi:id="__2Jf0EbuEeur67Bs5EuW2g" typeName="ShippingLocationsDTO" name="ShippingLocationsDTO"/>
+      <domainobjects xsi:type="mde:DTO" xmi:id="__2KG4EbuEeur67Bs5EuW2g" typeName="LocationDetailsDTO" name="LocationDetailsDTO"/>
+      <hasResource xsi:type="mde:CollectionResource" xmi:id="__2LVAEbuEeur67Bs5EuW2g" name="LocationsResource" readActivity="__2L8EUbuEeur67Bs5EuW2g">
+        <hasActivity xsi:type="mde:Read" xmi:id="__2L8EEbuEeur67Bs5EuW2g" name="listOfShippingLocation" trigger="__2HqoEbuEeur67Bs5EuW2g" resource="__2LVAEbuEeur67Bs5EuW2g"/>
+        <hasActivity xsi:type="mde:Read" xmi:id="__2L8EUbuEeur67Bs5EuW2g" name="findLocation" trigger="__2IRsEbuEeur67Bs5EuW2g" resource="__2LVAEbuEeur67Bs5EuW2g"/>
+      </hasResource>
+    </hasAggregate>
+    <hasAggregate xmi:id="__2MjIEbuEeur67Bs5EuW2g" name="Customer" aggregateRoot="__2NKMEbuEeur67Bs5EuW2g">
+      <domainobjects xsi:type="mde:Entity" xmi:id="__2NKMEbuEeur67Bs5EuW2g" typeName="Customer" name="Customer" aggregateRoot="true"/>
+      <hasResource xsi:type="mde:CollectionResource" xmi:id="__2NxQEbuEeur67Bs5EuW2g" name="CustomersResource"/>
+    </hasAggregate>
+  </hasApplication>
+  <primitiveTypes xmi:id="__2OYUEbuEeur67Bs5EuW2g" typeName="String"/>
+  <primitiveTypes xmi:id="__2OYUUbuEeur67Bs5EuW2g" typeName="Integer" type="Integer"/>
+  <primitiveTypes xmi:id="__2O_YEbuEeur67Bs5EuW2g" typeName="Float" type="Float"/>
+  <primitiveTypes xmi:id="__2PmcEbuEeur67Bs5EuW2g" typeName="Boolean" type="Boolean"/>
+  <primitiveTypes xmi:id="__2PmcUbuEeur67Bs5EuW2g" typeName="Null" type="null"/>
+  <primitiveTypes xmi:id="__2PmckbuEeur67Bs5EuW2g" typeName="Date" type="Date"/>
+</mde:Project>

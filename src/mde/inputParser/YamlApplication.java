@@ -6,6 +6,7 @@ import java.util.Arrays;
 public class YamlApplication {
 
 	public String Name;
+	public ArrayList<String> Aggregates;
 	public ArrayList<String> Resources;
 	public ArrayList<String> Roles;
 
@@ -19,6 +20,11 @@ public class YamlApplication {
 		this.Roles = new ArrayList<String>();
 	}
 
+	public void addAggregate(String aggregate) {
+		if (!Aggregates.contains(aggregate))
+			Aggregates.add(aggregate);
+	}
+	
 	public void addResource(String resource) {
 		if (!Resources.contains(resource))
 			Resources.add(resource);
@@ -33,21 +39,22 @@ public class YamlApplication {
 	public String toString() {
 		String all = "Application:\n" + "Name: " + Name + "\n"
 				+ "Roles: " + Arrays.asList(Roles) + "\n"
+				+ "Aggregates: " + Arrays.asList(Aggregates) + "\n"
 				+ "Resources: " + Arrays.asList(Resources) + "\n";
 		return all;
 	}
 
 	public String toYAMLString() {
-		String all = "- !!cim.Application";
+		String all = "- !!mde.inputParser.Application";
 		all += "\n  Name: " + Name;
-		all += "\n  Resources: " + Arrays.asList(Roles).toString().replaceAll("^\\[|\\]$", "");
+		all += "\n  Roles: " + Arrays.asList(Roles).toString().replaceAll("^\\[|\\]$", "");
 		all += "\n  Resources: " + Arrays.asList(Resources).toString().replaceAll("^\\[|\\]$", "");
 		return all;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		return ((YamlResource) obj).Name.equals(Name);
+		return ((YamlApplication) obj).Name.equals(Name);
 	}
 
 	@Override
@@ -65,6 +72,10 @@ public class YamlApplication {
 	
 	public ArrayList<String> getRoles(){
 		return this.Roles;
+	}
+
+	public ArrayList<String> getAggregates() {
+		return Aggregates;
 	}
 
 }

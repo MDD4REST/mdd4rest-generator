@@ -1,0 +1,41 @@
+import "../utilities/StaticPIM.eol";
+
+var dynamicProject = DynamicPIM!Project.all().first();
+var staticProject = StaticPIM!Project.all().first();
+ConvertALlResources();
+
+operation ConvertALlResources(){
+	var dynamicResources = DynamicPIM!Resource.all();
+	
+	for (resource in dynamicResources){
+		resource.ConvertResource();
+	}
+}
+
+operation DynamicPIM!Resource ConvertResource(): StaticPIM!Resource{
+	var staticApplication = staticProject.findApplication(self.aggregate.application.name);
+	var staticAggregate = staticApplication.findAggregate(self.aggregate.name);
+	var staticResource = staticAggregate.findResource(self.name);
+		
+		
+	if (staticResource == null){
+		if(self.type().name == "CollectionResource")
+			staticResource = new StaticPIM!CollectionResource;
+		else
+			staticResource = new StaticPIM!SingletonResource;
+		staticResource.name = self.name;
+		staticResource.pathName = self.pathName;
+		staticResource.aggregate = staticAggregate;
+			
+		for (relatedResource in self.hasRelatedResource){
+			var staticRelatedResource = relatedResource.ConvertResource();
+			staticRelatedResource.println();
+			staticRelatedResource.isRelatedResource = staticResource;
+			staticResource.hasRelatedResource.add(staticRelatedResource);
+		}
+			
+		staticAggregate.hasResource.add(staticResource);
+	}
+	
+	return staticResource;
+}

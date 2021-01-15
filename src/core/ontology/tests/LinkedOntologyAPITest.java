@@ -8,7 +8,7 @@ import core.ontology.StaticOntologyAPI;
 /**
  * Links the static and the dynamic ontologies into one linked ontology.
  * 
- * @author themis
+ * @author amirdeljouyi
  */
 public class LinkedOntologyAPITest {
 
@@ -18,7 +18,7 @@ public class LinkedOntologyAPITest {
 	 * @param args unused parameter.
 	 */
 	public static void main(String[] args) {
-		String projectName = "Restmarks";
+		String projectName = "Bookmarks";
 
 		// Load the two ontologies
 		StaticOntologyAPI staticOntology = new StaticOntologyAPI(projectName, "resources/examples/bookmarks", false);

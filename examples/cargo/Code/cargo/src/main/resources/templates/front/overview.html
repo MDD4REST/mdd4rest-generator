@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: headTag"></head>
+
+<body class="container">
+	<div th:replace="header :: navigation">Navigation</div>
+
+	<h2>Resources:</h2>
+
+	<ul>
+		<li><a href="/" th:href="@{/rest/planet}">Planets</a></li>
+	</ul>
+
+	<div th:replace="footer :: footer"></div>
+
+</body>
+</html>

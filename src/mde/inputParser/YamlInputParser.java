@@ -3,7 +3,6 @@ package mde.inputParser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -22,11 +21,9 @@ public class YamlInputParser {
 		this.strYamlFilePath = strYamlFilePath;
 		oYamlHandler = new Yaml(new Constructor(YamlRESTfulService.class));
 		try {
-			oInputStreamHandler = new FileInputStream(new File(strYamlFilePath));
+			oInputStreamHandler = new FileInputStream(new File(this.strYamlFilePath));
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -37,11 +34,11 @@ public class YamlInputParser {
 		return this.listOfYamls;
 	}
 	
-	public ArrayList<YamlResource> getListOfYamlResources() {
-		for (YamlResource oYamlRespource : this.listOfYamls.getResources()) {
-			System.out.println(oYamlRespource + "\n");
+	public ArrayList<YamlAggregate> getListOfYamlAggregates() {
+		for (YamlAggregate oYamlAggregates : this.listOfYamls.getAggregates()) {
+			System.out.println(oYamlAggregates + "\n");
 		}
-		return this.listOfYamls.getResources();
+		return this.listOfYamls.getAggregates();
 	}
 	
 	public ArrayList<YamlApplication> getListOfYamlApplications() {
@@ -58,14 +55,6 @@ public class YamlInputParser {
 			System.out.println(oYamlRole + "\n");
 		}
 		return this.listOfYamls.getRoles();
-	}
-	
-	public ArrayList<YamlEnumeration> getListOfYamlEnumerations() {
-
-		for (YamlEnumeration oYamlEnumeration : listOfYamls.getEnumerations()) {
-			System.out.println(oYamlEnumeration + "\n");
-		}
-		return this.listOfYamls.getEnumerations();
 	}
 
 }

@@ -6,213 +6,252 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.atteo.evo.inflector.English;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.Diagnostician;
 
-import SecurityPIM.Constraint;
-import SecurityPIM.Permission;
-import SecurityPIM.PermissionMode;
-import SecurityPIM.PermissionType;
-import SecurityPIM.Role;
-import SecurityPIM.TwoPropertyOperator;
-import SecurityPIM.TwoRelationalOperator;
-import mde.inputParser.YamlActivity;
-import mde.inputParser.YamlApplication;
-import mde.inputParser.YamlConstraint;
-import mde.inputParser.YamlEnumeration;
-import mde.inputParser.YamlOperand;
-import mde.inputParser.YamlPermission;
-import mde.inputParser.YamlProperty;
-import mde.inputParser.YamlRelationship;
-import mde.inputParser.YamlResource;
-import mde.inputParser.YamlRole;
-import ServicePIM.Application;
-import ServicePIM.BasicType;
-import ServicePIM.CRUDActivity;
-import ServicePIM.CRUDVerb;
-import ServicePIM.Config;
-import ServicePIM.Enumeration;
-import ServicePIM.InputRepresentation;
-import ServicePIM.Literal;
-import ServicePIM.MediaType;
-import ServicePIM.Multiplicity;
-import ServicePIM.OutputRepresentation;
-import ServicePIM.RESTfulServicePIM;
-import ServicePIM.RelatedResource;
-import ServicePIM.Relationship;
-import ServicePIM.Resource;
-import ServicePIM.ServicePIMPackage;
-import ServicePIM.TypeDefinition;
-import ServicePIM.Property;
-import ServicePIM.PropertyType;
+import DynamicPIM.PIMDynamic;
+import mde.inputParser.*;
+import StaticPIM.*;
+import StaticPIM.ValueObject;
 
 public class CorePIMProducer extends APIMProducer {
 
-	public CorePIMProducer(ArrayList<YamlApplication> listOfPIMYamlApplications,
-			ArrayList<YamlResource> listOfPIMYamlResources, ArrayList<YamlRole> listOfPIMYamlRoles,
-			ArrayList<YamlEnumeration> listOfPIMYamlEnumeration) {
-		super(listOfPIMYamlApplications, listOfPIMYamlResources, listOfPIMYamlRoles, listOfPIMYamlEnumeration);
+	YamlRESTfulService listOfYaml;
+	RESTfulServiceUtils restUtils;
+
+	public CorePIMProducer(YamlRESTfulService listOfYaml) {
+		super(listOfYaml.getApplications(), listOfYaml.getAggregates());
+		this.listOfYaml = listOfYaml;
+		restUtils = new RESTfulServiceUtils(this.oProjectStatic, this.oProjectDynamic);
 	}
 
-	public CorePIMProducer(ArrayList<YamlApplication> listOfPIMYamlApplications,
-			ArrayList<YamlResource> listOfPIMYamlResources, ArrayList<YamlRole> listOfPIMYamlRoles,
-			ArrayList<YamlEnumeration> listOfPIMYamlEnumeration, String strProjectName, String strProjectBasePath) {
-		super(listOfPIMYamlApplications, listOfPIMYamlResources, listOfPIMYamlRoles, listOfPIMYamlEnumeration,
-				strProjectName, strProjectBasePath);
+	public CorePIMProducer(YamlRESTfulService listOfYaml, String projectName, String projectPath) {
+		super(listOfYaml.getApplications(), listOfYaml.getAggregates(), projectName, projectPath);
+		this.listOfYaml = listOfYaml;
+		restUtils = new RESTfulServiceUtils(this.oProjectStatic, this.oProjectDynamic);
 	}
 
 	@Override
-	public RESTfulServicePIM producePIM() {
-		
-		addBasicTypes();
-		createAllPIMEnumerations();
-		createAllPIMResources();
-		createAllPIMRoles();
+	public Project producePIMStatic() {
+
+		addPrimitiveTypes();
 		createAllPIMApplications();
-		addResourceRelations();
+//		createAllPIMRoles();
+		addDomainObjectsRelations();
+
+		createAllStaticResources();
+
 		// validateProducedPIM();
-		System.out.println(this.getRESTfulServicePIM().getHasApplications());
+		System.out.println(this.getProjectStatic().getHasApplication());
 
-		return this.getRESTfulServicePIM();
+		return this.getProjectStatic();
 	}
 
-	private void createAllPIMResources() {
-		for (int n = 0; n < this.listOfYamlResources.size(); n++) {
-			YamlResource oCurrentYamlResource = this.listOfYamlResources.get(n);
+	@Override
+	public DynamicPIM.Project producePIMDynamic() {
+		addDynamicPrimitiveTypes();
+
+		createAllDynamicPIMApplications();
+
+		addProcessesRelations();
+
+		createAllDynamicResources();
+
+		return this.getProjectDynamic();
+	}
+
+	private Aggregate createPIMAggregate(YamlAggregate yamlAggregate) {
 //			System.out.println("Yaml Resource:: "+ oCurrentYamlResource);
-			Resource oNewPIMResource = this.getServicePIMFactory().createResource();
-			oNewPIMResource.setName(oCurrentYamlResource.getName());
-			oNewPIMResource.setIsAlgorithmic(oCurrentYamlResource.getResourceType());
-			oNewPIMResource = addResourceProperties(oNewPIMResource, oCurrentYamlResource);
-			oNewPIMResource = addResourceCRUDActivities(oNewPIMResource, oCurrentYamlResource);
-			oNewPIMResource = addResourceRepresentations(oNewPIMResource, oCurrentYamlResource);
-			this.getRESTfulServicePIM().getHasResources().add(oNewPIMResource);
+		Aggregate aggregate = this.getServicePIMFactory().createAggregate();
+		aggregate.setName(yamlAggregate.getName());
+		for (YamlDomainObject oDomainObject : yamlAggregate.getDomainObjects()) {
+			DomainObject domainObject = createDomainObject(oDomainObject);
+			domainObject.setAggregate(aggregate);
+			if (domainObject.isAggregateRoot()) {
+				System.out.println("aggregateRoot " + domainObject);
+				aggregate.setAggregateRoot(domainObject);
+			}
+			aggregate.getHasDomainobject().add(domainObject);
 		}
-		RESTfulServiceUtils restUtils = new RESTfulServiceUtils(this.oRESTfulServicePIM);
-		this.getRESTfulServicePIM().getHasResources().add(restUtils.UserResource());
-		this.getRESTfulServicePIM().getHasResources().add(restUtils.CurrentUserResource());
+		return aggregate;
+//		RESTfulServiceUtils restUtils = new RESTfulServiceUtils(this.oRESTfulServicePIM);
+//		this.getRESTfulServicePIM().get().add(restUtils.UserResource());
 	}
 
-	private void createAllPIMEnumerations() {
-		for (int n = 0; n < this.listOfYamlEnumerations.size(); n++) {
-			YamlEnumeration oCurrentYamlEnumeration = this.listOfYamlEnumerations.get(n);
-			System.out.println("Current" + oCurrentYamlEnumeration);
-			Enumeration oNewPIMEnumeration = this.getServicePIMFactory().createEnumeration();
-			oNewPIMEnumeration.setName(oCurrentYamlEnumeration.getName());
-			oNewPIMEnumeration.setTypeName(oCurrentYamlEnumeration.getName());
-			
-			for (int i = 0; i< oCurrentYamlEnumeration.getLiterals().size(); i++) {
-				String yamlLiteral = oCurrentYamlEnumeration.getLiterals().get(i);
-				Literal literal = this.getServicePIMFactory().createLiteral();
-				literal.setName(yamlLiteral);
-				literal.setValue(i);
-				oNewPIMEnumeration.getLiterals().add(literal);
-			}
-			this.getRESTfulServicePIM().getEnumerations().add(oNewPIMEnumeration);
+	private DomainObject createDomainObject(YamlDomainObject domainObject) {
+		System.out.println(domainObject.getName());
+		switch (domainObject.getType()) {
+		case Entity: {
+			Entity entity = (Entity) createEntityOrValueObject(domainObject, BasicDomainObject.Entity);
+			return entity;
 		}
-	}
-
-	private void createAllPIMRoles() {
-		for (int n = 0; n < this.listOfYamlRoles.size(); n++) {
-			YamlRole oCurrentYamlRole = this.listOfYamlRoles.get(n);
-			Role oNewPIMRole = this.getSecurityPIMFactory().createRole();
-			String permsissionMode = oCurrentYamlRole.getPermissionMode();
-			oNewPIMRole.setName(oCurrentYamlRole.getName());
-			PermissionMode oPermissionMode = PermissionMode.DENY_ALL_EXCEPT_PERMISSIONS;
-			if (oCurrentYamlRole.PermissionMode.equalsIgnoreCase("Allow_All_Except_Permissions")) {
-				oPermissionMode = PermissionMode.ALLOW_ALL_EXCEPT_PERMISSIONS;
-				oNewPIMRole.setPermissionMode(PermissionMode.ALLOW_ALL_EXCEPT_PERMISSIONS);
-			} else {
-				oNewPIMRole.setPermissionMode(PermissionMode.DENY_ALL_EXCEPT_PERMISSIONS);
-			}
-			for (YamlPermission yamlPermission : oCurrentYamlRole.Permissions) {
-				Permission permission = this.getSecurityPIMFactory().createPermission();
-				String resourceOfPermission = yamlPermission.getResource();
-				if (oPermissionMode.equals(PermissionMode.ALLOW_ALL_EXCEPT_PERMISSIONS)) {
-					permission.setPermissionType(PermissionType.DENY);
-				} else {
-					permission.setPermissionType(PermissionType.ALLOW);
-				}
-				for (YamlConstraint constraint : yamlPermission.getConstraints()) {
-					YamlOperand yamlRightOperand = constraint.getRightOperand();
-					YamlOperand yamlLeftOperand = constraint.getLeftOperand();
-					Constraint oNewConstraint = this.getSecurityPIMFactory().createConstraint();
-					RESTfulServiceUtils restUtils = new RESTfulServiceUtils(this.oRESTfulServicePIM);
-					Property rightPropertyOperand = restUtils.findProperty(yamlRightOperand.getResource(),
-							yamlRightOperand.getProperty());
-					Property leftPropertyOperand = restUtils.findProperty(yamlLeftOperand.getResource(),
-							yamlLeftOperand.getProperty());
-					System.out.println("left: "+leftPropertyOperand);
-					TwoRelationalOperator operator = this.getSecurityPIMFactory().createTwoRelationalOperator();
-					operator.setRightOperand(rightPropertyOperand);
-					operator.setLeftOperand(leftPropertyOperand);
-					oNewConstraint.getConstraintoperator().add(operator);
-					permission.getConstraint().add(oNewConstraint);
-				}
-				oNewPIMRole.getPermission().add(permission);
-			}
-			this.getRESTfulServicePIM().getHasRoles().add(oNewPIMRole);
+		case ValueObject: {
+			ValueObject valueObject = (ValueObject) createEntityOrValueObject(domainObject,
+					BasicDomainObject.ValueObject);
+			return valueObject;
+		}
+		case Enumeration: {
+			Enumeration enumeration = (Enumeration) createPIMEnumeration(domainObject);
+			return enumeration;
+		}
+		case Event: {
+			DomainEvent domainEvent = (DomainEvent) createEntityOrValueObject(domainObject, BasicDomainObject.Event);
+			return domainEvent;
+		}
+		case Command: {
+			CommandEvent domainEvent = (CommandEvent) createEntityOrValueObject(domainObject,
+					BasicDomainObject.Command);
+			return domainEvent;
+		}
+		case DTO: {
+			DTO domainEvent = (DTO) createEntityOrValueObject(domainObject, BasicDomainObject.DTO);
+			return domainEvent;
+		}
+		default:
+			throw new IllegalArgumentException("The yaml variable '" + domainObject + "' is not a valid type");
 		}
 	}
 
-	private void createAllPIMApplications() {
-		for (int n = 0; n < this.listOfYamlApplications.size(); n++) {
-			YamlApplication oCurrentYamlApplication = this.listOfYamlApplications.get(n);
-			Application oNewPIMApplication = this.getServicePIMFactory().createApplication();
-			Config configOfApplication = this.getServicePIMFactory().createConfig();
-			RESTfulServiceUtils restUtils = new RESTfulServiceUtils(this.oRESTfulServicePIM);
-			for (String resourceName : oCurrentYamlApplication.getResources()) {
-				Resource resource = restUtils.findResource(resourceName);
-				System.out.println(resourceName);
-				System.out.println(resource);
-				oNewPIMApplication.getResources().add(resource);
-				resource.getApplications().add(oNewPIMApplication);
-			}
-			for (String role : oCurrentYamlApplication.getRoles()) {
-				oNewPIMApplication.getRoles().add(restUtils.findRole(role));
-			}
-			configOfApplication.setBaseName(oCurrentYamlApplication.getName());
-			oNewPIMApplication.setHasConfig(configOfApplication);
-
-			this.getRESTfulServicePIM().getHasApplications().add(oNewPIMApplication);
+	private DomainObject createEntityOrValueObject(YamlDomainObject yamlDomainObject, BasicDomainObject type) {
+		DomainObject domainObject;
+		switch (type) {
+		case Entity: {
+			domainObject = this.getServicePIMFactory().createEntity();
+			break;
 		}
+		case ValueObject: {
+			domainObject = this.getServicePIMFactory().createValueObject();
+			break;
+		}
+		case Event: {
+			domainObject = this.getServicePIMFactory().createDomainEvent();
+			break;
+		}
+		case Command: {
+			domainObject = this.getServicePIMFactory().createCommandEvent();
+			break;
+		}
+		case DTO: {
+			domainObject = this.getServicePIMFactory().createDTO();
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("type '" + type + "' is not a valid type");
+		}
+
+		domainObject.setName(yamlDomainObject.getName());
+		domainObject.setAggregateRoot(yamlDomainObject.getIsAggregateRoot());
+		domainObject.setTypeName(domainObject.getName());
+
+		if (yamlDomainObject.getProperties() != null)
+			for (YamlProperty yamlProperty : yamlDomainObject.getProperties()) {
+				Property property = addDomainObjectProperties(yamlProperty);
+				domainObject.getHasProperty().add(property);
+			}
+		return domainObject;
 	}
 
-	private Resource addResourceProperties(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
+	private Property addDomainObjectProperties(YamlProperty yamlProperty) {
+		Property property = this.getServicePIMFactory().createProperty();
+		property.setName(yamlProperty.getName());
+		property.setIsUnique(yamlProperty.getUniqueness());
+		property.setIsNamingProperty(yamlProperty.getNamingAbility());
 
-		for (int n = 0; n < oCurrentYamlResource.getYamlProperties().size(); n++) {
-			YamlProperty oCurrentYamlProperty = oCurrentYamlResource.getYamlProperties().get(n);
-			Property oNewResourceProperty = this.getServicePIMFactory().createProperty();
-			oNewResourceProperty.setName(oCurrentYamlProperty.getName());
-			
-			TypeDefinition type = getTypeDefinition(oCurrentYamlProperty.getType());
-			System.out.println("Type:: " + type.getClass().getSimpleName());
+		TypeDefinition type = getTypeDefinition(yamlProperty.getType());
+		System.out.println("Type:: " + type);
 //			if(type.getClass().getSimpleName().equals("BasicTypeImpl")) {
 //				oNewResourceProperty.setBasictype((BasicType) type); 
 //			}
-			oNewResourceProperty.setType(type);
-			oNewResourceProperty.setTypeName(type.getTypeName());
-			
-			oNewResourceProperty.setIsUnique(oCurrentYamlProperty.getUniqueness());
-			oNewResourceProperty.setIsNamingProperty(oCurrentYamlProperty.getNamingAbility());
-			oNewPIMResource.getHasProperty().add(oNewResourceProperty);
-		}
-		return oNewPIMResource;
+		property.setType(type);
+
+		return property;
 	}
 
-	private void addResourceRelations() {
-		System.out.println( "All Resources" + this.getRESTfulServicePIM().getHasResources());
-		for (int n = 0; n < this.getRESTfulServicePIM().getHasResources().size(); n++) {
-			for (int i = 0; i < this.listOfYamlResources.size(); i++) {
-				// if we come by the parent Yaml resource of this PIM resource
-				System.out.println("RestRes: " + this.getRESTfulServicePIM().getHasResources().get(n));
-				System.out.println("YamlRes: " + this.listOfYamlResources.get(i).getName());
-				if (this.getRESTfulServicePIM().getHasResources().get(n).getName()
-						.equalsIgnoreCase(this.listOfYamlResources.get(i).getName())) {
-					// add to the PIM resource the same related resources as the ones that the Yaml
-					// resource has
-					addOutgoingRelations(n, i);
+	private Enumeration createPIMEnumeration(YamlDomainObject yamlDomainObject) {
+		Enumeration enumeration = this.getServicePIMFactory().createEnumeration();
+		enumeration.setName(yamlDomainObject.getName());
+		enumeration.setTypeName(yamlDomainObject.getName());
+
+		int i = 0;
+		for (String yamlLiteral : yamlDomainObject.getLiterals()) {
+			Literal literal = this.getServicePIMFactory().createLiteral();
+			literal.setName(yamlLiteral);
+			literal.setValue(i);
+			enumeration.getHasLiteral().add(literal);
+			i++;
+		}
+		return enumeration;
+	}
+
+//	private void createAllPIMRoles() {
+//		for (int n = 0; n < this.listOfYamlRoles.size(); n++) {
+//			YamlRole oCurrentYamlRole = this.listOfYamlRoles.get(n);
+//			Role oNewPIMRole = this.getSecurityPIMFactory().createRole();
+//			String permsissionMode = oCurrentYamlRole.getPermissionMode();
+//			oNewPIMRole.setName(oCurrentYamlRole.getName());
+//			PermissionMode oPermissionMode = PermissionMode.DENY_ALL_EXCEPT_PERMISSIONS;
+//			if (oCurrentYamlRole.PermissionMode.equalsIgnoreCase("Allow_All_Except_Permissions")) {
+//				oPermissionMode = PermissionMode.ALLOW_ALL_EXCEPT_PERMISSIONS;
+//				oNewPIMRole.setPermissionMode(PermissionMode.ALLOW_ALL_EXCEPT_PERMISSIONS);
+//			} else {
+//				oNewPIMRole.setPermissionMode(PermissionMode.DENY_ALL_EXCEPT_PERMISSIONS);
+//			}
+//			for (YamlPermission yamlPermission : oCurrentYamlRole.Permissions) {
+//				Permission permission = this.getSecurityPIMFactory().createPermission();
+//				String resourceOfPermission = yamlPermission.getResource();
+//				if (oPermissionMode.equals(PermissionMode.ALLOW_ALL_EXCEPT_PERMISSIONS)) {
+//					permission.setPermissionType(PermissionType.DENY);
+//				} else {
+//					permission.setPermissionType(PermissionType.ALLOW);
+//				}
+//				for (YamlConstraint constraint : yamlPermission.getConstraints()) {
+//					YamlOperand yamlRightOperand = constraint.getRightOperand();
+//					YamlOperand yamlLeftOperand = constraint.getLeftOperand();
+//					Constraint oNewConstraint = this.getSecurityPIMFactory().createConstraint();
+//					Property rightPropertyOperand = restUtils.findProperty(yamlRightOperand.getResource(),
+//							yamlRightOperand.getProperty());
+//					Property leftPropertyOperand = restUtils.findProperty(yamlLeftOperand.getResource(),
+//							yamlLeftOperand.getProperty());
+//					System.out.println("left: " + leftPropertyOperand);
+//					TwoRelationalOperator operator = this.getSecurityPIMFactory().createTwoRelationalOperator();
+//					operator.setRightOperand(rightPropertyOperand);
+//					operator.setLeftOperand(leftPropertyOperand);
+//					oNewConstraint.getConstraintoperator().add(operator);
+//					permission.getConstraint().add(oNewConstraint);
+//				}
+//				oNewPIMRole.getPermission().add(permission);
+//			}
+//			this.getRESTfulServicePIM().getHasRoles().add(oNewPIMRole);
+//		}
+//	}
+
+	private void createAllPIMApplications() {
+		for (YamlApplication oCurrentYamlApplication : this.listOfYamlApplications) {
+			Application application = this.getServicePIMFactory().createApplication();
+			application.setName(oCurrentYamlApplication.getName());
+			for (String aggregateName : oCurrentYamlApplication.getAggregates()) {
+				YamlAggregate yamlAggregate = listOfYaml.getAggregateByName(aggregateName);
+				Aggregate aggregate = createPIMAggregate(yamlAggregate);
+				aggregate.setApplication(application);
+				application.getHasAggregate().add(aggregate);
+			}
+//			for (String role : oCurrentYamlApplication.getRoles()) {
+//				application.getRoles().add(restUtils.findRole(role));
+//			}
+			application.setProject(this.getProjectStatic());
+			this.getProjectStatic().getHasApplication().add(application);
+		}
+	}
+
+	private void addDomainObjectsRelations() {
+		System.out.println("All Resources" + this.getProjectStatic().getHasApplication());
+		for (Application application : this.getProjectStatic().getHasApplication()) {
+			for (Aggregate aggregate : application.getHasAggregate()) {
+				for (DomainObject domainObject : aggregate.getHasDomainobject()) {
+					YamlDomainObject yamlDomainObject = listOfYaml.getDomainObjectByName(domainObject.getName(),
+							aggregate.getName());
+					addOutgoingRelations(application.getName(), domainObject, yamlDomainObject);
 				}
 			}
 		}
@@ -221,126 +260,170 @@ public class CorePIMProducer extends APIMProducer {
 //		}
 	}
 
-	private void addOutgoingRelations(int iPIMResourceIndex, int iYamlResourceIndex) {
-		if (this.listOfYamlResources.get(iYamlResourceIndex).getRelationships() != null) {
-			RESTfulServiceUtils restUtils = new RESTfulServiceUtils(this.oRESTfulServicePIM);
-			for (int i = 0; i < this.listOfYamlResources.get(iYamlResourceIndex).getRelationships().size(); i++) {
-				YamlRelationship oCurrentYamlRelationship = this.listOfYamlResources.get(iYamlResourceIndex)
-						.getRelationships().get(i);
-				System.out.println(oCurrentYamlRelationship.getResource());
-				Resource relatedResource = restUtils.findResource(oCurrentYamlRelationship.getResource());
-				Relationship oNewRelationship = this.getServicePIMFactory().createRelationship();
-				oNewRelationship.setFromResource(this.getRESTfulServicePIM().getHasResources().get(iPIMResourceIndex));
-				oNewRelationship.setToResource(relatedResource);
-
-				if (oCurrentYamlRelationship.Multiplicity.equalsIgnoreCase("one-many")) {
-					oNewRelationship.setMultiplicity(Multiplicity.ONE_TO_MANY);
-				} else if (oCurrentYamlRelationship.Multiplicity.equalsIgnoreCase("many-one")) {
-					oNewRelationship.setMultiplicity(Multiplicity.MANY_TO_ONE);
-				} else if (oCurrentYamlRelationship.Multiplicity.equalsIgnoreCase("one-one")) {
-					oNewRelationship.setMultiplicity(Multiplicity.ONE_TO_ONE);
-				} else if (oCurrentYamlRelationship.Multiplicity.equalsIgnoreCase("many-many")) {
-					oNewRelationship.setMultiplicity(Multiplicity.MANY_TO_MANY);
+	private void addOutgoingRelations(String applicationName, DomainObject domainObject,
+			YamlDomainObject yamlDomainObject) {
+		if (yamlDomainObject.getRelations() != null) {
+			for (YamlRelation oCurrentYamlRelation : yamlDomainObject.getRelations()) {
+				System.out.println("yamlTarget: " + oCurrentYamlRelation.getTarget());
+				DomainObject target = restUtils.findDomainObject(oCurrentYamlRelation.getTarget(), applicationName);
+				Relation oNewRelation = this.getServicePIMFactory().createRelation();
+				System.out.println("target: " + target);
+				oNewRelation.setSource(domainObject);
+				oNewRelation.setTarget(target);
+				oNewRelation.setName(oCurrentYamlRelation.getName());
+				if (oCurrentYamlRelation.getMany()) {
+					ComplexType complexType = this.getServicePIMFactory().createComplexType();
+					restUtils.findApplicattion(applicationName).getComplextypes().add(complexType);
+					complexType.setType(target);
+					oNewRelation.setType(complexType);
+					oNewRelation.setMultiplicity(Multiplicity.ONE_TO_MANY);
 				} else {
-					System.out.println("Corrupted input! Unkown multiplicity: " + oCurrentYamlRelationship);
-					Runtime.getRuntime().exit(-1);
+					oNewRelation.setType(target);
+					oNewRelation.setMultiplicity(Multiplicity.ONE_TO_ONE);
 				}
 
-				this.getRESTfulServicePIM().getHasResources().get(iPIMResourceIndex).getHasRelationship()
-						.add(oNewRelationship);
+				domainObject.getHasRelation().add(oNewRelation);
 			}
 		}
 	}
 
-	private void addIncomingRelations(int iPIMResourceIndex) {
+	private Resource addStaticResource(Aggregate aggregate) {
 
-		System.out.println("iPIM:: " + iPIMResourceIndex);
-		for (int n = 0; n < this.getRESTfulServicePIM().getHasResources().size(); n++) {
-			for (int i = 0; i < this.getRESTfulServicePIM().getHasResources().get(n).getHasRelationship().size(); i++) {
-				System.out.println("n: " + n + ", i:" + i);
-				if (this.getRESTfulServicePIM().getHasResources().get(iPIMResourceIndex).getName()
-						.equalsIgnoreCase(this.getRESTfulServicePIM().getHasResources().get(n).getHasRelationship()
-								.get(i).getToResource().getName())) {
-					this.getRESTfulServicePIM().getHasResources().get(iPIMResourceIndex).getHasRelationship()
-							.add(this.getRESTfulServicePIM().getHasResources().get(n).getHasRelationship().get(i));
+		Resource resource = this.getServicePIMFactory().createCollectionResource();
+		String resourceName = English.plural(aggregate.getName());
+		resource.setName(resourceName.concat("Resource"));
+		resource.setSimpleName(resourceName);
+
+		return resource;
+	}
+
+	private DynamicPIM.Resource addDynamicResource(DynamicPIM.Aggregate aggregate, YamlAggregate yamlAggregate) {
+
+		String applicationName = aggregate.getApplication().getName();
+		DynamicPIM.Resource resource = this.getDynamicPIMFactory().createCollectionResource();
+		String resourceName = English.plural(aggregate.getName());
+		resource.setName(resourceName.concat("Resource"));
+//		resource.setSimpleName(resourceName);
+
+		for (YamlProcess yamlProcess : yamlAggregate.getProcess()) {
+			for (YamlActivity yamlActivity : yamlProcess.getActivities()) {
+				if (yamlActivity.getRole() != null) {
+					if (yamlActivity.getVerbTypeAction() == yamlActivity.VerbTypeAction.Other) {
+						DynamicPIM.Other resourceActivity = (DynamicPIM.Other) createResourceActivity(applicationName,
+								yamlActivity);
+						resourceActivity.setResource(resource);
+						resource.getHasActivity().add(resourceActivity);
+						resource.getOtherActivities().add(resourceActivity);
+					} else if (yamlActivity.getVerbTypeAction() == yamlActivity.VerbTypeAction.Read) {
+						DynamicPIM.Read resourceActivity = (DynamicPIM.Read) createResourceActivity(applicationName,
+								yamlActivity);
+						resourceActivity.setResource(resource);
+						resource.getHasActivity().add(resourceActivity);
+						resource.setReadActivity(resourceActivity);
+					} else if (yamlActivity.getVerbTypeAction() == yamlActivity.VerbTypeAction.Create) {
+						DynamicPIM.Create resourceActivity = (DynamicPIM.Create) createResourceActivity(applicationName,
+								yamlActivity);
+						resourceActivity.setResource(resource);
+						resource.getHasActivity().add(resourceActivity);
+						resource.setCreateActivity(resourceActivity);
+					} else {
+						DynamicPIM.Delete resourceActivity = (DynamicPIM.Delete) createResourceActivity(applicationName,
+								yamlActivity);
+						resourceActivity.setResource(resource);
+						resource.getHasActivity().add(resourceActivity);
+						resource.setDeleteActivity(resourceActivity);
+					}
 				}
 			}
 		}
+
+		return resource;
+
 	}
 
-	private Resource addResourceCRUDActivities(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
-
-		for (int n = 0; n < oCurrentYamlResource.getActivities().size(); n++) {
-
-			CRUDActivity oCRUDActivity = this.getServicePIMFactory().createCRUDActivity();
-			YamlActivity oCurrentActivity =  oCurrentYamlResource.getActivities().get(n);
-			if (oCurrentActivity.getType().equalsIgnoreCase("create")) {
-				oCRUDActivity = this.getServicePIMFactory().createCreate();
-			} else if (oCurrentActivity.getType().equalsIgnoreCase("read")) {
-				oCRUDActivity = this.getServicePIMFactory().createRead();
-			} else if (oCurrentActivity.getType().equalsIgnoreCase("update")) {
-				oCRUDActivity = this.getServicePIMFactory().createUpdate();
-			} else if (oCurrentActivity.getType().equalsIgnoreCase("delete")) {
-				oCRUDActivity = this.getServicePIMFactory().createDelete();
-			} else {
-				System.out.println("Corrupted input! Unkown CRUD verb: " + oCurrentYamlResource.getActivities().get(n));
-				Runtime.getRuntime().exit(-1);
-			}
-			oCRUDActivity.setIsAuthenticatedRequired(oCurrentActivity.getIsAuthenticationRequired());
-			oNewPIMResource.getHasActivities().add(oCRUDActivity);
+	private DynamicPIM.ResourceActivity createResourceActivity(String applicationName, YamlActivity yamlActivity) {
+		DynamicPIM.ResourceActivity resourceActivity;
+		switch (yamlActivity.getVerbTypeAction()) {
+		case Read: {
+			resourceActivity = this.getDynamicPIMFactory().createRead();
+			break;
 		}
-		return oNewPIMResource;
-	}
-
-	private Resource addResourceRepresentations(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
-
-		oNewPIMResource = addInputRepresentations(oNewPIMResource, oCurrentYamlResource);
-		oNewPIMResource = addOutputRepresentations(oNewPIMResource, oCurrentYamlResource);
-
-		return oNewPIMResource;
-	}
-
-	private Resource addInputRepresentations(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
-
-		if (oCurrentYamlResource.getInputRepresentation() != null) {
-			InputRepresentation oInputRepresentation = this.getServicePIMFactory().createInputRepresentation();
-			if (oCurrentYamlResource.getInputRepresentation().equalsIgnoreCase("JSON")) {
-				oInputRepresentation.setInputMediaType(MediaType.JSON);
-			} else if (oCurrentYamlResource.getInputRepresentation().equalsIgnoreCase("XML")) {
-				oInputRepresentation.setInputMediaType(MediaType.XML);
-			} else {
-				System.out.println(
-						"Corrupted inpt! Unkown input media type: " + oCurrentYamlResource.getInputRepresentation());
-				Runtime.getRuntime().exit(-1);
-			}
-			oNewPIMResource.getHasInputRepresentation().add(oInputRepresentation);
+		case Create: {
+			resourceActivity = this.getDynamicPIMFactory().createCreate();
+			break;
 		}
-
-		return oNewPIMResource;
-	}
-
-	private Resource addOutputRepresentations(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
-
-		if (oCurrentYamlResource.getOutputRepresentation() != null) {
-			OutputRepresentation oOutputRepresentation = this.getServicePIMFactory().createOutputRepresentation();
-			if (oCurrentYamlResource.getOutputRepresentation().equalsIgnoreCase("JSON")) {
-				oOutputRepresentation.setOutputMediaType(MediaType.JSON);
-			} else if (oCurrentYamlResource.getOutputRepresentation().equalsIgnoreCase("XML")) {
-				oOutputRepresentation.setOutputMediaType(MediaType.XML);
-			} else {
-				System.out.println("Corrupted input! Unknown output media type: "
-						+ oCurrentYamlResource.getOutputRepresentation());
-				Runtime.getRuntime().exit(-1);
-			}
-			oNewPIMResource.getHasOutputRepresentation().add(oOutputRepresentation);
+		case Delete: {
+			resourceActivity = this.getDynamicPIMFactory().createDelete();
+			break;
 		}
-
-		return oNewPIMResource;
+		default: {
+			resourceActivity = this.getDynamicPIMFactory().createOther();
+			break;
+		}
+		}
+		resourceActivity.setName(yamlActivity.getAction());
+		resourceActivity.setIsAuthenticatedRequired(yamlActivity.IsAuthenticatedRequired);
+		resourceActivity.setTrigger(restUtils.findProcessOperation(yamlActivity.getAction(), applicationName));
+		return resourceActivity;
 	}
+
+	private String concatAllStrings(ArrayList<String> strings) {
+		String name = "";
+		for (String objectName : strings) {
+			name = name.concat(objectName);
+		}
+		return name;
+	}
+
+//	private Resource addResourceRepresentations(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
+//
+//		oNewPIMResource = addInputRepresentations(oNewPIMResource, oCurrentYamlResource);
+//		oNewPIMResource = addOutputRepresentations(oNewPIMResource, oCurrentYamlResource);
+//
+//		return oNewPIMResource;
+//	}
+//
+//	private Resource addInputRepresentations(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
+//
+//		if (oCurrentYamlResource.getInputRepresentation() != null) {
+//			InputRepresentation oInputRepresentation = this.getServicePIMFactory().createInputRepresentation();
+//			if (oCurrentYamlResource.getInputRepresentation().equalsIgnoreCase("JSON")) {
+//				oInputRepresentation.setInputMediaType(MediaType.JSON);
+//			} else if (oCurrentYamlResource.getInputRepresentation().equalsIgnoreCase("XML")) {
+//				oInputRepresentation.setInputMediaType(MediaType.XML);
+//			} else {
+//				System.out.println(
+//						"Corrupted inpt! Unkown input media type: " + oCurrentYamlResource.getInputRepresentation());
+//				Runtime.getRuntime().exit(-1);
+//			}
+//			oNewPIMResource.getHasInputRepresentation().add(oInputRepresentation);
+//		}
+//
+//		return oNewPIMResource;
+//	}
+//
+//	private Resource addOutputRepresentations(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
+//
+//		if (oCurrentYamlResource.getOutputRepresentation() != null) {
+//			OutputRepresentation oOutputRepresentation = this.getServicePIMFactory().createOutputRepresentation();
+//			if (oCurrentYamlResource.getOutputRepresentation().equalsIgnoreCase("JSON")) {
+//				oOutputRepresentation.setOutputMediaType(MediaType.JSON);
+//			} else if (oCurrentYamlResource.getOutputRepresentation().equalsIgnoreCase("XML")) {
+//				oOutputRepresentation.setOutputMediaType(MediaType.XML);
+//			} else {
+//				System.out.println("Corrupted input! Unknown output media type: "
+//						+ oCurrentYamlResource.getOutputRepresentation());
+//				Runtime.getRuntime().exit(-1);
+//			}
+//			oNewPIMResource.getHasOutputRepresentation().add(oOutputRepresentation);
+//		}
+//
+//		return oNewPIMResource;
+//	}
 
 	private void validateProducedPIM() {
 
-		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(this.getRESTfulServicePIM());
+		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(this.getProjectStatic());
 		if (diagnostic.getSeverity() == Diagnostic.OK) {
 			System.out.println("Produced PIM is valid!");
 		} else {
@@ -354,46 +437,286 @@ public class CorePIMProducer extends APIMProducer {
 		}
 	}
 
-	private void addBasicTypes() {
-		BasicType stringType = this.getServicePIMFactory().createBasicType();
-		BasicType integerType = this.getServicePIMFactory().createBasicType();
-		BasicType floatType = this.getServicePIMFactory().createBasicType();
-		BasicType booleanType = this.getServicePIMFactory().createBasicType();
-		BasicType nullType = this.getServicePIMFactory().createBasicType();
-		
-		stringType.setType(PropertyType.STRING);
-		integerType.setType(PropertyType.INTEGER);
-		floatType.setType(PropertyType.FLOAT);
-		booleanType.setType(PropertyType.BOOLEAN);
-		nullType.setType(PropertyType.NULL);
-		
-		List<BasicType> basicTypes = Arrays.asList(stringType, integerType, floatType, booleanType, nullType);
-		
-		for (BasicType basicType : basicTypes) {
-			String typeName = basicType.getType().getName();
+	private void addPrimitiveTypes() {
+		PrimitiveType stringType = this.getServicePIMFactory().createPrimitiveType();
+		PrimitiveType integerType = this.getServicePIMFactory().createPrimitiveType();
+		PrimitiveType floatType = this.getServicePIMFactory().createPrimitiveType();
+		PrimitiveType booleanType = this.getServicePIMFactory().createPrimitiveType();
+		PrimitiveType nullType = this.getServicePIMFactory().createPrimitiveType();
+		PrimitiveType dateType = this.getServicePIMFactory().createPrimitiveType();
+
+		stringType.setType(DefaultType.STRING);
+		integerType.setType(DefaultType.INTEGER);
+		floatType.setType(DefaultType.FLOAT);
+		booleanType.setType(DefaultType.BOOLEAN);
+		nullType.setType(DefaultType.NULL);
+		dateType.setType(DefaultType.DATE);
+
+		List<PrimitiveType> primitiveTypes = Arrays.asList(stringType, integerType, floatType, booleanType, nullType,
+				dateType);
+
+		for (PrimitiveType primitiveType : primitiveTypes) {
+			String typeName = primitiveType.getType().getName();
 			typeName = StringUtils.capitalize(typeName);
-			basicType.setTypeName(typeName);
+			primitiveType.setTypeName(typeName);
 		}
-		
-		this.getRESTfulServicePIM().getBasictypes().addAll(basicTypes);
+
+		this.getProjectStatic().getPrimitiveTypes().addAll(primitiveTypes);
 	}
-	
+
+	private void addDynamicPrimitiveTypes() {
+		DynamicPIM.PrimitiveType stringType = this.getDynamicPIMFactory().createPrimitiveType();
+		DynamicPIM.PrimitiveType integerType = this.getDynamicPIMFactory().createPrimitiveType();
+		DynamicPIM.PrimitiveType floatType = this.getDynamicPIMFactory().createPrimitiveType();
+		DynamicPIM.PrimitiveType booleanType = this.getDynamicPIMFactory().createPrimitiveType();
+		DynamicPIM.PrimitiveType nullType = this.getDynamicPIMFactory().createPrimitiveType();
+		DynamicPIM.PrimitiveType dateType = this.getDynamicPIMFactory().createPrimitiveType();
+
+		stringType.setType(DynamicPIM.DefaultType.STRING);
+		integerType.setType(DynamicPIM.DefaultType.INTEGER);
+		floatType.setType(DynamicPIM.DefaultType.FLOAT);
+		booleanType.setType(DynamicPIM.DefaultType.BOOLEAN);
+		nullType.setType(DynamicPIM.DefaultType.NULL);
+		dateType.setType(DynamicPIM.DefaultType.DATE);
+
+		List<DynamicPIM.PrimitiveType> primitiveTypes = Arrays.asList(stringType, integerType, floatType, booleanType,
+				nullType, dateType);
+
+		for (DynamicPIM.PrimitiveType primitiveType : primitiveTypes) {
+			String typeName = primitiveType.getType().getName();
+			typeName = StringUtils.capitalize(typeName);
+			primitiveType.setTypeName(typeName);
+		}
+
+		this.getProjectDynamic().getPrimitiveTypes().addAll(primitiveTypes);
+	}
+
 	private TypeDefinition getTypeDefinition(String type) {
-		
-		RESTfulServiceUtils restUtils = new RESTfulServiceUtils(this.oRESTfulServicePIM);
-		
-		if (type.equals("String") || type.equals("Integer") || type.equals("Float") || type.equals("Boolean") || type.equals("Null")) {
-			BasicType basicType = restUtils.findBasicType(type);
-			return basicType;
+		if (type.equals("String") || type.equals("Integer") || type.equals("Float") || type.equals("Boolean")
+				|| type.equals("Null") || type.equals("Date")) {
+			PrimitiveType primitiveType = restUtils.findPrimitiveType(type);
+			return primitiveType;
 		} else {
-			Enumeration enumeration = null;
-			enumeration = restUtils.findEnumeration(type);
-			System.out.println("ENUM:: OoO " + enumeration);
-			if (enumeration != null) {
-				return enumeration;
-			} else {
-				return null;
+			System.out.println("Corrupted input! Unkown Type: " + type);
+			throw new IllegalArgumentException("Unkown Type '" + type);
+		}
+	}
+
+	private void createAllDynamicPIMApplications() {
+		for (YamlApplication oCurrentYamlApplication : this.listOfYamlApplications) {
+			DynamicPIM.Application application = this.getDynamicPIMFactory().createApplication();
+			application.setName(oCurrentYamlApplication.getName());
+			for (String aggregateName : oCurrentYamlApplication.getAggregates()) {
+				YamlAggregate yamlAggregate = listOfYaml.getAggregateByName(aggregateName);
+				DynamicPIM.Aggregate aggregate = createDynamicPIMAggregate(yamlAggregate);
+				aggregate.setApplication(application);
+				application.getHasAggregate().add(aggregate);
+			}
+//			for (String role : oCurrentYamlApplication.getRoles()) {
+//				application.getRoles().add(restUtils.findRole(role));
+//			}
+			application.setProject(this.getProjectDynamic());
+			this.getProjectDynamic().getHasApplication().add(application);
+		}
+	}
+
+	private void addProcessesRelations() {
+		for (DynamicPIM.Application application : this.getProjectDynamic().getHasApplication()) {
+			for (DynamicPIM.Aggregate aggregate : application.getHasAggregate()) {
+				for (DynamicPIM.Process process : aggregate.getHasProcess()) {
+					for (DynamicPIM.ProcessOperation processOperation : process.getHasOperation()) {
+						YamlActivity yamlActivity = listOfYaml.getActivityByName(processOperation.getName(),
+								aggregate.getName(), process.getName());
+						for (String yamlPolicy : yamlActivity.getPolicy()) {
+							DynamicPIM.Event event = (DynamicPIM.Event) restUtils.findDynamicDomainObject(yamlPolicy,
+									application.getName());
+							DynamicPIM.Policy policy = this.getDynamicPIMFactory().createPolicy();
+							policy.setEventType(event);
+							processOperation.getPolicy().add(policy);
+						}
+
+						for (String yamlPolicy : yamlActivity.getPublish()) {
+							DynamicPIM.Event event = (DynamicPIM.Event) restUtils.findDynamicDomainObject(yamlPolicy,
+									application.getName());
+							DynamicPIM.Publish publish = this.getDynamicPIMFactory().createPublish();
+							publish.setEventType(event);
+							processOperation.setPublish(publish);
+						}
+					}
+				}
 			}
 		}
 	}
+
+	private DynamicPIM.Aggregate createDynamicPIMAggregate(YamlAggregate yamlAggregate) {
+		DynamicPIM.Aggregate aggregate = this.getDynamicPIMFactory().createAggregate();
+		aggregate.setName(yamlAggregate.getName());
+
+		for (YamlDomainObject oDomainObject : yamlAggregate.getDomainObjects()) {
+			DynamicPIM.DomainObject domainObject = createDynamicDomainObject(oDomainObject);
+			domainObject.setAggregate(aggregate);
+			if (domainObject.isAggregateRoot()) {
+				aggregate.setAggregateRoot(domainObject);
+			}
+			aggregate.getDomainobjects().add(domainObject);
+		}
+
+		for (YamlProcess oProcess : yamlAggregate.getProcess()) {
+			DynamicPIM.Process process = createDynamicPIMProcess(oProcess);
+			process.setAggregate(aggregate);
+			aggregate.getHasProcess().add(process);
+		}
+
+		return aggregate;
+	}
+
+	private void createAllStaticResources() {
+		for (Application application : this.getProjectStatic().getHasApplication()) {
+			for (Aggregate aggregate : application.getHasAggregate()) {
+				Resource resource = addStaticResource(aggregate);
+				for (Resource relatedResource : resource.getHasRelatedResource()) {
+					relatedResource.setAggregate(aggregate);
+					aggregate.getHasResource().add(relatedResource);
+				}
+				resource.setAggregate(aggregate);
+				aggregate.getHasResource().add(resource);
+			}
+		}
+
+	}
+
+	private void createAllDynamicResources() {
+		for (DynamicPIM.Application application : this.getProjectDynamic().getHasApplication()) {
+			for (DynamicPIM.Aggregate aggregate : application.getHasAggregate()) {
+				YamlAggregate oAggregate = this.listOfYaml.getAggregateByName(aggregate.getName());
+				DynamicPIM.Resource resource = addDynamicResource(aggregate, oAggregate);
+
+				// relatedResources
+				for (DynamicPIM.Resource relatedResource : resource.getHasRelatedResource()) {
+					relatedResource.setAggregate(aggregate);
+					aggregate.getHasResource().add(relatedResource);
+				}
+
+				resource.setAggregate(aggregate);
+				aggregate.getHasResource().add(resource);
+
+			}
+		}
+
+	}
+
+	private DynamicPIM.DomainObject createDynamicDomainObject(YamlDomainObject domainObject) {
+		switch (domainObject.getType()) {
+		case Entity: {
+			DynamicPIM.Entity entity = (DynamicPIM.Entity) createDynamicEntityOrValueObject(domainObject,
+					BasicDomainObject.Entity);
+			return entity;
+		}
+		case ValueObject: {
+			DynamicPIM.ValueObject valueObject = (DynamicPIM.ValueObject) createDynamicEntityOrValueObject(domainObject,
+					BasicDomainObject.ValueObject);
+			return valueObject;
+		}
+		case Enumeration: {
+			DynamicPIM.Enumeration enumeration = (DynamicPIM.Enumeration) createDynamicPIMEnumeration(domainObject);
+			return enumeration;
+		}
+		case Event: {
+			DynamicPIM.DomainEvent domainEvent = (DynamicPIM.DomainEvent) createDynamicEntityOrValueObject(domainObject,
+					BasicDomainObject.Event);
+			return domainEvent;
+		}
+		case Command: {
+			DynamicPIM.CommandEvent domainEvent = (DynamicPIM.CommandEvent) createDynamicEntityOrValueObject(
+					domainObject, BasicDomainObject.Command);
+			return domainEvent;
+		}
+
+		case DTO: {
+			DynamicPIM.DTO domainEvent = (DynamicPIM.DTO) createDynamicEntityOrValueObject(domainObject,
+					BasicDomainObject.DTO);
+			return domainEvent;
+		}
+		default:
+			throw new IllegalArgumentException("The yaml variable '" + domainObject + "' is not a valid type");
+		}
+	}
+
+	private DynamicPIM.DomainObject createDynamicEntityOrValueObject(YamlDomainObject yamlDomainObject,
+			BasicDomainObject type) {
+		DynamicPIM.DomainObject domainObject;
+
+		switch (type) {
+		case Entity: {
+			domainObject = this.getDynamicPIMFactory().createEntity();
+			break;
+		}
+		case ValueObject: {
+			domainObject = this.getDynamicPIMFactory().createValueObject();
+			break;
+		}
+		case Event: {
+			domainObject = this.getDynamicPIMFactory().createDomainEvent();
+			break;
+		}
+		case Command: {
+			domainObject = this.getDynamicPIMFactory().createCommandEvent();
+			break;
+		}
+
+		case DTO: {
+			domainObject = this.getDynamicPIMFactory().createDTO();
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("type '" + type + "' is not a valid type");
+		}
+
+		domainObject.setName(yamlDomainObject.getName());
+		domainObject.setAggregateRoot(yamlDomainObject.getIsAggregateRoot());
+		domainObject.setTypeName(domainObject.getName());
+
+		return domainObject;
+	}
+
+	private DynamicPIM.Enumeration createDynamicPIMEnumeration(YamlDomainObject yamlDomainObject) {
+		DynamicPIM.Enumeration enumeration = this.getDynamicPIMFactory().createEnumeration();
+		enumeration.setName(yamlDomainObject.getName());
+		enumeration.setTypeName(yamlDomainObject.getName());
+
+		return enumeration;
+	}
+
+	private DynamicPIM.Process createDynamicPIMProcess(YamlProcess yamlProcess) {
+		DynamicPIM.Process process = this.getDynamicPIMFactory().createProcess();
+		process.setName(yamlProcess.getName());
+		for (YamlActivity yamlActivity : yamlProcess.getActivities()) {
+			DynamicPIM.ProcessOperation processOperation;
+			switch (yamlActivity.getType()) {
+			case Command: {
+				processOperation = this.getDynamicPIMFactory().createCommandOperation();
+				break;
+			}
+
+			case Query: {
+				processOperation = this.getDynamicPIMFactory().createQueryOperation();
+				break;
+			}
+
+			default:
+				throw new IllegalArgumentException("yamlActivity '" + yamlActivity + "' is not a valid type");
+
+			}
+
+			processOperation.setName(yamlActivity.getAction());
+			processOperation.setProcess(process);
+			process.getHasOperation().add(processOperation);
+		}
+		return process;
+	}
+
+	private enum BasicDomainObject {
+		Entity, ValueObject, Event, Command, DTO
+	}
+
 }

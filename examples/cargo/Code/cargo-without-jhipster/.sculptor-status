@@ -1,0 +1,31 @@
+#Sculptor created the following 29 files
+#Thu Jan 07 16:30:25 IRST 2021
+src/test/resources/ehcache.xml=793ff77782ce72cfecd7cf2eea99838d
+src/test/generated/resources/META-INF/persistence-test.xml=a30ee48777e31d09f030bbebd50e0555
+src/test/resources/dbunit/PlanetServiceTest.xml=e85196b5af45495cb2c23601132c110d
+src/generated/resources/Interceptor.xml=779ab42e2e1cbebc5df8649b613a38ae
+src/generated/resources/applicationContext.xml=43316c922c52db053b515df08207b019
+src/generated/resources/generated-spring.properties=ef240226f76132e453dacb6834950df9
+src/generated/resources/beanRefContext.xml=b8dd0b48aefc2df0b4de0633ffa6a64b
+src/test/resources/more-test.xml=96fa63b637e8ae55665c867fb8632d8b
+src/generated/java/org/cargo/command/repositoryimpl/PlanetRepositoryImpl.java=b47edc5a02eecab0cf3a08347ec5b197
+src/generated/java/org/cargo/command/serviceimpl/PlanetServiceImpl.java=6c0240aa8b5c99aa54cda3b3f51ee4cb
+src/generated/java/org/cargo/command/domain/PlanetRepository.java=9d260e2c9cc0cd13791c536509dad9f7
+src/generated/java/org/cargo/command/domain/PlanetProperties.java=0818517d3a10f653574bf73577d1581e
+src/test/generated/java/org/cargo/command/serviceapi/PlanetServiceTestBase.java=dd3c3a0a38a7f4c45a7ff72ae1b1bd70
+src/generated/java/org/cargo/web/rest/PlanetResourceBase.java=836dd499ad47865df0b3286746b163f9
+src/generated/resources/EntityManagerFactory.xml=888f06137a9d0f9affcac0d81d2e8e9a
+src/main/java/org/cargo/web/rest/FrontResource.java=f4598d418795303512fce075bcef1502
+src/test/resources/spring-test.properties=07bf0fa0a44f2ab7692fdfc66b20f31e
+src/generated/java/org/cargo/command/exception/PlanetNotFoundException.java=06f412f83dfe7a7174e7a934924a43e8
+src/test/generated/resources/Interceptor-test.xml=69ef1577713ca6ddf59703dbfb903780
+src/generated/java/org/cargo/web/rest/FrontResourceBase.java=201c91b3e39e67004e6d973236bab86c
+src/generated/resources/pub-sub.xml=3d283f8b98e97fd9a185d5659168207b
+src/test/resources/logback-test.xml=674faa5de3711002a6380d7e6de3827b
+src/test/generated/resources/applicationContext-test.xml=b64a69988db93265e5eca7540aadf67f
+src/generated/java/org/cargo/command/serviceapi/PlanetService.java=65445ff87c07b87add5cd17f16f78a5f
+src/test/generated/resources/EntityManagerFactory-test.xml=fb7cf2cd2e6cd54fff21f957290abd96
+src/main/java/org/cargo/web/rest/PlanetResource.java=18d0f3f57a5156957679addbcd42edb7
+src/test/generated/resources/dbunit/EmptyDatabase.xml=68f39839f85b4fad2ba0a8e87a34b373
+src/generated/java/org/cargo/command/domain/Planet.java=5b17fa966524c69a6b72eb61ede466f6
+src/generated/resources/META-INF/persistence.xml=6845163444f2a4a6b4adb9179f58ab45

@@ -56,7 +56,6 @@ public interface ActivityPartition extends EObject {
 	 * @return the value of the '<em>Subpartition</em>' containment reference list.
 	 * @see ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage#getActivityPartition_Subpartition()
 	 * @model containment="true"
-	 *        annotation="gmf.compartment"
 	 * @generated
 	 */
 	EList<ActivityPartition> getSubpartition();

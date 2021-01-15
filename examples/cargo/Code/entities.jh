@@ -1,0 +1,44 @@
+application {
+  config {
+    baseName uaa
+    packageName org.cargo.uaa
+    applicationType uaa
+    authenticationType uaa
+    prodDatabaseType postgresql
+    serviceDiscoveryType eureka
+    cacheProvider hazelcast
+  }
+}
+
+application {
+  config {
+    baseName gateway
+    packageName org.cargo.gateway
+    applicationType gateway
+    authenticationType uaa
+    uaaBaseName "uaa"
+    prodDatabaseType postgresql
+    serviceDiscoveryType eureka
+    serverPort 8880
+    clientFramework react
+  }
+}
+
+application {
+  config {
+    baseName cargo
+    packageName org.cargo.sculptor
+    applicationType microservice
+    authenticationType uaa
+    uaaBaseName "uaa"
+    prodDatabaseType postgresql
+    serverPort 8881
+    serviceDiscoveryType eureka
+  }
+}
+
+deployment {
+  deploymentType docker-compose
+  appsFolders [cargo, uaa, gateway]
+  dockerRepositoryName "cargo"
+}

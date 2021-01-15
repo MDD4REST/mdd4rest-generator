@@ -1,0 +1,577 @@
+Aggregates:
+- Name: Location
+  DomainObjects:
+  - Name: Location
+    Type: Entity
+    IsAggregateRoot: true
+    Properties: []
+    Relations: []
+
+  - Name: ShippingLocationsDTO
+    Type: DTO
+    IsAggregateRoot: false
+    Properties: []
+    Relations:
+    - Name: location
+      Target: Location
+      Many: false
+
+  - Name: LocationDetailsDTO
+    Type: DTO
+    IsAggregateRoot: false
+    Properties: []
+    Relations:
+    - Name: location
+      Target: Location
+      Many: false
+
+  Processes:
+  - Name: Routing
+    Activities:
+    - Name: listOfShippingLocationLocation
+      Action: listOfShippingLocation
+      Role: User
+      Type: Query
+      VerbTypeAction: Read
+      IsAuthenticatedRequired: false
+      Objects: [Location]
+      Policy: []
+      Publish: []
+      ReadModel: [ShippingLocationsDTO]
+    - Name: findLocationLocation
+      Action: findLocation
+      Role: User
+      Type: Query
+      VerbTypeAction: Read
+      IsAuthenticatedRequired: false
+      Objects: [Location]
+      Policy: []
+      Publish: []
+      ReadModel: [LocationDetailsDTO]
+
+
+- Name: Cargo
+  DomainObjects:
+  - Name: Itinerary
+    Type: ValueObject
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: Cargo
+    Type: Entity
+    IsAggregateRoot: true
+    Properties:
+    - Name: arrivalDeadline
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: leg
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: destination
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: destinationLocation
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: originLocation
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: itinerary
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: trackingId
+      Type: String
+      Unique: true
+      NamingProperty: false
+    Relations:
+    - Name: routeSpecification
+      Target: RouteSpecification
+      Many: false
+    - Name: receiever
+      Target: Role
+      Many: false
+    - Name: sender
+      Target: Role
+      Many: false
+
+  - Name: TrackingId
+    Type: ValueObject
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: CargoListDTO
+    Type: DTO
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: PossibleRoutesForCargoDTO
+    Type: DTO
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: BookingFormDTO
+    Type: DTO
+    IsAggregateRoot: false
+    Properties: []
+    Relations:
+    - Name: cargo
+      Target: Cargo
+      Many: false
+
+  - Name: ChangeDestinationFormDTO
+    Type: DTO
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: ChangeDestinationCommand
+    Type: Command
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: CargoDestinationChanged
+    Type: Event
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: CargoWithHandlingEventsDTO
+    Type: DTO
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: AssignCargoToRouteCommand
+    Type: Command
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: CargoAssignedToRoute
+    Type: Event
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: UpdateEventOfCargoCommand
+    Type: Command
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: CargoIsClaimedEvent
+    Type: Event
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: NextExpectedHandlingActivity
+    Type: Event
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: CargoTransportStatusRecalculated
+    Type: Event
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: CargoLastKnownUpdated
+    Type: Event
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: CargoCurrentVoyageUpdated
+    Type: Event
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: CargoIsUnloadedAtDestination
+    Type: Event
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: CargoDetailsDTO
+    Type: DTO
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: BookingNewCargoCommand
+    Type: Command
+    IsAggregateRoot: false
+    Properties: []
+    Relations:
+    - Name: itinerary
+      Target: Itinerary
+      Many: false
+    - Name: cargo
+      Target: Cargo
+      Many: false
+    - Name: trackingId
+      Target: TrackingId
+      Many: false
+
+  - Name: CargoBooked
+    Type: Event
+    IsAggregateRoot: false
+    Properties: []
+    Relations:
+    - Name: itinerary
+      Target: Itinerary
+      Many: false
+    - Name: cargo
+      Target: Cargo
+      Many: false
+    - Name: trackingId
+      Target: TrackingId
+      Many: false
+
+  - Name: TrackingIDDTO
+    Type: DTO
+    IsAggregateRoot: false
+    Properties: []
+    Relations:
+    - Name: itinerary
+      Target: Itinerary
+      Many: false
+    - Name: cargo
+      Target: Cargo
+      Many: false
+    - Name: trackingId
+      Target: TrackingId
+      Many: false
+
+  Processes:
+  - Name: Cargo
+    Activities:
+    - Name: cargoListViewCargo
+      Action: cargoListView
+      Role: Customer
+      Type: Query
+      VerbTypeAction: Read
+      IsAuthenticatedRequired: false
+      Objects: []
+      Policy: []
+      Publish: []
+      ReadModel: [CargoListDTO]
+    - Name: requestPossibleRoutesForCargoCargo
+      Action: requestPossibleRoutesForCargo
+      Role: BookingClerk
+      Type: Query
+      VerbTypeAction: Read
+      IsAuthenticatedRequired: false
+      Objects: []
+      Policy: []
+      Publish: []
+      ReadModel: [PossibleRoutesForCargoDTO]
+    - Name: pickNewDestinationViewCargo
+      Action: pickNewDestinationView
+      Role: Customer
+      Type: Query
+      VerbTypeAction: Read
+      IsAuthenticatedRequired: false
+      Objects: []
+      Policy: []
+      Publish: []
+      ReadModel: [ChangeDestinationFormDTO]
+    - Name: changeDestinationCargo
+      Action: changeDestination
+      Role: Customer
+      Type: Command
+      VerbTypeAction: Other
+      IsAuthenticatedRequired: false
+      Objects: []
+      Policy: []
+      Publish: [CargoDestinationChanged]
+      ReadModel: []
+    - Name: assignCargoToRouteCargo
+      Action: assignCargoToRoute
+      Role: BookingClerk
+      Type: Command
+      VerbTypeAction: Other
+      IsAuthenticatedRequired: false
+      Objects: []
+      Policy: []
+      Publish: [CargoAssignedToRoute]
+      ReadModel: []
+    - Name: cargoDetailsViewCargo
+      Action: cargoDetailsView
+      Role: Customer
+      Type: Query
+      VerbTypeAction: Read
+      IsAuthenticatedRequired: false
+      Objects: []
+      Policy: []
+      Publish: []
+      ReadModel: [CargoDetailsDTO]
+  - Name: Booking
+    Activities:
+    - Name: bookingFormViewCargo
+      Action: bookingFormView
+      Role: Customer
+      Type: Query
+      VerbTypeAction: Read
+      IsAuthenticatedRequired: false
+      Objects: [Cargo]
+      Policy: []
+      Publish: []
+      ReadModel: [BookingFormDTO]
+    - Name: bookingNewCargoCargo
+      Action: bookingNewCargo
+      Role: Customer
+      Type: Command
+      VerbTypeAction: Other
+      IsAuthenticatedRequired: false
+      Objects: [Itinerary, Cargo, TrackingId]
+      Policy: []
+      Publish: [CargoBooked]
+      ReadModel: [TrackingIDDTO]
+  - Name: Tracking
+    Activities:
+    - Name: trackACargoCargo
+      Action: trackACargo
+      Role: User
+      Type: Query
+      VerbTypeAction: Read
+      IsAuthenticatedRequired: false
+      Objects: []
+      Policy: []
+      Publish: []
+      ReadModel: [CargoWithHandlingEventsDTO]
+  - Name: Handling
+    Activities:
+    - Name: updateEventOfCargoCargo
+      Action: updateEventOfCargo
+      Role: null
+      Type: Command
+      VerbTypeAction: Other
+      IsAuthenticatedRequired: false
+      Objects: []
+      Policy: [Handling_Event_Registered]
+      Publish: [CargoIsClaimedEvent, NextExpectedHandlingActivity, CargoTransportStatusRecalculated, CargoLastKnownUpdated, CargoCurrentVoyageUpdated, CargoIsUnloadedAtDestination]
+      ReadModel: []
+
+
+- Name: HandlingEvent
+  DomainObjects:
+  - Name: RegisterHandlingEventCommand
+    Type: Command
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: HandlingEventRegistered
+    Type: Event
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: ReportFormDTO
+    Type: DTO
+    IsAggregateRoot: false
+    Properties: []
+    Relations: []
+
+  - Name: HandlingEvent
+    Type: Entity
+    IsAggregateRoot: true
+    Properties:
+    - Name: registrationTime
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: completionTime
+      Type: String
+      Unique: true
+      NamingProperty: false
+    Relations:
+    - Name: voyage
+      Target: Voyage
+      Many: false
+    - Name: type
+      Target: Type
+      Many: false
+
+  Processes:
+  - Name: Handling
+    Activities:
+    - Name: registerHandlingEventHandlingEvent
+      Action: registerHandlingEvent
+      Role: ShippingClerck
+      Type: Command
+      VerbTypeAction: Other
+      IsAuthenticatedRequired: false
+      Objects: []
+      Policy: []
+      Publish: [HandlingEventRegistered]
+      ReadModel: []
+    - Name: reportFormViewHandlingEvent
+      Action: reportFormView
+      Role: ShippingClerck
+      Type: Query
+      VerbTypeAction: Read
+      IsAuthenticatedRequired: false
+      Objects: []
+      Policy: []
+      Publish: []
+      ReadModel: [ReportFormDTO]
+
+
+- Name: Location1
+  DomainObjects:
+  - Name: Location1
+    Type: Entity
+    IsAggregateRoot: true
+    Properties:
+    - Name: unlocode
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: portCode
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: name
+      Type: String
+      Unique: true
+      NamingProperty: false
+    Relations: []
+
+  Processes: []
+
+
+- Name: Schedule
+  DomainObjects:
+  - Name: Schedule
+    Type: Entity
+    IsAggregateRoot: true
+    Properties: []
+    Relations:
+    - Name: list
+      Target: CarrierMovement
+      Many: true
+
+  Processes: []
+
+
+- Name: Voyage
+  DomainObjects:
+  - Name: Voyage
+    Type: Entity
+    IsAggregateRoot: true
+    Properties:
+    - Name: location
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: voyageNumber
+      Type: String
+      Unique: true
+      NamingProperty: false
+    Relations:
+    - Name: cargo
+      Target: Cargo
+      Many: false
+    - Name: schedule
+      Target: Schedule
+      Many: false
+
+  Processes: []
+
+
+- Name: RouteSpecification
+  DomainObjects:
+  - Name: RouteSpecification
+    Type: Entity
+    IsAggregateRoot: true
+    Properties: []
+    Relations: []
+
+  Processes: []
+
+
+- Name: Type
+  DomainObjects:
+  - Name: Type
+    Type: Enumeration
+    Literals: [Unload, Customs, Claim1, Load, Receive]
+
+  Processes: []
+
+
+- Name: Route
+  DomainObjects:
+  - Name: Route
+    Type: Entity
+    IsAggregateRoot: true
+    Properties: []
+    Relations: []
+
+  Processes: []
+
+
+- Name: CarrierMovement
+  DomainObjects:
+  - Name: CarrierMovement
+    Type: Entity
+    IsAggregateRoot: true
+    Properties:
+    - Name: departure
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: arrivalLocation
+      Type: String
+      Unique: true
+      NamingProperty: false
+    - Name: arrivalTime
+      Type: String
+      Unique: true
+      NamingProperty: false
+    Relations: []
+
+  Processes: []
+
+
+- Name: PossibleRoute
+  DomainObjects:
+  - Name: PossibleRoute
+    Type: Entity
+    IsAggregateRoot: true
+    Properties: []
+    Relations: []
+
+  Processes: []
+
+
+- Name: Role
+  DomainObjects:
+  - Name: Role
+    Type: Entity
+    IsAggregateRoot: true
+    Properties: []
+    Relations: []
+
+  Processes: []
+
+
+Applications:
+- Name: cargo
+  Aggregates: [Location, Cargo, HandlingEvent, Location1, Schedule, Voyage, RouteSpecification, Type, Route, CarrierMovement, PossibleRoute, Role]
+  Roles: [User, Customer, ShippingClerck, BookingClerk]

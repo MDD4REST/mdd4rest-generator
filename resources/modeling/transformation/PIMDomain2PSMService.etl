@@ -1,0 +1,157 @@
+import "../utilities/StaticPIM.eol";
+import "../utilities/ServicePSM.eol";
+
+@abstract
+rule AbstractPrimitiveType transform c:StaticPIM!PrimitiveType
+	to a:ServicePSM!PrimitiveType{
+	a.type ::= c.type;
+	a.typeName = c.typeName;
+}
+
+@abstract
+rule AbstractComplexType transform c:StaticPIM!ComplexType
+	to a:ServicePSM!ComplexType{
+	a.type = c.type.equivalent();
+	a.collection = ServicePSM!CollectionType#SET;
+}
+
+@abstract
+rule AbstractApplication transform c:StaticPIM!Application
+	to a:ServicePSM!Application{
+	a.name = c.name;
+	a.project = c.project.equivalent();
+	a.project.applications.add(a);
+}
+
+@abstract
+rule AbstractAggregate transform c:StaticPIM!Aggregate 
+	to a:ServicePSM!Aggregate{
+	a.name = c.name;
+}
+
+@abstract
+rule AbstractProperty transform c:StaticPIM!Property
+	to a:ServicePSM!Property{
+	"-------------- Property --------------".println();
+	a.unique = c.isUnique;
+	a.isNamingProperty = c.isNamingProperty;
+	a.name = c.name;
+	a.required = c.isRequired;
+	a.min = c.min;
+
+	a.type = c.type.equivalent();
+}
+ 
+ 
+@abstract
+rule AbstractDomainObject transform c:StaticPIM!DomainObject
+	to a:ServicePSM!DomainObject{
+	// type definition
+	a.typeName = c.typeName;
+	
+	// attributes
+	a.name = c.name;
+	a.abstract = c.abstract;
+	a.aggregateRoot = c.aggregateRoot;
+		
+	// references
+	a.properties ::= c.hasProperty;
+}
+
+@abstract
+rule AbstractionOfValueObject transform c:StaticPIM!ValueObject
+	to a:ServicePSM!ValueObject extends AbstractDomainObject{
+	c.println();
+	a.immutable = c.immutable;
+	a.persistent = c.persistent;
+}
+
+@abstract
+rule AbstractBasicType transform c:StaticPIM!BasicType
+	to a:ServicePSM!BasicType extends AbstractionOfValueObject{
+	"------- BasicType --------------".println();
+	c.println();
+}
+
+@abstract
+rule AbstractDomainEvent transform c:StaticPIM!DomainEvent
+	to a:ServicePSM!DomainEvent extends AbstractionOfValueObject{
+	"------- DomainEvent --------------".println();
+	c.println();
+}
+
+@abstract
+rule AbstractCommandEvent transform c:StaticPIM!CommandEvent
+	to a:ServicePSM!CommandEvent extends AbstractionOfValueObject{
+	"------- CommandEvent --------------".println();
+	c.println();
+}
+
+@abstract
+rule AbstractDTO transform c:StaticPIM!DTO
+	to a:ServicePSM!DTO extends AbstractionOfValueObject{
+	"------- DTO --------------".println();
+	c.println();
+}
+
+@abstract
+rule AbstractValueObject transform c:StaticPIM!ValueObject
+	to a:ServicePSM!ValueObject extends AbstractionOfValueObject{
+	"------- ValueObject --------------".println();
+	c.println();
+}
+
+@abstract
+rule AbstractEntity transform c:StaticPIM!Entity
+	to a:ServicePSM!Entity extends AbstractDomainObject{
+	"------- entity --------------".println();
+	a.scaffold = c.scaffold;
+	
+	var repository = new ServicePSM!Repository;
+	repository.name = a.name + "Repository";
+	repository.aggregateRoot = a;
+	a.repository = repository;
+	c.println();
+	
+}
+
+@abstract
+rule AbstractLiteral transform c:StaticPIM!Literal
+	to a:ServicePSM!Literal{
+	"------- Literal --------------".println();
+	a.name = c.name;
+	a.value = c.value;
+}
+
+@abstract
+rule AbstractEnumeration transform c:StaticPIM!Enumeration
+	to a:ServicePSM!Enumeration extends AbstractDomainObject{
+	"------- enumeration --------------".println();
+	a.literals ::= c.hasLiteral;
+}
+
+@abstract
+rule AbstractRelation transform c:StaticPIM!Relation
+	to a:ServicePSM!Relation{
+	a.type = c.type.equivalent();
+	a.name = c.name;
+	a.source = c.source.equivalent();
+	a.target = c.target.equivalent();
+	a.source.relations.add(a);
+	
+	//TODO:: Query relations
+}
+
+@abstract
+rule AbstractResource transform c:StaticPIM!Resource
+	to a:ServicePSM!Resource{
+	
+	var path = new ServicePSM!Path;
+	var application = c.aggregate.application.equivalent();
+	path.relativePath = c.relativePath();
+	a.path = path;
+	a.name = a.name;
+	
+	a.module = application.getRestModule();
+	a.module.resources.add(a);
+}

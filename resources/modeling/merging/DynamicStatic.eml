@@ -1,0 +1,235 @@
+import "../transformation/PIMDomain2PSMService.etl";
+import "../transformation/PIMDynamic2PSMService.etl";
+import "../utilities/ServicePSM.eol";
+import "../utilities/DynamicPIM.eol";
+import "../utilities/StaticPIM.eol";
+
+pre {
+	var dynamic;
+	var static;
+	var psmModel;
+}
+
+rule Root
+	merge l : DynamicPIM!Project with r : StaticPIM!Project into t : ServicePSM!Project {
+	t.name = r.name;
+	t.basePath = r.basePath;
+	dynamic = l;
+	static = r;
+	psmModel = t;
+}
+
+rule ComplexType
+	merge l : DynamicPIM!ComplexType with r : StaticPIM!ComplexType into t : ServicePSM!ComplexType {
+	t.type = r.type.equivalent();
+	t.collection = ServicePSM!CollectionType#SET;
+}
+
+rule Application
+	merge l : DynamicPIM!Application with r : StaticPIM!Application into t : ServicePSM!Application {
+	"application".println();
+	t.name = r.name;
+	t.project = psmModel;	
+	t.addModule(t.name);
+	t.modules.println();
+	t.complextypes ::= r.complextypes;
+	psmModel.applications.add(t);
+}
+
+rule PrimitiveType
+	merge l : DynamicPIM!PrimitiveType with r : StaticPIM!PrimitiveType into t : ServicePSM!PrimitiveType {
+	t.type ::= r.type;
+	t.typeName = r.typeName;
+	psmModel.primitivetype.add(t);
+}
+
+rule Aggregate
+	merge l : DynamicPIM!Aggregate with r : StaticPIM!Aggregate into t : ServicePSM!Aggregate {
+	"aggregate".println();
+	t.name = r.name;	
+	var application = r.application.equivalent();
+	application.println();
+	application.modules.println();
+	t.module = application.getDefaultModule();
+	t.module.aggregates.println();
+	t.module.aggregates.add(t);
+}
+
+
+rule ValueObject
+	merge l : DynamicPIM!ValueObject with r : StaticPIM!ValueObject into t : ServicePSM!ValueObject {
+	r.println();
+	
+	t.typeName = r.typeName;
+	
+	// attributes
+	t.name = r.name;
+	t.abstract = r.abstract;
+	t.aggregateRoot = r.aggregateRoot;
+	t.properties ::= r.hasProperty;
+	
+	t.immutable = r.immutable;
+	t.persistent = r.persistent;
+	
+	if(t.aggregateRoot){
+		t.addRepository();
+	}
+	
+	
+	t.aggregate = r.aggregate.equivalent();
+	t.aggregate.domainobjects.add(t);
+	if(t.aggregateRoot){
+		t.aggregate.aggregateRoot ::= t;
+	}
+}
+
+rule BasicType
+	merge l : DynamicPIM!BasicType with r : StaticPIM!BasicType into t : ServicePSM!BasicType{
+	"------- BasicType --------------".println();
+	t.typeName = r.typeName;
+	
+	// attributes
+	t.name = r.name;
+	t.abstract = r.abstract;
+	t.aggregateRoot = r.aggregateRoot;
+	t.properties ::= r.hasProperty;
+	
+	t.immutable = r.immutable;
+	t.persistent = r.persistent;
+	
+	if(t.persistent){
+		var repository = new ServicePSM!Repository;
+		repository.name = t.name + "Repository";
+		repository.aggregateRoot = t;
+		t.repository = repository;
+	}
+	
+	t.aggregate = r.aggregate.equivalent();
+	t.aggregate.domainobjects.add(t);
+	if(t.aggregateRoot){
+		t.aggregate.aggregateRoot ::= t;
+	}
+}
+
+rule DomainEvent
+	merge l : DynamicPIM!DomainEvent with r : StaticPIM!DomainEvent into t : ServicePSM!DomainEvent{
+	"------- DomainEvent --------------".println();
+	t.typeName = r.typeName;
+	
+	// attributes
+	t.name = r.name;
+	t.abstract = r.abstract;
+	t.aggregateRoot = r.aggregateRoot;
+	t.properties ::= r.hasProperty;
+	
+	t.immutable = r.immutable;
+	t.persistent = r.persistent;
+	
+	if(t.persistent){
+		t.addRepository();
+	}
+	
+	t.aggregate = r.aggregate.equivalent();
+	t.aggregate.domainobjects.add(t);
+	if(t.aggregateRoot){
+		t.aggregate.aggregateRoot ::= t;
+	}
+}
+
+
+rule CommandEvent
+	merge l : DynamicPIM!CommandEvent with r : StaticPIM!CommandEvent into t : ServicePSM!CommandEvent{
+	"------- CommandEvent --------------".println();
+	t.typeName = r.typeName;
+	
+	// attributes
+	t.name = r.name;
+	t.abstract = r.abstract;
+	t.aggregateRoot = r.aggregateRoot;
+	t.properties ::= r.hasProperty;
+	
+	t.immutable = r.immutable;
+	t.persistent = r.persistent;
+	
+	if(t.persistent){
+		t.addRepository();
+	}
+	
+	t.aggregate = r.aggregate.equivalent();
+	t.aggregate.domainobjects.add(t);
+	if(t.aggregateRoot){
+		t.aggregate.aggregateRoot ::= t;
+	}
+}
+
+rule DTO
+	merge l : DynamicPIM!DTO with r : StaticPIM!DTO into t : ServicePSM!DTO{
+	"------- DTO --------------".println();
+	t.typeName = r.typeName;
+	
+	// attributes
+	t.name = r.name;
+	t.abstract = r.abstract;
+	t.aggregateRoot = r.aggregateRoot;
+	t.properties ::= r.hasProperty;
+	
+	t.immutable = r.immutable;
+	t.persistent = r.persistent;
+	
+	t.aggregate = r.aggregate.equivalent();
+	t.aggregate.domainobjects.add(t);
+}
+
+
+rule Entity 
+	merge l : DynamicPIM!Entity with r : StaticPIM!Entity into t : ServicePSM!Entity{
+	"------- entity --------------".println();
+	t.typeName = r.typeName;
+	
+	// attributes
+	t.name = r.name;
+	t.abstract = r.abstract;
+	t.aggregateRoot = r.aggregateRoot;
+	t.properties ::= r.hasProperty;
+	
+	t.scaffold = r.scaffold;
+	t.addRepository();
+	
+	t.aggregate = r.aggregate.equivalent();
+	t.aggregate.domainobjects.add(t);
+	if(t.aggregateRoot){
+		t.aggregate.aggregateRoot = t;
+	}	
+	
+}
+
+rule Enumeration
+	merge l : DynamicPIM!Enumeration with r : StaticPIM!Enumeration into t : ServicePSM!Enumeration{
+	"------- enumeration --------------".println();
+	t.typeName = r.typeName;
+	
+	// attributes
+	t.name = r.name;
+	t.abstract = r.abstract;
+	t.aggregateRoot = r.aggregateRoot;
+	t.properties ::= r.hasProperty;
+	
+	t.literals ::= r.hasLiteral;
+	
+	t.aggregate = r.aggregate.equivalent();
+	t.aggregate.domainobjects.add(t);
+}
+
+@greedy
+rule MergeResource
+	merge l : DynamicPIM!Resource with r : StaticPIM!Resource into t : ServicePSM!Resource{
+	"------- Resource iiiiiiiii --------------".println();
+	var application = r.aggregate.application.equivalent();
+	var path = new ServicePSM!Path;
+	path.relativePath = r.relativePath();
+	t.path = path;
+	t.name = r.name;
+	
+	t.module = application.getRestModule();
+	t.module.resources.add(t);
+}

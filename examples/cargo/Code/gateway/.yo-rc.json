@@ -20,7 +20,7 @@
     "prodDatabaseType": "postgresql",
     "searchEngine": false,
     "skipClient": false,
-    "testFrameworks": ["cucumber", "gatling"],
+    "testFrameworks": [],
     "websocket": false,
     "packageName": "org.cargo.gateway",
     "packageFolder": "org/cargo/gateway",

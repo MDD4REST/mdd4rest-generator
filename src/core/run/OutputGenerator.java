@@ -1,6 +1,10 @@
 package core.run;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -15,15 +19,19 @@ import ActivityDiagramMetamodel.ActivityDiagram;
 import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
 import core.handlers.ExportActivityDiagramMetamodelToOntologyHandler;
 import core.handlers.LinkOntologiesHandler;
+import core.handlers.OntologyToYamlHandler;
 import core.ontology.DynamicOntologyAPI;
 import core.ontology.LinkedOntologyAPI;
 import core.ontology.StaticOntologyAPI;
+import core.ontologytoyamltools.Aggregates;
 
 public class OutputGenerator {
 
+	LinkedOntologyAPI linkedOntology;
+
 	private String projectName;
 	private String projectPath;
-
+ 
 	public OutputGenerator(String projectName, String projectPath) {
 		this.projectName = projectName;
 		this.projectPath = projectPath;
@@ -35,19 +43,21 @@ public class OutputGenerator {
 		System.out.println("LOAD STATIC ONTOLOGY");
 		System.out.println();
 		StaticOntologyAPI staticOntology = new StaticOntologyAPI(projectName, projectPath, false);
-		
+
 		System.out.println();
 		System.out.println("***************************");
 		System.out.println("PARSE DYNAMIC METAMODEL");
 		System.out.println();
-		ExportActivityDiagramMetamodelToOntologyHandler acdToDynamicOntoHandler = new ExportActivityDiagramMetamodelToOntologyHandler(projectName, projectPath);
+		ExportActivityDiagramMetamodelToOntologyHandler acdToDynamicOntoHandler = new ExportActivityDiagramMetamodelToOntologyHandler(
+				projectName, projectPath);
 		DynamicOntologyAPI dynamicOntology = acdToDynamicOntoHandler.instantiateOntology();
-
+		dynamicOntology.close();
+		
 		System.out.println("EXPORT DYNAMIC ONTOLOGY");
 
 		// Create a new file for the linked ontology and instantiate it
 		System.out.println("GENERATE LINKED ONTOLOGY");
-		LinkedOntologyAPI linkedOntology = new LinkedOntologyAPI(projectName, projectPath);
+		linkedOntology = new LinkedOntologyAPI(projectName, projectPath);
 
 		// Link the ontologies
 		new LinkOntologiesHandler().linkOntologies(staticOntology, dynamicOntology, linkedOntology);
@@ -59,7 +69,7 @@ public class OutputGenerator {
 	}
 
 	public void yamlGenerator() {
-
+		new OntologyToYamlHandler(projectName, projectPath, linkedOntology).linkedToYaml();
 	}
 
 }

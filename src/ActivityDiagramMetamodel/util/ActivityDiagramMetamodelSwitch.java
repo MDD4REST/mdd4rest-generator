@@ -2,7 +2,48 @@
  */
 package ActivityDiagramMetamodel.util;
 
-import ActivityDiagramMetamodel.*;
+import ActivityDiagramMetamodel.Action;
+import ActivityDiagramMetamodel.ActivityDiagram;
+import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
+import ActivityDiagramMetamodel.ActivityEdge;
+import ActivityDiagramMetamodel.ActivityNode;
+import ActivityDiagramMetamodel.ActivityParameterNode;
+import ActivityDiagramMetamodel.ActivityPartition;
+import ActivityDiagramMetamodel.Actor;
+import ActivityDiagramMetamodel.Aggregate;
+import ActivityDiagramMetamodel.CallAction;
+import ActivityDiagramMetamodel.CallActivityAction;
+import ActivityDiagramMetamodel.CallBehaviorAction;
+import ActivityDiagramMetamodel.CallOperationAction;
+import ActivityDiagramMetamodel.CommandAction;
+import ActivityDiagramMetamodel.ConstraintPin;
+import ActivityDiagramMetamodel.ControlFlow;
+import ActivityDiagramMetamodel.ControlNode;
+import ActivityDiagramMetamodel.DecisionNode;
+import ActivityDiagramMetamodel.DomainEvent;
+import ActivityDiagramMetamodel.DomainObject;
+import ActivityDiagramMetamodel.Entity;
+import ActivityDiagramMetamodel.ExecutableNode;
+import ActivityDiagramMetamodel.ExternalSystem;
+import ActivityDiagramMetamodel.FinalNode;
+import ActivityDiagramMetamodel.ForkNode;
+import ActivityDiagramMetamodel.InitialNode;
+import ActivityDiagramMetamodel.InputPin;
+import ActivityDiagramMetamodel.JoinNode;
+import ActivityDiagramMetamodel.MergeNode;
+import ActivityDiagramMetamodel.ObjectAction;
+import ActivityDiagramMetamodel.ObjectFlow;
+import ActivityDiagramMetamodel.ObjectNode;
+import ActivityDiagramMetamodel.OutputPin;
+import ActivityDiagramMetamodel.Pin;
+import ActivityDiagramMetamodel.QueryAction;
+import ActivityDiagramMetamodel.ReadModel;
+import ActivityDiagramMetamodel.StartObjectBehaviorAction;
+import ActivityDiagramMetamodel.Supplier;
+import ActivityDiagramMetamodel.Supply;
+import ActivityDiagramMetamodel.ValueObject;
+import ActivityDiagramMetamodel.ValueSpecification;
+import ActivityDiagramMetamodel.Variable;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -230,16 +271,6 @@ public class ActivityDiagramMetamodelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ActivityDiagramMetamodelPackage.VARIABLE_ACTION: {
-				VariableAction variableAction = (VariableAction)theEObject;
-				T result = caseVariableAction(variableAction);
-				if (result == null) result = caseCallAction(variableAction);
-				if (result == null) result = caseAction(variableAction);
-				if (result == null) result = caseExecutableNode(variableAction);
-				if (result == null) result = caseActivityNode(variableAction);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ActivityDiagramMetamodelPackage.START_OBJECT_BEHAVIOR_ACTION: {
 				StartObjectBehaviorAction startObjectBehaviorAction = (StartObjectBehaviorAction)theEObject;
 				T result = caseStartObjectBehaviorAction(startObjectBehaviorAction);
@@ -296,15 +327,6 @@ public class ActivityDiagramMetamodelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ActivityDiagramMetamodelPackage.EVENT_ACTION: {
-				EventAction eventAction = (EventAction)theEObject;
-				T result = caseEventAction(eventAction);
-				if (result == null) result = caseAction(eventAction);
-				if (result == null) result = caseExecutableNode(eventAction);
-				if (result == null) result = caseActivityNode(eventAction);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ActivityDiagramMetamodelPackage.COMMAND_ACTION: {
 				CommandAction commandAction = (CommandAction)theEObject;
 				T result = caseCommandAction(commandAction);
@@ -317,6 +339,7 @@ public class ActivityDiagramMetamodelSwitch<T> extends Switch<T> {
 			case ActivityDiagramMetamodelPackage.AGGREGATE: {
 				Aggregate aggregate = (Aggregate)theEObject;
 				T result = caseAggregate(aggregate);
+				if (result == null) result = caseSupplier(aggregate);
 				if (result == null) result = caseObjectNode(aggregate);
 				if (result == null) result = caseActivityNode(aggregate);
 				if (result == null) result = defaultCase(theEObject);
@@ -328,6 +351,88 @@ public class ActivityDiagramMetamodelSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAction(queryAction);
 				if (result == null) result = caseExecutableNode(queryAction);
 				if (result == null) result = caseActivityNode(queryAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivityDiagramMetamodelPackage.DOMAIN_OBJECT: {
+				DomainObject domainObject = (DomainObject)theEObject;
+				T result = caseDomainObject(domainObject);
+				if (result == null) result = caseObjectNode(domainObject);
+				if (result == null) result = caseActivityNode(domainObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivityDiagramMetamodelPackage.VALUE_OBJECT: {
+				ValueObject valueObject = (ValueObject)theEObject;
+				T result = caseValueObject(valueObject);
+				if (result == null) result = caseDomainObject(valueObject);
+				if (result == null) result = caseObjectNode(valueObject);
+				if (result == null) result = caseActivityNode(valueObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivityDiagramMetamodelPackage.ENTITY: {
+				Entity entity = (Entity)theEObject;
+				T result = caseEntity(entity);
+				if (result == null) result = caseDomainObject(entity);
+				if (result == null) result = caseObjectNode(entity);
+				if (result == null) result = caseActivityNode(entity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivityDiagramMetamodelPackage.ACTOR: {
+				Actor actor = (Actor)theEObject;
+				T result = caseActor(actor);
+				if (result == null) result = caseActivityPartition(actor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivityDiagramMetamodelPackage.SYSTEM: {
+				ActivityDiagramMetamodel.System system = (ActivityDiagramMetamodel.System)theEObject;
+				T result = caseSystem(system);
+				if (result == null) result = caseActivityPartition(system);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivityDiagramMetamodelPackage.EXTERNAL_SYSTEM: {
+				ExternalSystem externalSystem = (ExternalSystem)theEObject;
+				T result = caseExternalSystem(externalSystem);
+				if (result == null) result = caseSupplier(externalSystem);
+				if (result == null) result = caseObjectNode(externalSystem);
+				if (result == null) result = caseActivityNode(externalSystem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivityDiagramMetamodelPackage.READ_MODEL: {
+				ReadModel readModel = (ReadModel)theEObject;
+				T result = caseReadModel(readModel);
+				if (result == null) result = caseObjectNode(readModel);
+				if (result == null) result = caseActivityNode(readModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivityDiagramMetamodelPackage.SUPPLIER: {
+				Supplier supplier = (Supplier)theEObject;
+				T result = caseSupplier(supplier);
+				if (result == null) result = caseObjectNode(supplier);
+				if (result == null) result = caseActivityNode(supplier);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivityDiagramMetamodelPackage.DOMAIN_EVENT: {
+				DomainEvent domainEvent = (DomainEvent)theEObject;
+				T result = caseDomainEvent(domainEvent);
+				if (result == null) result = caseObjectNode(domainEvent);
+				if (result == null) result = caseActivityNode(domainEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivityDiagramMetamodelPackage.CONSTRAINT_PIN: {
+				ConstraintPin constraintPin = (ConstraintPin)theEObject;
+				T result = caseConstraintPin(constraintPin);
+				if (result == null) result = casePin(constraintPin);
+				if (result == null) result = caseObjectNode(constraintPin);
+				if (result == null) result = caseActivityNode(constraintPin);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -666,21 +771,6 @@ public class ActivityDiagramMetamodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable Action</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVariableAction(VariableAction object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Start Object Behavior Action</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -771,21 +861,6 @@ public class ActivityDiagramMetamodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event Action</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventAction(EventAction object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Command Action</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -827,6 +902,156 @@ public class ActivityDiagramMetamodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseQueryAction(QueryAction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Domain Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Domain Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDomainObject(DomainObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Value Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Value Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseValueObject(ValueObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntity(Entity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Actor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Actor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseActor(Actor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>External System</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>External System</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExternalSystem(ExternalSystem object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Read Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Read Model</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReadModel(ReadModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Supplier</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Supplier</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSupplier(Supplier object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>System</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>System</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSystem(ActivityDiagramMetamodel.System object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Domain Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Domain Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDomainEvent(DomainEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Constraint Pin</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Constraint Pin</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConstraintPin(ConstraintPin object) {
 		return null;
 	}
 

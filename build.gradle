@@ -66,8 +66,8 @@ dependencies {
 	compile group: 'org.eclipse.core', name: 'org.eclipse.core.resources', version: '3.7.100'
 	compile group: 'org.eclipse.core', name: 'commands', version: '3.3.0-I20070605-0010'
     compile "org.eclipse.platform:org.eclipse.swt:$swt_version"
-    compile group: 'org.eclipse.platform', name: 'org.eclipse.jface', version: '3.21.0'
-	compile group: 'org.eclipse.platform', name: 'org.eclipse.jface.databinding', version: '1.12.0'
+    // compile group: 'org.eclipse.platform', name: 'org.eclipse.jface', version: '3.21.0'
+	// compile group: 'org.eclipse.platform', name: 'org.eclipse.jface.databinding', version: '1.12.0'
 	compile group: 'org.eclipse.emf', name: 'org.eclipse.emf.ecore.xmi', version: '2.16.0'
     compile group: 'org.eclipse.emf', name: 'org.eclipse.emf.ecore', version: '2.23.0'
     
@@ -81,6 +81,7 @@ dependencies {
 	compile group: 'org.yaml', name: 'snakeyaml', version: '1.26'
 	compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
 	compile group: 'org.slf4j', name:'slf4j-simple', version:'1.7.21'
+	compile group: 'org.atteo', name:'evo-inflector', version:'1.2.2'
 }
 
 sourceSets { 

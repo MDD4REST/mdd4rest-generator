@@ -7,36 +7,19 @@
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated PIMMetamodel -->
+      <!-- @generated StaticPIMMetamodel -->
       <package
-            uri="src/metamodels/PIMMetamodel.ecore"
-            class="ServicePIM.ServicePIMPackage"
-            genModel="src/metamodels/PIMMetamodel.genmodel"/>
+            uri="platform:/resource/MyCore/resources/mm/PIM/StaticPIMMetamodel.ecore"
+            class="StaticPIM.StaticPIMPackage"
+            genModel="resources/mm/PIM/StaticPIMMetamodel.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated ServicePIMMetamodel -->
+      <!-- @generated DynamicPIMMetamodel -->
       <package
-            uri="resources/mm/PIM/QueryPIMMetamodel.ecore"
-            class="QueryPIM.QueryPIMMetamodelPackage"
-            genModel="resources/mm/PIM/ServicePIMMetamodel.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated ServicePIMMetamodel -->
-      <package
-            uri="resources/mm/PIM/SecurityPIMMetamodel.ecore"
-            class="SecurityPIM.SecurityPIMMetamodelPackage"
-            genModel="resources/mm/PIM/ServicePIMMetamodel.genmodel"/>
-   </extension>
-
-null
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated ActivityDiagram -->
-      <package
-            uri="resources/mm/CIM/ActivityDiagram.ecore"
-            class="ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage"/>
+            uri="platform:/resource/MyCore/resources/mm/PIM/DynamicPIMMetamodel.ecore"
+            class="DynamicPIM.DynamicPIMPackage"
+            genModel="resources/mm/PIM/DynamicPIMMetamodel.genmodel"/>
    </extension>
 
 </plugin>

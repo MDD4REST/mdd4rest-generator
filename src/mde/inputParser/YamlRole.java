@@ -85,7 +85,7 @@ public class YamlRole {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		return ((YamlResource) obj).Name.equals(Name);
+		return ((YamlRole) obj).Name.equals(Name);
 	}
 
 	/**

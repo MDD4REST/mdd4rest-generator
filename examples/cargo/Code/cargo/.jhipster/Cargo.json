@@ -1,0 +1,19 @@
+{
+  "name": "Cargo",
+  "fields": [],
+  "relationships": [],
+  "changelogDate": "20210104213108",
+  "entityTableName": "cargo",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "clientRootFolder": "",
+  "applications": [
+    "gateway",
+    "cargo"
+  ],
+  "readOnly": false,
+  "embedded": false
+}

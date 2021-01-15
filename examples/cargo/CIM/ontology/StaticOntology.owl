@@ -1,0 +1,1549 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.owl-ontologies.com/Ontology1273059028.owl#"
+     xml:base="http://www.owl-ontologies.com/Ontology1273059028.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_reference_of -->
+
+    <owl:AnnotationProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_reference_of"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#acts_on -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#acts_on">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#receives_action"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#aggregate_root -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#aggregate_root">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#aggregate"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#consist_requirement -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#consist_requirement">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_consists_of"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_actor -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_actor">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_actor_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_aggregate -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_aggregate">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_aggregate_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#aggregate"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_literal -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_literal">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_literal_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#enumeration"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#literal"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_property -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_property">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_reference -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_reference">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_reference"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_source -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_source">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reference"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_target -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_target">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reference"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_actor_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_actor_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_aggregate_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_aggregate_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#aggregate"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_compound_requirement_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_compound_requirement_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_concept_of_requirement -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_concept_of_requirement">
+        <rdfs:subPropertyOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#consist_requirement"/>
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_has_concept"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_literal_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_literal_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#literal"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#enumeration"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_of_project -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_of_project">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#project_has_requirement"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_operation_of_requirement -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_operation_of_requirement">
+        <rdfs:subPropertyOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#consist_requirement"/>
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_has_operation"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_property_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_reference -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_reference">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_source_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reference"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_target_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reference"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#occurs -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#occurs">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#emergence"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#owned_by -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#owned_by">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#owns"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ownership"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#owns -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#owns">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ownership"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#project_has_requirement -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#project_has_requirement">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#receives_action -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#receives_action">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_consists_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_consists_of">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType"/>
+                    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_has_concept -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_has_concept">
+        <rdfs:subPropertyOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_consists_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_has_operation -->
+
+    <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_has_operation">
+        <rdfs:subPropertyOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirement_consists_of"/>
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#contains_negation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#contains_negation">
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#has_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#has_name">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reference"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#is_entity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#is_entity">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#many -->
+
+    <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#many">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reference"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Application -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Application">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Concept -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">refers to the verb phrase of the requirement</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Project -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Project">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Concept"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#action -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#action">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType"/>
+        <owl:disjointWith rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#emergence"/>
+        <owl:disjointWith rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ownership"/>
+        <owl:disjointWith rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#state"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">refers to actions - mainly transitive verbs</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#actor -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#actor">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#aggregate -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#aggregate">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#direction -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#direction">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#emergence -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#emergence">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType"/>
+        <owl:disjointWith rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ownership"/>
+        <owl:disjointWith rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#state"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">refers to events ; usually expressed through verbs like &apos;happen&apos;, &apos;occur&apos;, &apos;arrive&apos;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#entity -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#entity">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#enumeration -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#enumeration">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#extent -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#extent">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#external_system -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#external_system">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#literal -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#literal">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#location -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#location">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#manner -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#manner">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#modality -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#modality">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#object -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#object">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#ownership -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#ownership">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType"/>
+        <owl:disjointWith rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#state"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">describes part-of relationships</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#property -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#property">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#reference -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#reference">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#ThingType"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#state -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#state">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#OperationType"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">states a condition or situation - &apos;to be&apos;, &apos;to appear&apos;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#system -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#system">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#time -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#time">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#useractor -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#useractor">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#value_object -->
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#value_object">
+        <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Customer -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+        <is_actor_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#booking"/>
+        <is_actor_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#claim"/>
+        <is_actor_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reroute"/>
+        <is_actor_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#retrieve"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR2"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6"/>
+        <is_entity rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</is_entity>
+        <rdfs:comment>Customer</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_deadline"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#destination_location"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#origin_location"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#role"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#route_specification"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#booking"/>
+        <rdfs:comment>Each Customer must be able to booking a new cargo as sender role by providing an origin location and a destination location and arrival deadline route specification.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_location"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_time"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#carrier_movements"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#departure"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#schedule"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_clerk"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#create"/>
+        <rdfs:comment>The voyage clerk create a schedule by list of carrier movements which has departure, arrival time, and arrival location.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#location_1"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#name"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#port_code"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#unlocode"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_clerk"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#create"/>
+        <rdfs:comment>The voyage clerk create a location by providing name, port code, unlocode.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR12">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <rdfs:comment>An itinerary listing the legs of the route attached to the cargo.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR13">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <rdfs:comment>the old itinerary is discarded and a new one is attached.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR2">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#role"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#claim"/>
+        <rdfs:comment>Each Customer must be able to claim a cargo as receiever role.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR3">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#System"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#tracking_id"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#assign"/>
+        <rdfs:comment>System Should assign the tracking id to cargo upon creation and is never changed.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR4">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#System"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#itinerary"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#assign"/>
+        <rdfs:comment>System Should assign the itinerary to cargo upon creation.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#itinerary"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#legs"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#tracking_id"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#retrieve"/>
+        <rdfs:comment>Each Customer must be able to retrieve a detailed information of cargo by tracking id, detailed information was itinerary, legs.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#destination"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#route"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requested"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reroute"/>
+        <rdfs:comment>Customer must be able reroute a cargo during transport, in which case the destination is changed and a new route is requested.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#claim_1"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#completion_time"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#customs"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#load"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#location"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#receive"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#registration_time"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#shipping_clerk"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#type"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#unload"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_number"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#create"/>
+        <rdfs:comment>The shipping clerk must be able create a Handling Event by providing type which can be load, unload, receive, claim, customs; completion time, registration time, voyage by voyage number, location, and cargo.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR8">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#booking_clerk"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#possible_routes"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#assigns"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requests_a_list"/>
+        <rdfs:comment>The booking clerk requests a list of possible routes, matching a route specification, and assigns the cargo to one route.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#FR9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Requirement"/>
+        <is_of_project rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#schedule"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_clerk"/>
+        <requirement_has_concept rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_number"/>
+        <requirement_has_operation rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#create"/>
+        <rdfs:comment>The voyage clerk create a new voyage by voyage number and schedule</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#completion_time"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#registration_time"/>
+        <has_reference rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#type"/>
+        <has_reference rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#create"/>
+        <rdfs:comment>Handling_Event</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#System -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#System">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+        <is_actor_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#assign"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR3"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR4"/>
+        <is_entity rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</is_entity>
+        <rdfs:comment>System</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_deadline -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_deadline">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <rdfs:comment>arrival_deadline</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_location -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_location">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#carrier_movements"/>
+        <rdfs:comment>arrival_location</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_time -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_time">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#carrier_movements"/>
+        <rdfs:comment>arrival_time</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#assign -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#assign">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <has_actor rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#System"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR3"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR4"/>
+        <rdfs:comment>assign</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#assigns -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#assigns">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <has_actor rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#booking_clerk"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR8"/>
+        <rdfs:comment>assigns</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#booking -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#booking">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <has_actor rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+        <rdfs:comment>booking</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#booking_clerk -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#booking_clerk">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+        <is_actor_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#assigns"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR8"/>
+        <rdfs:comment>booking_clerk</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#cargo -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_deadline"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#destination"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#destination_location"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#itinerary"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#legs"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#origin_location"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#tracking_id"/>
+        <has_reference rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#route_specification"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR2"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR3"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR4"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR8"/>
+        <is_source_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#receiever__Reference__has_source__cargo__has_target__role"/>
+        <is_source_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#sender__Reference__has_source__cargo__has_target__role"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#assign"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#assigns"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#booking"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#claim"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reroute"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#retrieve"/>
+        <is_reference_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage"/>
+        <rdfs:comment>cargo</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#carrier_movements -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#carrier_movements">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_location"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#arrival_time"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#departure"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+        <is_target_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#list__Reference__has_source__schedule__has_target__carrier_movements"/>
+        <rdfs:comment>carrier_movements</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#claim -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#claim">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <has_actor rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR2"/>
+        <rdfs:comment>claim</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#claim_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#claim_1">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#literal"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_literal_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#type"/>
+        <rdfs:comment>claim</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#completion_time -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#completion_time">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event"/>
+        <rdfs:comment>completion_time</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#create -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#create">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#location_1"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#schedule"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage"/>
+        <has_actor rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#shipping_clerk"/>
+        <has_actor rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_clerk"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9"/>
+        <rdfs:comment>create</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#customs -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#customs">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#literal"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_literal_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#type"/>
+        <rdfs:comment>customs</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#departure -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#departure">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#carrier_movements"/>
+        <rdfs:comment>departure</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#destination -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#destination">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <rdfs:comment>destination</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#destination_location -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#destination_location">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <rdfs:comment>destination_location</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#itinerary -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#itinerary">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR4"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <rdfs:comment>itinerary</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#legs -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#legs">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <rdfs:comment>legs</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#list__Reference__has_source__schedule__has_target__carrier_movements -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#list__Reference__has_source__schedule__has_target__carrier_movements">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reference"/>
+        <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#schedule"/>
+        <has_target rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#carrier_movements"/>
+        <has_name>list</has_name>
+        <many rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</many>
+        <rdfs:comment>list__Reference__has_source__schedule__has_target__carrier_movements</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#load -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#load">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#literal"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_literal_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#type"/>
+        <rdfs:comment>load</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#location -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#location">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#location_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#location_1">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#name"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#port_code"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#unlocode"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#create"/>
+        <rdfs:comment>location</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#name -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#name">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#location_1"/>
+        <rdfs:comment>name</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#origin_location -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#origin_location">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <rdfs:comment>origin_location</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#port_code -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#port_code">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#location_1"/>
+        <rdfs:comment>port_code</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#possible_routes -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#possible_routes">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR8"/>
+        <rdfs:comment>possible_routes</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#receiever__Reference__has_source__cargo__has_target__role -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#receiever__Reference__has_source__cargo__has_target__role">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reference"/>
+        <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <has_target rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#role"/>
+        <has_name>receiever</has_name>
+        <many rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</many>
+        <rdfs:comment>receiever__Reference__has_source__cargo__has_target__role</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#receive -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#receive">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#literal"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_literal_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#type"/>
+        <rdfs:comment>receive</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#registration_time -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#registration_time">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event"/>
+        <rdfs:comment>registration_time</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#requested -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#requested">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#route"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6"/>
+        <rdfs:comment>requested</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#requests_a_list -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#requests_a_list">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR8"/>
+        <rdfs:comment>requests_a_list</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#requirements4">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Project"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR12"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR13"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR2"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR3"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR4"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR8"/>
+        <project_has_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9"/>
+        <rdfs:comment></rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#reroute -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#reroute">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <has_actor rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6"/>
+        <rdfs:comment>reroute</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#retrieve -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#retrieve">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#action"/>
+        <acts_on rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <has_actor rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Customer"/>
+        <is_operation_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+        <rdfs:comment>retrieve</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#role -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#role">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR2"/>
+        <is_target_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#receiever__Reference__has_source__cargo__has_target__role"/>
+        <is_target_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#sender__Reference__has_source__cargo__has_target__role"/>
+        <rdfs:comment>role</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#route -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#route">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR6"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#requested"/>
+        <rdfs:comment>route</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#route_specification -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#route_specification">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR1"/>
+        <is_reference_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <rdfs:comment>route_specification</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#schedule -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#schedule">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9"/>
+        <is_source_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#list__Reference__has_source__schedule__has_target__carrier_movements"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#create"/>
+        <is_reference_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage"/>
+        <rdfs:comment>schedule</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#sender__Reference__has_source__cargo__has_target__role -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#sender__Reference__has_source__cargo__has_target__role">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#reference"/>
+        <has_source rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <has_target rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#role"/>
+        <has_name>sender</has_name>
+        <many rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</many>
+        <rdfs:comment>sender__Reference__has_source__cargo__has_target__role</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#shipping_clerk -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#shipping_clerk">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+        <is_actor_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#create"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <rdfs:comment>shipping_clerk</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#tracking_id -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#tracking_id">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR3"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR5"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <rdfs:comment>tracking_id</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#type -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#type">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#enumeration"/>
+        <has_literal rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#claim_1"/>
+        <has_literal rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#customs"/>
+        <has_literal rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#load"/>
+        <has_literal rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#receive"/>
+        <has_literal rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#unload"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_reference_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event"/>
+        <rdfs:comment>type</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#unload -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#unload">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#literal"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_literal_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#type"/>
+        <rdfs:comment>unload</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#unlocode -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#unlocode">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#location_1"/>
+        <rdfs:comment>unlocode</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#voyage -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#object"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#location"/>
+        <has_property rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_number"/>
+        <has_reference rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#cargo"/>
+        <has_reference rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#schedule"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9"/>
+        <receives_action rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#create"/>
+        <is_reference_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#Handling_Event"/>
+        <rdfs:comment>voyage</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_clerk -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_clerk">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#actor"/>
+        <is_actor_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#create"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR10"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR11"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9"/>
+        <rdfs:comment>voyage_clerk</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_number -->
+
+    <owl:NamedIndividual rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage_number">
+        <rdf:type rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#property"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR7"/>
+        <is_concept_of_requirement rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#FR9"/>
+        <is_property_of rdf:resource="http://www.owl-ontologies.com/Ontology1273059028.owl#voyage"/>
+        <rdfs:comment>voyage_number</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.owl-ontologies.com/Ontology1273059028.owl#location">
+        <rdfs:comment>location</rdfs:comment>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+

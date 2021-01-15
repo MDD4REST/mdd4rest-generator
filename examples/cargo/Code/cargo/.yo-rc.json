@@ -19,7 +19,7 @@
     "prodDatabaseType": "postgresql",
     "searchEngine": false,
     "skipClient": true,
-    "testFrameworks": [],
+    "testFrameworks": ["cucumber", "gatling"],
     "websocket": false,
     "packageName": "org.cargo.sculptor",
     "packageFolder": "org/cargo/sculptor",

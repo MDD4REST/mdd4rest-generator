@@ -1,0 +1,218 @@
+@xcore.lang.Ecore(nsPrefix="mde", nsURI="platform:/resource/MyCore/resources/mm/PIM/StaticPIMMetamodel.ecore")
+@xcore.lang.GenModel(copyrightText="", modelDirectory="/MyCore/src", importerID="org.eclipse.emf.importer.ecore",
+	complianceLevel="6.0")
+package StaticPIM
+
+class Hi{
+	
+}
+
+class Resource {
+	boolean[1] isAlgorithmic
+	id String[1] name
+	contains InputRepresentation[+] hasInputRepresentation
+	contains CRUDActivity[+] hasActivities
+	contains OutputRepresentation[+] hasOutputRepresentation
+	refers DTO[1] model
+	refers Resource[] hasRelatedResource
+	refers Resource[] isRelatedResource
+}
+
+class Property {
+	boolean[1] isUnique
+	boolean[1] isNamingProperty
+	String[1] name
+	boolean[1] isRequired = "true"
+	int min
+	int max
+	refers TypeDefinition[1] ^type
+	String[1] typeName
+}
+
+class InputRepresentation {
+	MediaType[1] inputMediaType
+}
+
+class OutputRepresentation {
+	MediaType[1] outputMediaType
+}
+
+enum MediaType {
+	JSON
+	XML = 1
+}
+
+class PIMDomain {
+	id String[1] name
+	String[1] basePath
+	contains Application[+] hasApplications
+	contains PrimitiveType[] primitiveTypes
+}
+
+class Relation {
+	Multiplicity[1] multiplicity
+	refers DomainObject[1] target
+	refers DomainObject[1] source
+	String cascade
+	String orderBy
+	String visibility
+	boolean required
+	boolean nullable
+	boolean many
+	String[1] name
+}
+
+enum Multiplicity {
+	ONE_TO_MANY
+	MANY_TO_ONE = 1
+	ONE_TO_ONE = 2
+	MANY_TO_MANY = 3
+}
+
+class Application {
+	contains Resource[+] resources
+	contains Aggregate[] aggregates
+	contains Service[] services
+	contains DataMapper[] datamapper
+	String name
+}
+
+abstract class TypeDefinition {
+	id String[1] typeName
+}
+
+class Enumeration extends DomainObject {
+	contains Literal[+] literals
+}
+
+class BasicType extends ValueObject {
+}
+
+class Literal {
+	id String[1] name
+	int[1] value
+}
+
+enum DefaultType {
+	String
+	Integer = 1
+	Float = 2
+	Boolean = 3
+	^null = 4
+	Date = 5
+}
+
+class CRUDActivity extends Operation {
+	boolean isAuthenticatedRequired
+	boolean isCustom
+	refers Service delegate
+}
+
+class Create extends CRUDActivity {
+}
+
+class Read extends CRUDActivity {
+}
+
+class Update extends CRUDActivity {
+}
+
+class Delete extends CRUDActivity {
+}
+
+class Entity extends DomainObject {
+	boolean scaffold
+}
+
+class DataMapper {
+	refers DomainObject[+] entity
+	refers DTO[1] dto
+	String name
+}
+
+class DTO extends ValueObject {
+}
+
+abstract class DomainObject extends TypeDefinition {
+	contains Property[] hasProperty
+	String name
+	boolean ^abstract
+	boolean aggregateRoot = "true"
+	contains DomainObjectOperation[] operations opposite domainObject
+	contains Relation[] hasRelationship
+	contains Inheritance hasInheritance
+}
+
+class ValueObject extends DomainObject {
+	boolean immutable
+	boolean persistent
+}
+
+class Aggregate {
+	contains DomainObject[] domainobjects
+	String name
+}
+
+class Operation {
+	contains Parameter[] parameters
+	refers TypeDefinition returnType
+	String name
+	refers Publish publish
+}
+
+class Parameter {
+	refers TypeDefinition ^type
+	String name
+}
+
+class SingletonResource extends Resource {
+	String lookupField
+}
+
+abstract class Event extends ValueObject {
+}
+
+class Publish {
+	String eventBus
+	String topic
+	refers Event eventType
+}
+
+class CommandEvent extends Event {
+}
+
+class DomainEvent extends Event {
+}
+
+class ServiceOperation extends Operation {
+	refers ServiceOperation serviceDelegate
+	container Service[1] service opposite operations
+}
+
+class DomainObjectOperation extends Operation {
+	boolean ^abstract
+	container DomainObject[1] domainObject opposite operations
+}
+
+class Service {
+	unique String[] otherDependencies
+	refers Service[] serviceDependencies
+	boolean webService
+	boolean remoteInterface = "true"
+	boolean localInterface = "true"
+	refers Subscribe subscribe
+	contains ServiceOperation[] operations opposite service
+}
+
+class Subscribe {
+	String eventBus
+	String topic
+}
+
+class PrimitiveType extends TypeDefinition {
+	DefaultType ^type
+}
+
+class Inheritance {
+	refers DomainObject[1] ^class
+}

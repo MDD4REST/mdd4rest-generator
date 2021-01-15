@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mde:ActivityDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="resources/mm/CIM/ActivityDiagram.ecore" name="Cargo">
+  <activityedge target="//@activitypartition.0/@activitynode.0" source="//@activitypartition.0/@activitynode.3"/>
+  <activityedge target="//@activitypartition.0/@activitynode.5" source="//@activitypartition.0/@activitynode.9"/>
+  <activityedge target="//@activitypartition.0/@activitynode.12" source="//@activitypartition.0/@activitynode.10"/>
+  <activityedge target="//@activitypartition.0/@activitynode.4" source="//@activitypartition.0/@activitynode.2"/>
+  <activityedge target="//@activitypartition.1/@activitynode.0" source="//@activitypartition.0/@activitynode.9"/>
+  <activityedge target="//@activitypartition.1/@activitynode.4" source="//@activitypartition.1/@activitynode.3"/>
+  <activitypartition xsi:type="mde:Actor" name="Customer">
+    <activitynode xsi:type="mde:QueryAction" incomming="//@activityedge.0" name="Cargo List View" supplier="//@activitypartition.0/@activitynode.1"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" action="//@activitypartition.0/@activitynode.0" readmodels="//@activitypartition.0/@activitynode.2"/>
+    <activitynode xsi:type="mde:ReadModel" outcomming="//@activityedge.3" name="Cargo List" supplier="//@activitypartition.0/@activitynode.1"/>
+    <activitynode xsi:type="mde:InitialNode" outcomming="//@activityedge.0"/>
+    <activitynode xsi:type="mde:QueryAction" incomming="//@activityedge.3" name="Cargo Details View" supplier="//@activitypartition.0/@activitynode.6"/>
+    <activitynode xsi:type="mde:QueryAction" incomming="//@activityedge.1" name="Pick New Destination View" supplier="//@activitypartition.0/@activitynode.7"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" action="//@activitypartition.0/@activitynode.4" readmodels="//@activitypartition.0/@activitynode.9"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" action="//@activitypartition.0/@activitynode.5" readmodels="//@activitypartition.0/@activitynode.10"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" action="//@activitypartition.0/@activitynode.12" triggers="//@activitypartition.0/@activitynode.11"/>
+    <activitynode xsi:type="mde:ReadModel" outcomming="//@activityedge.1 //@activityedge.4" name="Cargo Details" supplier="//@activitypartition.0/@activitynode.6"/>
+    <activitynode xsi:type="mde:ReadModel" outcomming="//@activityedge.2" name="Change Destination Form" supplier="//@activitypartition.0/@activitynode.7"/>
+    <activitynode xsi:type="mde:DomainEvent" name="Cargo Destination Changed" supplier="//@activitypartition.0/@activitynode.8"/>
+    <activitynode xsi:type="mde:CommandAction" incomming="//@activityedge.2" name="Change Destination" supplier="//@activitypartition.0/@activitynode.8"/>
+  </activitypartition>
+  <activitypartition xsi:type="mde:Actor" name="Booking Clerk">
+    <activitynode xsi:type="mde:QueryAction" incomming="//@activityedge.4" name="Request Possible Routes For Cargo" supplier="//@activitypartition.1/@activitynode.1"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" action="//@activitypartition.1/@activitynode.0" readmodels="//@activitypartition.1/@activitynode.3"/>
+    <activitynode xsi:type="mde:DomainEvent" name="Cargo Assigned to Route" supplier="//@activitypartition.1/@activitynode.5"/>
+    <activitynode xsi:type="mde:ReadModel" outcomming="//@activityedge.5" name="Possible Routes For Cargo" supplier="//@activitypartition.1/@activitynode.1"/>
+    <activitynode xsi:type="mde:CommandAction" incomming="//@activityedge.5" name="Assign Cargo To Route" supplier="//@activitypartition.1/@activitynode.5"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" action="//@activitypartition.1/@activitynode.4" triggers="//@activitypartition.1/@activitynode.2"/>
+  </activitypartition>
+</mde:ActivityDiagram>

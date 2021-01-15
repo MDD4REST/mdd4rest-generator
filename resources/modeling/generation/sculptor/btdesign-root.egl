@@ -1,0 +1,3 @@
+[% for (app in Application.all) { %]
+import "classpath:/model-[%= app.name.ftlc()%].btdesign"
+[% } %]

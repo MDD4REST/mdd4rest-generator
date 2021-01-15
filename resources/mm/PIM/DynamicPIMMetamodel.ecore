@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="DynamicPIM" nsURI="platform:/resource/MyCore/resources/mm/PIM/DynamicPIMMetamodel.ecore"
+    nsPrefix="mde">
+  <eClassifiers xsi:type="ecore:EClass" name="Resource" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasRelatedResource" upperBound="-1"
+        eType="#//Resource" eOpposite="#//Resource/isRelatedResource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="isRelatedResource" eType="#//Resource"
+        eOpposite="#//Resource/hasRelatedResource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="readActivity" eType="#//Read"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="createActivity" eType="#//Create"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deleteActivity" eType="#//Delete"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="otherActivities" upperBound="-1"
+        eType="#//Other"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregate" eType="#//Aggregate"
+        eOpposite="#//Aggregate/hasResource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasActivity" upperBound="-1"
+        eType="#//ResourceActivity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pathName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasPermission" upperBound="-1"
+        eType="#//Permission" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MediaType">
+    <eLiterals name="JSON"/>
+    <eLiterals name="XML" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Application">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasAggregate" lowerBound="1"
+        upperBound="-1" eType="#//Aggregate" containment="true" eOpposite="#//Aggregate/application"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="project" lowerBound="1"
+        eType="#//Project" eOpposite="#//Project/hasApplication"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="complextypes" upperBound="-1"
+        eType="#//ComplexType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasRole" upperBound="-1"
+        eType="#//Role" containment="true" eOpposite="#//Role/application"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceActivity" abstract="true" eSuperTypes="#//Operation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//ProcessOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resource" eType="#//Resource"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pathName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Create" eSuperTypes="#//ResourceActivity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Read" eSuperTypes="#//ResourceActivity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Other" eSuperTypes="#//ResourceActivity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Delete" eSuperTypes="#//ResourceActivity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="publish" eType="#//Publish"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasParameter" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returntype" eType="#//TypeDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SingletonResource" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lookupField" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType" eSuperTypes="#//SimpleType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//DefaultType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event" abstract="true" eSuperTypes="#//ValueObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Publish">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventType" eType="#//Event"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommandEvent" eSuperTypes="#//Event"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainEvent" eSuperTypes="#//Event"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainObjectOperation" eSuperTypes="#//Operation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domainobject" lowerBound="1"
+        eType="#//DomainObject" eOpposite="#//DomainObject/hasOperation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Policy">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventType" eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommandOperation" eSuperTypes="#//ProcessOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QueryOperation" eSuperTypes="#//ProcessOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessOperation" eSuperTypes="#//Operation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="#//ProcessOperation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="policy" eType="#//Policy"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="process" lowerBound="1"
+        eType="#//Process" eOpposite="#//Process/hasOperation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Process">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasOperation" lowerBound="1"
+        upperBound="-1" eType="#//ProcessOperation" containment="true" eOpposite="#//ProcessOperation/process"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregate" lowerBound="1"
+        eType="#//Aggregate" eOpposite="#//Aggregate/hasProcess"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Project">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="basePath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasApplication" lowerBound="1"
+        upperBound="-1" eType="#//Application" containment="true" eOpposite="#//Application/project"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="primitiveTypes" upperBound="-1"
+        eType="#//PrimitiveType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="authenticationType" eType="#//AuthenticationType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CollectionResource" eSuperTypes="#//Resource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeDefinition" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//TypeDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Aggregate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasProcess" upperBound="-1"
+        eType="#//Process" containment="true" eOpposite="#//Process/aggregate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="application" lowerBound="1"
+        eType="#//Application" eOpposite="#//Application/hasAggregate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domainobjects" upperBound="-1"
+        eType="#//DomainObject" containment="true" eOpposite="#//DomainObject/aggregate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasResource" upperBound="-1"
+        eType="#//Resource" containment="true" eOpposite="#//Resource/aggregate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregateRoot" lowerBound="1"
+        eType="#//DomainObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainObject" abstract="true" eSuperTypes="#//SimpleType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="aggregateRoot" unique="false"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hasOperation" upperBound="-1"
+        eType="#//DomainObjectOperation" containment="true" eOpposite="#//DomainObjectOperation/domainobject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregate" lowerBound="1"
+        eType="#//Aggregate" eOpposite="#//Aggregate/domainobjects"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//DomainObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ValueObject" eSuperTypes="#//DomainObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DTO" eSuperTypes="#//ValueObject"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="DefaultType">
+    <eLiterals name="String"/>
+    <eLiterals name="Integer" value="1"/>
+    <eLiterals name="Float" value="2"/>
+    <eLiterals name="Boolean" value="3"/>
+    <eLiterals name="null" value="4"/>
+    <eLiterals name="Date" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Enumeration" eSuperTypes="#//DomainObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicType" eSuperTypes="#//ValueObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleType" abstract="true" eSuperTypes="#//TypeDefinition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComplexType" eSuperTypes="#//TypeDefinition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//TypeDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Role">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="application" lowerBound="1"
+        eType="#//Application" eOpposite="#//Application/hasRole"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Permission" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HasAuthority" eSuperTypes="#//Permission">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1" eType="#//Role"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Authenticated" eSuperTypes="#//Permission"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PermitAll" eSuperTypes="#//Permission">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="withAllSubresource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AuthenticationType">
+    <eLiterals name="CENTERALIZED"/>
+    <eLiterals name="DECENTERALIZED" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HasAnyAuthorities" eSuperTypes="#//Permission">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1" upperBound="-1"
+        eType="#//Role"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Access" eSuperTypes="#//Permission">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="access" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

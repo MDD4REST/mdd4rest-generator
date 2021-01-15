@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:util="http://www.springframework.org/schema/util"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			https://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context
+			https://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/aop
+			https://www.springframework.org/schema/aop/spring-aop.xsd
+			http://www.springframework.org/schema/jee
+			https://www.springframework.org/schema/jee/spring-jee.xsd
+			http://www.springframework.org/schema/tx
+			https://www.springframework.org/schema/tx/spring-tx.xsd
+			http://www.springframework.org/schema/util
+			https://www.springframework.org/schema/util/spring-util.xsd
+			">
+
+
+	<aop:aspectj-autoproxy/>
+
+	<bean id="jpaFlushEagerAdvice" class="org.sculptor.framework.persistence.JpaFlushEagerAdvice"/>
+	<bean id="errorHandlingAdvice" class="org.sculptor.framework.errorhandling.ErrorHandlingAdvice"/>
+	<bean id="serviceContextStoreAdvice" class="org.sculptor.framework.context.ServiceContextStoreAdvice"/>
+
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<!-- all methods starting with 'get' or 'find' are read-only -->
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+			<!-- all other methods are transactional and ApplicationException will cause rollback -->
+			<tx:method name="*" read-only="false" rollback-for="org.sculptor.framework.errorhandling.ApplicationException"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+	
+		<aop:pointcut id="businessService"
+			expression="execution(public * org.cargo..serviceapi.*.*(..))"/>
+		<aop:pointcut id="readOnlyBusinessService"
+			expression="execution(public * org.cargo..serviceapi.*.get*(..)) or execution(public * org.cargo..serviceapi.*.find*(..))"/>
+		<!-- Repeating the previous expressions because there's no way to combine existing pointcuts in schema-based Spring AOP. -->
+		<aop:pointcut id="updatingBusinessService"
+			expression="execution(public * org.cargo..serviceapi.*.*(..)) and not (execution(public * org.cargo..serviceapi.*.get*(..)) or execution(public * org.cargo..serviceapi.*.find*(..)))"/>
+	
+	
+		<aop:advisor pointcut-ref="businessService" advice-ref="txAdvice" order="1"/>
+		<aop:advisor pointcut-ref="businessService" advice-ref="serviceContextStoreAdvice" order="2"/>
+		<aop:advisor pointcut-ref="businessService" advice-ref="errorHandlingAdvice" order="3"/>
+		<aop:advisor pointcut-ref="updatingBusinessService" advice-ref="jpaFlushEagerAdvice" order="4"/>
+	
+	
+	
+	</aop:config>
+
+</beans>

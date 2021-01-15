@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/MyCore/src" modelPluginID="MyCore"
+    modelName="DynamicPIM" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>DynamicPIMMetamodel.ecore</foreignModel>
+  <genPackages prefix="DynamicPIM" disposableProviderFactory="true" ecorePackage="DynamicPIMMetamodel.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DynamicPIMMetamodel.ecore#//MediaType">
+      <genEnumLiterals ecoreEnumLiteral="DynamicPIMMetamodel.ecore#//MediaType/JSON"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicPIMMetamodel.ecore#//MediaType/XML"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DynamicPIMMetamodel.ecore#//DefaultType">
+      <genEnumLiterals ecoreEnumLiteral="DynamicPIMMetamodel.ecore#//DefaultType/String"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicPIMMetamodel.ecore#//DefaultType/Integer"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicPIMMetamodel.ecore#//DefaultType/Float"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicPIMMetamodel.ecore#//DefaultType/Boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicPIMMetamodel.ecore#//DefaultType/null"/>
+      <genEnumLiterals ecoreEnumLiteral="DynamicPIMMetamodel.ecore#//DefaultType/Date"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="DynamicPIMMetamodel.ecore#//Resource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//Resource/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Resource/hasRelatedResource"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Resource/isRelatedResource"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Resource/readActivity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Resource/createActivity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Resource/deleteActivity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Resource/otherActivities"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Resource/aggregate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Resource/hasActivity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//Resource/pathName"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Application">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//Application/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Application/hasAggregate"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Application/project"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Application/complextypes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="DynamicPIMMetamodel.ecore#//ResourceActivity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//ResourceActivity/isAuthenticatedRequired"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//ResourceActivity/trigger"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//ResourceActivity/resource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//ResourceActivity/pathName"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Create"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Read"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Other"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Delete"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//Operation/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Operation/publish"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Operation/hasParameter"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Operation/returntype"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//SingletonResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//SingletonResource/lookupField"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//PrimitiveType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//PrimitiveType/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="DynamicPIMMetamodel.ecore#//Event"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Publish">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Publish/eventType"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//CommandEvent"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//DomainEvent"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//DomainObjectOperation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//DomainObjectOperation/abstract"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//DomainObjectOperation/domainobject"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Policy">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Policy/eventType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//Policy/name"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//CommandOperation"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//QueryOperation"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//ProcessOperation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//ProcessOperation/delegate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//ProcessOperation/policy"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//ProcessOperation/process"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Process">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Process/hasOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//Process/name"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Process/aggregate"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Project">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//Project/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//Project/basePath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Project/hasApplication"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Project/primitiveTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//CollectionResource"/>
+    <genClasses image="false" ecoreClass="DynamicPIMMetamodel.ecore#//TypeDefinition"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Parameter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Parameter/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//Parameter/name"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Aggregate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//Aggregate/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Aggregate/hasProcess"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Aggregate/application"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Aggregate/domainobjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Aggregate/hasResource"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//Aggregate/aggregateRoot"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="DynamicPIMMetamodel.ecore#//DomainObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//DomainObject/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//DomainObject/aggregateRoot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//DomainObject/hasOperation"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//DomainObject/aggregate"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Entity"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//ValueObject"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//DTO"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//Enumeration"/>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//BasicType"/>
+    <genClasses image="false" ecoreClass="DynamicPIMMetamodel.ecore#//SimpleType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DynamicPIMMetamodel.ecore#//SimpleType/typeName"/>
+    </genClasses>
+    <genClasses ecoreClass="DynamicPIMMetamodel.ecore#//ComplexType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DynamicPIMMetamodel.ecore#//ComplexType/type"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

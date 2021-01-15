@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mde:ActivityDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mde="resources/mm/CIM/ActivityDiagram.ecore" name="Handling">
+  <activityedge target="//@activitypartition.0/@activitynode.3" source="//@activitypartition.0/@activitynode.2"/>
+  <activityedge target="//@activitypartition.0/@activitynode.6" source="//@activitypartition.0/@activitynode.5"/>
+  <activityedge target="//@activitypartition.1/@activitynode.0" source="//@activitypartition.0/@activitynode.6"/>
+  <activitypartition xsi:type="mde:Actor" name="Shipping Clerck">
+    <activitynode xsi:type="mde:QueryAction" name="Report Form View" supplier="//@activitypartition.0/@activitynode.1"/>
+    <activitynode xsi:type="mde:Aggregate" name="Handling Event" action="//@activitypartition.0/@activitynode.0" readmodels="//@activitypartition.0/@activitynode.2"/>
+    <activitynode xsi:type="mde:ReadModel" outcomming="//@activityedge.0" name="Report Form" supplier="//@activitypartition.0/@activitynode.1"/>
+    <activitynode xsi:type="mde:CommandAction" incomming="//@activityedge.0" name="Register Handling Event" supplier="//@activitypartition.0/@activitynode.4"/>
+    <activitynode xsi:type="mde:Aggregate" name="Handling Event" action="//@activitypartition.0/@activitynode.3" triggers="//@activitypartition.0/@activitynode.5"/>
+    <activitynode xsi:type="mde:DomainEvent" outcomming="//@activityedge.1" name="Handling Event Registered" supplier="//@activitypartition.0/@activitynode.4"/>
+    <activitynode xsi:type="mde:DecisionNode" incomming="//@activityedge.1" outcomming="//@activityedge.2" name="Whenever a Handling Event Registered"/>
+  </activitypartition>
+  <activitypartition xsi:type="mde:System" name="System">
+    <activitynode xsi:type="mde:CommandAction" incomming="//@activityedge.2" name="Update Event of Cargo" supplier="//@activitypartition.1/@activitynode.1"/>
+    <activitynode xsi:type="mde:Aggregate" name="Cargo" action="//@activitypartition.1/@activitynode.0" triggers="//@activitypartition.1/@activitynode.6 //@activitypartition.1/@activitynode.2 //@activitypartition.1/@activitynode.3">
+      <constraints name="has next handling Activity" triggers="//@activitypartition.1/@activitynode.4"/>
+      <constraints name="doesn't have handling activity" triggers="//@activitypartition.1/@activitynode.5"/>
+      <constraints name="is unloaded at destination" triggers="//@activitypartition.1/@activitynode.7"/>
+    </activitynode>
+    <activitynode xsi:type="mde:DomainEvent" name="Cargo Transport Status Recalculated" supplier="//@activitypartition.1/@activitynode.1"/>
+    <activitynode xsi:type="mde:DomainEvent" name="Cargo Last Known Updated" supplier="//@activitypartition.1/@activitynode.1"/>
+    <activitynode xsi:type="mde:DomainEvent" name="Next Expected Handling Activity" constraint="//@activitypartition.1/@activitynode.1/@constraints.0"/>
+    <activitynode xsi:type="mde:DomainEvent" name="Cargo Is Claimed Event" constraint="//@activitypartition.1/@activitynode.1/@constraints.1"/>
+    <activitynode xsi:type="mde:DomainEvent" name="Cargo Current Voyage Updated" supplier="//@activitypartition.1/@activitynode.1"/>
+    <activitynode xsi:type="mde:DomainEvent" name="Cargo Is Unloaded At Destination" constraint="//@activitypartition.1/@activitynode.1/@constraints.2"/>
+  </activitypartition>
+</mde:ActivityDiagram>

@@ -5,7 +5,6 @@ package ActivityDiagramMetamodel.impl;
 import ActivityDiagramMetamodel.ActivityDiagram;
 import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
 import ActivityDiagramMetamodel.CallActivityAction;
-import ActivityDiagramMetamodel.ModelingTestPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;

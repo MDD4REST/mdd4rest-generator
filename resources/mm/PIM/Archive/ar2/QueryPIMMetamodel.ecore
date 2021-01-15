@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="QueryPIM" nsURI="resources/mm/PIM/QueryPIMMetamodel.ecore" nsPrefix="mde">
+  <eClassifiers xsi:type="ecore:EClass" name="OrderBy" eSuperTypes="#//Query">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orderDirection" eType="#//OrderDirection"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Select" eSuperTypes="#//Query"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalSearch">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourcesearch" upperBound="-1"
+        eType="#//ResourceSearch" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScopeSearch" eSuperTypes="#//Query"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceSearch">
+    <eAnnotations source="http://www.obeo.fr/dsl/dnc/archetype">
+      <details key="archetype" value="Role"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resource" lowerBound="1"
+        eType="ecore:EClass ServicePIMMetamodel.ecore#//Resource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" upperBound="-1"
+        eType="ecore:EClass ServicePIMMetamodel.ecore#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pagination">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="limit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FilterOperationType">
+    <eLiterals name="EQ"/>
+    <eLiterals name="LTE" value="1"/>
+    <eLiterals name="GTE" value="2"/>
+    <eLiterals name="EXISTS" value="3"/>
+    <eLiterals name="REGEX" value="4"/>
+    <eLiterals name="BEFORE" value="5"/>
+    <eLiterals name="AFTER" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OrderDirection">
+    <eLiterals name="ASC"/>
+    <eLiterals name="DESC" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sort">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderby" upperBound="-1"
+        eType="#//OrderBy" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Query" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ServicePIMMetamodel.ecore#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FilterOperation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterOperation" lowerBound="1"
+        eType="#//FilterOperationType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FilterType">
+    <eLiterals name="STRING"/>
+    <eLiterals name="NUMBER" value="1"/>
+    <eLiterals name="SELECT" value="2"/>
+    <eLiterals name="DATE" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Filter" eSuperTypes="#//Query">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterType" lowerBound="1"
+        eType="#//FilterType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filterOperations" upperBound="-1"
+        eType="#//FilterOperation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Caching">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cachingType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Expiration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>

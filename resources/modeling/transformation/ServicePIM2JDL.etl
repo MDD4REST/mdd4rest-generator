@@ -1,0 +1,186 @@
+import "../utilities/JDL.eol";
+import "../utilities/ServicePSM.eol";
+
+pre {
+	"Running ETL Transformation: ".println();
+	"----------------------------".println();
+	"".println();
+	var psm;
+	var jdl;
+}
+
+rule Project2JDL transform c:ServicePSM!Project
+ 	to a:JDL!JDL{
+ 	guard: c.applications.size() > 0
+ 	"-------------- Project2JDL --------------".println();
+	psm = c;
+ 	jdl = a;
+}
+
+rule Entity transform c:ServicePSM!Entity
+	to a:JDL!Entity{
+	// guard: c.isAlgorithmic == false
+	  
+	a.name = c.name;
+	for (property in c.properties){
+		a.addFieldFromProperty(property);
+	}
+	for (relation in c.relations){
+		if(relation.target.type().name == "Enumeration"){
+			var property = new ServicePSM!Property;
+			property.name = relation.name;
+			property.unique = false;
+			property.required = relation.required;
+			property.type = relation.type;
+			a.addFieldFromProperty(property);
+		}
+	}
+	jdl.entities.add(a);
+	"Entity:: ".println();
+	a.println();
+}
+
+rule Application transform c:ServicePSM!Application
+	to a:JDL!Application{
+	var config = new JDL!Config;
+	config.baseName = c.name;
+	// config.servicePort = c.hasConfig.servicePort;
+	a.config = config;
+	a.entities ::= c.getEntities();
+	a.entities.println();
+	jdl.applications.add(a);
+	
+	"Applications ::".println();
+	a.config.println();
+}
+
+rule Relation2UnidirectionalRelationship transform c:ServicePSM!Relation
+	to a:JDL!UnidirectionalRelationship{
+	guard: c.opposite == null and c.source.type().name == "Entity" and c.target.type().name == "Entity"
+	
+	var fromRelationshipColumn = new JDL!RelationshipColumn;
+	
+  	a.setMultiplicityFromRelation(c);
+  	a.fromName = c.source.name;
+  	a.toName = c.target.name;
+  	
+  	fromRelationshipColumn.name = c.name;
+  	var fromEntity = c.source.equivalent();
+  	fromRelationshipColumn.entity = fromEntity;
+  	a.fromColumn = fromRelationshipColumn;
+  	a.toEntity = c.target.equivalent();
+  	
+  	"Relationship:: ".println();
+	a.println();
+	fromEntity.relationships.add(a);
+}
+
+rule Relation2BidirectionalRelationship transform c:ServicePSM!Relation
+	to a:JDL!BidirectionalRelationship{
+	guard: c.opposite != null and c.source.type().name == "Entity" and c.target.type().name == "Entity"
+	
+	var fromRelationshipColumn = new JDL!RelationshipColumn;
+	var toRelationshipColumn = new JDL!RelationshipColumn;
+	
+  	a.setMultiplicityFromRelation(c);
+  	a.fromName = c.fromResource.name;
+  	a.toName = c.toResource.name;
+  	
+  	fromRelationshipColumn.name = c.name;
+  	var fromEntity = c.source.equivalent();
+  	fromRelationshipColumn.entity = fromEntity;
+  	
+  	toRelationshipColumn.name = c.opposite.name;
+  	toRelationshipColumn.entity = c.target.equivalent();
+  	
+  	a.toEntity = c.target.equivalent();
+	"Relationship:: ".println();
+	a.println();
+	fromEntity.relationships.add(a);
+}
+
+rule Literal transform c:ServicePSM!Literal
+	to a:JDL!Literal{
+	a.name = c.name;
+	a.value = c.value;
+}
+
+rule Enumeration2Enum transform c:ServicePSM!Enumeration
+	to a:JDL!Enum{
+	a.name = c.name;
+	a.literals ::= c.literals;
+	jdl.enums.add(a);
+	"Enumerations ::".println();
+	a.println();
+}
+
+
+operation JDL!Entity addFieldFromProperty(property: ServicePSM!Property){
+	var field = new JDL!Field;
+	field.name = property.name;
+	field.unique = property.unique;
+	field.required = property.required;
+	field.min = property.min;
+	field.max = property.max;
+	field.type = property.type.typeName;
+	self.fields.add(field);
+}
+
+operation JDL!Entity addRelationshipFromRelation(relation: ServicePSM!Relation){
+	var relationship;
+	var fromRelationshipColumn = new JDL!RelationshipColumn;
+	if(relation.opposite == null){
+		relationship = new JDL!UnidirectionalRelationship;
+	} else{
+		relationship = new JDL!BidirectionalRelationship;
+	}
+	
+  	"Relationship:: ".println();
+	a.println();
+	self.relationships.add(a);
+}
+
+operation JDL!Relationship setMultiplicityFromRelation(relation){
+	var multiplicity = "";
+	if(relation.opposite == null){
+		if(relation.type.type().name=="ComplexType")
+			multiplicity = "ONE_TO_MANY";	
+		else 
+			multiplicity = "ONE_TO_ONE";	
+	} else{
+		if(relation.type.type().name=="ComplexType"){
+			if(realation.type.type().name=="ComplexType"){
+				multiplicity = "MANY_TO_MANY";
+			}else{
+				multiplicity = "MANY_TO_ONE";
+			}
+		} else{
+			if(realation.type.type().name=="ComplexType"){
+				multiplicity = "ONE_TO_MANY";
+			}else{
+				multiplicity = "ONE_TO_ONE";
+			}
+		}
+	}
+	self.setMultiplicityByString(multiplicity);
+}
+
+operation JDL!Relationship setMultiplicityByString(multiplicity){
+	if(multiplicity == ServicePSM!Multiplicity#ONE_TO_MANY.name){
+  		self.multiplicity = JDL!Multiplicity#ONE_TO_MANY;
+  	} else if(multiplicity == ServicePSM!Multiplicity#MANY_TO_ONE.name){
+  		self.multiplicity = JDL!Multiplicity#MANY_TO_ONE;
+  	} else if(multiplicity == ServicePSM!Multiplicity#MANY_TO_MANY.name){
+  		self.multiplicity = JDL!Multiplicity#MANY_TO_MANY;
+  	} else {
+  		self.multiplicity = JDL!Multiplicity#ONE_TO_ONE;
+  	}
+}
+
+operation JDL!JDLPIM findDomainObject(name:String){
+	for (entity in self.entities){
+		if (entity.name == name){
+			return entity;
+		}
+	}
+}

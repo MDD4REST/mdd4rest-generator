@@ -5,7 +5,7 @@ import core.ontology.StaticOntologyAPI;
 /**
  * An example instantiation of the static ontology.
  * 
- * @author themis
+ * @author amirdeljouyi
  */
 public class StaticOntologyAPITest {
 

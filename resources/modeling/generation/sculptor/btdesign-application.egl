@@ -1,0 +1,254 @@
+Application [%=app.name%] {
+  basePackage = [%=app.basePackage%]
+  [% for (module in app.modules) { %] 
+  Module [%=module.name.firstToLowerCase()%] {
+    [% for (domainObject in module.domainObjects) { %] 
+    [%= domainObject.getHeader() %] [%=domainObject.name%] {
+[%= domainObject.getBodyAttributes() %]		[%=domainObject.attributes()%]
+		[%= domainObject.references() %]
+	[% if (domainObject.type().name=="Enum") {%]
+		[%=domainObject.enumeration()%]
+	[% } %]
+	[% if (domainObject.repository != null) {%]
+	
+		[%= domainObject.repository.getHeader() %] [%=domainObject.repository.name%] {
+			[%= domainObject.repository.getBodyAttributes() %]
+	    	[% for (repositoryOperation in domainObject.repository.operations) { %]
+		    [%=repositoryOperation.string()%][% if (loopCount != domainObject.repository.operations.size()) {%]
+			[% } %] 
+		    [% } %] 
+		}
+	[% } %]
+	}
+    [% } %]
+    
+    [% for (service in module.services) { %] 
+    [%= service.getHeader() %] [%=service.name%] {
+    	[%= service.getBodyAttributes() %]
+    	[% for (serviceOperation in service.operations) { %]
+	    [%=serviceOperation.string()%][% if (loopCount !=service.operations.size()) {%]
+		[% } %] 
+	    [% } %] 
+	}
+    [% } %]
+    [% for (resource in module.resources) { %]
+    
+    [%= resource.getHeader() %] [%=resource.name%] {
+    	[% for (resourceOperation in resource.operations) { %]
+	    [%=resourceOperation.string()%][% if (loopCount !=resource.operations.size()) {%]
+		[% } %] 
+	    [% } %] 
+	}
+    [% } %]
+  }
+  [% } %]
+}
+
+[%
+operation DomainObject getHeader(): String{
+	var name = "";
+	if (self.abstract)
+		name += "abstract ";
+	if (self.type().name == "Enum")
+		name += "enum";
+	else
+		name += self.type().name;
+	return name;
+}
+
+operation DomainObject getBodyAttributes(): String{
+	var name = "";
+	if (not self.optimisticLocking)
+		name += "!optimisticLocking \n";
+	if (self.cache)
+		name += "\t\tcache \n";
+	if (self.gapClass)
+		name += "\t\tgap \n";
+			
+	if (self.type.name == "Enum"){
+
+	} else {
+		if (self.type().name == "Entity"){
+			if(not self.auditable){
+				name += "\t\t!auditable \n";
+			}
+			if (self.belongsToAggregate != null)
+				name += "\t\tbelongsTo " + self.belongsToAggregate.name + "\n";
+			if (not self.aggregateRoot)	
+				name += "\t\t!aggregateRoot \n";
+		} else if (self.type().name == "ValueObject"){
+			if(not self.immutable){
+				name += "\t\t!immutable \n";
+			}
+			if(not self.persistent){
+				name += "\t\t!persistent \n";
+			} else {
+				if (self.belongsToAggregate != null)
+					name += "\t\tbelongsTo " + self.belongsToAggregate.name + "\n";
+				if (not self.aggregateRoot)	
+					name += "\t\t!aggregateRoot \n";
+			}
+		}
+	}
+	return name;
+}
+
+operation Service getBodyAttributes(): String{
+	var name = self.subscribeString();
+	return name;
+}
+
+operation Repository getBodyAttributes(): String{
+	var name = self.subscribeString();
+	return name;
+}
+
+
+operation Service getHeader(): String{
+	var name = "Service";
+	return name;
+}
+
+operation Repository getHeader(): String{
+	var name = "Repository";
+	return name;
+}
+
+operation Resource getHeader(): String{
+	var name = "Resource";
+	return name;
+}
+
+operation Attribute string(): String{
+	var name = self.type + " " + self.name;
+	if (not self.changeable)
+		name += " !changeable";
+	if (not self.required)
+		name += " required";
+	if (not self.nullable)
+		name += " nullable";
+	return name;
+}
+
+operation Reference string(): String{
+	var name = "- ";
+	if(self.collectionType != null) {
+		name += self.collectionType + "<@" + self.`to`.name + "> " + self.name;
+	} else {
+		name += "@" + self.`to`.name + " " + self.name;
+	}
+	if (not self.changeable)
+		name += " !changeable";
+	if (self.opposite != null){
+		name += " <-> " + self.opposite.name;
+	}
+	return name;
+}
+
+operation ServiceOperation string(): String{
+	var name = self.name;
+	if (self.delegate != null){
+		name += " => ";
+		name += self.delegate.repository.name + "." + self.delegate.name;
+	}else if(self.serviceDelegate != null){
+		name += " => ";
+		name += self.serviceDelegate.service.name + "." + self.serviceDelegate.name;
+	} else{
+		name = self.type + " " + name;
+		name += "(" + self.parametersList() + ")";
+	}
+	name += self.publishString();
+	name += ";";
+	return name;
+}
+
+operation ResourceOperation string(): String{
+	var name = self.name;
+	if (self.delegate != null){
+		name += " => ";
+		name += self.delegate.service.name + "." + self.delegate.name;
+	} else{
+		name = self.type + " " + name;
+		name += "(" + self.parametersList() + ")";
+	}
+	name += ";";
+	return name;
+}
+
+operation RepositoryOperation string(): String{
+	var name = self.name;
+	name = self.type + " " + name;
+	name += "(" + self.parametersList() + ")";
+	name += self.publishString();
+	name += ";";
+	return name;
+}
+
+operation Repository subscribeString(): String{
+	if(self.subscribe != null){
+		var name = "subscribe to ";
+		name += self.subscribe.topic;
+		if(self.subscribe.eventBus!=null)
+			name += " eventBus="+ self.subscribe.eventBus;
+		return name;
+	}
+}
+
+operation Service subscribeString(): String{
+	if(self.subscribe != null){
+		var name = "subscribe to ";
+		name += self.subscribe.topic;
+		if(self.subscribe.eventBus!=null)
+			name += " eventBus="+ self.subscribe.eventBus;
+		return name;
+	}
+}
+
+operation Operation publishString(): String{
+	var name = "";
+	if (self.publish != null){
+		name += " publish";
+		if(self.publish.eventType != null){
+			name += " @" + self.publish.eventType.name;
+		}
+		name += " to " + self.publish.topic + " ";
+		if(self.publish.eventBus!=null)
+			name += " eventBus="+ self.publish.eventBus;
+	}
+	return name;
+}
+
+
+operation Operation parametersList(): String{
+	var string = "";
+	var paramSize = self.parameters.size();
+	for (param in self.parameters){
+		string += param.type + " " + param.name;
+		if (loopCount != paramSize){
+			string += ", ";
+		}
+	}
+	return string;
+}
+%]
+
+[% @template
+operation DomainObject enumeration() { %]
+[% for (literal in self.values) { %]
+[%=literal.name%][% if (loopCount !=self.values.size()) {%],[% } %] 
+[% } %]
+[% } %]
+
+[% @template
+operation DomainObject attributes() { %]
+[% for (attribute in self.attributes) { %][%=attribute.string()%]
+[% } %]
+[% } %]
+
+[% @template
+operation DomainObject references() { %]
+[% for (reference in self.references) { %][%=reference.string()%]
+[% } %]
+[% } %]
+
+

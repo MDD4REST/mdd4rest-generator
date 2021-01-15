@@ -1,0 +1,298 @@
+operation ServicePSM!Application addModule(name:String){
+	var module = new ServicePSM!Module;
+	module.name = name;
+	module.application = self;
+	self.modules.add(module);
+}
+
+operation ServicePSM!Application getDefaultModule(){
+	return self.modules.first;
+}
+
+operation ServicePSM!Application getCommandModule(){
+	return self.modules.selectOne(t|t.name=="command");
+}
+
+operation ServicePSM!Application getQueryModule(){
+	return self.modules.selectOne(t|t.name=="^query");
+}
+
+operation ServicePSM!Application getRestModule(){
+	return self.modules.selectOne(t|t.name=="rest");
+}
+
+operation ServicePSM!Application getEntities(){
+	var entities = new OrderedSet<String>();
+	for(module in self.modules){
+		for(aggregate in module.aggregates){
+			entities.addAll(aggregate.domainobjects.select(t|t.type().name=="Entity"));
+		}
+	}
+	return entities;
+}
+
+// Resource
+operation ServicePSM!Service addDependencyIfNotExist(service: ServicePSM!Service){
+	for (dependency in self.serviceDependencies){
+		if(service.name == dependency.name){
+			return;
+		}
+	}
+	self.serviceDependencies.add(service);
+}
+
+operation ServicePSM!Module getService(name: String): ServicePSM!Service{
+	for (service in self.services){
+		if(service.name == name){
+			return service;
+		}
+	}
+	return null;
+}
+
+operation ServicePSM!Module getOrAddService(name: String): ServicePSM!Service{
+	var service = self.getService(name);
+	if (service != null)
+		return service;
+	service = new ServicePSM!Service;
+	service.name = name;
+	service.module = self;
+	self.services.add(service);
+	return service;
+}
+
+operation ServicePSM!Project findPrimitiveType(name: String): ServicePSM!PrimitiveType{
+	for (type in self.primitivetype){
+		if(type.typeName == name){
+			return type;
+		}
+	}
+	return null;
+}
+
+operation ServicePSM!Application findTypeDefinition(name: String): ServicePSM!TypeDefinition{
+	var primitiveType = self.project.findPrimitiveType(name);
+	if (primitiveType != null){
+		return primitiveType;
+	}
+	for (aggregate in self.aggregates){
+		for(domainObject in aggregate.domainobjects){
+			if(domainObject.typeName == name){
+				return domainObject;
+			}
+		}
+	}
+	return null;
+}
+
+operation ServicePSM!Operation addParameter(name:String, type:ServicePSM!TypeDefinition){
+	var parameter = new ServicePSM!Parameter;
+	parameter.name = name;
+	parameter.type = type;
+	self.parameters.add(parameter);
+}
+
+operation ServicePSM!DomainObject addRepository(){
+	var repository = new ServicePSM!Repository;
+	repository.name = self.name + "Repository";
+	repository.aggregateRoot = self;
+	self.repository = repository;
+}
+
+operation ServicePSM!PSMService findApplication(name:String){
+	for (application in self.applications){
+		if (application.name == name){
+			return application;
+		}
+	}
+}
+
+operation ServicePSM!Module findAggregate(name:String){
+	for (aggregate in self.aggregates){
+		if (aggregate.name == name){
+			return aggregate;
+		}
+	}
+}
+
+operation ServicePSM!Project findApplication(name:String, applicationName:String){
+	application = findApplicattion(applicationName);
+	for (aggregate in self.aggregates){
+		if (aggregate.name == name){
+			return aggregate;
+		}
+	}
+}
+
+operation ServicePSM!DomainObject setAggregateRoot(){
+	if(self.aggregateRoot){
+		self.aggregate.aggregateRoot = self;
+	}
+}
+
+operation ServicePSM!DomainObject addDomainObjectToQueryAggregate(application :ServicePSM!Application, aggregateName: String){
+	var module = application.getQueryModule();
+	var aggregate = module.findAggregate(aggregateName);
+	self.aggregate = aggregate;
+	self.aggregate.domainobjects.add(self);
+	self.setAggregateRoot();
+}
+
+operation ServicePSM!DomainObject addDomainObjectToCommandAggregate(application :ServicePSM!Application, aggregateName: String){
+	var module = application.getCommandModule();
+	var aggregate = module.findAggregate(aggregateName);
+	self.aggregate = aggregate;
+	self.aggregate.domainobjects.add(self);
+	self.setAggregateRoot();
+}
+
+operation ServicePSM!DomainObject addDomainObjectToDefaultAggregate(application :ServicePSM!Application, aggregateName: String){
+	var module = application.getDefaultModule();
+	var aggregate = module.findAggregate(aggregateName);
+	self.aggregate = aggregate;
+	self.aggregate.domainobjects.add(self);
+	self.setAggregateRoot();
+}
+
+operation ServicePSM!DomainObject addProperty(name:String, required: Boolean, unique:Boolean, type:ServicePSM!TypeDefinition){
+	var property = new ServicePSM!Property;
+	property.name = name;
+	property.required = required;
+	property.unique = unique;
+	property.type = type;
+	self.properties.add(property);
+}
+
+operation ServicePSM!Repository addSubscribe(eventBus:String, topic: String){
+	var subscribe = new ServicePSM!Subscribe;
+	subscribe.eventBus = eventBus;
+	subscribe.topic = topic;
+	self.subscribe = subscribe;
+}
+
+operation ServicePSM!Service addSubscribe(eventBus:String, topic: String){
+	var subscribe = new ServicePSM!Subscribe;
+	subscribe.eventBus = eventBus;
+	subscribe.topic = topic;
+	self.subscribe = subscribe;
+}
+
+operation ServicePSM!Operation addPublish(eventBus:String, topic: String){
+	var publish = new ServicePSM!Publish;
+	publish.eventBus = eventBus;
+	publish.topic = topic;
+	self.publish = publish;
+}
+
+operation ServicePSM!Repository addOperation(name:String, visibility:String, throws:String){
+	var soperation = new ServicePSM!Operation;
+	soperation.name = name;
+	soperation.visibility = visibility;
+	soperation.throws = throws;
+	self.operations.add(soperation);
+	return soperation;
+}
+
+operation ServicePSM!Service addOperation(name:String, visibility:String, throws:String){
+	var soperation = new ServicePSM!Operation;
+	soperation.name = name;
+	soperation.visibility = visibility;
+	soperation.throws = throws;
+	self.operations.add(soperation);
+	return soperation;
+}
+
+// SERVICEPSM
+
+operation ServicePSM!Relationship setMultiplicity(multiplicity){
+	if(multiplicity == ServicePSM!Multiplicity#ONE_TO_MANY.name){
+  		self.multiplicity = ServicePSM!Multiplicity#ONE_TO_MANY;
+  	} else if(multiplicity == ServicePSM!Multiplicity#MANY_TO_ONE.name){
+  		self.multiplicity = ServicePSM!Multiplicity#MANY_TO_ONE;
+  	} else if(multiplicity == ServicePSM!Multiplicity#MANY_TO_MANY.name){
+  		self.multiplicity = ServicePSM!Multiplicity#MANY_TO_MANY;
+  	} else {
+  		self.multiplicity = ServicePSM!Multiplicity#ONE_TO_ONE;
+  	}
+}
+
+operation ServicePSM!Project getApplications(){
+	return self.applications;
+}
+
+operation ServicePSM!Project getEntities(){
+	return self.entities;
+}
+
+operation ServicePSM!Application getEntities(){
+	return self.entities;
+}
+
+operation ServicePSM!Project findEntity(name:String){
+	for (entity in self.entities){
+		if (entity.name == name){
+			return entity;
+		}
+	}
+}
+
+operation ServicePSM!Project findEntity(name:String, applicationName: String){
+	var application = self.findApplication(applicationName);
+	return application.findEntity(name);
+}
+
+operation ServicePSM!Application findEntity(name:String){
+	for (entity in self.entities){
+		if (entity.name == name){
+			return entity;
+		}
+	}
+	return null;
+}
+
+operation OrderedSet findCommonApplication(firstApplications, secondApplications){
+	var applications = new OrderedSet<String>();
+	for (firstApp in firstApplications){
+		for(secondApp in secondApplications){
+			if (firstApp.hasConfig.baseName == secondApp.hasConfig.baseName){
+				applications.add(firstApp.hasConfig.baseName);
+			} 
+		}
+	}
+	return applications;
+}
+
+operation ServicePSM!Project findApplicationIndex(name:String){
+	var i = 0;
+	for (application in self.applications){
+		if (application.name == name){
+			return i;
+		}
+		i++;
+	}
+	return -1;
+}
+
+operation ServicePSM!Project findApplication(name:String){
+	for (application in self.applications){
+		if (application.name == name){
+			return application;
+		}
+	}
+}
+
+operation ServicePSM!Relation relationshipInstance(){
+	if(self.multiplicity.name == ServicePSM!Multiplicity#MANY_TO_MANY.name or self.multiplicity.name == ServicePSM!Multiplicity#ONE_TO_ONE.name){
+		return new ServicePSM!BidirectionalRelationship;
+	} else if(self.multiplicity.name == ServicePSM!Multiplicity#ONE_TO_MANY.name or self.multiplicity.name == ServicePSM!Multiplicity#MANY_TO_ONE.name){
+		return new ServicePSM!UnidirectionalRelationship;
+	}
+}
+
+operation ServicePSM!Module findResource(name:String){
+	for (resource in self.hasResources){
+		if (resource.name == name){
+			return resource;
+		}
+	}
+}

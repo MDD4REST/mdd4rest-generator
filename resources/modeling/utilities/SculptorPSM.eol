@@ -1,0 +1,16 @@
+operation Sculptor!Application addModule(name:String){
+	var module = new Sculptor!Module;
+	module.name = name;
+	module.application = self;
+	self.modules.add(module);
+}
+
+operation Sculptor!TypedElement setTypedElement(type:String, collectionType:String, mapType: String){
+	self.type = type;
+	self.collectionType = collectionType;
+	self.mapKeyType = mapType;
+}
+
+operation Sculptor!Application getDefaultModule(){
+	return self.modules.first;
+}
