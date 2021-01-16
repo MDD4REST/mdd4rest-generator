@@ -1,12 +1,12 @@
-package core.handlers;
+package com.github.icelyframework.generator.cim.handlers;
 
 import java.util.ArrayList;
 
 import org.apache.commons.lang3.StringUtils;
 
-import core.ontology.DynamicOntologyAPI;
-import core.ontology.LinkedOntologyAPI;
-import core.ontology.StaticOntologyAPI;
+import com.github.icelyframework.generator.cim.ontology.DynamicOntologyAPI;
+import com.github.icelyframework.generator.cim.ontology.LinkedOntologyAPI;
+import com.github.icelyframework.generator.cim.ontology.StaticOntologyAPI;
 
 /**
  * Links the static and the dynamic ontologies into one linked ontology.

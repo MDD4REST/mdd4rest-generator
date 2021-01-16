@@ -1,12 +1,12 @@
-package core.ontology;
+package com.github.icelyframework.generator.cim.ontology;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-import core.ontology.OntologySource.OntologyType;
-import core.ontology.OntologyJenaAPI;
+import com.github.icelyframework.generator.cim.ontology.OntologySource.OntologyType;
+import com.github.icelyframework.generator.cim.ontology.OntologyJenaAPI;
 
 /**
  * Provides an API for the linked ontology in OWL format. Allows adding/deleting

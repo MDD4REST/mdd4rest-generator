@@ -1,10 +1,12 @@
-package core.handlers;
+package com.github.icelyframework.generator.cim.handlers;
 
 import java.io.File;
+import java.lang.System;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.github.icelyframework.activitystorming.*;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -12,31 +14,15 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import ActivityDiagramMetamodel.Action;
-import ActivityDiagramMetamodel.ActivityDiagram;
-import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
-import ActivityDiagramMetamodel.ActivityEdge;
-import ActivityDiagramMetamodel.ActivityNode;
-import ActivityDiagramMetamodel.ActivityPartition;
-import ActivityDiagramMetamodel.Aggregate;
-import ActivityDiagramMetamodel.CommandAction;
-import ActivityDiagramMetamodel.DecisionNode;
-import ActivityDiagramMetamodel.DomainEvent;
-import ActivityDiagramMetamodel.DomainObject;
-import ActivityDiagramMetamodel.FinalNode;
-import ActivityDiagramMetamodel.InitialNode;
-import ActivityDiagramMetamodel.QueryAction;
-import ActivityDiagramMetamodel.ReadModel;
-import ActivityDiagramMetamodel.Supplier;
-import core.ontology.DynamicOntologyAPI;
+import com.github.icelyframework.generator.cim.ontology.DynamicOntologyAPI;
 
-public class ExportActivityDiagramMetamodelToOntologyHandler {
+public class ExportActivityStormingToOntologyHandler {
 
 	private String projectName;
 	private String projectPath;
 	private DynamicOntologyAPI dynamicOntology;
 
-	public ExportActivityDiagramMetamodelToOntologyHandler(String projectName, String projectPath) {
+	public ExportActivityStormingToOntologyHandler(String projectName, String projectPath) {
 		this.projectName = projectName;
 		this.projectPath = projectPath;
 	}
@@ -44,18 +30,18 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 	public DynamicOntologyAPI instantiateOntology() {
 		dynamicOntology = new DynamicOntologyAPI(projectName, projectPath, true);
 
-		ActivityDiagramMetamodelPackage.eINSTANCE.eClass();
+		ActivitystormingPackage.eINSTANCE.eClass();
 
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		m.put("activitydiagrammetamodel", new XMIResourceFactoryImpl());
+		m.put("ActivityDiagram", new XMIResourceFactoryImpl());
 
 		// Obtain a new resource set
 		ResourceSet resSet = new ResourceSetImpl();
 
 		// Get the resource
 		File dir = new File(projectPath + "/CIM/activity diagrams");
-		String[] extensions = new String[] { "activitydiagrammetamodel" };
+		String[] extensions = new String[] { "ActivityDiagram" };
 		List<File> files = (List<File>) FileUtils.listFiles(dir, extensions, true);
 
 		System.out.println();
@@ -107,9 +93,9 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 
 	private void activityPartitionTranformation(String diagramName, ActivityPartition activityPartition) {
 		String actorName = activityPartition.getName();
-		if (activityPartition.eClass().getClassifierID() == ActivityDiagramMetamodelPackage.ACTOR) {
+		if (activityPartition.eClass().getClassifierID() == ActivitystormingPackage.ACTOR) {
 			dynamicOntology.addUserActor(actorName);
-		} else if (activityPartition.eClass().getClassifierID() == ActivityDiagramMetamodelPackage.SYSTEM) {
+		} else if (activityPartition.eClass().getClassifierID() == ActivitystormingPackage.SYSTEM) {
 			dynamicOntology.addSystemActor(actorName);
 		} else {
 			dynamicOntology.addActor(actorName);
@@ -127,53 +113,53 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 
 		for (ActivityNode activityNode : activityPartition.getActivitynode()) {
 			switch (activityNode.eClass().getClassifierID()) {
-			case ActivityDiagramMetamodelPackage.INITIAL_NODE: {
+			case ActivitystormingPackage.INITIAL_NODE: {
 				initialNode = (InitialNode) activityNode;
 				break;
 			}
-			case ActivityDiagramMetamodelPackage.FINAL_NODE: {
+			case ActivitystormingPackage.FINAL_NODE: {
 				finalNode = (FinalNode) activityNode;
 				break;
 			}
-			case ActivityDiagramMetamodelPackage.FORK_NODE: {
+			case ActivitystormingPackage.FORK_NODE: {
 				break;
 			}
-			case ActivityDiagramMetamodelPackage.JOIN_NODE: {
+			case ActivitystormingPackage.JOIN_NODE: {
 				break;
 			}
-			case ActivityDiagramMetamodelPackage.DECISION_NODE: {
+			case ActivitystormingPackage.DECISION_NODE: {
 				policies.add((DecisionNode) activityNode);
 				break;
 			}
 
-			case ActivityDiagramMetamodelPackage.MERGE_NODE: {
+			case ActivitystormingPackage.MERGE_NODE: {
 				break;
 			}
 
-			case ActivityDiagramMetamodelPackage.COMMAND_ACTION: {
+			case ActivitystormingPackage.COMMAND_ACTION: {
 				commands.add((CommandAction) activityNode);
 				break;
 			}
-			case ActivityDiagramMetamodelPackage.DOMAIN_EVENT: {
+			case ActivitystormingPackage.DOMAIN_EVENT: {
 				events.add((DomainEvent) activityNode);
 				break;
 			}
 
-			case ActivityDiagramMetamodelPackage.CALL_ACTION: {
+			case ActivitystormingPackage.CALL_ACTION: {
 				break;
 			}
 
-			case ActivityDiagramMetamodelPackage.QUERY_ACTION: {
+			case ActivitystormingPackage.QUERY_ACTION: {
 				queries.add((QueryAction) activityNode);
 				break;
 			}
 
-			case ActivityDiagramMetamodelPackage.AGGREGATE: {
+			case ActivitystormingPackage.AGGREGATE: {
 				aggregates.add((Aggregate) activityNode);
 				break;
 			}
 
-			case ActivityDiagramMetamodelPackage.READ_MODEL: {
+			case ActivitystormingPackage.READ_MODEL: {
 				readModels.add((ReadModel) activityNode);
 				break;
 			}
@@ -304,23 +290,23 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 		ActivityNode targetNode = edge.getTarget();
 		String fromString = "";
 		String toString = targetTransitionName(diagramName, targetNode);
-		if (ActivityDiagramMetamodelPackage.Literals.INITIAL_NODE.isSuperTypeOf(sourceNode.eClass())) {
+		if (ActivitystormingPackage.Literals.INITIAL_NODE.isSuperTypeOf(sourceNode.eClass())) {
 			fromString = "StartNode__" + diagramName;
 			addTransition(diagramName, fromString, toString);
-		} else if(ActivityDiagramMetamodelPackage.Literals.READ_MODEL.isSuperTypeOf(sourceNode.eClass())) {
+		} else if(ActivitystormingPackage.Literals.READ_MODEL.isSuperTypeOf(sourceNode.eClass())) {
 			ReadModel node = (ReadModel) sourceNode;
 			fromString = node.getName();
 			addTransition(diagramName, fromString, toString);
-		} else if(ActivityDiagramMetamodelPackage.Literals.DECISION_NODE.isSuperTypeOf(sourceNode.eClass())) {
+		} else if(ActivitystormingPackage.Literals.DECISION_NODE.isSuperTypeOf(sourceNode.eClass())) {
 			DecisionNode source = (DecisionNode) sourceNode;
 			fromString = dynamicOntology.getSourceOfPolicy(source.getName());
 			String transitionName = "FROM__" + fromString + "__TO__" + toString;
 			addTransition(diagramName, fromString, toString);
 			dynamicOntology.addPolicyToTransition(transitionName, source.getName());
-		} else if(ActivityDiagramMetamodelPackage.Literals.DOMAIN_EVENT.isSuperTypeOf(sourceNode.eClass())) {
+		} else if(ActivitystormingPackage.Literals.DOMAIN_EVENT.isSuperTypeOf(sourceNode.eClass())) {
 			DomainEvent source = (DomainEvent) sourceNode;
 			fromString = source.getName();
-			if(ActivityDiagramMetamodelPackage.Literals.DECISION_NODE.isSuperTypeOf(targetNode.eClass())) {
+			if(ActivitystormingPackage.Literals.DECISION_NODE.isSuperTypeOf(targetNode.eClass())) {
 				dynamicOntology.addEventSourceToPolicy(toString, fromString);
 				return;
 			}
@@ -330,22 +316,22 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 	
 	private String targetTransitionName(String diagramName, ActivityNode node) {
 		switch(node.eClass().getClassifierID()) {
-		case ActivityDiagramMetamodelPackage.ACTION: {
+		case ActivitystormingPackage.ACTION: {
 			return ((Action) node).getName();
 		}
-		case ActivityDiagramMetamodelPackage.COMMAND_ACTION: {
+		case ActivitystormingPackage.COMMAND_ACTION: {
 			return ((CommandAction) node).getName();
 		}
-		case ActivityDiagramMetamodelPackage.QUERY_ACTION: {
+		case ActivitystormingPackage.QUERY_ACTION: {
 			return ((QueryAction) node).getName();
 		}
-		case ActivityDiagramMetamodelPackage.READ_MODEL: {
+		case ActivitystormingPackage.READ_MODEL: {
 			return ((ReadModel) node).getName();
 		}
-		case ActivityDiagramMetamodelPackage.DECISION_NODE: {
+		case ActivitystormingPackage.DECISION_NODE: {
 			return ((DecisionNode) node).getName();
 		}
-		case ActivityDiagramMetamodelPackage.FINAL_NODE: {
+		case ActivitystormingPackage.FINAL_NODE: {
 			return "FinalNode__" + diagramName;
 		}
 		default:
@@ -361,11 +347,11 @@ public class ExportActivityDiagramMetamodelToOntologyHandler {
 	private void addDomainObjectsToAggregate(String activityName, Aggregate aggregate) {
 		for (DomainObject domain : aggregate.getDomainobject()) {
 			switch (domain.eClass().getClassifierID()) {
-			case ActivityDiagramMetamodelPackage.ENTITY: {
+			case ActivitystormingPackage.ENTITY: {
 				dynamicOntology.addEntityToAggregate(aggregate.getName(), domain.getName());
 				break;
 			}
-			case ActivityDiagramMetamodelPackage.VALUE_OBJECT: {
+			case ActivitystormingPackage.VALUE_OBJECT: {
 				dynamicOntology.addValueObjectToAggregate(aggregate.getName(), domain.getName());
 				break;
 			}

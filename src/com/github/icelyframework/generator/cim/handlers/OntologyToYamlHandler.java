@@ -1,4 +1,4 @@
-package core.handlers;
+package com.github.icelyframework.generator.cim.handlers;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
@@ -9,20 +9,20 @@ import java.util.ArrayList;
 
 import org.apache.commons.io.IOUtils;
 
-import core.ontology.LinkedOntologyAPI;
-import core.ontologytoyamltools.Activity;
-import core.ontologytoyamltools.Activity.ActivityType;
-import core.ontologytoyamltools.Activity.VerbType;
-import core.ontologytoyamltools.Aggregate;
-import core.ontologytoyamltools.Aggregates;
-import core.ontologytoyamltools.Application;
-import core.ontologytoyamltools.DomainObject;
-import core.ontologytoyamltools.Property;
-import core.ontologytoyamltools.Relation;
-import core.ontologytoyamltools.Stemmer;
-import core.ontologytoyamltools.StringHelpers;
-import core.ontologytoyamltools.VerbTypeFinder;
-import core.ontologytoyamltools.DomainObject.DomainObjectType;
+import com.github.icelyframework.generator.cim.ontology.LinkedOntologyAPI;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.Activity;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.Activity.ActivityType;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.Activity.VerbType;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.Aggregate;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.Aggregates;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.Application;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.DomainObject;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.Property;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.Relation;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.Stemmer;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.StringHelpers;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.VerbTypeFinder;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.DomainObject.DomainObjectType;
 
 /**
  * Class used to read data from the linked ontology and create a PIM in YAML
@@ -72,7 +72,7 @@ public class OntologyToYamlHandler {
 				String policy = linkedOntology.getPolicyOfActivity(activityName);
 //				String processName = StringHelpers.toClassStyle(activityDiagramName.);
 				String processName = StringHelpers.toClassStyle(activityDiagramName.replace("ACD_", ""));
-				core.ontologytoyamltools.Process process;
+				com.github.icelyframework.generator.cim.ontologytoyamltools.Process process;
 				String action = linkedOntology.getActionOfActivity(activityName);
 				String actiontype = linkedOntology.getActivityTypeOfActivity(activityName);
 				String verbtype = verbTypeFinder.getVerbType(action);

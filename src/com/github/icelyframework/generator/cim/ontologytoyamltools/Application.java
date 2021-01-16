@@ -1,4 +1,4 @@
-package core.ontologytoyamltools;
+package com.github.icelyframework.generator.cim.ontologytoyamltools;
 
 import java.util.ArrayList;
 import java.util.Arrays;

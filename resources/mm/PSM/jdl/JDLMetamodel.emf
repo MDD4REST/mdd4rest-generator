@@ -1,4 +1,4 @@
-@namespace(uri="resources/mm/PIM/JDLMetamodel.ecore", prefix="mde")
+@namespace(uri="resources/mm/PIM/JDLMetamodel.ecore", prefix="icely")
 package JDLMetamodel;
 
 class Application {

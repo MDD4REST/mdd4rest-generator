@@ -1,22 +1,22 @@
-import "../utilities/StaticPIM.eol";
+import "../utilities/Staticview.eol";
 import "../utilities/ServicePSM.eol";
 
 @abstract
-rule AbstractPrimitiveType transform c:StaticPIM!PrimitiveType
+rule AbstractPrimitiveType transform c:Staticview!PrimitiveType
 	to a:ServicePSM!PrimitiveType{
 	a.type ::= c.type;
 	a.typeName = c.typeName;
 }
 
 @abstract
-rule AbstractComplexType transform c:StaticPIM!ComplexType
+rule AbstractComplexType transform c:Staticview!ComplexType
 	to a:ServicePSM!ComplexType{
 	a.type = c.type.equivalent();
 	a.collection = ServicePSM!CollectionType#SET;
 }
 
 @abstract
-rule AbstractApplication transform c:StaticPIM!Application
+rule AbstractApplication transform c:Staticview!Application
 	to a:ServicePSM!Application{
 	a.name = c.name;
 	a.project = c.project.equivalent();
@@ -24,13 +24,13 @@ rule AbstractApplication transform c:StaticPIM!Application
 }
 
 @abstract
-rule AbstractAggregate transform c:StaticPIM!Aggregate 
+rule AbstractAggregate transform c:Staticview!Aggregate
 	to a:ServicePSM!Aggregate{
 	a.name = c.name;
 }
 
 @abstract
-rule AbstractProperty transform c:StaticPIM!Property
+rule AbstractProperty transform c:Staticview!Property
 	to a:ServicePSM!Property{
 	"-------------- Property --------------".println();
 	a.unique = c.isUnique;
@@ -44,7 +44,7 @@ rule AbstractProperty transform c:StaticPIM!Property
  
  
 @abstract
-rule AbstractDomainObject transform c:StaticPIM!DomainObject
+rule AbstractDomainObject transform c:Staticview!DomainObject
 	to a:ServicePSM!DomainObject{
 	// type definition
 	a.typeName = c.typeName;
@@ -59,7 +59,7 @@ rule AbstractDomainObject transform c:StaticPIM!DomainObject
 }
 
 @abstract
-rule AbstractionOfValueObject transform c:StaticPIM!ValueObject
+rule AbstractionOfValueObject transform c:Staticview!ValueObject
 	to a:ServicePSM!ValueObject extends AbstractDomainObject{
 	c.println();
 	a.immutable = c.immutable;
@@ -67,42 +67,42 @@ rule AbstractionOfValueObject transform c:StaticPIM!ValueObject
 }
 
 @abstract
-rule AbstractBasicType transform c:StaticPIM!BasicType
+rule AbstractBasicType transform c:Staticview!BasicType
 	to a:ServicePSM!BasicType extends AbstractionOfValueObject{
 	"------- BasicType --------------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractDomainEvent transform c:StaticPIM!DomainEvent
+rule AbstractDomainEvent transform c:Staticview!DomainEvent
 	to a:ServicePSM!DomainEvent extends AbstractionOfValueObject{
 	"------- DomainEvent --------------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractCommandEvent transform c:StaticPIM!CommandEvent
+rule AbstractCommandEvent transform c:Staticview!CommandEvent
 	to a:ServicePSM!CommandEvent extends AbstractionOfValueObject{
 	"------- CommandEvent --------------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractDTO transform c:StaticPIM!DTO
+rule AbstractDTO transform c:Staticview!DTO
 	to a:ServicePSM!DTO extends AbstractionOfValueObject{
 	"------- DTO --------------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractValueObject transform c:StaticPIM!ValueObject
+rule AbstractValueObject transform c:Staticview!ValueObject
 	to a:ServicePSM!ValueObject extends AbstractionOfValueObject{
 	"------- ValueObject --------------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractEntity transform c:StaticPIM!Entity
+rule AbstractEntity transform c:Staticview!Entity
 	to a:ServicePSM!Entity extends AbstractDomainObject{
 	"------- entity --------------".println();
 	a.scaffold = c.scaffold;
@@ -116,7 +116,7 @@ rule AbstractEntity transform c:StaticPIM!Entity
 }
 
 @abstract
-rule AbstractLiteral transform c:StaticPIM!Literal
+rule AbstractLiteral transform c:Staticview!Literal
 	to a:ServicePSM!Literal{
 	"------- Literal --------------".println();
 	a.name = c.name;
@@ -124,14 +124,14 @@ rule AbstractLiteral transform c:StaticPIM!Literal
 }
 
 @abstract
-rule AbstractEnumeration transform c:StaticPIM!Enumeration
+rule AbstractEnumeration transform c:Staticview!Enumeration
 	to a:ServicePSM!Enumeration extends AbstractDomainObject{
 	"------- enumeration --------------".println();
 	a.literals ::= c.hasLiteral;
 }
 
 @abstract
-rule AbstractRelation transform c:StaticPIM!Relation
+rule AbstractRelation transform c:Staticview!Relation
 	to a:ServicePSM!Relation{
 	a.type = c.type.equivalent();
 	a.name = c.name;
@@ -143,7 +143,7 @@ rule AbstractRelation transform c:StaticPIM!Relation
 }
 
 @abstract
-rule AbstractResource transform c:StaticPIM!Resource
+rule AbstractResource transform c:Staticview!Resource
 	to a:ServicePSM!Resource{
 	
 	var path = new ServicePSM!Path;

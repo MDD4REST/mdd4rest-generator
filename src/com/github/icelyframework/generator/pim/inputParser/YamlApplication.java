@@ -1,4 +1,4 @@
-package mde.inputParser;
+package com.github.icelyframework.generator.pim.inputParser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,7 +45,7 @@ public class YamlApplication {
 	}
 
 	public String toYAMLString() {
-		String all = "- !!mde.inputParser.Application";
+		String all = "- Application";
 		all += "\n  Name: " + Name;
 		all += "\n  Roles: " + Arrays.asList(Roles).toString().replaceAll("^\\[|\\]$", "");
 		all += "\n  Resources: " + Arrays.asList(Resources).toString().replaceAll("^\\[|\\]$", "");

@@ -1,9 +1,9 @@
-package core.ontology.tests;
+package com.github.icelyframework.generator.cim.ontology.tests;
 
-import core.handlers.LinkOntologiesHandler;
-import core.ontology.DynamicOntologyAPI;
-import core.ontology.LinkedOntologyAPI;
-import core.ontology.StaticOntologyAPI;
+import com.github.icelyframework.generator.cim.handlers.LinkOntologiesHandler;
+import com.github.icelyframework.generator.cim.ontology.DynamicOntologyAPI;
+import com.github.icelyframework.generator.cim.ontology.LinkedOntologyAPI;
+import com.github.icelyframework.generator.cim.ontology.StaticOntologyAPI;
 
 /**
  * Links the static and the dynamic ontologies into one linked ontology.

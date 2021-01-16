@@ -1,4 +1,4 @@
-package mde.inputParser;
+package com.github.icelyframework.generator.pim.inputParser;
 
 import java.io.File;
 import java.io.FileInputStream;

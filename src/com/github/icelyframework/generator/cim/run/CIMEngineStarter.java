@@ -1,4 +1,4 @@
-package core.run;
+package com.github.icelyframework.generator.cim.run;
 
 import java.util.Scanner;
 

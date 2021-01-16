@@ -1,33 +1,33 @@
-package mde.pimGenerator;
+package com.github.icelyframework.generator.pim.pimGenerator;
 
 import java.util.ArrayList;
 
-import DynamicPIM.DynamicPIMFactory;
-import mde.inputParser.YamlAggregate;
-import mde.inputParser.YamlApplication;
-import mde.inputParser.YamlRole;
-import StaticPIM.Project;
-import StaticPIM.StaticPIMFactory;
+import com.github.icelyframework.dynamicview.DynamicviewFactory;
+import com.github.icelyframework.generator.pim.inputParser.YamlAggregate;
+import com.github.icelyframework.generator.pim.inputParser.YamlApplication;
+import com.github.icelyframework.generator.pim.inputParser.YamlRole;
+import com.github.icelyframework.staticview.Project;
+import com.github.icelyframework.staticview.StaticviewFactory;
 
 public abstract class APIMProducer {
 	protected Project oProjectStatic;
-	protected DynamicPIM.Project oProjectDynamic;
+	protected com.github.icelyframework.dynamicview.Project oProjectDynamic;
 	protected ArrayList<YamlApplication> listOfYamlApplications;
 	protected ArrayList<YamlAggregate> listOfYamlAggregates;
 	protected ArrayList<YamlRole> listOfYamlRoles;
-	protected StaticPIMFactory oStaticPIMFactory;
-	protected DynamicPIMFactory oDynamicPIMFactory;
+	protected StaticviewFactory oStaticviewFactory;
+	protected DynamicviewFactory oDynamicPIMFactory;
 //	protected SecurityPIMMetamodelFactory oSecurityPIMFactory;
 //	protected QueryPIMMetamodelFactory oQueryPIMFactory;
 	protected String strProjectName;
 	protected String strProjectBasePath;
 	
 	private void initializePIMProducer() {
-		this.oStaticPIMFactory = StaticPIMFactory.eINSTANCE;
-		this.oDynamicPIMFactory = DynamicPIMFactory.eINSTANCE;
+		this.oStaticviewFactory = StaticviewFactory.eINSTANCE;
+		this.oDynamicPIMFactory = DynamicviewFactory.eINSTANCE;
 //		this.oSecurityPIMFactory = SecurityPIMMetamodelFactory.eINSTANCE;
 //		this.oQueryPIMFactory = QueryPIMMetamodelFactory.eINSTANCE;
-		this.oProjectStatic = this.oStaticPIMFactory.createProject();
+		this.oProjectStatic = this.oStaticviewFactory.createProject();
 		this.oProjectStatic.setName(this.strProjectName);
 		this.oProjectStatic.setBasePath(this.strProjectBasePath);
 		this.oProjectDynamic = this.oDynamicPIMFactory.createProject();
@@ -82,15 +82,15 @@ public abstract class APIMProducer {
 		return this.oProjectStatic;
 	}
 	
-	public DynamicPIM.Project getProjectDynamic() {
+	public com.github.icelyframework.dynamicview.Project getProjectDynamic() {
 		return this.oProjectDynamic;
 	}
 
-	public StaticPIMFactory getServicePIMFactory() {
-		return this.oStaticPIMFactory;
+	public StaticviewFactory getServicePIMFactory() {
+		return this.oStaticviewFactory;
 	}
 	
-	public DynamicPIMFactory getDynamicPIMFactory() {
+	public DynamicviewFactory getDynamicPIMFactory() {
 		return this.oDynamicPIMFactory;
 	}
 
@@ -108,5 +108,5 @@ public abstract class APIMProducer {
 
 	public abstract Project producePIMStatic();
 	
-	public abstract DynamicPIM.Project producePIMDynamic();
+	public abstract com.github.icelyframework.dynamicview.Project producePIMDynamic();
 }

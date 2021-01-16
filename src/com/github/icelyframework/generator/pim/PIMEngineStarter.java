@@ -1,14 +1,14 @@
-package mde;
+package com.github.icelyframework.generator.pim;
 
-import StaticPIM.Project;
-import mde.inputParser.YamlInputParser;
-import mde.inputParser.YamlRESTfulService;
-import mde.pimGenerator.APIMProducer;
-import mde.pimGenerator.CorePIMProducer;
-import mde.pimGenerator.EcoreXMIExtractor;
+import com.github.icelyframework.staticview.Project;
+import com.github.icelyframework.generator.pim.inputParser.YamlInputParser;
+import com.github.icelyframework.generator.pim.inputParser.YamlRESTfulService;
+import com.github.icelyframework.generator.pim.pimGenerator.APIMProducer;
+import com.github.icelyframework.generator.pim.pimGenerator.CorePIMProducer;
+import com.github.icelyframework.generator.pim.pimGenerator.EcoreXMIExtractor;
 
 
-public class MDEEngineStarter
+public class PIMEngineStarter
 {
 	private static YamlInputParser oYamlInputParser;
 	private static APIMProducer oAPIMProducer;	
@@ -41,7 +41,7 @@ public class MDEEngineStarter
 		System.out.println("------------------------------------------------------------------------");
 		oAPIMProducer = new CorePIMProducer(listOfYaml, projectName, projectPath);
 		Project oPIMStatic = oAPIMProducer.producePIMStatic();
-		DynamicPIM.Project oPIMDynamic = oAPIMProducer.producePIMDynamic();
+		com.github.icelyframework.dynamicview.Project oPIMDynamic = oAPIMProducer.producePIMDynamic();
 		System.out.println(oPIMStatic.getHasApplication());
 		System.out.println("Created " + oPIMStatic.getHasApplication().size() + " PIM Applications");
 		EcoreXMIExtractor oEcoreXMIExtractor = new EcoreXMIExtractor(projectName, projectPath);

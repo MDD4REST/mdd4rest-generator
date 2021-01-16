@@ -1,6 +1,6 @@
-package core.ontology.tests;
+package com.github.icelyframework.generator.cim.ontology.tests;
 
-import core.ontology.DynamicOntologyAPI;
+import com.github.icelyframework.generator.cim.ontology.DynamicOntologyAPI;
 
 /**
  * An example instantiation of the dynamic ontology.

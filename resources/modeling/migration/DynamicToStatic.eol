@@ -1,7 +1,7 @@
-import "../utilities/StaticPIM.eol";
+import "../utilities/Staticview.eol";
 
 var dynamicProject = DynamicPIM!Project.all().first();
-var staticProject = StaticPIM!Project.all().first();
+var staticProject = Staticview!Project.all().first();
 ConvertALlResources();
 
 operation ConvertALlResources(){
@@ -12,7 +12,7 @@ operation ConvertALlResources(){
 	}
 }
 
-operation DynamicPIM!Resource ConvertResource(): StaticPIM!Resource{
+operation DynamicPIM!Resource ConvertResource(): Staticview!Resource{
 	var staticApplication = staticProject.findApplication(self.aggregate.application.name);
 	var staticAggregate = staticApplication.findAggregate(self.aggregate.name);
 	var staticResource = staticAggregate.findResource(self.name);
@@ -20,9 +20,9 @@ operation DynamicPIM!Resource ConvertResource(): StaticPIM!Resource{
 		
 	if (staticResource == null){
 		if(self.type().name == "CollectionResource")
-			staticResource = new StaticPIM!CollectionResource;
+			staticResource = new Staticview!CollectionResource;
 		else
-			staticResource = new StaticPIM!SingletonResource;
+			staticResource = new Staticview!SingletonResource;
 		staticResource.name = self.name;
 		staticResource.pathName = self.pathName;
 		staticResource.aggregate = staticAggregate;

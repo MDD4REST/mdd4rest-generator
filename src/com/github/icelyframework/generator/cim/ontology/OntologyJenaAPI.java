@@ -1,4 +1,4 @@
-package core.ontology;
+package com.github.icelyframework.generator.cim.ontology;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -26,7 +26,7 @@ import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.util.*;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
-import core.ontology.OntologySource.OntologyType;
+import com.github.icelyframework.generator.cim.ontology.OntologySource.OntologyType;
 
 /**
  * Provides an API for an ontology in OWL format. Allows adding/deleting

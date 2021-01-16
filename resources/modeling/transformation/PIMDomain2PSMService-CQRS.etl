@@ -1,4 +1,4 @@
-import "../utilities/StaticPIM.eol";
+import "../utilities/Staticview.eol";
 import "../utilities/ServicePSM.eol";
 import "./PIMDomain2PSMService.etl";
 
@@ -15,11 +15,11 @@ pre {
 	var gapClassDefault = false;
 }
 
-rule PrimitiveType transform c:StaticPIM!PrimitiveType
+rule PrimitiveType transform c:Staticview!PrimitiveType
 	to a:ServicePSM!PrimitiveType extends AbstractPrimitiveType{
 }
 
-rule Project transform c:StaticPIM!Project
+rule Project transform c:Staticview!Project
  	to a:ServicePSM!Project{
  	guard: c.hasApplication.size() > 0
 	pimModel = c;
@@ -27,11 +27,11 @@ rule Project transform c:StaticPIM!Project
  	a.primitivetype ::= c.primitiveTypes;
 }
 
-rule ComplexType transform c:StaticPIM!ComplexType
+rule ComplexType transform c:Staticview!ComplexType
 	to a:ServicePSM!ComplexType extends AbstractComplexType{
 }
 
-rule Application transform c:StaticPIM!Application
+rule Application transform c:Staticview!Application
 	to a:ServicePSM!Application extends AbstractApplication{
 	a.addModule("command");
 	a.addModule("^query");
@@ -39,7 +39,7 @@ rule Application transform c:StaticPIM!Application
 	a.complextypes ::= c.complextypes;
 }
 
-rule Aggregate transform c:StaticPIM!Aggregate 
+rule Aggregate transform c:Staticview!Aggregate
 	to a:ServicePSM!Aggregate extends AbstractAggregate{
 	var application = c.application.equivalent();
 	
@@ -53,11 +53,11 @@ rule Aggregate transform c:StaticPIM!Aggregate
 	a.module.aggregates.add(a);
 }
 
-rule Property transform c:StaticPIM!Property
+rule Property transform c:Staticview!Property
 	to a:ServicePSM!Property extends AbstractProperty{
 }
 
-rule BasicType transform c:StaticPIM!BasicType
+rule BasicType transform c:Staticview!BasicType
 	to a:ServicePSM!BasicType extends AbstractBasicType{
 	// aggregate
 	var aggregate = c.aggregate.equivalent();
@@ -66,7 +66,7 @@ rule BasicType transform c:StaticPIM!BasicType
 }
 
 
-rule DomainEvent transform c:StaticPIM!DomainEvent
+rule DomainEvent transform c:Staticview!DomainEvent
 	to a:ServicePSM!DomainEvent extends AbstractDomainEvent{
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
@@ -74,14 +74,14 @@ rule DomainEvent transform c:StaticPIM!DomainEvent
 }
 
 
-rule CommandEvent transform c:StaticPIM!CommandEvent
+rule CommandEvent transform c:Staticview!CommandEvent
 	to a:ServicePSM!CommandEvent extends AbstractCommandEvent{
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
 	a.addDomainObjectToCommandAggregate(application, aggregate.name);
 }
 
-rule DTO transform c:StaticPIM!DTO
+rule DTO transform c:Staticview!DTO
 	to a:ServicePSM!DTO extends AbstractDTO{
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
@@ -89,14 +89,14 @@ rule DTO transform c:StaticPIM!DTO
 }
 
 
-rule ValueObject transform c:StaticPIM!ValueObject
+rule ValueObject transform c:Staticview!ValueObject
 	to a:ServicePSM!ValueObject extends AbstractValueObject{
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
 	a.addDomainObjectToCommandAggregate(application, aggregate.name);
 }
 
-rule Entity transform c:StaticPIM!Entity
+rule Entity transform c:Staticview!Entity
 	to a:ServicePSM!Entity extends AbstractEntity{
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
@@ -121,11 +121,11 @@ rule Entity transform c:StaticPIM!Entity
 	}
 }
 
-rule Literal transform c:StaticPIM!Literal
+rule Literal transform c:Staticview!Literal
 	to a:ServicePSM!Literal extends AbstractLiteral{
 }
 
-rule Enumeration transform c:StaticPIM!Enumeration
+rule Enumeration transform c:Staticview!Enumeration
 	to a:ServicePSM!Enumeration extends AbstractEnumeration{
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
@@ -133,12 +133,12 @@ rule Enumeration transform c:StaticPIM!Enumeration
 }
 
 
-rule Relation transform c:StaticPIM!Relation
+rule Relation transform c:Staticview!Relation
 	to a:ServicePSM!Relation extends AbstractRelation{
 }
 
 @greedy
-rule Resource transform c:StaticPIM!Resource
+rule Resource transform c:Staticview!Resource
 	to a:ServicePSM!Resource extends AbstractResource{
 }
 

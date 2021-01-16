@@ -1,4 +1,4 @@
-package core.run;
+package com.github.icelyframework.generator.cim.run;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,15 +15,14 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import ActivityDiagramMetamodel.ActivityDiagram;
-import ActivityDiagramMetamodel.ActivityDiagramMetamodelPackage;
-import core.handlers.ExportActivityDiagramMetamodelToOntologyHandler;
-import core.handlers.LinkOntologiesHandler;
-import core.handlers.OntologyToYamlHandler;
-import core.ontology.DynamicOntologyAPI;
-import core.ontology.LinkedOntologyAPI;
-import core.ontology.StaticOntologyAPI;
-import core.ontologytoyamltools.Aggregates;
+
+import com.github.icelyframework.generator.cim.handlers.ExportActivityStormingToOntologyHandler;
+import com.github.icelyframework.generator.cim.handlers.LinkOntologiesHandler;
+import com.github.icelyframework.generator.cim.handlers.OntologyToYamlHandler;
+import com.github.icelyframework.generator.cim.ontology.DynamicOntologyAPI;
+import com.github.icelyframework.generator.cim.ontology.LinkedOntologyAPI;
+import com.github.icelyframework.generator.cim.ontology.StaticOntologyAPI;
+import com.github.icelyframework.generator.cim.ontologytoyamltools.Aggregates;
 
 public class OutputGenerator {
 
@@ -48,7 +47,7 @@ public class OutputGenerator {
 		System.out.println("***************************");
 		System.out.println("PARSE DYNAMIC METAMODEL");
 		System.out.println();
-		ExportActivityDiagramMetamodelToOntologyHandler acdToDynamicOntoHandler = new ExportActivityDiagramMetamodelToOntologyHandler(
+		ExportActivityStormingToOntologyHandler acdToDynamicOntoHandler = new ExportActivityStormingToOntologyHandler(
 				projectName, projectPath);
 		DynamicOntologyAPI dynamicOntology = acdToDynamicOntoHandler.instantiateOntology();
 		dynamicOntology.close();

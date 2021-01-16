@@ -1,7 +1,6 @@
-package core.ontology;
+package com.github.icelyframework.generator.cim.ontology;
 
-//import core.builder.ProjectUtils;
-import core.ontology.OntologySource.OntologyType;
+import com.github.icelyframework.generator.cim.ontology.OntologySource.OntologyType;
 
 /**
  * Contains helper functions that check whether an ontology file exists.

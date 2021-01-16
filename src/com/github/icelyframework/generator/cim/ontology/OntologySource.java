@@ -1,4 +1,4 @@
-package core.ontology;
+package com.github.icelyframework.generator.cim.ontology;
 
 import java.io.File;
 import java.io.FileInputStream;

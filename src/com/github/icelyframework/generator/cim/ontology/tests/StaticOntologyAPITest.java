@@ -1,6 +1,6 @@
-package core.ontology.tests;
+package com.github.icelyframework.generator.cim.ontology.tests;
 
-import core.ontology.StaticOntologyAPI;
+import com.github.icelyframework.generator.cim.ontology.StaticOntologyAPI;
 
 /**
  * An example instantiation of the static ontology.

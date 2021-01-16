@@ -1,4 +1,4 @@
-operation StaticPIM!Project findApplication(name: String): StaticPIM!Application {
+operation Staticview!Project findApplication(name: String): Staticview!Application {
 	for(application in self.hasApplication){
 		if(application.name == name){
 			return application;
@@ -7,7 +7,7 @@ operation StaticPIM!Project findApplication(name: String): StaticPIM!Application
 	return null;
 }
 
-operation StaticPIM!Application findAggregate(name: String): StaticPIM!Aggregate {
+operation Staticview!Application findAggregate(name: String): Staticview!Aggregate {
 	for(aggregate in self.hasAggregate){
 		if(aggregate.name == name){
 			return aggregate;
@@ -16,7 +16,7 @@ operation StaticPIM!Application findAggregate(name: String): StaticPIM!Aggregate
 	return null;
 }
 
-operation StaticPIM!Application findResource(name: String): StaticPIM!Resource {
+operation Staticview!Application findResource(name: String): Staticview!Resource {
 	for(aggregate in self.hasAggregate){
 		for (resource in aggregate.hasResource){
 			if(resource.name == name){
@@ -27,7 +27,7 @@ operation StaticPIM!Application findResource(name: String): StaticPIM!Resource {
 	return null;
 } 
 
-operation StaticPIM!Aggregate findResource(name: String): StaticPIM!Resource {
+operation Staticview!Aggregate findResource(name: String): Staticview!Resource {
 	for (resource in self.hasResource){
 		if(resource.name == name){
 			return resource;
@@ -37,14 +37,14 @@ operation StaticPIM!Aggregate findResource(name: String): StaticPIM!Resource {
 	return null;
 }
 
-operation StaticPIM!Aggregate addResource(name: String): StaticPIM!Resource {
+operation Staticview!Aggregate addResource(name: String): Staticview!Resource {
 	
 	
 	return null;
 }  
 
 
-operation StaticPIM!Resource relativePath(): String{
+operation Staticview!Resource relativePath(): String{
 	var relativePath = self.pathName;
 	var resource = self;
 	while (resource.isRelatedResource != null){

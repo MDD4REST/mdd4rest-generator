@@ -1,4 +1,4 @@
-package mde.inputParser;
+package com.github.icelyframework.generator.pim.inputParser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,7 +43,7 @@ public class YamlAggregate {
 	}
 
 	public String toYAMLString() {
-		String all = "- !!mde.inputParser.YamlAggregate";
+		String all = "- Aggregate";
 		all = "\n  Name: " + Name;
 		if (DomainObjects.size() > 0) {
 			all += "\n  DomainObjects:";

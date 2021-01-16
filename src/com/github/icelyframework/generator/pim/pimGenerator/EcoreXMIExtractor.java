@@ -1,4 +1,4 @@
-package mde.pimGenerator;
+package com.github.icelyframework.generator.pim.pimGenerator;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,9 +9,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import DynamicPIM.PIMDynamic;
-import StaticPIM.PIMDomain;
-import StaticPIM.Project;
+import com.github.icelyframework.staticview.Project;
 
 public class EcoreXMIExtractor {
 
@@ -43,7 +41,7 @@ public class EcoreXMIExtractor {
 				new XMIResourceFactoryImpl());
 
 		// Get the URI of the model file.
-		oStaticURI = URI.createFileURI(new File(this.projectPath + "/PIM/StaticPIM.model").getAbsolutePath());
+		oStaticURI = URI.createFileURI(new File(this.projectPath + "/PIM/Staticview.model").getAbsolutePath());
 		oDynamicURI = URI.createFileURI(new File(this.projectPath + "/PIM/DynamicPIM.model").getAbsolutePath());
 		
 		System.out.println(oStaticURI.devicePath());
@@ -64,7 +62,7 @@ public class EcoreXMIExtractor {
 		}
 	}
 	
-	public void exportDynamicEcoreXMI(DynamicPIM.Project oPIMDynamic) {
+	public void exportDynamicEcoreXMI(com.github.icelyframework.dynamicview.Project oPIMDynamic) {
 		this.oDynamicEcoreResource.getContents().add(oPIMDynamic);
 		// save to disk
 		try {

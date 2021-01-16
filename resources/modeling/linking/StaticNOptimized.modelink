@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modelink threeWay="false" forceExeedL="false" forceExeedM="false" forceExeedR="false">
-  <model path="\MyCore\resources\examples\cargo\PIM\StaticPIM.model" position="LEFT" />
-  <model path="\MyCore\resources\examples\cargo\PIM\StaticPIM-Optimized.model" position="RIGHT" />
+  <model path="\MyCore\resources\examples\cargo\PIM\Staticview.model" position="LEFT" />
+  <model path="\MyCore\resources\examples\cargo\PIM\Staticview-Optimized.model" position="RIGHT" />
 </modelink>
 

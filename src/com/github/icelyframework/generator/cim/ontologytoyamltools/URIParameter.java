@@ -1,4 +1,4 @@
-package core.ontologytoyamltools;
+package com.github.icelyframework.generator.cim.ontologytoyamltools;
 
 /**
  * Class representing a URI property of an operation.

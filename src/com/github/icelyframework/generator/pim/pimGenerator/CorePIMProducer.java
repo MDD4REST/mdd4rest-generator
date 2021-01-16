@@ -1,4 +1,4 @@
-package mde.pimGenerator;
+package com.github.icelyframework.generator.pim.pimGenerator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,26 +10,24 @@ import org.atteo.evo.inflector.English;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.util.Diagnostician;
 
-import DynamicPIM.PIMDynamic;
-import mde.inputParser.*;
-import StaticPIM.*;
-import StaticPIM.ValueObject;
+import com.github.icelyframework.generator.pim.inputParser.*;
+import com.github.icelyframework.staticview.*;
 
 public class CorePIMProducer extends APIMProducer {
 
 	YamlRESTfulService listOfYaml;
-	RESTfulServiceUtils restUtils;
+	PIMUtils restUtils;
 
 	public CorePIMProducer(YamlRESTfulService listOfYaml) {
 		super(listOfYaml.getApplications(), listOfYaml.getAggregates());
 		this.listOfYaml = listOfYaml;
-		restUtils = new RESTfulServiceUtils(this.oProjectStatic, this.oProjectDynamic);
+		restUtils = new PIMUtils(this.oProjectStatic, this.oProjectDynamic);
 	}
 
 	public CorePIMProducer(YamlRESTfulService listOfYaml, String projectName, String projectPath) {
 		super(listOfYaml.getApplications(), listOfYaml.getAggregates(), projectName, projectPath);
 		this.listOfYaml = listOfYaml;
-		restUtils = new RESTfulServiceUtils(this.oProjectStatic, this.oProjectDynamic);
+		restUtils = new PIMUtils(this.oProjectStatic, this.oProjectDynamic);
 	}
 
 	@Override
@@ -49,7 +47,7 @@ public class CorePIMProducer extends APIMProducer {
 	}
 
 	@Override
-	public DynamicPIM.Project producePIMDynamic() {
+	public com.github.icelyframework.dynamicview.Project producePIMDynamic() {
 		addDynamicPrimitiveTypes();
 
 		createAllDynamicPIMApplications();
@@ -75,7 +73,7 @@ public class CorePIMProducer extends APIMProducer {
 			aggregate.getHasDomainobject().add(domainObject);
 		}
 		return aggregate;
-//		RESTfulServiceUtils restUtils = new RESTfulServiceUtils(this.oRESTfulServicePIM);
+//		PIMUtils restUtils = new PIMUtils(this.oRESTfulServicePIM);
 //		this.getRESTfulServicePIM().get().add(restUtils.UserResource());
 	}
 
@@ -297,10 +295,10 @@ public class CorePIMProducer extends APIMProducer {
 		return resource;
 	}
 
-	private DynamicPIM.Resource addDynamicResource(DynamicPIM.Aggregate aggregate, YamlAggregate yamlAggregate) {
+	private com.github.icelyframework.dynamicview.Resource addDynamicResource(com.github.icelyframework.dynamicview.Aggregate aggregate, YamlAggregate yamlAggregate) {
 
 		String applicationName = aggregate.getApplication().getName();
-		DynamicPIM.Resource resource = this.getDynamicPIMFactory().createCollectionResource();
+		com.github.icelyframework.dynamicview.Resource resource = this.getDynamicPIMFactory().createCollectionResource();
 		String resourceName = English.plural(aggregate.getName());
 		resource.setName(resourceName.concat("Resource"));
 //		resource.setSimpleName(resourceName);
@@ -309,25 +307,25 @@ public class CorePIMProducer extends APIMProducer {
 			for (YamlActivity yamlActivity : yamlProcess.getActivities()) {
 				if (yamlActivity.getRole() != null) {
 					if (yamlActivity.getVerbTypeAction() == yamlActivity.VerbTypeAction.Other) {
-						DynamicPIM.Other resourceActivity = (DynamicPIM.Other) createResourceActivity(applicationName,
+						com.github.icelyframework.dynamicview.Other resourceActivity = (com.github.icelyframework.dynamicview.Other) createResourceActivity(applicationName,
 								yamlActivity);
 						resourceActivity.setResource(resource);
 						resource.getHasActivity().add(resourceActivity);
 						resource.getOtherActivities().add(resourceActivity);
 					} else if (yamlActivity.getVerbTypeAction() == yamlActivity.VerbTypeAction.Read) {
-						DynamicPIM.Read resourceActivity = (DynamicPIM.Read) createResourceActivity(applicationName,
+						com.github.icelyframework.dynamicview.Read resourceActivity = (com.github.icelyframework.dynamicview.Read) createResourceActivity(applicationName,
 								yamlActivity);
 						resourceActivity.setResource(resource);
 						resource.getHasActivity().add(resourceActivity);
 						resource.setReadActivity(resourceActivity);
 					} else if (yamlActivity.getVerbTypeAction() == yamlActivity.VerbTypeAction.Create) {
-						DynamicPIM.Create resourceActivity = (DynamicPIM.Create) createResourceActivity(applicationName,
+						com.github.icelyframework.dynamicview.Create resourceActivity = (com.github.icelyframework.dynamicview.Create) createResourceActivity(applicationName,
 								yamlActivity);
 						resourceActivity.setResource(resource);
 						resource.getHasActivity().add(resourceActivity);
 						resource.setCreateActivity(resourceActivity);
 					} else {
-						DynamicPIM.Delete resourceActivity = (DynamicPIM.Delete) createResourceActivity(applicationName,
+						com.github.icelyframework.dynamicview.Delete resourceActivity = (com.github.icelyframework.dynamicview.Delete) createResourceActivity(applicationName,
 								yamlActivity);
 						resourceActivity.setResource(resource);
 						resource.getHasActivity().add(resourceActivity);
@@ -341,8 +339,8 @@ public class CorePIMProducer extends APIMProducer {
 
 	}
 
-	private DynamicPIM.ResourceActivity createResourceActivity(String applicationName, YamlActivity yamlActivity) {
-		DynamicPIM.ResourceActivity resourceActivity;
+	private com.github.icelyframework.dynamicview.ResourceActivity createResourceActivity(String applicationName, YamlActivity yamlActivity) {
+		com.github.icelyframework.dynamicview.ResourceActivity resourceActivity;
 		switch (yamlActivity.getVerbTypeAction()) {
 		case Read: {
 			resourceActivity = this.getDynamicPIMFactory().createRead();
@@ -465,24 +463,24 @@ public class CorePIMProducer extends APIMProducer {
 	}
 
 	private void addDynamicPrimitiveTypes() {
-		DynamicPIM.PrimitiveType stringType = this.getDynamicPIMFactory().createPrimitiveType();
-		DynamicPIM.PrimitiveType integerType = this.getDynamicPIMFactory().createPrimitiveType();
-		DynamicPIM.PrimitiveType floatType = this.getDynamicPIMFactory().createPrimitiveType();
-		DynamicPIM.PrimitiveType booleanType = this.getDynamicPIMFactory().createPrimitiveType();
-		DynamicPIM.PrimitiveType nullType = this.getDynamicPIMFactory().createPrimitiveType();
-		DynamicPIM.PrimitiveType dateType = this.getDynamicPIMFactory().createPrimitiveType();
+		com.github.icelyframework.dynamicview.PrimitiveType stringType = this.getDynamicPIMFactory().createPrimitiveType();
+		com.github.icelyframework.dynamicview.PrimitiveType integerType = this.getDynamicPIMFactory().createPrimitiveType();
+		com.github.icelyframework.dynamicview.PrimitiveType floatType = this.getDynamicPIMFactory().createPrimitiveType();
+		com.github.icelyframework.dynamicview.PrimitiveType booleanType = this.getDynamicPIMFactory().createPrimitiveType();
+		com.github.icelyframework.dynamicview.PrimitiveType nullType = this.getDynamicPIMFactory().createPrimitiveType();
+		com.github.icelyframework.dynamicview.PrimitiveType dateType = this.getDynamicPIMFactory().createPrimitiveType();
 
-		stringType.setType(DynamicPIM.DefaultType.STRING);
-		integerType.setType(DynamicPIM.DefaultType.INTEGER);
-		floatType.setType(DynamicPIM.DefaultType.FLOAT);
-		booleanType.setType(DynamicPIM.DefaultType.BOOLEAN);
-		nullType.setType(DynamicPIM.DefaultType.NULL);
-		dateType.setType(DynamicPIM.DefaultType.DATE);
+		stringType.setType(com.github.icelyframework.dynamicview.DefaultType.STRING);
+		integerType.setType(com.github.icelyframework.dynamicview.DefaultType.INTEGER);
+		floatType.setType(com.github.icelyframework.dynamicview.DefaultType.FLOAT);
+		booleanType.setType(com.github.icelyframework.dynamicview.DefaultType.BOOLEAN);
+		nullType.setType(com.github.icelyframework.dynamicview.DefaultType.NULL);
+		dateType.setType(com.github.icelyframework.dynamicview.DefaultType.DATE);
 
-		List<DynamicPIM.PrimitiveType> primitiveTypes = Arrays.asList(stringType, integerType, floatType, booleanType,
+		List<com.github.icelyframework.dynamicview.PrimitiveType> primitiveTypes = Arrays.asList(stringType, integerType, floatType, booleanType,
 				nullType, dateType);
 
-		for (DynamicPIM.PrimitiveType primitiveType : primitiveTypes) {
+		for (com.github.icelyframework.dynamicview.PrimitiveType primitiveType : primitiveTypes) {
 			String typeName = primitiveType.getType().getName();
 			typeName = StringUtils.capitalize(typeName);
 			primitiveType.setTypeName(typeName);
@@ -504,11 +502,11 @@ public class CorePIMProducer extends APIMProducer {
 
 	private void createAllDynamicPIMApplications() {
 		for (YamlApplication oCurrentYamlApplication : this.listOfYamlApplications) {
-			DynamicPIM.Application application = this.getDynamicPIMFactory().createApplication();
+			com.github.icelyframework.dynamicview.Application application = this.getDynamicPIMFactory().createApplication();
 			application.setName(oCurrentYamlApplication.getName());
 			for (String aggregateName : oCurrentYamlApplication.getAggregates()) {
 				YamlAggregate yamlAggregate = listOfYaml.getAggregateByName(aggregateName);
-				DynamicPIM.Aggregate aggregate = createDynamicPIMAggregate(yamlAggregate);
+				com.github.icelyframework.dynamicview.Aggregate aggregate = createDynamicPIMAggregate(yamlAggregate);
 				aggregate.setApplication(application);
 				application.getHasAggregate().add(aggregate);
 			}
@@ -521,24 +519,24 @@ public class CorePIMProducer extends APIMProducer {
 	}
 
 	private void addProcessesRelations() {
-		for (DynamicPIM.Application application : this.getProjectDynamic().getHasApplication()) {
-			for (DynamicPIM.Aggregate aggregate : application.getHasAggregate()) {
-				for (DynamicPIM.Process process : aggregate.getHasProcess()) {
-					for (DynamicPIM.ProcessOperation processOperation : process.getHasOperation()) {
+		for (com.github.icelyframework.dynamicview.Application application : this.getProjectDynamic().getHasApplication()) {
+			for (com.github.icelyframework.dynamicview.Aggregate aggregate : application.getHasAggregate()) {
+				for (com.github.icelyframework.dynamicview.Process process : aggregate.getHasProcess()) {
+					for (com.github.icelyframework.dynamicview.ProcessOperation processOperation : process.getHasOperation()) {
 						YamlActivity yamlActivity = listOfYaml.getActivityByName(processOperation.getName(),
 								aggregate.getName(), process.getName());
 						for (String yamlPolicy : yamlActivity.getPolicy()) {
-							DynamicPIM.Event event = (DynamicPIM.Event) restUtils.findDynamicDomainObject(yamlPolicy,
+							com.github.icelyframework.dynamicview.Event event = (com.github.icelyframework.dynamicview.Event) restUtils.findDynamicDomainObject(yamlPolicy,
 									application.getName());
-							DynamicPIM.Policy policy = this.getDynamicPIMFactory().createPolicy();
+							com.github.icelyframework.dynamicview.Policy policy = this.getDynamicPIMFactory().createPolicy();
 							policy.setEventType(event);
 							processOperation.getPolicy().add(policy);
 						}
 
 						for (String yamlPolicy : yamlActivity.getPublish()) {
-							DynamicPIM.Event event = (DynamicPIM.Event) restUtils.findDynamicDomainObject(yamlPolicy,
+							com.github.icelyframework.dynamicview.Event event = (com.github.icelyframework.dynamicview.Event) restUtils.findDynamicDomainObject(yamlPolicy,
 									application.getName());
-							DynamicPIM.Publish publish = this.getDynamicPIMFactory().createPublish();
+							com.github.icelyframework.dynamicview.Publish publish = this.getDynamicPIMFactory().createPublish();
 							publish.setEventType(event);
 							processOperation.setPublish(publish);
 						}
@@ -548,12 +546,12 @@ public class CorePIMProducer extends APIMProducer {
 		}
 	}
 
-	private DynamicPIM.Aggregate createDynamicPIMAggregate(YamlAggregate yamlAggregate) {
-		DynamicPIM.Aggregate aggregate = this.getDynamicPIMFactory().createAggregate();
+	private com.github.icelyframework.dynamicview.Aggregate createDynamicPIMAggregate(YamlAggregate yamlAggregate) {
+		com.github.icelyframework.dynamicview.Aggregate aggregate = this.getDynamicPIMFactory().createAggregate();
 		aggregate.setName(yamlAggregate.getName());
 
 		for (YamlDomainObject oDomainObject : yamlAggregate.getDomainObjects()) {
-			DynamicPIM.DomainObject domainObject = createDynamicDomainObject(oDomainObject);
+			com.github.icelyframework.dynamicview.DomainObject domainObject = createDynamicDomainObject(oDomainObject);
 			domainObject.setAggregate(aggregate);
 			if (domainObject.isAggregateRoot()) {
 				aggregate.setAggregateRoot(domainObject);
@@ -562,7 +560,7 @@ public class CorePIMProducer extends APIMProducer {
 		}
 
 		for (YamlProcess oProcess : yamlAggregate.getProcess()) {
-			DynamicPIM.Process process = createDynamicPIMProcess(oProcess);
+			com.github.icelyframework.dynamicview.Process process = createDynamicPIMProcess(oProcess);
 			process.setAggregate(aggregate);
 			aggregate.getHasProcess().add(process);
 		}
@@ -586,13 +584,13 @@ public class CorePIMProducer extends APIMProducer {
 	}
 
 	private void createAllDynamicResources() {
-		for (DynamicPIM.Application application : this.getProjectDynamic().getHasApplication()) {
-			for (DynamicPIM.Aggregate aggregate : application.getHasAggregate()) {
+		for (com.github.icelyframework.dynamicview.Application application : this.getProjectDynamic().getHasApplication()) {
+			for (com.github.icelyframework.dynamicview.Aggregate aggregate : application.getHasAggregate()) {
 				YamlAggregate oAggregate = this.listOfYaml.getAggregateByName(aggregate.getName());
-				DynamicPIM.Resource resource = addDynamicResource(aggregate, oAggregate);
+				com.github.icelyframework.dynamicview.Resource resource = addDynamicResource(aggregate, oAggregate);
 
 				// relatedResources
-				for (DynamicPIM.Resource relatedResource : resource.getHasRelatedResource()) {
+				for (com.github.icelyframework.dynamicview.Resource relatedResource : resource.getHasRelatedResource()) {
 					relatedResource.setAggregate(aggregate);
 					aggregate.getHasResource().add(relatedResource);
 				}
@@ -605,35 +603,35 @@ public class CorePIMProducer extends APIMProducer {
 
 	}
 
-	private DynamicPIM.DomainObject createDynamicDomainObject(YamlDomainObject domainObject) {
+	private com.github.icelyframework.dynamicview.DomainObject createDynamicDomainObject(YamlDomainObject domainObject) {
 		switch (domainObject.getType()) {
 		case Entity: {
-			DynamicPIM.Entity entity = (DynamicPIM.Entity) createDynamicEntityOrValueObject(domainObject,
+			com.github.icelyframework.dynamicview.Entity entity = (com.github.icelyframework.dynamicview.Entity) createDynamicEntityOrValueObject(domainObject,
 					BasicDomainObject.Entity);
 			return entity;
 		}
 		case ValueObject: {
-			DynamicPIM.ValueObject valueObject = (DynamicPIM.ValueObject) createDynamicEntityOrValueObject(domainObject,
+			com.github.icelyframework.dynamicview.ValueObject valueObject = (com.github.icelyframework.dynamicview.ValueObject) createDynamicEntityOrValueObject(domainObject,
 					BasicDomainObject.ValueObject);
 			return valueObject;
 		}
 		case Enumeration: {
-			DynamicPIM.Enumeration enumeration = (DynamicPIM.Enumeration) createDynamicPIMEnumeration(domainObject);
+			com.github.icelyframework.dynamicview.Enumeration enumeration = (com.github.icelyframework.dynamicview.Enumeration) createDynamicPIMEnumeration(domainObject);
 			return enumeration;
 		}
 		case Event: {
-			DynamicPIM.DomainEvent domainEvent = (DynamicPIM.DomainEvent) createDynamicEntityOrValueObject(domainObject,
+			com.github.icelyframework.dynamicview.DomainEvent domainEvent = (com.github.icelyframework.dynamicview.DomainEvent) createDynamicEntityOrValueObject(domainObject,
 					BasicDomainObject.Event);
 			return domainEvent;
 		}
 		case Command: {
-			DynamicPIM.CommandEvent domainEvent = (DynamicPIM.CommandEvent) createDynamicEntityOrValueObject(
+			com.github.icelyframework.dynamicview.CommandEvent domainEvent = (com.github.icelyframework.dynamicview.CommandEvent) createDynamicEntityOrValueObject(
 					domainObject, BasicDomainObject.Command);
 			return domainEvent;
 		}
 
 		case DTO: {
-			DynamicPIM.DTO domainEvent = (DynamicPIM.DTO) createDynamicEntityOrValueObject(domainObject,
+			com.github.icelyframework.dynamicview.DTO domainEvent = (com.github.icelyframework.dynamicview.DTO) createDynamicEntityOrValueObject(domainObject,
 					BasicDomainObject.DTO);
 			return domainEvent;
 		}
@@ -642,9 +640,9 @@ public class CorePIMProducer extends APIMProducer {
 		}
 	}
 
-	private DynamicPIM.DomainObject createDynamicEntityOrValueObject(YamlDomainObject yamlDomainObject,
+	private com.github.icelyframework.dynamicview.DomainObject createDynamicEntityOrValueObject(YamlDomainObject yamlDomainObject,
 			BasicDomainObject type) {
-		DynamicPIM.DomainObject domainObject;
+		com.github.icelyframework.dynamicview.DomainObject domainObject;
 
 		switch (type) {
 		case Entity: {
@@ -679,19 +677,19 @@ public class CorePIMProducer extends APIMProducer {
 		return domainObject;
 	}
 
-	private DynamicPIM.Enumeration createDynamicPIMEnumeration(YamlDomainObject yamlDomainObject) {
-		DynamicPIM.Enumeration enumeration = this.getDynamicPIMFactory().createEnumeration();
+	private com.github.icelyframework.dynamicview.Enumeration createDynamicPIMEnumeration(YamlDomainObject yamlDomainObject) {
+		com.github.icelyframework.dynamicview.Enumeration enumeration = this.getDynamicPIMFactory().createEnumeration();
 		enumeration.setName(yamlDomainObject.getName());
 		enumeration.setTypeName(yamlDomainObject.getName());
 
 		return enumeration;
 	}
 
-	private DynamicPIM.Process createDynamicPIMProcess(YamlProcess yamlProcess) {
-		DynamicPIM.Process process = this.getDynamicPIMFactory().createProcess();
+	private com.github.icelyframework.dynamicview.Process createDynamicPIMProcess(YamlProcess yamlProcess) {
+		com.github.icelyframework.dynamicview.Process process = this.getDynamicPIMFactory().createProcess();
 		process.setName(yamlProcess.getName());
 		for (YamlActivity yamlActivity : yamlProcess.getActivities()) {
-			DynamicPIM.ProcessOperation processOperation;
+			com.github.icelyframework.dynamicview.ProcessOperation processOperation;
 			switch (yamlActivity.getType()) {
 			case Command: {
 				processOperation = this.getDynamicPIMFactory().createCommandOperation();

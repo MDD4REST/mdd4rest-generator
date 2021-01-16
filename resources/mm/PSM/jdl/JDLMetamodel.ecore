@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="JDLMetamodel" nsURI="resources/mm/PIM/JDLMetamodel.ecore" nsPrefix="mde">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="jdl" nsURI="http://github.com/icelyframework/jdl" nsPrefix="icely">
   <eClassifiers xsi:type="ecore:EClass" name="Application">
     <eStructuralFeatures xsi:type="ecore:EReference" name="config" lowerBound="1"
         eType="#//Config" containment="true"/>

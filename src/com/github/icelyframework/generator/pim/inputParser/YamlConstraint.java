@@ -1,4 +1,4 @@
-package mde.inputParser;
+package com.github.icelyframework.generator.pim.inputParser;
 
 public class YamlConstraint {
 	public String Operator;

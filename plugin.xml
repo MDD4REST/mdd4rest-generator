@@ -7,19 +7,43 @@
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated StaticPIMMetamodel -->
-      <package
-            uri="platform:/resource/MyCore/resources/mm/PIM/StaticPIMMetamodel.ecore"
-            class="StaticPIM.StaticPIMPackage"
-            genModel="resources/mm/PIM/StaticPIMMetamodel.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated DynamicPIMMetamodel -->
       <package
             uri="platform:/resource/MyCore/resources/mm/PIM/DynamicPIMMetamodel.ecore"
-            class="DynamicPIM.DynamicPIMPackage"
-            genModel="resources/mm/PIM/DynamicPIMMetamodel.genmodel"/>
+            class="com.github.icelyframework.DynamicPIM.DynamicPIMPackage"
+            genModel="resources/mm/pim/dynamic/DynamicViewMetamodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DynamicMetamodel -->
+      <package
+            uri="http://github.com/icelyframework/dynamic"
+            class="com.github.icelyframework.dynamic.DynamicPackage"
+            genModel="resources/mm/pim/dynamic/DynamicViewMetamodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated StaticMetamodel -->
+      <package
+            uri="http://github.com/icelyframework/static"
+            class="com.github.icelyframework.static_.StaticPackage"
+            genModel="resources/mm/pim/static/StaticViewMetamodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated StaticViewMetamodel -->
+      <package
+            uri="http://github.com/icelyframework/static"
+            class="com.github.icelyframework.staticview.StaticviewPackage"
+            genModel="resources/mm/pim/static/StaticViewMetamodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated DynamicViewMetamodel -->
+      <package
+            uri="http://github.com/icelyframework/dynamic"
+            class="com.github.icelyframework.dynamicview.DynamicviewPackage"
+            genModel="resources/mm/pim/dynamic/DynamicViewMetamodel.genmodel"/>
    </extension>
 
 </plugin>
