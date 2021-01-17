@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/IcelyFramework/icely-generator"><img src="docs/snowflake" alt="Icely Generator" width="200"></a>
+  <a href="https://github.com/IcelyFramework/icely-generator"><img src="docs/snowflake.png" alt="Icely Generator" width="200"></a>
   <br>
   Icely Generator
   <br>
