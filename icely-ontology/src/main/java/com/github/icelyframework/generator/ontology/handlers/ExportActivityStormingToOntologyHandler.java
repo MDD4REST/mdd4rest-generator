@@ -40,19 +40,19 @@ public class ExportActivityStormingToOntologyHandler {
 		ResourceSet resSet = new ResourceSetImpl();
 
 		// Get the resource
-		File dir = new File(projectPath + "/CIM/activity diagrams");
+		File dir = new File(projectPath + "/CIM/activity storming");
 		String[] extensions = new String[] { "ActivityDiagram" };
 		List<File> files = (List<File>) FileUtils.listFiles(dir, extensions, true);
 
 		System.out.println();
 		System.out.println("***************************");
-		System.out.println("ACTIVITY DIAGRAMS WHICH DISCOVERED");
+		System.out.println("ACTIVITY STORMINGS WHICH DISCOVERED");
 		System.out.println();
 		for (File file : files) {
 
 			System.out.println(file.getName());
 			Resource resource = resSet
-					.getResource(URI.createURI(projectPath + "/CIM/activity diagrams/" + file.getName()), true);
+					.getResource(URI.createURI(projectPath + "/CIM/activity storming/" + file.getName()), true);
 			// Get the first model element and cast it to the right type, in my
 			// example everything is hierarchical included in this first node
 			ActivityDiagram acd = (ActivityDiagram) resource.getContents().get(0);
@@ -60,7 +60,7 @@ public class ExportActivityStormingToOntologyHandler {
 		}
 		
 		System.out.println();
-		System.out.println("ACTIVITY DIAGRAMS ADDED");
+		System.out.println("ACTIVITY STORMINGS ADDED");
 		System.out.println("***************************");
 		System.out.println();
 

@@ -35,7 +35,20 @@ public class OutputGenerator {
 		this.projectName = projectName;
 		this.projectPath = projectPath;
 	}
-
+	
+	public void dynamicOntologyGenerator() {
+		System.out.println();
+		System.out.println("***************************");
+		System.out.println("PARSE DYNAMIC METAMODEL");
+		System.out.println();
+		ExportActivityStormingToOntologyHandler acdToDynamicOntoHandler = new ExportActivityStormingToOntologyHandler(
+				projectName, projectPath);
+		DynamicOntologyAPI dynamicOntology = acdToDynamicOntoHandler.instantiateOntology();
+		dynamicOntology.close();
+		System.out.println("EXPORT DYNAMIC ONTOLOGY");
+	}
+	
+	
 	public void linkedOntolotyGenerator() {
 		// parse the input yaml file
 		System.out.println("***************************");
@@ -47,10 +60,7 @@ public class OutputGenerator {
 		System.out.println("***************************");
 		System.out.println("PARSE DYNAMIC METAMODEL");
 		System.out.println();
-		ExportActivityStormingToOntologyHandler acdToDynamicOntoHandler = new ExportActivityStormingToOntologyHandler(
-				projectName, projectPath);
-		DynamicOntologyAPI dynamicOntology = acdToDynamicOntoHandler.instantiateOntology();
-		dynamicOntology.close();
+		DynamicOntologyAPI dynamicOntology = new DynamicOntologyAPI(projectName, projectPath, false);
 		
 		System.out.println("EXPORT DYNAMIC ONTOLOGY");
 
@@ -68,6 +78,7 @@ public class OutputGenerator {
 	}
 
 	public void yamlGenerator() {
+		linkedOntology = new LinkedOntologyAPI(projectName, projectPath, false);
 		new OntologyToYamlHandler(projectName, projectPath, linkedOntology).linkedToYaml();
 	}
 

@@ -160,7 +160,7 @@ public class OntologyJenaAPI {
 	 * @param ontologyType the type of the ontology.
 	 * @return the ontology filename.
 	 */
-	public static String getFilenameForOntologyType(OntologyType ontologyType) {
+	public String getFilenameForOntologyType(OntologyType ontologyType) {
 		String filename = null;
 		switch (ontologyType) {
 		case STATIC:
