@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'eclipse'
+    id 'war'
+    id 'maven'
+}
+
+repositories {
+    maven {
+        url "https://maven.pkg.github.com/icelyframework/icely-activity-storming"
+    }
+    mavenCentral()
+    jcenter()
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
+
+version = '1.1'
+group = "com.github.icelyframework.ontology"
+
+dependencies {
+    implementation  'org.eclipse.core:org.eclipse.core.runtime:3.7.0'
+    implementation  'org.eclipse.core:org.eclipse.core.resources:3.7.100'
+    implementation  'org.eclipse.core:commands:3.3.0-I20070605-0010'
+    implementation  'org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.16.0'
+    implementation  'org.eclipse.emf:org.eclipse.emf.ecore:2.23.0'
+    implementation  'org.apache.jena:apache-jena-libs:3.16.0'
+    implementation  'org.apache.jena:jena:3.16.0'
+    implementation  'org.apache.jena:jena-core:3.16.0'
+    implementation  'org.apache.jena:jena-arq:3.16.0'
+    implementation  'org.yaml:snakeyaml:1.26'
+    implementation  'org.apache.commons:commons-lang3:3.11'
+    implementation  'org.slf4j:slf4j-simple:1.7.21'
+    implementation  'org.atteo:evo-inflector:1.2.2'
+    implementation  'com.github.icelyframework.activitystorming:com.github.icelyframework.activitystorming:1.0.1'
+}
+
+sourceSets { 
+	main.java.srcDir "src"
+}
+
+jar {
+	from configurations.compile.collect { zipTree it} 
+	manifest.attributes "Main-Class": "CIMEngineStarter"
+}

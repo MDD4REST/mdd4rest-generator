@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<modelink threeWay="false" forceExeedL="false" forceExeedM="false" forceExeedR="false">
-  <model path="\MyCore\resources\mm\PIM\StaticviewMetamodel.ecore" position="LEFT" />
-  <model path="\MyCore\resources\mm\PIM\DynamicPIMMetamodel.ecore" position="RIGHT" />
-</modelink>
-
