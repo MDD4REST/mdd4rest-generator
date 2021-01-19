@@ -1,5 +1,5 @@
 import "../utilities/Staticview.eol";
-import "../utilities/ServicePSM.eol";
+import "../utilities/Service.eol";
 import "./PIMDomain2PSMService.etl";
 
 pre {
@@ -16,11 +16,11 @@ pre {
 }
 
 rule PrimitiveType transform c:Staticview!PrimitiveType
-	to a:ServicePSM!PrimitiveType extends AbstractPrimitiveType{
+	to a:Service!PrimitiveType extends AbstractPrimitiveType{
 }
 
 rule Project transform c:Staticview!Project
- 	to a:ServicePSM!Project{
+ 	to a:Service!Project{
  	guard: c.hasApplication.size() > 0
 	pimModel = c;
  	psmModel = a;
@@ -28,37 +28,40 @@ rule Project transform c:Staticview!Project
 }
 
 rule ComplexType transform c:Staticview!ComplexType
-	to a:ServicePSM!ComplexType extends AbstractComplexType{
+	to a:Service!ComplexType extends AbstractComplexType{
 }
 
 rule Application transform c:Staticview!Application
-	to a:ServicePSM!Application extends AbstractApplication{
+	to a:Service!Application extends AbstractApplication{
 	a.addModule("command");
 	a.addModule("^query");
-	a.addModule("rest");
+	a.addModule("web");
 	a.complextypes ::= c.complextypes;
 }
 
 rule Aggregate transform c:Staticview!Aggregate
-	to a:ServicePSM!Aggregate extends AbstractAggregate{
+	to a:Service!Aggregate extends AbstractAggregate{
 	var application = c.application.equivalent();
 	
-	var queryAggregate = new ServicePSM!Aggregate;
+	var queryAggregate = new Service!Aggregate;
 	queryAggregate.name = a.name;
 	queryAggregate.module = application.getQueryModule();
 	queryAggregate.module.aggregates.add(queryAggregate);
 	queryAggregate.module.aggregates.println();
-	
+	"hi".println();
 	a.module = application.getCommandModule();
 	a.module.aggregates.add(a);
+	"why".println();
 }
 
 rule Property transform c:Staticview!Property
-	to a:ServicePSM!Property extends AbstractProperty{
+	to a:Service!Property extends AbstractProperty{
+	"sP".println();
 }
 
 rule BasicType transform c:Staticview!BasicType
-	to a:ServicePSM!BasicType extends AbstractBasicType{
+	to a:Service!BasicType extends AbstractBasicType{
+	"bT".println();
 	// aggregate
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
@@ -67,7 +70,8 @@ rule BasicType transform c:Staticview!BasicType
 
 
 rule DomainEvent transform c:Staticview!DomainEvent
-	to a:ServicePSM!DomainEvent extends AbstractDomainEvent{
+	to a:Service!DomainEvent extends AbstractDomainEvent{
+	"dE".println();
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
 	a.addDomainObjectToCommandAggregate(application, aggregate.name);
@@ -75,14 +79,16 @@ rule DomainEvent transform c:Staticview!DomainEvent
 
 
 rule CommandEvent transform c:Staticview!CommandEvent
-	to a:ServicePSM!CommandEvent extends AbstractCommandEvent{
+	to a:Service!CommandEvent extends AbstractCommandEvent{
+	"cE".println();
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
 	a.addDomainObjectToCommandAggregate(application, aggregate.name);
 }
 
 rule DTO transform c:Staticview!DTO
-	to a:ServicePSM!DTO extends AbstractDTO{
+	to a:Service!DTO extends AbstractDTO{
+	"DTO".println();
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
 	a.addDomainObjectToQueryAggregate(application, aggregate.name);
@@ -90,21 +96,24 @@ rule DTO transform c:Staticview!DTO
 
 
 rule ValueObject transform c:Staticview!ValueObject
-	to a:ServicePSM!ValueObject extends AbstractValueObject{
+	to a:Service!ValueObject extends AbstractValueObject{
+	"ValuObj".println();
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
 	a.addDomainObjectToCommandAggregate(application, aggregate.name);
 }
 
 rule Entity transform c:Staticview!Entity
-	to a:ServicePSM!Entity extends AbstractEntity{
+	to a:Service!Entity extends AbstractEntity{
+	"eT".println();
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
 	a.addDomainObjectToCommandAggregate(application, aggregate.name);
 	
 	// query entity
 	if (not a.`abstract`){
-		var queryEntity = new ServicePSM!Entity;
+		
+		var queryEntity = new Service!Entity;
 		queryEntity.name = a.name + "Query";
 		queryEntity.typeName = a.typeName+ "Query";
 		queryEntity.aggregateRoot = a.aggregateRoot;
@@ -113,20 +122,24 @@ rule Entity transform c:Staticview!Entity
 		}
 		
 		var saveOperation = a.repository.addOperation("save", null, null);
+		/*
 		saveOperation.addPublish(null, a.name + "StoreChannel");
 		
 		queryEntity.addRepository();
 		queryEntity.repository.addSubscribe(null, a.name + "StoreChannel");
 		queryEntity.addDomainObjectToQueryAggregate(application, aggregate.name);
+*/
 	}
 }
 
 rule Literal transform c:Staticview!Literal
-	to a:ServicePSM!Literal extends AbstractLiteral{
+	to a:Service!Literal extends AbstractLiteral{
+	"lit".println();
 }
 
 rule Enumeration transform c:Staticview!Enumeration
-	to a:ServicePSM!Enumeration extends AbstractEnumeration{
+	to a:Service!Enumeration extends AbstractEnumeration{
+	"e".println();
 	var aggregate = c.aggregate.equivalent();
 	var application = c.aggregate.application.equivalent();
 	a.addDomainObjectToCommandAggregate(application, aggregate.name);
@@ -134,12 +147,12 @@ rule Enumeration transform c:Staticview!Enumeration
 
 
 rule Relation transform c:Staticview!Relation
-	to a:ServicePSM!Relation extends AbstractRelation{
+	to a:Service!Relation extends AbstractRelation{
 }
 
 @greedy
 rule Resource transform c:Staticview!Resource
-	to a:ServicePSM!Resource extends AbstractResource{
+	to a:Service!Resource extends AbstractResource{
 }
 
 post {

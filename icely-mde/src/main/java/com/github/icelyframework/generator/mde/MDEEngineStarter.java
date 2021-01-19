@@ -15,7 +15,6 @@ public class MDEEngineStarter
 	public static void main(String[] args)
 	{	
 		System.out.println("MyCore MDE engine started.");
-		
 		//check input arguments sanity
 		if(args.length < 3)
 		{

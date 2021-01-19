@@ -22,6 +22,12 @@ public class CIMEngineStarter {
 		
 		//parse the input yaml file
 		System.out.println("------------------------------------------------------------------------");
+		System.out.println("GENERATING DYNAMIC ONTOLOGY");
+		outputGenerator.dynamicOntologyGenerator();
+		System.out.println("LINKED DYNAMIC GENERATED");
+		
+		//parse the input yaml file
+		System.out.println("------------------------------------------------------------------------");
 		System.out.println("GENERATING LINKED ONTOLOGY");
 		outputGenerator.linkedOntolotyGenerator();
 		System.out.println("LINKED ONTOLOGY GENERATED");

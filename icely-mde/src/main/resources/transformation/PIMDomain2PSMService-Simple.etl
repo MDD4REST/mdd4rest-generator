@@ -1,5 +1,5 @@
 import "../utilities/Staticview.eol";
-import "../utilities/ServicePSM.eol";
+import "../utilities/Service.eol";
 import "./PIMDomain2PSMService.etl";
 
 pre {
@@ -16,81 +16,81 @@ pre {
 }
 
 rule PrimitiveType transform c:Staticview!PrimitiveType
-	to a:ServicePSM!PrimitiveType extends AbstractPrimitiveType{
+	to a:Service!PrimitiveType extends AbstractPrimitiveType{
 }
 
 rule ComplexType transform c:Staticview!ComplexType
-	to a:ServicePSM!ComplexType extends AbstractComplexType{
+	to a:Service!ComplexType extends AbstractComplexType{
 }
 
 rule PIMDomain2PSMService transform c:Staticview!Project
- 	to a:ServicePSM!Project{
+ 	to a:Service!Project{
  	guard: c.hasApplication.size() > 0
 	pimModel = c;
  	psmModel = a;
 }
 
 rule Application transform c:Staticview!Application
-	to a:ServicePSM!Application extends AbstractApplication{
+	to a:Service!Application extends AbstractApplication{
 	a.addModule("default");
 	a.complextypes ::= c.complextypes;
 	a.primitivetype ::= c.primitivetype;
 }
 
 rule Aggregate transform c:Staticview!Aggregate
-	to a:ServicePSM!Aggregate extends AbstractAggregate{
+	to a:Service!Aggregate extends AbstractAggregate{
 	var application = r.application.equivalent();
 	t.module = application.getDefaultModule();
 	t.module.aggregates.add(t);
 }
 
 rule Property transform c:Staticview!Property
-	to a:ServicePSM!Property extends AbstractProperty{
+	to a:Service!Property extends AbstractProperty{
 }
 
 rule BasicType transform c:Staticview!BasicType
-	to a:ServicePSM!BasicType extends AbstractBasicType{
+	to a:Service!BasicType extends AbstractBasicType{
 }
 
 
 rule DomainEvent transform c:Staticview!DomainEvent
-	to a:ServicePSM!DomainEvent extends AbstractDomainEvent{
+	to a:Service!DomainEvent extends AbstractDomainEvent{
 }
 
 
 rule CommandEvent transform c:Staticview!CommandEvent
-	to a:ServicePSM!CommandEvent extends AbstractCommandEvent{
+	to a:Service!CommandEvent extends AbstractCommandEvent{
 }
 
 rule DTO transform c:Staticview!DTO
-	to a:ServicePSM!DTO extends AbstractDTO{
+	to a:Service!DTO extends AbstractDTO{
 }
 
 
 rule ValueObject transform c:Staticview!ValueObject
-	to a:ServicePSM!ValueObject extends AbstractValueObject{
+	to a:Service!ValueObject extends AbstractValueObject{
 }
 
 rule Entity transform c:Staticview!Entity
-	to a:ServicePSM!Entity extends AbstractEntity{
+	to a:Service!Entity extends AbstractEntity{
 }
 
 rule Literal transform c:Staticview!Literal
-	to a:ServicePSM!Literal extends AbstractLiteral{
+	to a:Service!Literal extends AbstractLiteral{
 }
 
 rule Enumeration transform c:Staticview!Enumeration
-	to a:ServicePSM!Enumeration extends AbstractEnumeration{
+	to a:Service!Enumeration extends AbstractEnumeration{
 }
 
 
 rule Relation transform c:Staticview!Relation
-	to a:ServicePSM!Relation extends AbstractRelation{
+	to a:Service!Relation extends AbstractRelation{
 }
 
 @greedy
 rule Resource transform c:Staticview!Resource
-	to a:ServicePSM!Resource extends AbstractResource{
+	to a:Service!Resource extends AbstractResource{
 }
 
 post {

@@ -80,7 +80,7 @@ task executePIM(type:JavaExec) {
 //			modelFile = file('resources/m/PIM-JDLModel.model')
 //			metamodelFile =  file('src/metamodels/PIM/JDLMetamodel.ecore')
 //		}
-//		servicePSM(EMF){
+//		Service(EMF){
 //			modelFile = file('resources/m/PSM-ServiceModel.model')
 //			metamodelFile =  file('src/metamodels/PSM/ServicePSMMetamodel.ecore')
 //		}
@@ -98,12 +98,12 @@ task executePIM(type:JavaExec) {
 //task servicePIM2servicePSM(type: ETL){
 //	src = file('resources/mmt/m2m/ServicePIM2ServicePSM.etl')
 //	input = 'servicePIM'
-//	output = 'servicePSM'
+//	output = 'Service'
 //}
 //task m2t(type: EGX) {
 //	src = file('resources/mmt/m2t/main.egx')
 	// outputRoot = file('src-gen')
-	//input = 'servicePSM'
+	//input = 'Service'
 //}
 //task workflow {
 //	group = "com.github.icelyframework.generator.mde"

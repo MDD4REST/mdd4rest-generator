@@ -1,23 +1,26 @@
 import "../utilities/Staticview.eol";
-import "../utilities/ServicePSM.eol";
+import "../utilities/Service.eol";
 
 @abstract
 rule AbstractPrimitiveType transform c:Staticview!PrimitiveType
-	to a:ServicePSM!PrimitiveType{
+	to a:Service!PrimitiveType{
+	"-------------- PrimitiveType --------------".println();
 	a.type ::= c.type;
 	a.typeName = c.typeName;
 }
 
 @abstract
 rule AbstractComplexType transform c:Staticview!ComplexType
-	to a:ServicePSM!ComplexType{
+	to a:Service!ComplexType{
+	"-------------- ComplexType --------------".println();
 	a.type = c.type.equivalent();
-	a.collection = ServicePSM!CollectionType#SET;
+	a.collection = Service!CollectionType#SET;
 }
 
 @abstract
 rule AbstractApplication transform c:Staticview!Application
-	to a:ServicePSM!Application{
+	to a:Service!Application{
+	"-------------- Application --------------".println();
 	a.name = c.name;
 	a.project = c.project.equivalent();
 	a.project.applications.add(a);
@@ -25,13 +28,14 @@ rule AbstractApplication transform c:Staticview!Application
 
 @abstract
 rule AbstractAggregate transform c:Staticview!Aggregate
-	to a:ServicePSM!Aggregate{
+	to a:Service!Aggregate{
+	"-------------- Aggregate --------------".println();
 	a.name = c.name;
 }
 
 @abstract
 rule AbstractProperty transform c:Staticview!Property
-	to a:ServicePSM!Property{
+	to a:Service!Property{
 	"-------------- Property --------------".println();
 	a.unique = c.isUnique;
 	a.isNamingProperty = c.isNamingProperty;
@@ -40,12 +44,14 @@ rule AbstractProperty transform c:Staticview!Property
 	a.min = c.min;
 
 	a.type = c.type.equivalent();
+	"-------------- End Property --------------".println();
 }
  
  
 @abstract
 rule AbstractDomainObject transform c:Staticview!DomainObject
-	to a:ServicePSM!DomainObject{
+	to a:Service!DomainObject{
+	"-------------- AbstractDomainObject --------------".println();
 	// type definition
 	a.typeName = c.typeName;
 	
@@ -60,7 +66,8 @@ rule AbstractDomainObject transform c:Staticview!DomainObject
 
 @abstract
 rule AbstractionOfValueObject transform c:Staticview!ValueObject
-	to a:ServicePSM!ValueObject extends AbstractDomainObject{
+	to a:Service!ValueObject extends AbstractDomainObject{
+	"-------------- AbstractValueObject --------------".println();
 	c.println();
 	a.immutable = c.immutable;
 	a.persistent = c.persistent;
@@ -68,46 +75,46 @@ rule AbstractionOfValueObject transform c:Staticview!ValueObject
 
 @abstract
 rule AbstractBasicType transform c:Staticview!BasicType
-	to a:ServicePSM!BasicType extends AbstractionOfValueObject{
+	to a:Service!BasicType extends AbstractionOfValueObject{
 	"------- BasicType --------------".println();
 	c.println();
 }
 
 @abstract
 rule AbstractDomainEvent transform c:Staticview!DomainEvent
-	to a:ServicePSM!DomainEvent extends AbstractionOfValueObject{
+	to a:Service!DomainEvent extends AbstractionOfValueObject{
 	"------- DomainEvent --------------".println();
 	c.println();
 }
 
 @abstract
 rule AbstractCommandEvent transform c:Staticview!CommandEvent
-	to a:ServicePSM!CommandEvent extends AbstractionOfValueObject{
+	to a:Service!CommandEvent extends AbstractionOfValueObject{
 	"------- CommandEvent --------------".println();
 	c.println();
 }
 
 @abstract
 rule AbstractDTO transform c:Staticview!DTO
-	to a:ServicePSM!DTO extends AbstractionOfValueObject{
+	to a:Service!DTO extends AbstractionOfValueObject{
 	"------- DTO --------------".println();
 	c.println();
 }
 
 @abstract
 rule AbstractValueObject transform c:Staticview!ValueObject
-	to a:ServicePSM!ValueObject extends AbstractionOfValueObject{
+	to a:Service!ValueObject extends AbstractionOfValueObject{
 	"------- ValueObject --------------".println();
 	c.println();
 }
 
 @abstract
 rule AbstractEntity transform c:Staticview!Entity
-	to a:ServicePSM!Entity extends AbstractDomainObject{
+	to a:Service!Entity extends AbstractDomainObject{
 	"------- entity --------------".println();
 	a.scaffold = c.scaffold;
 	
-	var repository = new ServicePSM!Repository;
+	var repository = new Service!Repository;
 	repository.name = a.name + "Repository";
 	repository.aggregateRoot = a;
 	a.repository = repository;
@@ -117,7 +124,7 @@ rule AbstractEntity transform c:Staticview!Entity
 
 @abstract
 rule AbstractLiteral transform c:Staticview!Literal
-	to a:ServicePSM!Literal{
+	to a:Service!Literal{
 	"------- Literal --------------".println();
 	a.name = c.name;
 	a.value = c.value;
@@ -125,14 +132,15 @@ rule AbstractLiteral transform c:Staticview!Literal
 
 @abstract
 rule AbstractEnumeration transform c:Staticview!Enumeration
-	to a:ServicePSM!Enumeration extends AbstractDomainObject{
+	to a:Service!Enumeration extends AbstractDomainObject{
 	"------- enumeration --------------".println();
 	a.literals ::= c.hasLiteral;
 }
 
 @abstract
 rule AbstractRelation transform c:Staticview!Relation
-	to a:ServicePSM!Relation{
+	to a:Service!Relation{
+	"------- Relation --------------".println();
 	a.type = c.type.equivalent();
 	a.name = c.name;
 	a.source = c.source.equivalent();
@@ -144,9 +152,10 @@ rule AbstractRelation transform c:Staticview!Relation
 
 @abstract
 rule AbstractResource transform c:Staticview!Resource
-	to a:ServicePSM!Resource{
+	to a:Service!Resource{
+	"------- Resource --------------".println();
 	
-	var path = new ServicePSM!Path;
+	var path = new Service!Path;
 	var application = c.aggregate.application.equivalent();
 	path.relativePath = c.relativePath();
 	a.path = path;

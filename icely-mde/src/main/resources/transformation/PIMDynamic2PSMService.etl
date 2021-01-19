@@ -1,23 +1,24 @@
-import "../utilities/DynamicPIM.eol";
-import "../utilities/ServicePSM.eol";
+import "../utilities/Dynamicview.eol";
+import "../utilities/Service.eol";
 
 @abstract
-rule AbstractProject transform c:DynamicPIM!Project
- 	to a:ServicePSM!Project{
+rule AbstractProject transform c:Dynamicview!Project
+ 	to a:Service!Project{
  	guard: c.hasApplication.size() > 0
 }
 
 @abstract
-rule AbstractApplication transform c:DynamicPIM!Application
-	to a:ServicePSM!Application{
+rule AbstractApplication transform c:Dynamicview!Application
+	to a:Service!Application{
+	"-------  DApp -------".println();
 	a.name = c.name;
 	a.project = c.project.equivalent();
 	a.project.applications.add(a);
 }
 
 /*
-rule primitiveType2primitiveType transform c:DynamicPIM!PrimitiveType
-	to a:ServicePSM!PrimitiveType{
+rule primitiveType2primitiveType transform c:Dynamicview!PrimitiveType
+	to a:Service!PrimitiveType{
 	a.type ::= c.type;
 	a.typeName = c.typeName;
 	psmModel.primitivetype.add(a);
@@ -25,16 +26,17 @@ rule primitiveType2primitiveType transform c:DynamicPIM!PrimitiveType
 */
 
 @abstract
-rule AbstractAggregate transform c:DynamicPIM!Aggregate 
-	to a:ServicePSM!Aggregate{
+rule AbstractAggregate transform c:Dynamicview!Aggregate
+	to a:Service!Aggregate{
 	a.name = c.name;
 	a.aggregateRoot ::= c.aggregateRoot;
 }
  
  
 @abstract
-rule AbstractDomainObject transform c:DynamicPIM!DomainObject
-	to a:ServicePSM!DomainObject{
+rule AbstractDomainObject transform c:Dynamicview!DomainObject
+	to a:Service!DomainObject{
+	"------- DDomain -------".println();
 	// type definition
 	a.typeName = c.typeName;
 	
@@ -47,49 +49,50 @@ rule AbstractDomainObject transform c:DynamicPIM!DomainObject
 }
 
 @abstract
-rule AbstractionOfValueObject transform c:DynamicPIM!ValueObject
-	to a:ServicePSM!ValueObject extends AbstractDomainObject{
+rule AbstractionOfValueObject transform c:Dynamicview!ValueObject
+	to a:Service!ValueObject extends AbstractDomainObject{
+	"------- DAbsVaule -------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractBasicType transform c:DynamicPIM!BasicType
-	to a:ServicePSM!BasicType extends AbstractionOfValueObject{
+rule AbstractBasicType transform c:Dynamicview!BasicType
+	to a:Service!BasicType extends AbstractionOfValueObject{
 	"------- non lazy --------------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractDomainEvent transform c:DynamicPIM!DomainEvent
-	to a:ServicePSM!DomainEvent extends AbstractionOfValueObject{
+rule AbstractDomainEvent transform c:Dynamicview!DomainEvent
+	to a:Service!DomainEvent extends AbstractionOfValueObject{
 	"------- DomainEvent --------------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractCommandEvent transform c:DynamicPIM!CommandEvent
-	to a:ServicePSM!CommandEvent extends AbstractionOfValueObject{
+rule AbstractCommandEvent transform c:Dynamicview!CommandEvent
+	to a:Service!CommandEvent extends AbstractionOfValueObject{
 	"------- CommandEvent --------------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractDTO transform c:DynamicPIM!DTO
-	to a:ServicePSM!DTO extends AbstractionOfValueObject{
+rule AbstractDTO transform c:Dynamicview!DTO
+	to a:Service!DTO extends AbstractionOfValueObject{
 	"------- DTO --------------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractValueObject transform c:DynamicPIM!ValueObject
-	to a:ServicePSM!ValueObject extends AbstractionOfValueObject{
+rule AbstractValueObject transform c:Dynamicview!ValueObject
+	to a:Service!ValueObject extends AbstractionOfValueObject{
 	"------- ValueObject --------------".println();
 	c.println();
 }
 
 @abstract
-rule AbstractEntity transform c:DynamicPIM!Entity
-	to a:ServicePSM!Entity extends AbstractDomainObject{
+rule AbstractEntity transform c:Dynamicview!Entity
+	to a:Service!Entity extends AbstractDomainObject{
 	"------- entity --------------".println();
 	
 	c.println();
@@ -97,14 +100,14 @@ rule AbstractEntity transform c:DynamicPIM!Entity
 }
 
 @abstract
-rule AbstractEnumeration transform c:DynamicPIM!Enumeration
-	to a:ServicePSM!Enumeration extends AbstractDomainObject{
+rule AbstractEnumeration transform c:Dynamicview!Enumeration
+	to a:Service!Enumeration extends AbstractDomainObject{
 	"------- enumeration --------------".println();
 }
 
 @abstract
-rule AbstractPublish transform c:DynamicPIM!Publish
-	to a:ServicePSM!Publish{
+rule AbstractPublish transform c:Dynamicview!Publish
+	to a:Service!Publish{
 	"------- Publish --------------".println();
 	a.eventType = c.eventType.equivalent();
 	if(c.eventType != null)
@@ -112,18 +115,18 @@ rule AbstractPublish transform c:DynamicPIM!Publish
 }
 
 @abstract
-rule AbstractPolicy2Subscribe transform c:DynamicPIM!Policy
-	to a:ServicePSM!Subscribe{
+rule AbstractPolicy2Subscribe transform c:Dynamicview!Policy
+	to a:Service!Subscribe{
 	"------- Subscribe --------------".println();
 	if(c.eventType != null)
 		a.topic = c.eventType.name + "Channel";
 }
 
 @abstract
-rule AbstractResource transform c:DynamicPIM!Resource
-	to a:ServicePSM!Resource{
+rule AbstractResource transform c:Dynamicview!Resource
+	to a:Service!Resource{
 	"------- Resource iiiiiiiii --------------".println();
-	var path = new ServicePSM!Path;
+	var path = new Service!Path;
 	var application = c.aggregate.application.equivalent();
 	
 	path.relativePath = c.relativePath();
@@ -135,8 +138,8 @@ rule AbstractResource transform c:DynamicPIM!Resource
 }
 
 @abstract
-rule AbstractProcess2CommandService transform c:DynamicPIM!Process
-	to a:ServicePSM!Service{
+rule AbstractProcess2CommandService transform c:Dynamicview!Process
+	to a:Service!Service{
 	guard: c.hasCommandOperation()
 	"------- CommandProcess --------------".println();
 	var application = c.aggregate.application.equivalent();
@@ -147,8 +150,8 @@ rule AbstractProcess2CommandService transform c:DynamicPIM!Process
 }
 
 @abstract
-rule AbstractProcess2QueryService transform c:DynamicPIM!Process
-	to a:ServicePSM!Service{
+rule AbstractProcess2QueryService transform c:Dynamicview!Process
+	to a:Service!Service{
 	guard: c.hasQueryOperation()
 	"------- QueryProcess --------------".println();
 	var application = c.aggregate.application.equivalent();
@@ -160,8 +163,8 @@ rule AbstractProcess2QueryService transform c:DynamicPIM!Process
 }
 	
 @abstract
-rule AbstractCommandOperation2ServiceOperation transform c:DynamicPIM!CommandOperation
-	to a:ServicePSM!ServiceOperation{
+rule AbstractCommandOperation2ServiceOperation transform c:Dynamicview!CommandOperation
+	to a:Service!ServiceOperation{
 	"------- CommandOperation --------------".println();
 	a.name = c.name;
 	a.publish = c.publish.equivalent();
@@ -185,8 +188,8 @@ rule AbstractCommandOperation2ServiceOperation transform c:DynamicPIM!CommandOpe
 }
 
 @abstract
-rule AbstractQueryOperation2ServiceOperation transform c:DynamicPIM!QueryOperation
-	to a:ServicePSM!ServiceOperation{
+rule AbstractQueryOperation2ServiceOperation transform c:Dynamicview!QueryOperation
+	to a:Service!ServiceOperation{
 	"------- QueryOperation --------------".println();
 	a.name = c.name;
 	
@@ -207,8 +210,8 @@ rule AbstractQueryOperation2ServiceOperation transform c:DynamicPIM!QueryOperati
 }
 	
 @abstract
-rule AbstractResourceActivity2ResourceOperation transform c:DynamicPIM!ResourceActivity
-	to a:ServicePSM!ResourceOperation{
+rule AbstractResourceActivity2ResourceOperation transform c:Dynamicview!ResourceActivity
+	to a:Service!ResourceOperation{
 	"------- ResourceOperation --------------".println();
 	var application = c.resource.aggregate.application.equivalent();
 	
@@ -233,7 +236,7 @@ rule AbstractResourceActivity2ResourceOperation transform c:DynamicPIM!ResourceA
 		("Internal" + serviceName).println();
 		internalService.println();
 		"ws".println();
-		var webserviceOperation = new ServicePSM!ServiceOperation;
+		var webserviceOperation = new Service!ServiceOperation;
 		webservice.webService = true;
 		
 		webservice.addDependencyIfNotExist(internalService);
@@ -264,33 +267,37 @@ rule AbstractResourceActivity2ResourceOperation transform c:DynamicPIM!ResourceA
 }
 
 @abstract
-rule AbstractRead2resourceOperation transform c:DynamicPIM!Read
-	to a:ServicePSM!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
-	a.httpMethod = ServicePSM!HttpMethod#GET;
+rule AbstractRead2resourceOperation transform c:Dynamicview!Read
+	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	"------- DROpR -------".println();
+	a.httpMethod = Service!HttpMethod#GET;
 }
 
 @abstract
-rule AbstractCreate2resourceOperation transform c:DynamicPIM!Create
-	to a:ServicePSM!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
-	a.httpMethod = ServicePSM!HttpMethod#POST;
+rule AbstractCreate2resourceOperation transform c:Dynamicview!Create
+	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	"------- DROpC -------".println();
+	a.httpMethod = Service!HttpMethod#POST;
 }
 
 @abstract
-rule AbstractOther2ResourceOperation transform c:DynamicPIM!Other
-	to a:ServicePSM!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
-	a.httpMethod = ServicePSM!HttpMethod#UNDEFINED;
+rule AbstractOther2ResourceOperation transform c:Dynamicview!Other
+	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	"------- DROpD -------".println();
+	a.httpMethod = Service!HttpMethod#UNDEFINED;
 }
 
 @abstract
-rule AbstractDelete2ResourceOperation transform c:DynamicPIM!Delete
-	to a:ServicePSM!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
-	a.httpMethod = ServicePSM!HttpMethod#DELETE;
+rule AbstractDelete2ResourceOperation transform c:Dynamicview!Delete
+	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	"------- DROpD -------".println();
+	a.httpMethod = Service!HttpMethod#DELETE;
 }
 
 
 @abstract
-rule AbstractProcess2Service transform c:DynamicPIM!Process
-	to a:ServicePSM!Service{
+rule AbstractProcess2Service transform c:Dynamicview!Process
+	to a:Service!Service{
 	"------- Process --------------".println();
 	var application = c.aggregate.application.equivalent();
 	

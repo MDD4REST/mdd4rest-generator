@@ -1,5 +1,5 @@
-import "../utilities/ServicePSM.eol";
-import "../utilities/SculptorPSM.eol";
+import "../utilities/Service.eol";
+import "../utilities/Sculptor.eol";
 
 pre {
 	"Running ETL Transformation: ".println();
@@ -9,7 +9,7 @@ pre {
 	var sculptorModel;
 }
 
-rule Project transform c:ServicePSM!Project
+rule Project transform c:Service!Project
  	to a:Sculptor!Project{
  	guard: c.applications.size() > 0
  	"-------------- Project --------------".println();
@@ -19,7 +19,7 @@ rule Project transform c:ServicePSM!Project
 }
 
 
-rule Application transform c:ServicePSM!Application
+rule Application transform c:Service!Application
  	to a:Sculptor!Application{
  	"-------------- Application --------------".println();
  	a.name = c.name.firstToUpperCase();
@@ -29,7 +29,7 @@ rule Application transform c:ServicePSM!Application
  	
 }
 
-rule Module transform c:ServicePSM!Module
+rule Module transform c:Service!Module
  	to a:Sculptor!Module{
  	"-------------- Application --------------".println();
  	a.name = c.name;
@@ -42,7 +42,7 @@ rule Module transform c:ServicePSM!Module
 
 
 
-rule Property2Attribute transform c:ServicePSM!Property
+rule Property2Attribute transform c:Service!Property
 	to a:Sculptor!Attribute{
 	"-------------- Attribute --------------".println();
 	a.name = c.name;
@@ -64,7 +64,7 @@ rule Property2Attribute transform c:ServicePSM!Property
  
 
 @abstract
-rule DomainObjectAbstract transform c:ServicePSM!DomainObject
+rule DomainObjectAbstract transform c:Service!DomainObject
 	to a:Sculptor!DomainObject{	
 	// attributes
 	a.name = c.name;
@@ -86,7 +86,7 @@ rule DomainObjectAbstract transform c:ServicePSM!DomainObject
 	a.module.domainObjects.add(a);
 }
 
-rule Entity transform c:ServicePSM!Entity
+rule Entity transform c:Service!Entity
 	to a:Sculptor!Entity extends DomainObjectAbstract {
 	"-------------- entity --------------".println();
 	a.auditable = c.auditable;
@@ -95,7 +95,7 @@ rule Entity transform c:ServicePSM!Entity
 
 
 @abstract
-rule ValueObjectAbstract transform c:ServicePSM!ValueObject
+rule ValueObjectAbstract transform c:Service!ValueObject
 	to a:Sculptor!ValueObject extends DomainObjectAbstract {
 	c.println();
 	a.immutable = c.immutable;
@@ -103,55 +103,55 @@ rule ValueObjectAbstract transform c:ServicePSM!ValueObject
 }
 
 
-rule BasicType transform c:ServicePSM!BasicType
+rule BasicType transform c:Service!BasicType
 	to a:Sculptor!BasicType extends ValueObjectAbstract{
 	"---------------- BasicType --------------".println();
 	c.println();
 }
 
 
-rule DomainEvent transform c:ServicePSM!DomainEvent
+rule DomainEvent transform c:Service!DomainEvent
 	to a:Sculptor!DomainEvent extends ValueObjectAbstract{
 	"---------------- DomainEvent --------------".println();
 	c.println();
 }
 
 
-rule CommandEvent transform c:ServicePSM!CommandEvent
+rule CommandEvent transform c:Service!CommandEvent
 	to a:Sculptor!CommandEvent extends ValueObjectAbstract{
 	"---------------- CommandEvent --------------".println();
 	c.println();
 }
 
 
-rule ValueObject transform c:ServicePSM!ValueObject
+rule ValueObject transform c:Service!ValueObject
 	to a:Sculptor!ValueObject extends ValueObjectAbstract{
 	"---------------- ValueObject --------------".println();
 	c.println();
 }
 
-rule DTO transform c:ServicePSM!DTO
+rule DTO transform c:Service!DTO
 	to a:Sculptor!DataTransferObject extends ValueObjectAbstract{
 	"---------------- DTO --------------".println();
 	c.println();
 }
 
-rule Literal2EnumValue transform c:ServicePSM!Literal
+rule Literal2EnumValue transform c:Service!Literal
 	to a:Sculptor!EnumValue{
 	"---------------- Literal --------------".println();
 	a.name = c.name;
 	var enumParam = new Sculptor!EnumConstructorParameter;
-	enumParam.value = c.value;
+	enumParam.value = c.value.asString();
 	a.parameters.add(enumParam);
 }
 
-rule Enumeration2Enum transform c:ServicePSM!Enumeration
+rule Enumeration2Enum transform c:Service!Enumeration
 	to a:Sculptor!Enum extends DomainObjectAbstract{
 	"---------------- enumeration --------------".println();
 	a.values ::= c.literals;
 }
 
-rule Relation2Reference transform c:ServicePSM!Relation
+rule Relation2Reference transform c:Service!Relation
 	to a:Sculptor!Reference{
 	c.type.type().println();
 	if (c.type.type().name = "ComplexType"){
@@ -171,7 +171,7 @@ rule Relation2Reference transform c:ServicePSM!Relation
 	a.from.references.add(a);
 }
 
-rule Publish transform c:ServicePSM!Publish
+rule Publish transform c:Service!Publish
 	to a:Sculptor!Publish{
 	"------------- Publish --------------".println();
 	a.eventType = c.eventType.equivalent();
@@ -179,14 +179,14 @@ rule Publish transform c:ServicePSM!Publish
 	a.topic = c.topic;
 }
 
-rule Subscribe transform c:ServicePSM!Subscribe
+rule Subscribe transform c:Service!Subscribe
 	to a:Sculptor!Subscribe{
 	"------------- Subscribe --------------".println();
 	a.eventBus = c.eventBus;
 	a.topic = c.topic;
 }
 
-rule Resource transform c:ServicePSM!Resource
+rule Resource transform c:Service!Resource
 	to a:Sculptor!Resource{
 	a.name = c.name;
 	a.path = c.path.relativePath;
@@ -194,7 +194,7 @@ rule Resource transform c:ServicePSM!Resource
 	a.module = c.module.equivalent();
 }
 
-rule Service transform c:ServicePSM!Service
+rule Service transform c:Service!Service
 	to a:Sculptor!Service{
 	"-------------- Service --------------".println();
 	a.name = c.name;
@@ -207,7 +207,7 @@ rule Service transform c:ServicePSM!Service
 	a.subscribe ::= c.subscribe;
 }
 
-rule Repository transform  c:ServicePSM!Repository
+rule Repository transform  c:Service!Repository
 	to a:Sculptor!Repository{
 		"-------------- Repository --------------".println();
 	a.name = c.name;
@@ -218,7 +218,7 @@ rule Repository transform  c:ServicePSM!Repository
 	a.subscribe ::= c.subscribe;
 }
 
-rule Parameter transform c:ServicePSM!Parameter
+rule Parameter transform c:Service!Parameter
 	to a:Sculptor!Parameter{
 	"-------------- Parameter --------------".println();
 	a.name = c.name;
@@ -236,7 +236,7 @@ rule Parameter transform c:ServicePSM!Parameter
 }
 
 @abstract
-rule OperationAbstract  transform c:ServicePSM!Operation
+rule OperationAbstract  transform c:Service!Operation
 	to a:Sculptor!Operation{
 	a.name = c.name;
 	
@@ -256,14 +256,15 @@ rule OperationAbstract  transform c:ServicePSM!Operation
 	a.publish ::= c.publish;
 }
 
-rule RepositoryOperation transform c:ServicePSM!RepositoryOperation
+rule RepositoryOperation transform c:Service!RepositoryOperation
 	to a:Sculptor!RepositoryOperation extends OperationAbstract{
-	"-------------- ServiceOperation --------------".println();
+	"-------------- Repository --------------".println();
 	a.delegateToAccessObject = c.delegateToAccessObject;
-	a.accessObjectName = c.accessObjectName;
+	// TODO: accessObjectName should be string not a boolean
+	//a.accessObjectName = c.accessObjectName;
 }
 
-rule ServiceOperation transform c:ServicePSM!ServiceOperation
+rule ServiceOperation transform c:Service!ServiceOperation
 	to a:Sculptor!ServiceOperation extends OperationAbstract{
 	"-------------- ServiceOperation --------------".println();
 	
@@ -272,7 +273,7 @@ rule ServiceOperation transform c:ServicePSM!ServiceOperation
 	a.serviceDelegate = c.serviceDelegate;
 }
 
-rule ResourceOperation transform c:ServicePSM!ResourceOperation
+rule ResourceOperation transform c:Service!ResourceOperation
 	to a:Sculptor!ResourceOperation extends OperationAbstract{
 	"-------------- ResourceOperation --------------".println();
 	a.path = c.path;

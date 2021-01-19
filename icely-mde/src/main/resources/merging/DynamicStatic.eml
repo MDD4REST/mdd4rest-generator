@@ -1,7 +1,7 @@
 import "../transformation/PIMDomain2PSMService.etl";
 import "../transformation/PIMDynamic2PSMService.etl";
-import "../utilities/ServicePSM.eol";
-import "../utilities/DynamicPIM.eol";
+import "../utilities/Service.eol";
+import "../utilities/Dynamicview.eol";
 import "../utilities/Staticview.eol";
 
 pre {
@@ -11,7 +11,7 @@ pre {
 }
 
 rule Root
-	merge l : DynamicPIM!Project with r : Staticview!Project into t : ServicePSM!Project {
+	merge l : Dynamicview!Project with r : Staticview!Project into t : Service!Project {
 	t.name = r.name;
 	t.basePath = r.basePath;
 	dynamic = l;
@@ -20,13 +20,13 @@ rule Root
 }
 
 rule ComplexType
-	merge l : DynamicPIM!ComplexType with r : Staticview!ComplexType into t : ServicePSM!ComplexType {
+	merge l : Dynamicview!ComplexType with r : Staticview!ComplexType into t : Service!ComplexType {
 	t.type = r.type.equivalent();
-	t.collection = ServicePSM!CollectionType#SET;
+	t.collection = Service!CollectionType#SET;
 }
 
 rule Application
-	merge l : DynamicPIM!Application with r : Staticview!Application into t : ServicePSM!Application {
+	merge l : Dynamicview!Application with r : Staticview!Application into t : Service!Application {
 	"application".println();
 	t.name = r.name;
 	t.project = psmModel;	
@@ -37,14 +37,14 @@ rule Application
 }
 
 rule PrimitiveType
-	merge l : DynamicPIM!PrimitiveType with r : Staticview!PrimitiveType into t : ServicePSM!PrimitiveType {
+	merge l : Dynamicview!PrimitiveType with r : Staticview!PrimitiveType into t : Service!PrimitiveType {
 	t.type ::= r.type;
 	t.typeName = r.typeName;
 	psmModel.primitivetype.add(t);
 }
 
 rule Aggregate
-	merge l : DynamicPIM!Aggregate with r : Staticview!Aggregate into t : ServicePSM!Aggregate {
+	merge l : Dynamicview!Aggregate with r : Staticview!Aggregate into t : Service!Aggregate {
 	"aggregate".println();
 	t.name = r.name;	
 	var application = r.application.equivalent();
@@ -57,7 +57,7 @@ rule Aggregate
 
 
 rule ValueObject
-	merge l : DynamicPIM!ValueObject with r : Staticview!ValueObject into t : ServicePSM!ValueObject {
+	merge l : Dynamicview!ValueObject with r : Staticview!ValueObject into t : Service!ValueObject {
 	r.println();
 	
 	t.typeName = r.typeName;
@@ -84,7 +84,7 @@ rule ValueObject
 }
 
 rule BasicType
-	merge l : DynamicPIM!BasicType with r : Staticview!BasicType into t : ServicePSM!BasicType{
+	merge l : Dynamicview!BasicType with r : Staticview!BasicType into t : Service!BasicType{
 	"------- BasicType --------------".println();
 	t.typeName = r.typeName;
 	
@@ -98,7 +98,7 @@ rule BasicType
 	t.persistent = r.persistent;
 	
 	if(t.persistent){
-		var repository = new ServicePSM!Repository;
+		var repository = new Service!Repository;
 		repository.name = t.name + "Repository";
 		repository.aggregateRoot = t;
 		t.repository = repository;
@@ -112,7 +112,7 @@ rule BasicType
 }
 
 rule DomainEvent
-	merge l : DynamicPIM!DomainEvent with r : Staticview!DomainEvent into t : ServicePSM!DomainEvent{
+	merge l : Dynamicview!DomainEvent with r : Staticview!DomainEvent into t : Service!DomainEvent{
 	"------- DomainEvent --------------".println();
 	t.typeName = r.typeName;
 	
@@ -138,7 +138,7 @@ rule DomainEvent
 
 
 rule CommandEvent
-	merge l : DynamicPIM!CommandEvent with r : Staticview!CommandEvent into t : ServicePSM!CommandEvent{
+	merge l : Dynamicview!CommandEvent with r : Staticview!CommandEvent into t : Service!CommandEvent{
 	"------- CommandEvent --------------".println();
 	t.typeName = r.typeName;
 	
@@ -163,7 +163,7 @@ rule CommandEvent
 }
 
 rule DTO
-	merge l : DynamicPIM!DTO with r : Staticview!DTO into t : ServicePSM!DTO{
+	merge l : Dynamicview!DTO with r : Staticview!DTO into t : Service!DTO{
 	"------- DTO --------------".println();
 	t.typeName = r.typeName;
 	
@@ -182,7 +182,7 @@ rule DTO
 
 
 rule Entity 
-	merge l : DynamicPIM!Entity with r : Staticview!Entity into t : ServicePSM!Entity{
+	merge l : Dynamicview!Entity with r : Staticview!Entity into t : Service!Entity{
 	"------- entity --------------".println();
 	t.typeName = r.typeName;
 	
@@ -204,7 +204,7 @@ rule Entity
 }
 
 rule Enumeration
-	merge l : DynamicPIM!Enumeration with r : Staticview!Enumeration into t : ServicePSM!Enumeration{
+	merge l : Dynamicview!Enumeration with r : Staticview!Enumeration into t : Service!Enumeration{
 	"------- enumeration --------------".println();
 	t.typeName = r.typeName;
 	
@@ -222,10 +222,10 @@ rule Enumeration
 
 @greedy
 rule MergeResource
-	merge l : DynamicPIM!Resource with r : Staticview!Resource into t : ServicePSM!Resource{
+	merge l : Dynamicview!Resource with r : Staticview!Resource into t : Service!Resource{
 	"------- Resource iiiiiiiii --------------".println();
 	var application = r.aggregate.application.equivalent();
-	var path = new ServicePSM!Path;
+	var path = new Service!Path;
 	path.relativePath = r.relativePath();
 	t.path = path;
 	t.name = r.name;

@@ -1,5 +1,5 @@
 import "../utilities/JDL.eol";
-import "../utilities/ServicePSM.eol";
+import "../utilities/Service.eol";
 
 pre {
 	"Running ETL Transformation: ".println();
@@ -9,7 +9,7 @@ pre {
 	var jdl;
 }
 
-rule Project2JDL transform c:ServicePSM!Project
+rule Project2JDL transform c:Service!Project
  	to a:JDL!JDL{
  	guard: c.applications.size() > 0
  	"-------------- Project2JDL --------------".println();
@@ -17,7 +17,7 @@ rule Project2JDL transform c:ServicePSM!Project
  	jdl = a;
 }
 
-rule Entity transform c:ServicePSM!Entity
+rule Entity transform c:Service!Entity
 	to a:JDL!Entity{
 	// guard: c.isAlgorithmic == false
 	  
@@ -27,7 +27,7 @@ rule Entity transform c:ServicePSM!Entity
 	}
 	for (relation in c.relations){
 		if(relation.target.type().name == "Enumeration"){
-			var property = new ServicePSM!Property;
+			var property = new Service!Property;
 			property.name = relation.name;
 			property.unique = false;
 			property.required = relation.required;
@@ -40,7 +40,7 @@ rule Entity transform c:ServicePSM!Entity
 	a.println();
 }
 
-rule Application transform c:ServicePSM!Application
+rule Application transform c:Service!Application
 	to a:JDL!Application{
 	var config = new JDL!Config;
 	config.baseName = c.name;
@@ -54,7 +54,7 @@ rule Application transform c:ServicePSM!Application
 	a.config.println();
 }
 
-rule Relation2UnidirectionalRelationship transform c:ServicePSM!Relation
+rule Relation2UnidirectionalRelationship transform c:Service!Relation
 	to a:JDL!UnidirectionalRelationship{
 	guard: c.opposite == null and c.source.type().name == "Entity" and c.target.type().name == "Entity"
 	
@@ -75,7 +75,7 @@ rule Relation2UnidirectionalRelationship transform c:ServicePSM!Relation
 	fromEntity.relationships.add(a);
 }
 
-rule Relation2BidirectionalRelationship transform c:ServicePSM!Relation
+rule Relation2BidirectionalRelationship transform c:Service!Relation
 	to a:JDL!BidirectionalRelationship{
 	guard: c.opposite != null and c.source.type().name == "Entity" and c.target.type().name == "Entity"
 	
@@ -99,13 +99,13 @@ rule Relation2BidirectionalRelationship transform c:ServicePSM!Relation
 	fromEntity.relationships.add(a);
 }
 
-rule Literal transform c:ServicePSM!Literal
+rule Literal transform c:Service!Literal
 	to a:JDL!Literal{
 	a.name = c.name;
 	a.value = c.value;
 }
 
-rule Enumeration2Enum transform c:ServicePSM!Enumeration
+rule Enumeration2Enum transform c:Service!Enumeration
 	to a:JDL!Enum{
 	a.name = c.name;
 	a.literals ::= c.literals;
@@ -115,7 +115,7 @@ rule Enumeration2Enum transform c:ServicePSM!Enumeration
 }
 
 
-operation JDL!Entity addFieldFromProperty(property: ServicePSM!Property){
+operation JDL!Entity addFieldFromProperty(property: Service!Property){
 	var field = new JDL!Field;
 	field.name = property.name;
 	field.unique = property.unique;
@@ -126,7 +126,7 @@ operation JDL!Entity addFieldFromProperty(property: ServicePSM!Property){
 	self.fields.add(field);
 }
 
-operation JDL!Entity addRelationshipFromRelation(relation: ServicePSM!Relation){
+operation JDL!Entity addRelationshipFromRelation(relation: Service!Relation){
 	var relationship;
 	var fromRelationshipColumn = new JDL!RelationshipColumn;
 	if(relation.opposite == null){
@@ -166,11 +166,11 @@ operation JDL!Relationship setMultiplicityFromRelation(relation){
 }
 
 operation JDL!Relationship setMultiplicityByString(multiplicity){
-	if(multiplicity == ServicePSM!Multiplicity#ONE_TO_MANY.name){
+	if(multiplicity == Service!Multiplicity#ONE_TO_MANY.name){
   		self.multiplicity = JDL!Multiplicity#ONE_TO_MANY;
-  	} else if(multiplicity == ServicePSM!Multiplicity#MANY_TO_ONE.name){
+  	} else if(multiplicity == Service!Multiplicity#MANY_TO_ONE.name){
   		self.multiplicity = JDL!Multiplicity#MANY_TO_ONE;
-  	} else if(multiplicity == ServicePSM!Multiplicity#MANY_TO_MANY.name){
+  	} else if(multiplicity == Service!Multiplicity#MANY_TO_MANY.name){
   		self.multiplicity = JDL!Multiplicity#MANY_TO_MANY;
   	} else {
   		self.multiplicity = JDL!Multiplicity#ONE_TO_ONE;

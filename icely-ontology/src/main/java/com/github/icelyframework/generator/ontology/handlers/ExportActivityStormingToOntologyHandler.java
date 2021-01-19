@@ -34,14 +34,13 @@ public class ExportActivityStormingToOntologyHandler {
 
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		m.put("ActivityDiagram", new XMIResourceFactoryImpl());
-
+		m.put("actstorm", new XMIResourceFactoryImpl());
 		// Obtain a new resource set
 		ResourceSet resSet = new ResourceSetImpl();
 
 		// Get the resource
 		File dir = new File(projectPath + "/CIM/activity storming");
-		String[] extensions = new String[] { "ActivityDiagram" };
+		String[] extensions = new String[] { "actstorm" };
 		List<File> files = (List<File>) FileUtils.listFiles(dir, extensions, true);
 
 		System.out.println();
@@ -51,10 +50,11 @@ public class ExportActivityStormingToOntologyHandler {
 		for (File file : files) {
 
 			System.out.println(file.getName());
+			System.out.println(URI.createURI(projectPath + "/CIM/activity storming/" + file.getName()).toString());
 			Resource resource = resSet
-					.getResource(URI.createURI(projectPath + "/CIM/activity storming/" + file.getName()), true);
-			// Get the first model element and cast it to the right type, in my
-			// example everything is hierarchical included in this first node
+					.getResource(URI.createURI("file://" + projectPath + "/CIM/activity storming/" + file.getName()), true);
+			System.out.println(resource.getContents());
+			System.out.println(resource.getContents().get(0).eAllContents());
 			ActivityDiagram acd = (ActivityDiagram) resource.getContents().get(0);
 			activityDiagramTransformation(acd);
 		}
