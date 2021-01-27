@@ -10,7 +10,7 @@ rule AbstractProject transform c:Dynamicview!Project
 @abstract
 rule AbstractApplication transform c:Dynamicview!Application
 	to a:Service!Application{
-	"-------  DApp -------".println();
+	"-------  Dynamic App -------".println();
 	a.name = c.name;
 	a.project = c.project.equivalent();
 	a.project.applications.add(a);
@@ -36,7 +36,7 @@ rule AbstractAggregate transform c:Dynamicview!Aggregate
 @abstract
 rule AbstractDomainObject transform c:Dynamicview!DomainObject
 	to a:Service!DomainObject{
-	"------- DDomain -------".println();
+	"------- Dynamic Domain -------".println();
 	// type definition
 	a.typeName = c.typeName;
 	
@@ -51,14 +51,14 @@ rule AbstractDomainObject transform c:Dynamicview!DomainObject
 @abstract
 rule AbstractionOfValueObject transform c:Dynamicview!ValueObject
 	to a:Service!ValueObject extends AbstractDomainObject{
-	"------- DAbsVaule -------".println();
+	"------- Dynamic AbstractVaule -------".println();
 	c.println();
 }
 
 @abstract
 rule AbstractBasicType transform c:Dynamicview!BasicType
 	to a:Service!BasicType extends AbstractionOfValueObject{
-	"------- non lazy --------------".println();
+	"------- Dynamic BasicType --------------".println();
 	c.println();
 }
 
@@ -123,6 +123,14 @@ rule AbstractPolicy2Subscribe transform c:Dynamicview!Policy
 }
 
 @abstract
+rule AbstractRole transform c:Dynamicview!Role
+	to a:Service!Role{
+	a.name = c.name;
+	a.application = c.application.equivalent();
+	a.application.roles.add(a);
+}
+
+@abstract
 rule AbstractResource transform c:Dynamicview!Resource
 	to a:Service!Resource{
 	"------- Resource iiiiiiiii --------------".println();
@@ -132,6 +140,37 @@ rule AbstractResource transform c:Dynamicview!Resource
 	path.relativePath = c.relativePath();
 	a.path = path;
 	a.name = c.name;
+	
+	"Permission".println();
+	 c.hasPermission.println();
+	for(permission in  c.hasPermission){
+		var serPermission;
+		switch(permission.type()){
+			case "HasAuthority": {
+				serPermission = new Service!HasAuthority;
+				serPermission.role = permission.role;
+			}
+			case "HasAnyAuthorities":{
+				serPermission = new Service!HasAnyAuthorities;
+				serPermission.roles ::= permission.roles;
+			}
+			
+			case "Authenticated":{
+				serPermission = new Service!Authenticated;
+			}
+			
+			case "Access" : {
+				serPermission = new Service!Access;
+				serPermission.access = permission.access;
+			}
+			
+			case "PermitAll": {
+				serPermission = new Service!PermitAll;
+				serPermission.withAllSubresources = permission.withAllSubresources;
+			}
+		}
+		a.permissions.add(serPermission);
+	}
 	
 	a.module = application.getRestModule();
 	a.module.resources.add(a);
@@ -180,8 +219,8 @@ rule AbstractCommandOperation2ServiceOperation transform c:Dynamicview!CommandOp
 			type = a.service.module.application.findTypeDefinition(dynamicParameter.type.typeName);
 		a.addParameter(dynamicParameter.name, type);
 	}
-	c.policy.println();
-	c.policy.equivalent().println();
+	//c.policy.println();
+	//c.policy.equivalent().println();
 	if(c.policy != null)
 		a.service.subscribe = c.policy.equivalent();
 	a.service.operations.add(a);
@@ -214,16 +253,29 @@ rule AbstractResourceActivity2ResourceOperation transform c:Dynamicview!Resource
 	to a:Service!ResourceOperation{
 	"------- ResourceOperation --------------".println();
 	var application = c.resource.aggregate.application.equivalent();
+	var path = new Service!Path;		
 	
 	a.name = c.name;
+	
+	"resource".println();
+	a.name.println();
+	"".println();
+	c.resource.println();
+	 
 	a.resource = c.resource.equivalent();
+	if(c.pathName == null or c.pathName == "")
+		path.relativePath = c.resource.relativePath();
+	else
+		path.relativePath = c.resource.relativePath() + "/" + c.pathName;
+	a.path = path;
+	a.path.println();
 		
 	c.trigger.println();
 	if(c.trigger != null){
 		"HIIIIsds".println();
 		var serviceName = "";
 		var module = null;
-		if (c.trigger.type() == "CommandOperation"){
+		if (c.trigger.type().name == "CommandOperation"){
 			serviceName =  c.trigger.process.name + "CommandService";
 			module = application.getCommandModule();
 		} else {
@@ -232,10 +284,14 @@ rule AbstractResourceActivity2ResourceOperation transform c:Dynamicview!Resource
 		}
 		
 		var webservice = module.getOrAddService("External" + serviceName);
-		var internalService = module.getService("Internal" + serviceName);
+		var internalService = module.getOrAddService("Internal" + serviceName);
+		a.resource.serviceDependencies.add(webservice);
+		
 		("Internal" + serviceName).println();
 		internalService.println();
+		webservice.println();
 		"ws".println();
+		
 		var webserviceOperation = new Service!ServiceOperation;
 		webservice.webService = true;
 		
@@ -249,9 +305,7 @@ rule AbstractResourceActivity2ResourceOperation transform c:Dynamicview!Resource
 			if(dynamicParameter.type != null)
 				type = module.application.findTypeDefinition(dynamicParameter.type.typeName);
 			webserviceOperation.addParameter(dynamicParameter.name, type);
-		}
-	
-		a.delegate = webserviceOperation;
+		}	
 	}
 		
 	for (dynamicParameter in c.hasParameter){
@@ -261,36 +315,39 @@ rule AbstractResourceActivity2ResourceOperation transform c:Dynamicview!Resource
 		a.addParameter(dynamicParameter.name, type);
 	}
 		
-	if(c.returntype != null)
-		a.returntype = a.service.module.application.findTypeDefinition(c.returntype.typeName);
+	if(c.returntype != null){
+		a.returntype = a.resource.module.application.findTypeDefinition(c.returntype.typeName);
+		a.returntype.println("hi");
+	}
+	"ews".println();
 	a.resource.operations.add(a);
 }
 
 @abstract
-rule AbstractRead2resourceOperation transform c:Dynamicview!Read
+rule AbstractRead2ResourceOperation transform c:Dynamicview!Read
 	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
-	"------- DROpR -------".println();
+	"------- ReadResource2ResourceOperation -------".println();
 	a.httpMethod = Service!HttpMethod#GET;
 }
 
 @abstract
-rule AbstractCreate2resourceOperation transform c:Dynamicview!Create
+rule AbstractCreate2ResourceOperation transform c:Dynamicview!Create
 	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
-	"------- DROpC -------".println();
+	"------- CreateResource2ResourceOperation -------".println();
 	a.httpMethod = Service!HttpMethod#POST;
 }
 
 @abstract
 rule AbstractOther2ResourceOperation transform c:Dynamicview!Other
 	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
-	"------- DROpD -------".println();
+	"------- OtherResource2ResourceOperation -------".println();
 	a.httpMethod = Service!HttpMethod#UNDEFINED;
 }
 
 @abstract
 rule AbstractDelete2ResourceOperation transform c:Dynamicview!Delete
 	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
-	"------- DROpD -------".println();
+	"------- DeleteResource2ResourceOperation -------".println();
 	a.httpMethod = Service!HttpMethod#DELETE;
 }
 

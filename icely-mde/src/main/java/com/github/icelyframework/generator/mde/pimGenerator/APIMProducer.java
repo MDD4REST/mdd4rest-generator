@@ -17,16 +17,12 @@ public abstract class APIMProducer {
 	protected ArrayList<YamlRole> listOfYamlRoles;
 	protected StaticviewFactory oStaticviewFactory;
 	protected DynamicviewFactory oDynamicPIMFactory;
-//	protected SecurityPIMMetamodelFactory oSecurityPIMFactory;
-//	protected QueryPIMMetamodelFactory oQueryPIMFactory;
 	protected String strProjectName;
 	protected String strProjectBasePath;
 	
 	private void initializePIMProducer() {
 		this.oStaticviewFactory = StaticviewFactory.eINSTANCE;
 		this.oDynamicPIMFactory = DynamicviewFactory.eINSTANCE;
-//		this.oSecurityPIMFactory = SecurityPIMMetamodelFactory.eINSTANCE;
-//		this.oQueryPIMFactory = QueryPIMMetamodelFactory.eINSTANCE;
 		this.oProjectStatic = this.oStaticviewFactory.createProject();
 		this.oProjectStatic.setName(this.strProjectName);
 		this.oProjectStatic.setBasePath(this.strProjectBasePath);
@@ -93,14 +89,6 @@ public abstract class APIMProducer {
 	public DynamicviewFactory getDynamicPIMFactory() {
 		return this.oDynamicPIMFactory;
 	}
-
-//	public SecurityPIMMetamodelFactory getSecurityPIMFactory() {
-//		return oSecurityPIMFactory;
-//	}
-//
-//	public QueryPIMMetamodelFactory getQueryPIMFactory() {
-//		return oQueryPIMFactory;
-//	}
 
 	public String getProjectName() {
 		return this.strProjectName;

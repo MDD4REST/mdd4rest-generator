@@ -189,7 +189,7 @@ public class ExportActivityStormingToOntologyHandler {
 		}
 
 		for (ReadModel readModel : readModels) {
-			readModelTransformation(readModel);
+			readModelTransformation(diagramName, readModel);
 		}
 		
 		if (finalNode != null)
@@ -245,8 +245,9 @@ public class ExportActivityStormingToOntologyHandler {
 		}
 	}
 
-	private void readModelTransformation(ReadModel readModel) {
+	private void readModelTransformation(String diagramName, ReadModel readModel) {
 		String readModelName = readModel.getName();
+		System.out.println("readModelName :" + readModelName);
 		Supplier supplier;
 		if (readModel.getSupplier() != null) {
 			supplier = readModel.getSupplier();
@@ -256,6 +257,12 @@ public class ExportActivityStormingToOntologyHandler {
 		} else if (readModel.getEvent() != null) {
 			supplier = readModel.getEvent().getSupplier();
 			String activityName = getActivityNameOfAggregation(supplier);
+			System.out.println("supplier " + supplier);
+			System.out.println("activityName " + activityName);
+			System.out.println("activityExists: " + dynamicOntology.activityExists(activityName));
+			if(!dynamicOntology.activityExists(activityName)){
+				activityPartitionTranformation(diagramName, readModel.getEvent().getSupplier().getActivitypartition());
+			}
 			dynamicOntology.addReadModelToActivity(activityName, readModelName);
 			dynamicOntology.addReadModelToEvent(readModel.getEvent().getName(), readModelName);
 		}
@@ -296,12 +303,18 @@ public class ExportActivityStormingToOntologyHandler {
 		} else if(ActivitystormingPackage.Literals.READ_MODEL.isSuperTypeOf(sourceNode.eClass())) {
 			ReadModel node = (ReadModel) sourceNode;
 			fromString = node.getName();
+			if(ActivitystormingPackage.Literals.DECISION_NODE.isSuperTypeOf(targetNode.eClass())) {
+				dynamicOntology.addEventSourceToPolicy(toString, fromString);
+				// dynamicOntology.addGuardCondition(toString);
+				return;
+			}
 			addTransition(diagramName, fromString, toString);
 		} else if(ActivitystormingPackage.Literals.DECISION_NODE.isSuperTypeOf(sourceNode.eClass())) {
 			DecisionNode source = (DecisionNode) sourceNode;
 			fromString = dynamicOntology.getSourceOfPolicy(source.getName());
 			String transitionName = "FROM__" + fromString + "__TO__" + toString;
 			addTransition(diagramName, fromString, toString);
+			// TODO: ADD Decision Choice to ActivityStorming
 			dynamicOntology.addPolicyToTransition(transitionName, source.getName());
 		} else if(ActivitystormingPackage.Literals.DOMAIN_EVENT.isSuperTypeOf(sourceNode.eClass())) {
 			DomainEvent source = (DomainEvent) sourceNode;
@@ -340,6 +353,8 @@ public class ExportActivityStormingToOntologyHandler {
 	}
 	
 	private void addTransition(String diagramName, String fromString, String toString) {
+		System.out.println("from " + fromString);
+		System.out.println("to " + toString);
 		dynamicOntology.addTransition(fromString, toString);
 		dynamicOntology.connectActivityDiagramToTransition(diagramName, fromString, toString);
 	}

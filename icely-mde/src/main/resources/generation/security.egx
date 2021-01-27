@@ -1,0 +1,97 @@
+import "../utilities/Generators.eol";
+
+pre{
+	var extension: String = ".java";
+	var outDir: String = "../../../../../../icely-samples/";
+}
+
+
+rule AuthoritiesConstants
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "security/AuthoritiesConstants.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "security/", "AuthoritiesConstants" , extension);
+	}
+}
+
+rule PackageInfo
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "security/package-info.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "security/", "package-info" , extension);
+	}
+}
+
+rule SecurityUtils
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "security/SecurityUtils.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "security/", "SecurityUtils" , extension);
+	}
+}
+
+rule SpringSecurityAuditorAware
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "security/SpringSecurityAuditorAware.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "security/", "SpringSecurityAuditorAware" , extension);
+	}
+}
+
+rule OAuth2SignatureVerifierClient
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "security/oauth2/OAuth2SignatureVerifierClient.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "security/oauth2/", "OAuth2SignatureVerifierClient" , extension);
+	}
+}
+
+rule UaaSignatureVerifierClient
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "security/oauth2/UaaSignatureVerifierClient.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "security/oauth2/", "UaaSignatureVerifierClient" , extension);
+	}
+}
+
+rule SecurityConfiguration
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/SecurityConfiguration.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "SecurityConfiguration" , extension);
+	}
+}
+
+rule OAuth2JwtAccessTokenConverter
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/oauth2/OAuth2JwtAccessTokenConverter.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/oauth2/", "OAuth2JwtAccessTokenConverter" , extension);
+	}
+}
+
+rule OAuth2Properties
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/oauth2/OAuth2Properties.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/oauth2/", "OAuth2Properties" , extension);
+	}
+}

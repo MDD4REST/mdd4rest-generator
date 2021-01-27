@@ -2,7 +2,7 @@ import "../../utilities/Generators.eol";
 
 pre{
 	var extension: String = ".btdesign";
-	var outDir: String = "../../../../../examples/";
+	var outDir: String = "../../../../../../../icely-samples/";
 }
 
 

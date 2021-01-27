@@ -1,4 +1,82 @@
-operation JDL!JDLPIM findEntity(name:String){
+operation JDL!JDL findApplication(name:String){
+	for (application in self.applications){
+		if (application.name == name){
+			return application;
+		}
+	}
+}
+
+operation JDL!JDL findEntity(name:String){
+	for (entity in self.entities){
+		if (entity.name == name){
+			return entity;
+		}
+	}
+}
+
+operation JDL!Entity addFieldFromProperty(property: Service!Property){
+	var field = new JDL!Field;
+	field.name = property.name;
+	field.unique = property.unique;
+	field.required = property.required;
+	field.min = property.min;
+	field.max = property.max;
+	field.type = property.type.typeName;
+	self.fields.add(field);
+}
+
+operation JDL!Entity addRelationshipFromRelation(relation: Service!Relation){
+	var relationship;
+	var fromRelationshipColumn = new JDL!RelationshipColumn;
+	if(relation.opposite == null){
+		relationship = new JDL!UnidirectionalRelationship;
+	} else{
+		relationship = new JDL!BidirectionalRelationship;
+	}
+	
+  	"Relationship:: ".println();
+	a.println();
+	self.relationships.add(a);
+}
+
+operation JDL!Relationship setMultiplicityFromRelation(relation){
+	var multiplicity = "";
+	if(relation.opposite == null){
+		if(relation.type.type().name=="ComplexType")
+			multiplicity = "ONE_TO_MANY";	
+		else 
+			multiplicity = "ONE_TO_ONE";	
+	} else{
+		if(relation.type.type().name=="ComplexType"){
+			if(realation.type.type().name=="ComplexType"){
+				multiplicity = "MANY_TO_MANY";
+			}else{
+				multiplicity = "MANY_TO_ONE";
+			}
+		} else{
+			if(realation.type.type().name=="ComplexType"){
+				multiplicity = "ONE_TO_MANY";
+			}else{
+				multiplicity = "ONE_TO_ONE";
+			}
+		}
+	}
+	self.setMultiplicityByString(multiplicity);
+}
+
+operation JDL!Relationship setMultiplicityByString(multiplicity){
+	if(multiplicity == Service!Multiplicity#ONE_TO_MANY.name){
+  		self.multiplicity = JDL!Multiplicity#ONE_TO_MANY;
+  	} else if(multiplicity == Service!Multiplicity#MANY_TO_ONE.name){
+  		self.multiplicity = JDL!Multiplicity#MANY_TO_ONE;
+  	} else if(multiplicity == Service!Multiplicity#MANY_TO_MANY.name){
+  		self.multiplicity = JDL!Multiplicity#MANY_TO_MANY;
+  	} else {
+  		self.multiplicity = JDL!Multiplicity#ONE_TO_ONE;
+  	}
+}
+
+operation JDL!JDL findDomainObject(name:String){
 	for (entity in self.entities){
 		if (entity.name == name){
 			return entity;

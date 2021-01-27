@@ -127,6 +127,10 @@ rule Policy2Subscribe transform c:Dynamicview!Policy
 	to a:Service!Subscribe extends AbstractPolicy2Subscribe{
 }
 
+rule Role transform c:Dynamicview!Role
+	to a:Service!Role extends AbstractRole{
+}
+
 @greedy
 rule Resource transform c:Dynamicview!Resource
 	to a:Service!Resource extends AbstractResource{
@@ -151,22 +155,22 @@ rule QueryOperation2ServiceOperation transform c:Dynamicview!QueryOperation
 }
 
 rule Read2resourceOperation transform c:Dynamicview!Read
-	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	to a:Service!ResourceOperation extends AbstractRead2ResourceOperation{
 	"------- Operation3 -------".println();
 }
 
 rule Create2resourceOperation transform c:Dynamicview!Create
-	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	to a:Service!ResourceOperation extends AbstractCreate2ResourceOperation{
 	"------- Operation4 -------".println();
 }
 
 rule Other2ResourceOperation transform c:Dynamicview!Other
-	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	to a:Service!ResourceOperation extends AbstractOther2ResourceOperation{
 	"------- Operation5 -------".println();
 }
 
 rule Delete2ResourceOperation transform c:Dynamicview!Delete
-	to a:Service!ResourceOperation extends AbstractResourceActivity2ResourceOperation{
+	to a:Service!ResourceOperation extends AbstractDelete2ResourceOperation{
 	"------- Operation6 -------".println();
 }
 

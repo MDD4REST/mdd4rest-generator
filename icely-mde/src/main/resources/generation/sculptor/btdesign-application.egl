@@ -34,6 +34,7 @@ Application [%=app.name%] {
     [% for (resource in module.resources) { %]
     
     [%= resource.getHeader() %] [%=resource.name%] {
+    	[%= resource.getBodyAttributes() %]
     	[% for (resourceOperation in resource.operations) { %]
 	    [%=resourceOperation.string()%][% if (loopCount !=resource.operations.size()) {%]
 		[% } %] 
@@ -93,8 +94,15 @@ operation DomainObject getBodyAttributes(): String{
 	return name;
 }
 
+operation Resource getBodyAttributes(): String{
+	var name =self.serviceDependencies();
+	// name += self.serviceDependencies();
+	return name;
+}
+
 operation Service getBodyAttributes(): String{
 	var name = self.subscribeString();
+	// name += self.serviceDependencies();
 	return name;
 }
 
@@ -171,6 +179,7 @@ operation ResourceOperation string(): String{
 		name = self.type + " " + name;
 		name += "(" + self.parametersList() + ")";
 	}
+	name += " path=\"" + self.path + "\"";
 	name += ";";
 	return name;
 }
@@ -203,6 +212,17 @@ operation Service subscribeString(): String{
 		return name;
 	}
 }
+
+operation Resource serviceDependencies(): String{
+	if(self.serviceDependencies != null){
+		var name;
+		for(dependency in self.serviceDependencies){
+			name += "\n\t    > @" + dependency.name;
+		}
+		return name;
+	}
+}
+
 
 operation Operation publishString(): String{
 	var name = "";

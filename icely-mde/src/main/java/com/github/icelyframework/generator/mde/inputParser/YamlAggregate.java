@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class YamlAggregate {
 	public String Name;
+	public Boolean IsAuthenticatedRequired;
 
 	public ArrayList<YamlDomainObject> DomainObjects;
 
@@ -13,12 +14,14 @@ public class YamlAggregate {
 
 	public YamlAggregate() {
 		this.Name = "DefaultAggregate";
+		IsAuthenticatedRequired = false;
 		DomainObjects = new ArrayList<YamlDomainObject>();
 		Processes = new ArrayList<YamlProcess>();
 	}
 
 	public YamlAggregate(String name) {
 		this.Name = name;
+		IsAuthenticatedRequired = false;
 		DomainObjects = new ArrayList<YamlDomainObject>();
 		Processes = new ArrayList<YamlProcess>();
 	}
@@ -45,6 +48,8 @@ public class YamlAggregate {
 	public String toYAMLString() {
 		String all = "- Aggregate";
 		all = "\n  Name: " + Name;
+		all += "\n  IsAuthenticatedRequired: " + IsAuthenticatedRequired;
+
 		if (DomainObjects.size() > 0) {
 			all += "\n  DomainObjects:";
 			for (YamlDomainObject domainObject : DomainObjects) {
@@ -95,6 +100,14 @@ public class YamlAggregate {
 
 	public void setActivities(ArrayList<YamlProcess> processes) {
 		Processes = processes;
+	}
+	
+	public void setIsAuthenticatedRequired(Boolean isAuthenticatedRequired) {
+		IsAuthenticatedRequired = isAuthenticatedRequired;
+	}
+	
+	public Boolean getIsAuthenticatedRequired() {
+		return IsAuthenticatedRequired;
 	}
 
 }

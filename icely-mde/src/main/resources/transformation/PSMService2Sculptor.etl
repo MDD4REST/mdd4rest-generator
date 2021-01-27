@@ -21,6 +21,7 @@ rule Project transform c:Service!Project
 
 rule Application transform c:Service!Application
  	to a:Sculptor!Application{
+ 	guard: c.isSculptorApplication()
  	"-------------- Application --------------".println();
  	a.name = c.name.firstToUpperCase();
  	a.basePackage = "org."+ c.name.firstToLowerCase();
@@ -65,7 +66,8 @@ rule Property2Attribute transform c:Service!Property
 
 @abstract
 rule DomainObjectAbstract transform c:Service!DomainObject
-	to a:Sculptor!DomainObject{	
+	to a:Sculptor!DomainObject{
+	guard: c.generatedBySculptor
 	// attributes
 	a.name = c.name;
 	a.abstract = c.abstract;
@@ -153,7 +155,10 @@ rule Enumeration2Enum transform c:Service!Enumeration
 
 rule Relation2Reference transform c:Service!Relation
 	to a:Sculptor!Reference{
+	guard: c.generatedBySculptor
+	
 	c.type.type().println();
+	c.println();
 	if (c.type.type().name = "ComplexType"){
 		a.many = true;
 		a.collectionType = c.type.collection.name.toLowerCase().firstToUpperCase();
@@ -192,6 +197,7 @@ rule Resource transform c:Service!Resource
 	a.path = c.path.relativePath;
 	a.gapClass = c.gapClass;
 	a.module = c.module.equivalent();
+	a.serviceDependencies ::= c.serviceDependencies;
 }
 
 rule Service transform c:Service!Service
@@ -243,12 +249,15 @@ rule OperationAbstract  transform c:Service!Operation
 	if(c.returntype != null){
 		var collection = null;
 		var map = null;
+		var name = "";
 		if( c.returntype.type().name == "ComplexType" ){
-			collection = c.type.collection.name;
-			map = c.type.map == null ? null : c.type.map.type.name;
-			name = c.type.type.name;
+			collection = c.returntype.collection.name;
+			map = c.returntype.map == null ? null : c.returntype.map.type.name;
+			name = c.returntype.type.name;
 		} else{
-			name = c.type.typeName;
+			c.type.println();
+			c.returntype.typeName.println();
+			name = c.returntype.typeName;
 		}
 		a.setTypedElement(name, collection, map);
 	}
@@ -260,6 +269,8 @@ rule RepositoryOperation transform c:Service!RepositoryOperation
 	to a:Sculptor!RepositoryOperation extends OperationAbstract{
 	"-------------- Repository --------------".println();
 	a.delegateToAccessObject = c.delegateToAccessObject;
+	a.repository = c.repository.equivalent();
+	a.repository.operations.add(a);
 	// TODO: accessObjectName should be string not a boolean
 	//a.accessObjectName = c.accessObjectName;
 }
@@ -276,8 +287,14 @@ rule ServiceOperation transform c:Service!ServiceOperation
 rule ResourceOperation transform c:Service!ResourceOperation
 	to a:Sculptor!ResourceOperation extends OperationAbstract{
 	"-------------- ResourceOperation --------------".println();
-	a.path = c.path;
-	a.httpMethod ::= c.httpMethod;
+	a.path = c.path.relativePath;
+	switch(c.httpMethod.name){
+		case "PUT": a.httpMethod = Sculptor!HttpMethod#PUT;
+		case "POST": a.httpMethod = Sculptor!HttpMethod#POST;
+		case "GET": a.httpMethod = Sculptor!HttpMethod#GET;
+		case "DELETE": a.httpMethod = Sculptor!HttpMethod#DELETE;
+		case "UNDEFINED": a.httpMethod = Sculptor!HttpMethod#UNDEFINED;
+	}
 	a.returnString = c.returnString;
 	a.resource ::= c.resource;
 	a.resource.operations.add(a);

@@ -1,15 +1,4 @@
 buildscript {
-    //repositories {
-    //	flatDir {
-	//   		dirs 'amir/.m2/repository/p2/osgi/bundle'
-	//	}
-	//	mavenLocal()
-	//    jcenter()
-    //}
-
-	//dependencies{
-	//	classpath fileTree(dir: 'amir/.m2/repository/p2/osgi/bundle', include: ['**/**/*.jar'], exclude: [''])
-	//}
 }
 
 plugins {
@@ -24,14 +13,15 @@ apply plugin: "eclipse"
 
 
 repositories {
-    maven {
-        url "https://maven.pkg.github.com/icelyframework/icely-metamodels"
+    mavenLocal()
+//    maven {
+//        url "https://maven.pkg.github.com/icelyframework/icely-metamodels"
 //        credentials {
-//            username = ""
-//            password = ""
+//            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+//            password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
 //        }
-    }
-    mavenCentral()
+//    }
+    //mavenCentral()
     jcenter()
 }
 
@@ -51,7 +41,7 @@ dependencies {
     implementation  'org.apache.commons:commons-lang3:3.11'
     implementation  'org.slf4j:slf4j-simple:1.7.21'
     implementation  'org.atteo:evo-inflector:1.2.2'
-    implementation  'com.github.icelyframework.metamodels:com.github.icelyframework.metamodels:1.0.0'
+    implementation  'com.github.icelyframework.metamodels:com.github.icelyframework.metamodels:1.1.0-SNAPSHOT'
 }
 
 sourceSets { 

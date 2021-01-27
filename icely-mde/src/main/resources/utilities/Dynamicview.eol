@@ -3,10 +3,9 @@ operation Dynamicview!Resource relativePath(): String{
 	var resource = self;
 	while (resource.isRelatedResource != null){
 		resource = resource.isRelatedResource;
-		relativePath = resource.pathName + "/" + relativePath;
+		relativePath = resource.pathName +  "/"  + relativePath ;
 	}
-	relativePath = self.aggregate.name.firstToLowerCase() + "/" + relativePath;
-	return relativePath;
+	return "/" + relativePath;
 }
 
 operation Dynamicview!Aggregate hasQueryResource(): Boolean{

@@ -15,8 +15,6 @@ public class YamlActivity {
 	
 	public VerbType VerbTypeAction;
 	
-	public Boolean IsAuthenticatedRequired; 
-
 	public ArrayList<String> Policy;
 	public ArrayList<String> Publish;
 	public ArrayList<String> ReadModel;
@@ -35,7 +33,6 @@ public class YamlActivity {
 		Publish = new ArrayList<String>();
 		Publish = new ArrayList<String>();
 		Objects = new ArrayList<String>();
-		IsAuthenticatedRequired = false;
 	}
 	
 	public YamlActivity(String name, String action, ActivityType type) {
@@ -47,8 +44,6 @@ public class YamlActivity {
 		Publish = new ArrayList<String>();
 		ReadModel = new ArrayList<String>();
 		Objects = new ArrayList<String>();
-		IsAuthenticatedRequired = false;
-
 	}
 	
 	public YamlActivity(String name, String action, ActivityType type, VerbType verbType) {
@@ -60,7 +55,6 @@ public class YamlActivity {
 		Publish = new ArrayList<String>();
 		ReadModel = new ArrayList<String>();
 		Objects = new ArrayList<String>();
-		IsAuthenticatedRequired = false;
 	}
 	
 	public void addPublish(String event) {
@@ -86,8 +80,7 @@ public class YamlActivity {
 		String all = "  - Name: " + Name;
 		all += "\n    Action: " + Action;
 		all += "\n    Type: " + Type.name();
-		all += "\n      VerbType: " + VerbTypeAction.name();
-		all += "\n    IsAuthenticatedRequired: " + IsAuthenticatedRequired;
+		all += "\n    VerbType: " + VerbTypeAction.name();
 		all += "\n    Policy: " + Arrays.asList(Policy).toString().replaceAll("^\\[|\\]$", "");
 		all += "\n    Publish: " + Arrays.asList(Publish).toString().replaceAll("^\\[|\\]$", "");
 		return all;
@@ -115,8 +108,7 @@ public class YamlActivity {
 
 	@Override
 	public String toString() {
-		String all = "Activity:\n" + "Type: " + Type + "\n"
-				+ "IsAuthenticationRequired: " + IsAuthenticatedRequired + "\n";
+		String all = "Activity:\n" + "Type: " + Type + "\n";
 		return all;
 	}
 
@@ -150,10 +142,6 @@ public class YamlActivity {
 
 	public VerbType getVerbTypeAction() {
 		return VerbTypeAction;
-	}
-
-	public Boolean getIsAuthenticatedRequired() {
-		return IsAuthenticatedRequired;
 	}
 
 	public ArrayList<String> getObjects() {

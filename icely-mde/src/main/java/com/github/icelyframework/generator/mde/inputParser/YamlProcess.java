@@ -24,7 +24,7 @@ public class YamlProcess {
 
 	public String toYAMLString() {
 		String all = "- Name: " + Name;
-		
+
 		if (Activities.size() > 0) {
 			all += "\n  Activities:";
 			for (YamlActivity activity : Activities) {

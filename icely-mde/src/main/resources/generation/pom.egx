@@ -1,0 +1,16 @@
+import "../utilities/Generators.eol";
+
+pre{
+	var extension: String = ".xml";
+	var outDir: String = "../../../../../../icely-samples/";
+}
+
+rule POM
+	transform project: Project{
+	// guard: project.config != null
+	template : "pom.egl"
+	
+	target {
+		return targetHomeCodePath(outDir, project.name, "", "POM" , extension);
+	}
+}

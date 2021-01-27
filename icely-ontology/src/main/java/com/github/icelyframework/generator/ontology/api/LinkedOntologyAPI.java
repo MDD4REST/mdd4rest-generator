@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 import com.github.icelyframework.generator.ontology.api.OntologySource.OntologyType;
+import com.github.icelyframework.generator.ontology.ontologytoyamltools.StringHelpers;
 import com.github.icelyframework.generator.ontology.api.OntologyJenaAPI;
 
 /**
@@ -19,6 +20,8 @@ public class LinkedOntologyAPI {
 	private OntologyJenaAPI linkedOntology;
 
 	private String projectName;
+	
+	private StringHelpers helper = new StringHelpers();
 
 	public LinkedOntologyAPI(boolean forceDelete) {
 		this.projectName = "MyCore Project";
@@ -122,19 +125,19 @@ public class LinkedOntologyAPI {
 	}
 
 	public void addEnumeration(String enumeration) {
-		linkedOntology.addIndividual("Enumeration", StringUtils.capitalize(enumeration));
+		linkedOntology.addIndividual("Enumeration", helper.underscoreTCapitalizeWithUnderscore(enumeration));
 	}
 
 	public void addEntity(String entity) {
-		linkedOntology.addIndividual("Entity", StringUtils.capitalize(entity));
+		linkedOntology.addIndividual("Entity", helper.underscoreTCapitalizeWithUnderscore(entity));
 	}
 
 	public void addValueObject(String valueObject) {
-		linkedOntology.addIndividual("ValueObject", StringUtils.capitalize(valueObject));
+		linkedOntology.addIndividual("ValueObject", helper.underscoreTCapitalizeWithUnderscore(valueObject));
 	}
 
 	public void addObject(String object) {
-		linkedOntology.addIndividual("Object", StringUtils.capitalize(object));
+		linkedOntology.addIndividual("Object", helper.underscoreTCapitalizeWithUnderscore(object));
 	}
 
 	public void addAggregate(String aggregate) {
@@ -203,13 +206,13 @@ public class LinkedOntologyAPI {
 		linkedOntology.addIndividual("Reference", reference);
 		for (String source : sources) {
 			linkedOntology.addPropertyAndReverseBetweenIndividuals(reference, "has_source",
-					StringUtils.capitalize(source));
-			linkedOntology.addPropertyAndReverseBetweenIndividuals(StringUtils.capitalize(source), "is_source_of",
+					helper.underscoreTCapitalizeWithUnderscore(source));
+			linkedOntology.addPropertyAndReverseBetweenIndividuals(helper.underscoreTCapitalizeWithUnderscore(source), "is_source_of",
 					reference);
 		}
 		for (String target : targets) {
 			linkedOntology.addPropertyAndReverseBetweenIndividuals(reference, "has_target",
-					StringUtils.capitalize(target));
+					helper.underscoreTCapitalizeWithUnderscore(target));
 		}
 		linkedOntology.addPropertyToIndividual(reference, "many", many);
 		linkedOntology.addPropertyToIndividual(reference, "hasName", name);
@@ -328,9 +331,9 @@ public class LinkedOntologyAPI {
 	}
 
 	public void addLiteralToEnumeration(String enumeration, String literal) {
-		linkedOntology.addIndividual("Literal", StringUtils.capitalize(literal));
-		linkedOntology.addPropertyAndReverseBetweenIndividuals(StringUtils.capitalize(enumeration), "has_literal",
-				StringUtils.capitalize(literal));
+		linkedOntology.addIndividual("Literal", helper.underscoreTCapitalizeWithUnderscore(literal));
+		linkedOntology.addPropertyAndReverseBetweenIndividuals(helper.underscoreTCapitalizeWithUnderscore(enumeration), "has_literal",
+				helper.underscoreTCapitalizeWithUnderscore(literal));
 	}
 
 	public ArrayList<String> getEntitiesOfAggregate(String aggregate) {

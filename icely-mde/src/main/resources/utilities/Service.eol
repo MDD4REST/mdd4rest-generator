@@ -18,7 +18,7 @@ operation Service!Application getQueryModule(){
 }
 
 operation Service!Application getRestModule(){
-	return self.modules.selectOne(t|t.name=="rest");
+	return self.modules.selectOne(t|t.name=="web");
 }
 
 operation Service!Application getEntities(){
@@ -42,6 +42,7 @@ operation Service!Service addDependencyIfNotExist(service: Service!Service){
 }
 
 operation Service!Module getService(name: String): Service!Service{
+	 self.services.println();
 	for (service in self.services){
 		if(service.name == name){
 			return service;
@@ -75,10 +76,12 @@ operation Service!Application findTypeDefinition(name: String): Service!TypeDefi
 	if (primitiveType != null){
 		return primitiveType;
 	}
-	for (aggregate in self.aggregates){
-		for(domainObject in aggregate.domainobjects){
-			if(domainObject.typeName == name){
-				return domainObject;
+	for (module in self.modules){
+		for (aggregate in module.aggregates){
+			for(domainObject in aggregate.domainobjects){
+				if(domainObject.typeName == name){
+					return domainObject;
+				}
 			}
 		}
 	}
@@ -295,4 +298,31 @@ operation Service!Module findResource(name:String){
 			return resource;
 		}
 	}
+}
+
+operation Service!Application isJhipsterApplication(): Boolean{
+	if(self.applicationType.name == "JHIPSTER_MICROSERVICE" or
+		self.applicationType.name == "JHIPSTER_GATEWAY" or
+		self.applicationType.name == "JHIPSTER_MONOLITH" or
+		self.applicationType.name == "JHIPSTER_UAA"){
+		return true;
+	}
+	return false;
+}
+
+operation Service!Application isSculptorApplication(): Boolean{
+	if(self.applicationType.name == "SCULPTOR_MICROSERVICE" or
+		self.applicationType.name == "SCULPTOR_MONOLITH"){
+		return true;
+	}
+	return false;
+}
+
+operation Service!DomainObject isEntityBasedDomainObject(): Boolean{
+	if(self.type().name == "Entity" or
+		self.type().name == "ValueObject" or 
+		self.type().name == "DomainObject"){
+		return true;
+	}
+	return false;
 }

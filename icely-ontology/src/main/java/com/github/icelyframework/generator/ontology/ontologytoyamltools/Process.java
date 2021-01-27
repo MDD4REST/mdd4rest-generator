@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Process {
 	public String Name;
 	
-	public ArrayList<Activity> Activities;	
+	public ArrayList<Activity> Activities;
 		
 	public Process() {
 	}
@@ -23,7 +23,6 @@ public class Process {
 
 	public String toYAMLString() {
 		String all = "  - Name: " + Name;
-		
 		if (Activities.size() > 0) {
 			all += "\n    Activities:";
 			for (Activity activity : Activities) {

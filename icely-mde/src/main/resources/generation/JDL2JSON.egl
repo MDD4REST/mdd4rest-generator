@@ -2,6 +2,8 @@
 application {
     config {
         baseName [%=application.config.baseName%]
+        applicationType [%=application.config.applicationType.name%]
+        authenticationType [%=application.config.authenticationType.name%]
     }
     entities [% for (entity in application.entities) { %][%=entity.name%], [% } %]
     
@@ -46,3 +48,25 @@ relationship ManyToMany {
     [%=relationship.fromName%]{[%=relationship.fromColumn.name%]} to [%=relationship.toName%],
 [% } %]
 }
+
+[% for (deployment in Deployment.all) { %]
+deployment {
+  deploymentType [%=deployment.deploymentType.name%]
+  appsFolders [%=deployment.deploymentParametersList()%]
+  dockerRepositoryName "[%=deployment.dockerRepositoryName%]"
+}
+[% } %]
+
+[%
+operation Deployment deploymentParametersList(): String{
+	var string = "";
+	var paramSize = self.appsFolders.size();
+	for (param in self.appsFolders){
+		string += param.name;
+		if (loopCount != paramSize){
+			string += ", ";
+		}
+	}
+	return string;
+}
+%]

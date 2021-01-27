@@ -230,7 +230,7 @@ public class OntologyToYamlHandler {
 		}
 
 		// Write the resources to file
-		Application application = new Application(projectName);
+		Application application = new Application(StringHelpers.toClassStyle(StringHelpers.dashToCamelCase(projectName)));
 		String ymlContents = "Aggregates:\n";
 		for (Aggregate aggregate : aggregates) {
 			ymlContents += aggregate.toYAMLString() + "\n\n\n";

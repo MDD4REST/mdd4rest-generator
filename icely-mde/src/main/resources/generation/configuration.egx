@@ -1,0 +1,198 @@
+import "../utilities/Generators.eol";
+
+pre{
+	var extension: String = ".java";
+	var outDir: String = "../../../../../../icely-samples/";
+}
+
+
+rule ApplicationWebXML
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "ApplicationWebXML.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "", "ApplicationWebXML" , extension);
+	}
+}
+
+rule BaseAapp
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "baseApp.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "", app.name + "App" , extension);
+	}
+}
+
+rule ApplicationProperties
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/ApplicationProperties.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "ApplicationProperties" , extension);
+	}
+}
+
+rule AsyncConfiguration
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/AsyncConfiguration.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "AsyncConfiguration" , extension);
+	}
+}
+
+rule BackendConfig
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/BackendConfig.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "BackendConfig" , extension);
+	}
+}
+
+rule CloudDatabaseConfiguration
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/CloudDatabaseConfiguration.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "CloudDatabaseConfiguration" , extension);
+	}
+}
+
+rule Constants
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/Constants.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "Constants" , extension);
+	}
+}
+
+rule DateTimeFormatConfiguration
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/DateTimeFormatConfiguration.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "DateTimeFormatConfiguration" , extension);
+	}
+}
+
+rule DefaultProfileUtil
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/DefaultProfileUtil.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "DefaultProfileUtil" , extension);
+	}
+}
+
+rule FeignConfiguration
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/FeignConfiguration.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "FeignConfiguration" , extension);
+	}
+}
+
+rule JacksonConfiguration
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/JacksonConfiguration.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "JacksonConfiguration" , extension);
+	}
+}
+
+rule LocaleConfiguration
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/LocaleConfiguration.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "LocaleConfiguration" , extension);
+	}
+}
+
+
+rule packageInfo
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/package-info.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "package-info" , extension);
+	}
+}
+
+rule WebConfigurer
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "config/WebConfigurer.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "config/", "WebConfigurer" , extension);
+	}
+}
+
+rule AuthorizedFeignClient
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "client/AuthorizedFeignClient.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "client/", "AuthorizedFeignClient" , extension);
+	}
+}
+
+rule AuthorizedUserFeignClient
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "client/AuthorizedUserFeignClient.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "client/", "AuthorizedUserFeignClient" , extension);
+	}
+}
+
+rule OAuth2InterceptedFeignConfiguration
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "client/OAuth2InterceptedFeignConfiguration.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "client/", "OAuth2InterceptedFeignConfiguration" , extension);
+	}
+}
+
+rule OAuth2UserClientFeignConfiguration
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "client/OAuth2UserClientFeignConfiguration.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "client/", "OAuth2UserClientFeignConfiguration" , extension);
+	}
+}
+
+rule UserFeignClientInterceptor
+	transform app: Application{
+	guard: app.applicationType.name == "SCULPTOR_MICROSERVICE"
+	template : "client/UserFeignClientInterceptor.egl"
+	
+	target {
+		return targetCodePath(outDir, app.name, app.basePackage, "client/", "UserFeignClientInterceptor" , extension);
+	}
+}

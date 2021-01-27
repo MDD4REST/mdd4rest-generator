@@ -7,6 +7,8 @@ pre {
 	"".println();
 	var psm;
 	var jdl;
+	var config = Configuration!Project.all().first();
+	var deployment = Deployment!Project.all().first();
 }
 
 rule Project2JDL transform c:Service!Project
@@ -19,7 +21,7 @@ rule Project2JDL transform c:Service!Project
 
 rule Entity transform c:Service!Entity
 	to a:JDL!Entity{
-	// guard: c.isAlgorithmic == false
+	guard: c.generatedByJHipster == true
 	  
 	a.name = c.name;
 	for (property in c.properties){
@@ -42,21 +44,80 @@ rule Entity transform c:Service!Entity
 
 rule Application transform c:Service!Application
 	to a:JDL!Application{
-	var config = new JDL!Config;
-	config.baseName = c.name;
-	// config.servicePort = c.hasConfig.servicePort;
-	a.config = config;
+	guard: c.isJhipsterApplication()
+	a.name = c.name;
 	a.entities ::= c.getEntities();
 	a.entities.println();
 	jdl.applications.add(a);
 	
 	"Applications ::".println();
-	a.config.println();
+	a.println();
+}
+
+rule Config transform c:Configuration!JhipsterConfig
+	to a:JDL!Config{
+	
+	var app = jdl.findApplication(c.application.name);
+
+	a.baseName = c.application.name;
+	a.servicePort = c.servicePort;	
+	
+	switch(c.authenticationType.name){
+		case "JWT": a.authenticationType = JDL!AuthenticationType#JWT;
+		case "UAA": a.authenticationType = JDL!AuthenticationType#UAA;
+		case "SESSION": a.authenticationType = JDL!AuthenticationType#SESSION;
+		case "OAUTH2": a.authenticationType = JDL!AuthenticationType#OAUTH2;
+	}
+	
+	switch(c.applicationType.name){
+		case "MICROSERVICE": a.applicationType = JDL!ApplicationType#MICROSERVICE;
+		case "UAA": a.applicationType = JDL!ApplicationType#UAA;
+		case "GATEWAY": a.applicationType = JDL!ApplicationType#GATEWAY;
+		case "MONOLITH": a.applicationType = JDL!ApplicationType#MONOLITH;
+	}
+	
+	a.application = app;
+	a.application.println();
+	a.application.config = a;
+	
+	a.println();
+}
+
+rule Deployment transform c:Deployment!ProjectDeployment
+	to a:JDL!Deployment{
+	
+	a.dockerRepositoryName = c.dockerRepositoryName;
+	a.directoryPath = c.directoryPath;
+	a.appsFolders = c.appsFolders;
+	a.monitoring = c.monitoring;
+	a.kubernetesServiceType = c.kubernetesServiceType;
+	
+	switch(c.serviceDiscoveryType.name){
+		case "EUREKA": a.serviceDiscoveryType = JDL!ServiceDiscoveryType#EUREKA;
+		case "CONSUL": a.serviceDiscoveryType = JDL!ServiceDiscoveryType#CONSUL;
+		case "NO": a.serviceDiscoveryType = JDL!ServiceDiscoveryType#NO;
+	}
+	
+	switch(c.gatewayType.name){
+		case "ZUUL": a.gatewayType = JDL!GatewayType#ZUUL;
+		case "TRAEFIK": a.gatewayType = JDL!GatewayType#TRAEFIK;
+	}
+	
+	switch(c.deploymentType.name){
+		case "DOCKER_COMPOSE": a.deploymentType = JDL!DeploymentType#DOCKER_COMPOSE;
+		case "KUBERNETES": a.deploymentType = JDL!DeploymentType#KUBERNETES;
+		case "OPENSHIFT": a.deploymentType = JDL!DeploymentType#OPENSHIFT;
+	}
+	
+	a.jdl = jdl;
+	a.jdl.deployments.add(a);
+	
+	a.println();
 }
 
 rule Relation2UnidirectionalRelationship transform c:Service!Relation
 	to a:JDL!UnidirectionalRelationship{
-	guard: c.opposite == null and c.source.type().name == "Entity" and c.target.type().name == "Entity"
+	guard: c.opposite == null and c.source.isEntityBasedDomainObject() and c.generatedByJHipster == true
 	
 	var fromRelationshipColumn = new JDL!RelationshipColumn;
 	
@@ -77,7 +138,7 @@ rule Relation2UnidirectionalRelationship transform c:Service!Relation
 
 rule Relation2BidirectionalRelationship transform c:Service!Relation
 	to a:JDL!BidirectionalRelationship{
-	guard: c.opposite != null and c.source.type().name == "Entity" and c.target.type().name == "Entity"
+	guard: c.opposite != null and c.source.isEntityBasedDomainObject() and c.generatedByJHipster == true
 	
 	var fromRelationshipColumn = new JDL!RelationshipColumn;
 	var toRelationshipColumn = new JDL!RelationshipColumn;
@@ -112,75 +173,4 @@ rule Enumeration2Enum transform c:Service!Enumeration
 	jdl.enums.add(a);
 	"Enumerations ::".println();
 	a.println();
-}
-
-
-operation JDL!Entity addFieldFromProperty(property: Service!Property){
-	var field = new JDL!Field;
-	field.name = property.name;
-	field.unique = property.unique;
-	field.required = property.required;
-	field.min = property.min;
-	field.max = property.max;
-	field.type = property.type.typeName;
-	self.fields.add(field);
-}
-
-operation JDL!Entity addRelationshipFromRelation(relation: Service!Relation){
-	var relationship;
-	var fromRelationshipColumn = new JDL!RelationshipColumn;
-	if(relation.opposite == null){
-		relationship = new JDL!UnidirectionalRelationship;
-	} else{
-		relationship = new JDL!BidirectionalRelationship;
-	}
-	
-  	"Relationship:: ".println();
-	a.println();
-	self.relationships.add(a);
-}
-
-operation JDL!Relationship setMultiplicityFromRelation(relation){
-	var multiplicity = "";
-	if(relation.opposite == null){
-		if(relation.type.type().name=="ComplexType")
-			multiplicity = "ONE_TO_MANY";	
-		else 
-			multiplicity = "ONE_TO_ONE";	
-	} else{
-		if(relation.type.type().name=="ComplexType"){
-			if(realation.type.type().name=="ComplexType"){
-				multiplicity = "MANY_TO_MANY";
-			}else{
-				multiplicity = "MANY_TO_ONE";
-			}
-		} else{
-			if(realation.type.type().name=="ComplexType"){
-				multiplicity = "ONE_TO_MANY";
-			}else{
-				multiplicity = "ONE_TO_ONE";
-			}
-		}
-	}
-	self.setMultiplicityByString(multiplicity);
-}
-
-operation JDL!Relationship setMultiplicityByString(multiplicity){
-	if(multiplicity == Service!Multiplicity#ONE_TO_MANY.name){
-  		self.multiplicity = JDL!Multiplicity#ONE_TO_MANY;
-  	} else if(multiplicity == Service!Multiplicity#MANY_TO_ONE.name){
-  		self.multiplicity = JDL!Multiplicity#MANY_TO_ONE;
-  	} else if(multiplicity == Service!Multiplicity#MANY_TO_MANY.name){
-  		self.multiplicity = JDL!Multiplicity#MANY_TO_MANY;
-  	} else {
-  		self.multiplicity = JDL!Multiplicity#ONE_TO_ONE;
-  	}
-}
-
-operation JDL!JDLPIM findDomainObject(name:String){
-	for (entity in self.entities){
-		if (entity.name == name){
-			return entity;
-		}
-	}
 }

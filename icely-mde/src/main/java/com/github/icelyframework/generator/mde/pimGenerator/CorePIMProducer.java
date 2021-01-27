@@ -10,6 +10,8 @@ import org.atteo.evo.inflector.English;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.util.Diagnostician;
 
+import com.github.icelyframework.dynamicview.Authenticated;
+import com.github.icelyframework.dynamicview.Role;
 import com.github.icelyframework.generator.mde.inputParser.*;
 import com.github.icelyframework.staticview.*;
 
@@ -35,12 +37,9 @@ public class CorePIMProducer extends APIMProducer {
 
 		addPrimitiveTypes();
 		createAllPIMApplications();
-//		createAllPIMRoles();
 		addDomainObjectsRelations();
 
 		createAllStaticResources();
-
-		// validateProducedPIM();
 		System.out.println(this.getProjectStatic().getHasApplication());
 
 		return this.getProjectStatic();
@@ -60,7 +59,6 @@ public class CorePIMProducer extends APIMProducer {
 	}
 
 	private Aggregate createPIMAggregate(YamlAggregate yamlAggregate) {
-//			System.out.println("Yaml Resource:: "+ oCurrentYamlResource);
 		Aggregate aggregate = this.getServicePIMFactory().createAggregate();
 		aggregate.setName(yamlAggregate.getName());
 		for (YamlDomainObject oDomainObject : yamlAggregate.getDomainObjects()) {
@@ -73,8 +71,6 @@ public class CorePIMProducer extends APIMProducer {
 			aggregate.getHasDomainobject().add(domainObject);
 		}
 		return aggregate;
-//		PIMUtils restUtils = new PIMUtils(this.oRESTfulServicePIM);
-//		this.getRESTfulServicePIM().get().add(restUtils.UserResource());
 	}
 
 	private DomainObject createDomainObject(YamlDomainObject domainObject) {
@@ -158,9 +154,6 @@ public class CorePIMProducer extends APIMProducer {
 
 		TypeDefinition type = getTypeDefinition(yamlProperty.getType());
 		System.out.println("Type:: " + type);
-//			if(type.getClass().getSimpleName().equals("BasicTypeImpl")) {
-//				oNewResourceProperty.setBasictype((BasicType) type); 
-//			}
 		property.setType(type);
 
 		return property;
@@ -182,48 +175,6 @@ public class CorePIMProducer extends APIMProducer {
 		return enumeration;
 	}
 
-//	private void createAllPIMRoles() {
-//		for (int n = 0; n < this.listOfYamlRoles.size(); n++) {
-//			YamlRole oCurrentYamlRole = this.listOfYamlRoles.get(n);
-//			Role oNewPIMRole = this.getSecurityPIMFactory().createRole();
-//			String permsissionMode = oCurrentYamlRole.getPermissionMode();
-//			oNewPIMRole.setName(oCurrentYamlRole.getName());
-//			PermissionMode oPermissionMode = PermissionMode.DENY_ALL_EXCEPT_PERMISSIONS;
-//			if (oCurrentYamlRole.PermissionMode.equalsIgnoreCase("Allow_All_Except_Permissions")) {
-//				oPermissionMode = PermissionMode.ALLOW_ALL_EXCEPT_PERMISSIONS;
-//				oNewPIMRole.setPermissionMode(PermissionMode.ALLOW_ALL_EXCEPT_PERMISSIONS);
-//			} else {
-//				oNewPIMRole.setPermissionMode(PermissionMode.DENY_ALL_EXCEPT_PERMISSIONS);
-//			}
-//			for (YamlPermission yamlPermission : oCurrentYamlRole.Permissions) {
-//				Permission permission = this.getSecurityPIMFactory().createPermission();
-//				String resourceOfPermission = yamlPermission.getResource();
-//				if (oPermissionMode.equals(PermissionMode.ALLOW_ALL_EXCEPT_PERMISSIONS)) {
-//					permission.setPermissionType(PermissionType.DENY);
-//				} else {
-//					permission.setPermissionType(PermissionType.ALLOW);
-//				}
-//				for (YamlConstraint constraint : yamlPermission.getConstraints()) {
-//					YamlOperand yamlRightOperand = constraint.getRightOperand();
-//					YamlOperand yamlLeftOperand = constraint.getLeftOperand();
-//					Constraint oNewConstraint = this.getSecurityPIMFactory().createConstraint();
-//					Property rightPropertyOperand = restUtils.findProperty(yamlRightOperand.getResource(),
-//							yamlRightOperand.getProperty());
-//					Property leftPropertyOperand = restUtils.findProperty(yamlLeftOperand.getResource(),
-//							yamlLeftOperand.getProperty());
-//					System.out.println("left: " + leftPropertyOperand);
-//					TwoRelationalOperator operator = this.getSecurityPIMFactory().createTwoRelationalOperator();
-//					operator.setRightOperand(rightPropertyOperand);
-//					operator.setLeftOperand(leftPropertyOperand);
-//					oNewConstraint.getConstraintoperator().add(operator);
-//					permission.getConstraint().add(oNewConstraint);
-//				}
-//				oNewPIMRole.getPermission().add(permission);
-//			}
-//			this.getRESTfulServicePIM().getHasRoles().add(oNewPIMRole);
-//		}
-//	}
-
 	private void createAllPIMApplications() {
 		for (YamlApplication oCurrentYamlApplication : this.listOfYamlApplications) {
 			Application application = this.getServicePIMFactory().createApplication();
@@ -234,9 +185,6 @@ public class CorePIMProducer extends APIMProducer {
 				aggregate.setApplication(application);
 				application.getHasAggregate().add(aggregate);
 			}
-//			for (String role : oCurrentYamlApplication.getRoles()) {
-//				application.getRoles().add(restUtils.findRole(role));
-//			}
 			application.setProject(this.getProjectStatic());
 			this.getProjectStatic().getHasApplication().add(application);
 		}
@@ -253,9 +201,6 @@ public class CorePIMProducer extends APIMProducer {
 				}
 			}
 		}
-//		for (int n = 0; n < this.getRESTfulServicePIM().getHasResources().size(); n++) {
-//			addIncomingRelations(n);
-//		}
 	}
 
 	private void addOutgoingRelations(String applicationName, DomainObject domainObject,
@@ -271,7 +216,7 @@ public class CorePIMProducer extends APIMProducer {
 				oNewRelation.setName(oCurrentYamlRelation.getName());
 				if (oCurrentYamlRelation.getMany()) {
 					ComplexType complexType = this.getServicePIMFactory().createComplexType();
-					restUtils.findApplicattion(applicationName).getComplextypes().add(complexType);
+					restUtils.findApplication(applicationName).getComplextypes().add(complexType);
 					complexType.setType(target);
 					oNewRelation.setType(complexType);
 					oNewRelation.setMultiplicity(Multiplicity.ONE_TO_MANY);
@@ -334,6 +279,12 @@ public class CorePIMProducer extends APIMProducer {
 				}
 			}
 		}
+		
+		if(yamlAggregate.IsAuthenticatedRequired) {
+			Authenticated authenticated = this.getDynamicPIMFactory().createAuthenticated();
+			resource.getHasPermission().add(authenticated);
+			System.out.println("auth Resource: "+ resource);
+		}
 
 		return resource;
 
@@ -360,9 +311,7 @@ public class CorePIMProducer extends APIMProducer {
 		}
 		}
 		resourceActivity.setName(yamlActivity.getAction());
-		if(yamlActivity.IsAuthenticatedRequired) {
-			// TODO: Add IsAuthenticatedRequired Persmission
-		}
+		
 		resourceActivity.setTrigger(restUtils.findProcessOperation(yamlActivity.getAction(), applicationName));
 		return resourceActivity;
 	}
@@ -374,52 +323,6 @@ public class CorePIMProducer extends APIMProducer {
 		}
 		return name;
 	}
-
-//	private Resource addResourceRepresentations(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
-//
-//		oNewPIMResource = addInputRepresentations(oNewPIMResource, oCurrentYamlResource);
-//		oNewPIMResource = addOutputRepresentations(oNewPIMResource, oCurrentYamlResource);
-//
-//		return oNewPIMResource;
-//	}
-//
-//	private Resource addInputRepresentations(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
-//
-//		if (oCurrentYamlResource.getInputRepresentation() != null) {
-//			InputRepresentation oInputRepresentation = this.getServicePIMFactory().createInputRepresentation();
-//			if (oCurrentYamlResource.getInputRepresentation().equalsIgnoreCase("JSON")) {
-//				oInputRepresentation.setInputMediaType(MediaType.JSON);
-//			} else if (oCurrentYamlResource.getInputRepresentation().equalsIgnoreCase("XML")) {
-//				oInputRepresentation.setInputMediaType(MediaType.XML);
-//			} else {
-//				System.out.println(
-//						"Corrupted inpt! Unkown input media type: " + oCurrentYamlResource.getInputRepresentation());
-//				Runtime.getRuntime().exit(-1);
-//			}
-//			oNewPIMResource.getHasInputRepresentation().add(oInputRepresentation);
-//		}
-//
-//		return oNewPIMResource;
-//	}
-//
-//	private Resource addOutputRepresentations(Resource oNewPIMResource, YamlResource oCurrentYamlResource) {
-//
-//		if (oCurrentYamlResource.getOutputRepresentation() != null) {
-//			OutputRepresentation oOutputRepresentation = this.getServicePIMFactory().createOutputRepresentation();
-//			if (oCurrentYamlResource.getOutputRepresentation().equalsIgnoreCase("JSON")) {
-//				oOutputRepresentation.setOutputMediaType(MediaType.JSON);
-//			} else if (oCurrentYamlResource.getOutputRepresentation().equalsIgnoreCase("XML")) {
-//				oOutputRepresentation.setOutputMediaType(MediaType.XML);
-//			} else {
-//				System.out.println("Corrupted input! Unknown output media type: "
-//						+ oCurrentYamlResource.getOutputRepresentation());
-//				Runtime.getRuntime().exit(-1);
-//			}
-//			oNewPIMResource.getHasOutputRepresentation().add(oOutputRepresentation);
-//		}
-//
-//		return oNewPIMResource;
-//	}
 
 	private void validateProducedPIM() {
 
@@ -505,16 +408,19 @@ public class CorePIMProducer extends APIMProducer {
 	private void createAllDynamicPIMApplications() {
 		for (YamlApplication oCurrentYamlApplication : this.listOfYamlApplications) {
 			com.github.icelyframework.dynamicview.Application application = this.getDynamicPIMFactory().createApplication();
-			application.setName(oCurrentYamlApplication.getName());
+			application.setName(oCurrentYamlApplication.getName().repl);
+			for (String oRole : oCurrentYamlApplication.getRoles()) {
+				com.github.icelyframework.dynamicview.Role role = this.getDynamicPIMFactory().createRole();
+				role.setName(oRole);
+				role.setApplication(application);
+				application.getHasRole().add(role);
+			}
 			for (String aggregateName : oCurrentYamlApplication.getAggregates()) {
 				YamlAggregate yamlAggregate = listOfYaml.getAggregateByName(aggregateName);
 				com.github.icelyframework.dynamicview.Aggregate aggregate = createDynamicPIMAggregate(yamlAggregate);
 				aggregate.setApplication(application);
 				application.getHasAggregate().add(aggregate);
 			}
-//			for (String role : oCurrentYamlApplication.getRoles()) {
-//				application.getRoles().add(restUtils.findRole(role));
-//			}
 			application.setProject(this.getProjectDynamic());
 			this.getProjectDynamic().getHasApplication().add(application);
 		}
@@ -525,6 +431,7 @@ public class CorePIMProducer extends APIMProducer {
 			for (com.github.icelyframework.dynamicview.Aggregate aggregate : application.getHasAggregate()) {
 				for (com.github.icelyframework.dynamicview.Process process : aggregate.getHasProcess()) {
 					for (com.github.icelyframework.dynamicview.ProcessOperation processOperation : process.getHasOperation()) {
+						System.out.println(processOperation);
 						YamlActivity yamlActivity = listOfYaml.getActivityByName(processOperation.getName(),
 								aggregate.getName(), process.getName());
 						for (String yamlPolicy : yamlActivity.getPolicy()) {

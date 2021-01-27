@@ -10,3 +10,4 @@
 rootProject.name = 'icely-generator'
 include 'icely-ontology'
 include 'icely-mde'
+//includeBuild "../icely-metamodels"

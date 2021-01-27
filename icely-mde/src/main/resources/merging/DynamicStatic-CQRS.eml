@@ -8,16 +8,46 @@ pre {
 	var dynamic;
 	var static;
 	var psmModel;
+	var psmConfigModel;
+	var psmDepModel;
 }
 
 rule Root
-	merge l : Dynamicview!Project with r : Staticview!Project into t : Service!Project {
+	merge l : Dynamicview!Project with r : Staticview!Project into t: Service!Project, c: Configuration!Project, d: Deployment!Project{
+	// service
 	t.name = r.name;
 	t.basePath = r.basePath;
 	t.architecture = Service!ArchitectureType#CQRS;
+	
+	// configuration
+	c.name = r.name;
+	c.basePath = r.basePath;
+	c.architecture = Configuration!ArchitectureType#CQRS;
+
+	var config = new Configuration!ProjectConfig;
+	config.version = "1.0.0-SNAPSHOT";
+	c.config = config;
+	
+	// deployment
+	d.name = r.name;
+	d.basePath = d.basePath;
+	
+	var deployment = new Deployment!ProjectDeployment;
+	d.deployment.add(deployment);
+	
+	// add gateway application
+	var gatewayCApp = addGatewayApplication(t,c,d);
+	
+	if(l.authenticationType.name == "CENTERALIZED"){
+		addUAAApplication(t,c,d);
+		gatewayCApp.config.authenticationType = Configuration!AuthenticationType#UAA;
+	}
+	
 	dynamic = l;
 	static = r;
 	psmModel = t;
+	psmConfigModel = c;
+	psmDepModel = d;
 }
 
 rule ComplexType
@@ -27,10 +57,30 @@ rule ComplexType
 }
 
 rule Application
-	merge l : Dynamicview!Application with r : Staticview!Application into t : Service!Application {
+	merge l : Dynamicview!Application with r : Staticview!Application into t : Service!Application, c: Configuration!Application, d: Deployment!Application {
 	"application".println();
+	// service
 	t.name = r.name;
+	t.basePackage = "org." + r.name.toLowerCase();
 	t.project = psmModel;
+	
+	// configuration
+	c.name = r.name;
+	c.basePackage = "org." + r.name.toLowerCase();
+	c.project = psmConfigModel;
+	var config = new Configuration!SculptorConfig;
+	config.baseName = c.name;
+	config.project_nature = "business-tier";
+	c.config = config;
+	
+	// deployment
+	d.name = r.name;
+	d.basePackage = "org." + r.name.toLowerCase();
+	d.project = psmDepModel;
+	
+	var deployment = new Deployment!ApplicationDeployment;
+	deployment.name = d.name;
+	d.deployment.add(deployment);
 		
 	t.addModule("command");
 	t.addModule("^query");
@@ -264,7 +314,103 @@ rule MergeResource
 	t.path = path;
 	t.name = r.name;
 	
+	"Permission".println();
+	l.hasPermission.println();
+	for(permission in  l.hasPermission){
+		var serPermission;
+		switch(permission.type().name){
+			case "HasAuthority": {
+				serPermission = new Service!HasAuthority;
+				serPermission.role ::= permission.role;
+			}
+			case "HasAnyAuthorities":{
+				serPermission = new Service!HasAnyAuthorities;
+				serPermission.roles ::= permission.roles;
+			}
+			
+			case "Authenticated":{
+				serPermission = new Service!Authenticated;
+			}
+			
+			case "Access" : {
+				serPermission = new Service!Access;
+				serPermission.access = permission.access;
+			}
+			
+			case "PermitAll": {
+				serPermission = new Service!PermitAll;
+				serPermission.withAllSubresources = permission.withAllSubresources;
+			}
+		}
+		serPermission.println();
+		t.permissions.add(serPermission);
+	}
+	
 	t.module = application.getRestModule();
 	t.module.resources.add(t);
+}
+
+operation addGatewayApplication(serviceProj, confProj, depProj){
+	var gateway = new Service!Application;
+	gateway.name = "gateway";
+	gateway.basePackage = "org." + serviceProj.name.toLowerCase();
+	gateway.applicationType = Service!ApplicationType#JHIPSTER_GATEWAY;
+	serviceProj.applications.add(gateway);
 	
+	var gatewayC = new Configuration!Application;
+	gatewayC.name = "gateway";
+	gatewayC.basePackage = "org." + confProj.name.toLowerCase();
+	gatewayC.applicationType = Configuration!ApplicationType#JHIPSTER_GATEWAY;
+	
+	var config = new Configuration!JhipsterConfig;
+	config.baseName = serviceProj.name;
+	config.applicationType = Configuration!JhipsterApplicationType#GATEWAY;
+	gatewayC.config = config;
+	
+	confProj.applications.add(gatewayC);
+	
+	var gatewayD = new Deployment!Application;
+	gatewayD.name = "gateway";
+	gatewayD.basePackage = "org." + depProj.name.toLowerCase();
+	gatewayD.applicationType = Deployment!ApplicationType#JHIPSTER_GATEWAY;
+	
+	var deployment = new Deployment!ApplicationDeployment;
+	deployment.name = gatewayD.name;
+	gatewayD.deployment.add(deployment);
+	
+	depProj.applications.add(gatewayD);
+	
+	return gatewayC;
+}
+
+operation addUAAApplication(serviceProj, confProj, depProj){
+	var uaa = new Service!Application;
+	uaa.name = "uaa";
+	uaa.basePackage = "org." + serviceProj.name.toLowerCase();
+	uaa.applicationType = Service!ApplicationType#JHIPSTER_UAA;
+	serviceProj.applications.add(uaa);
+	
+	var uaaC = new Configuration!Application;
+	uaaC.name = "uaa";
+	uaaC.basePackage = "org." + confProj.name.toLowerCase();
+	uaaC.applicationType = Configuration!ApplicationType#JHIPSTER_UAA;
+	
+	var config = new Configuration!JhipsterConfig;
+	config.baseName = serviceProj.name;
+	config.applicationType = Configuration!JhipsterApplicationType#UAA;
+	config.authenticationType = Configuration!AuthenticationType#UAA;
+	uaaC.config = config;
+	
+	confProj.applications.add(uaaC);
+	
+	var uaaD = new Deployment!Application;
+	uaaD.name = "uaa";
+	uaaD.basePackage = "org." + depProj.name.toLowerCase();
+	uaaD.applicationType = Deployment!ApplicationType#JHIPSTER_UAA;
+	
+	var deployment = new Deployment!ApplicationDeployment;
+	deployment.name = uaaD.name;
+	uaaD.deployment.add(deployment);
+	
+	depProj.applications.add(uaaD);
 }

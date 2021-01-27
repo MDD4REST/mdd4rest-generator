@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.github.icelyframework.generator.ontology.api.DynamicOntologyAPI;
 import com.github.icelyframework.generator.ontology.api.LinkedOntologyAPI;
 import com.github.icelyframework.generator.ontology.api.StaticOntologyAPI;
+import com.github.icelyframework.generator.ontology.ontologytoyamltools.StringHelpers;
 
 /**
  * Links the static and the dynamic ontologies into one linked ontology.
@@ -17,6 +18,8 @@ public class LinkOntologiesHandler {
 
 	public void linkOntologies(StaticOntologyAPI staticOntology, DynamicOntologyAPI dynamicOntology,
 			LinkedOntologyAPI linkedOntology) {
+		StringHelpers helper = new StringHelpers();
+		
 		ArrayList<String> enumerations = staticOntology.getEnumerations();
 		System.out.println(enumerations);
 		ArrayList<String> entities = staticOntology.getEntities();
@@ -24,7 +27,8 @@ public class LinkOntologiesHandler {
 		ArrayList<String> roles = dynamicOntology.getUserActors();
 		// Iterate over all objects of the static ontology
 		for (String object : staticOntology.getObjects()) {
-			String capObject = StringUtils.capitalize(object);
+			String capObject = helper.underscoreTCapitalizeWithUnderscore(object);
+			System.out.println("capObject: " + capObject);
 			// Add the object as a resource in the linked ontology
 			// linkedOntology.addResource(object);
 			addObjectToLinkedOntology(linkedOntology, staticOntology, capObject, enumerations, entities, valueObjects);
@@ -35,7 +39,7 @@ public class LinkOntologiesHandler {
 						valueObjects);
 				ArrayList<String> sources = new ArrayList<String>();
 				ArrayList<String> targets = new ArrayList<String>();
-				String capRelatedObject = StringUtils.capitalize(relatedObject);
+				String capRelatedObject = helper.underscoreTCapitalizeWithUnderscore(relatedObject);
 				sources.add(capObject);
 				targets.add(capRelatedObject);
 				linkedOntology.addReference(relatedObject.toLowerCase() + "__Reference__has_source__" + capObject
@@ -49,9 +53,13 @@ public class LinkOntologiesHandler {
 			// Iterate over all properties of the object and add them to the linked ontology
 			for (String property : staticOntology.getPropertiesOfObject(object)) {
 				linkedOntology.addPropertyToObject(capObject, property);
-				for (String requirement : staticOntology.getRequirementsOfConcept(property)) {
-					linkedOntology.addRequirement(requirement, staticOntology.getTextOfRequirement(requirement));
-					linkedOntology.connectRequirementToElement(requirement, property);
+				if(!property.equals("")) {
+					for (String requirement : staticOntology.getRequirementsOfConcept(property)) {
+						System.out.println(requirement);
+						System.out.println(staticOntology.getTextOfRequirement(requirement));
+						linkedOntology.addRequirement(requirement, staticOntology.getTextOfRequirement(requirement));
+						linkedOntology.connectRequirementToElement(requirement, property);
+					}
 				}
 			}
 

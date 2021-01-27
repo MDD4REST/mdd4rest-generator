@@ -324,6 +324,11 @@ public class DynamicOntologyAPI {
 		return dynamicOntology.getIndividualsOfClass("Actor");
 	}
 	
+	public boolean activityExists(String name) {
+		ArrayList<String> activities = dynamicOntology.getIndividualsOfClass("Activity");
+		return activities.contains(name.replace(" ", "_"));
+	}
+	
 	public ArrayList<String> getUserActors() {
 		return dynamicOntology.getIndividualsOfClass("UserActor");
 	}
@@ -355,6 +360,10 @@ public class DynamicOntologyAPI {
 		dynamicOntology.addIndividual("Transition", transitionName);
 		dynamicOntology.addPropertyAndReverseBetweenIndividuals(transitionName, "has_source", sourceActivity);
 		dynamicOntology.addPropertyAndReverseBetweenIndividuals(transitionName, "has_target", targetActivity);
+	}
+	
+	public void addGuardCondition(String condition) {
+		dynamicOntology.addIndividual("GuardCondition", condition);
 	}
 
 	public void addConditionToTransition(String condition, String sourceActivity, String targetActivity) {

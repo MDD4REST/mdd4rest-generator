@@ -1,0 +1,19 @@
+package [%=app.basePackage%].security;
+
+/**
+ * Constants for Spring Security authorities.
+ */
+public final class AuthoritiesConstants {
+
+    public static final String ADMIN = "ROLE_ADMIN";
+
+    public static final String USER = "ROLE_USER";
+
+    public static final String ANONYMOUS = "ROLE_ANONYMOUS";
+    [% for (role in app.roles) { %] 
+    public static final String [%=role.name.toUpperCase()%] = "ROLE_[%=role.name.toUpperCase()%]" 
+    [% } %]
+
+    private AuthoritiesConstants() {
+    }
+}

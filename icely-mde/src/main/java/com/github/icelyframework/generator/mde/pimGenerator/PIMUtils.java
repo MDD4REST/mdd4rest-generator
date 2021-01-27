@@ -1,6 +1,7 @@
 package com.github.icelyframework.generator.mde.pimGenerator;
 
 import com.github.icelyframework.dynamicview.DynamicviewFactory;
+import com.github.icelyframework.dynamicview.Role;
 import com.github.icelyframework.staticview.Aggregate;
 import com.github.icelyframework.staticview.Application;
 import com.github.icelyframework.staticview.DomainObject;
@@ -45,17 +46,15 @@ public class PIMUtils {
 		return null;
 	}
 	
-//	public Role findRole(String name) {
-////		System.out.println(oRESTfulServicePIM.getHasResources());
-//		for(Role role :oPIMDomain.getHasRoles()) {
-////			System.out.println(resource.getName() + " " + name);
-//			if(role.getName().equals(name)) {
-////				System.out.println("find: " + resource);
-//				return role;
-//			}
-//		}
-//		return null;
-//	}
+	public Role findRole(String name, String applicationName) {
+		com.github.icelyframework.dynamicview.Application application = findDynamicApplication(applicationName);
+		for(Role role :application.getHasRole()) {
+			if(role.getName().equals(name)) {
+				return role;
+			}
+		}
+		return null;
+	}
 	
 	public PrimitiveType findPrimitiveType(String name) {
 		for(PrimitiveType primitiveType :oPIMStatic.getPrimitiveTypes()) {
@@ -66,7 +65,7 @@ public class PIMUtils {
 		return null;
 	}
 	
-	public Application findApplicattion(String name) {
+	public Application findApplication(String name) {
 		for(Application application: oPIMStatic.getHasApplication()) {
 			if(application.getName().equalsIgnoreCase(name)) {
 				return application;
@@ -76,7 +75,7 @@ public class PIMUtils {
 	}
 	
 	public DomainObject findDomainObject(String name, String applicationName) {
-		Application application = findApplicattion(applicationName);
+		Application application = findApplication(applicationName);
 		for (Aggregate aggregate: application.getHasAggregate()) {
 			for (DomainObject domainObject: aggregate.getHasDomainobject()) {
 				if(domainObject.getName().equalsIgnoreCase(name)) {
@@ -87,7 +86,7 @@ public class PIMUtils {
 		return null;
 	}
 	
-	public com.github.icelyframework.dynamicview.Application findDynamicApplicattion(String name) {
+	public com.github.icelyframework.dynamicview.Application findDynamicApplication(String name) {
 		for(com.github.icelyframework.dynamicview.Application application: oPIMDynamic.getHasApplication()) {
 			if(application.getName().equalsIgnoreCase(name)) {
 				return application;
@@ -97,7 +96,7 @@ public class PIMUtils {
 	}
 	
 	public com.github.icelyframework.dynamicview.DomainObject findDynamicDomainObject(String name, String applicationName) {
-		com.github.icelyframework.dynamicview.Application application = findDynamicApplicattion(applicationName);
+		com.github.icelyframework.dynamicview.Application application = findDynamicApplication(applicationName);
 		for (com.github.icelyframework.dynamicview.Aggregate aggregate: application.getHasAggregate()) {
 			for (com.github.icelyframework.dynamicview.DomainObject domainObject: aggregate.getDomainobjects()) {
 				if(domainObject.getName().equalsIgnoreCase(name)) {
@@ -109,7 +108,7 @@ public class PIMUtils {
 	}
 	
 	public com.github.icelyframework.dynamicview.ProcessOperation findProcessOperation(String name, String applicationName) {
-		com.github.icelyframework.dynamicview.Application application = findDynamicApplicattion(applicationName);
+		com.github.icelyframework.dynamicview.Application application = findDynamicApplication(applicationName);
 		for (com.github.icelyframework.dynamicview.Aggregate aggregate: application.getHasAggregate()) {
 			for (com.github.icelyframework.dynamicview.Process process: aggregate.getHasProcess()) {
 				for(com.github.icelyframework.dynamicview.ProcessOperation processOperation: process.getHasOperation()) {

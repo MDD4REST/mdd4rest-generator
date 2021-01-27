@@ -1,3 +1,12 @@
 operation targetPath(outDir: String, applicationName: String, fileName:String , extension:String){
 	return outDir + applicationName + "/PSM/generators dsl/" + fileName + extension;
 }
+
+operation targetCodePath(outDir: String, applicationName: String, basePackage:String, folderPath:String, fileName:String , extension:String){
+	var basePackagePath = basePackage.replace("\\.", "/");
+	return outDir + applicationName + "/Code/src/main/java/" + basePackagePath + "/" + folderPath  + fileName + extension;
+}
+
+operation targetHomeCodePath(outDir: String, applicationName: String, folderPath:String, fileName:String , extension:String){
+	return outDir + applicationName + "/Code/" + folderPath  + fileName + extension;
+}

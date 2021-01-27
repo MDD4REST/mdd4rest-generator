@@ -16,8 +16,6 @@ public class Activity {
 	
 	public ActivityType Type;
 	public VerbType VerbTypeAction;
-	public Boolean IsAuthenticatedRequired; 
-
 
 
 	public Activity(String name, String action) {
@@ -29,7 +27,6 @@ public class Activity {
 		Publish = new ArrayList<String>();
 		ReadModel = new ArrayList<String>();
 		Objects = new ArrayList<String>();
-		IsAuthenticatedRequired = false;
 	}
 	
 	public Activity(String name, String action, ActivityType type) {
@@ -40,8 +37,6 @@ public class Activity {
 		Policy = new ArrayList<String>();
 		Publish = new ArrayList<String>();
 		Objects = new ArrayList<String>();
-		IsAuthenticatedRequired = false;
-
 	}
 	
 	public Activity(String name, String action, ActivityType type, VerbType verbType) {
@@ -52,7 +47,6 @@ public class Activity {
 		Policy = new ArrayList<String>();
 		Publish = new ArrayList<String>();
 		Objects = new ArrayList<String>();
-		IsAuthenticatedRequired = false;
 	}
 	
 	public Activity(String name, String action, String role, ActivityType type, VerbType verbType) {
@@ -65,7 +59,6 @@ public class Activity {
 		Publish = new ArrayList<String>();
 		ReadModel = new ArrayList<String>();
 		Objects = new ArrayList<String>();
-		IsAuthenticatedRequired = false;
 	}
 	
 	public void addPublish(String event) {
@@ -99,7 +92,6 @@ public class Activity {
 		all += "\n      Role: " + Role;
 		all += "\n      Type: " + Type.name();
 		all += "\n      VerbTypeAction: " + VerbTypeAction.name();
-		all += "\n      IsAuthenticatedRequired: " + IsAuthenticatedRequired;
 		all += "\n      Objects: " + Arrays.asList(Objects).toString().replaceAll("^\\[|\\]$", "");
 		all += "\n      Policy: " + Arrays.asList(Policy).toString().replaceAll("^\\[|\\]$", "");
 		all += "\n      Publish: " + Arrays.asList(Publish).toString().replaceAll("^\\[|\\]$", "");

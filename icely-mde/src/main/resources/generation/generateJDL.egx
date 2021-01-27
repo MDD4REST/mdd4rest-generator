@@ -3,5 +3,6 @@ rule JDL
 	
 	template : "JDL2JSON.egl"
 	
-	target : "../../../examples/cargo/PSM/generators dsl/entities.jdl"
+	target : "../../../../../../icely-samples/giftcard-generator/PSM/generators dsl/entities.jdl"
+	// target : "../../../../../../icely-samples/cargo/PSM/generators dsl/entities.jdl"
 }

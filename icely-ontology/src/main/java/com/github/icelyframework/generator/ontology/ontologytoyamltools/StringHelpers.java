@@ -38,8 +38,32 @@ public class StringHelpers {
 	 * @param wordConstruct the word construct to change its split.
 	 * @return the camelCased word construct
 	 */
+	
+	public static String underscoreTCapitalizeWithUnderscore(String wordConstruct) {
+		String[] words = wordConstruct.split("_");
+		String word = StringUtils.capitalize(words[0]);
+		for (int i=1; i<words.length;i++) {
+			word = word.concat("_" + StringUtils.capitalize(words[i]));
+		}
+		return word;
+	}
+	
+	
 	public static String underscoreToCamelCase(String wordConstruct) {
 		String[] words = wordConstruct.split("_");
+		String camelCaseWordConstruct = "";
+		for (String word : words) {
+			if (!camelCaseWordConstruct.equals("")) {
+				if (!word.equals(""))
+					camelCaseWordConstruct += word.substring(0, 1).toUpperCase() + word.substring(1);
+			} else
+				camelCaseWordConstruct += word;
+		}
+		return camelCaseWordConstruct;
+	}
+	
+	public static String dashToCamelCase(String wordConstruct) {
+		String[] words = wordConstruct.split("-");
 		String camelCaseWordConstruct = "";
 		for (String word : words) {
 			if (!camelCaseWordConstruct.equals("")) {

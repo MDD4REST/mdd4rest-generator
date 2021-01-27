@@ -49,8 +49,8 @@ operation Staticview!Resource relativePath(): String{
 	var resource = self;
 	while (resource.isRelatedResource != null){
 		resource = resource.isRelatedResource;
-		relativePath = resource.pathName + "/" + relativePath;
+		resource.pathName.println("resource in: ");
+		relativePath = resource.pathName +  "/"  + relativePath ;
 	}
-	relativePath = self.aggregate.name.firstToLowerCase() + "/" + relativePath;
-	return relativePath;
+	return "/" + relativePath;
 }

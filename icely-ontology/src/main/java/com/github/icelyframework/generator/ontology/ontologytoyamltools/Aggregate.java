@@ -11,6 +11,7 @@ import java.util.Arrays;
 public class Aggregate {
 
 	public String Name;
+	public Boolean IsAuthenticatedRequired; 
 
 	public ArrayList<DomainObject> DomainObjects;
 	
@@ -25,6 +26,7 @@ public class Aggregate {
 
 	public Aggregate(String name) {
 		this.Name = name;
+		IsAuthenticatedRequired = false;
 		DomainObjects = new ArrayList<DomainObject>();
 		Processes = new ArrayList<Process>();
 	}
@@ -44,6 +46,7 @@ public class Aggregate {
 
 	public String toYAMLString() {
 		String all = "- Name: " + Name;
+		all += "\n  IsAuthenticatedRequired: " + IsAuthenticatedRequired;
 		if (DomainObjects.size() > 0) {
 			all += "\n  DomainObjects:";
 			for (DomainObject domainObject : DomainObjects) {
