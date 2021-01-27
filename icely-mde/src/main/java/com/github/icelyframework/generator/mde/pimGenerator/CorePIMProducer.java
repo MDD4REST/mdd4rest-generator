@@ -408,7 +408,7 @@ public class CorePIMProducer extends APIMProducer {
 	private void createAllDynamicPIMApplications() {
 		for (YamlApplication oCurrentYamlApplication : this.listOfYamlApplications) {
 			com.github.icelyframework.dynamicview.Application application = this.getDynamicPIMFactory().createApplication();
-			application.setName(oCurrentYamlApplication.getName().repl);
+			application.setName(oCurrentYamlApplication.getName());
 			for (String oRole : oCurrentYamlApplication.getRoles()) {
 				com.github.icelyframework.dynamicview.Role role = this.getDynamicPIMFactory().createRole();
 				role.setName(oRole);
